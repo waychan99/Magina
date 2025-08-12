@@ -1,0 +1,153 @@
+//
+//  MGPrefixHeader.pch
+//  Magina
+//
+//  Created by mac on 2025/8/12.
+//
+
+#ifndef MGPrefixHeader_pch
+#define MGPrefixHeader_pch
+
+//---------------------------------Global classes------------------------------------------
+#import "AppDelegate.h"
+#import "MGHttpMacros.h"
+#import "UIView+Layout.h"
+#import "UIView+LPRadius.h"
+#import "UIView+Toast.h"
+#import "LVHttpRequest.h"
+#import "MGGlobalManager.h"
+#import "UIhelpTools.h"
+#import "NSDate+Helper.h"
+
+#import <MJExtension/MJExtension.h>
+#import <Masonry/Masonry.h>
+#import <SVProgressHUD/SVProgressHUD.h>
+#import <MJRefresh/MJRefresh.h>
+#import <KVOController/KVOController.h>
+#import <LYEmptyView/LYEmptyViewHeader.h>
+#import <SDWebImage/SDWebImage.h>
+
+//---------------------------------Constant-------------------------------------------------
+
+//key
+static NSString *const LTV_CLEAN_CACHE_TIMESTAMPS_KEY = @"LTV_CLEAN_CACHE_TIMESTAMPS_KEY"; //定期清理缓存时间戳
+
+//Notification
+static NSString *const MG_USER_LOCAL_INFO_REQUEST_SUCCESSED_NOTI = @"MG_USER_LOCAL_INFO_REQUEST_SUCCESSED_NOTI";//用户本地信息请求成功
+
+//path
+static NSString *const LP_USER_LOCAL_INFO_PATH = @"lp_user_local_info"; //用户本地信息存储路径
+static NSString *const LP_USER_LOCAL_INFO_REQUEST_PATH_1 = @"http://ip-api.com/json/"; //用户本地信息远程请求路径1
+static NSString *const LP_USER_LOCAL_INFO_REQUEST_PATH_2 = @"https://extreme-ip-lookup.com/json/"; //用户本地信息远程请求路径2
+static NSString *const LP_USER_LOCAL_INFO_REQUEST_PATH_3 = @"https://ip-api.io/json/"; //用户本地信息远程请求路径3
+static NSString *const LP_USER_LOCAL_INFO_REQUEST_PATH_4 = @"https://freegeoip.app/json/"; //用户本地信息远程请求路径4
+static NSString *const LP_USER_LOCAL_INFO_REQUEST_PATH_5 = @"https://ipapi.co/json/"; //用户本地信息远程请求路径5
+
+//---------------------------------Distinguish between debug and release-------------------
+#if DEBUG
+
+// LOG  //LV为LongVision(龙视传媒)的简称
+#define LVLog(format, ...)                              NSLog(format, ##__VA_ARGS__)
+
+#else
+
+// LOG
+#define LVLog(format, ...)                              nil
+
+#endif
+
+
+//--------------------Synthsize a weak or strong reference.---------------------------------
+/**
+ Example:
+ @lv_weakify(self)
+ [self doSomething^{
+ @lv_strongify(self)
+ if (!self) return;
+ ...
+ }];
+ */
+
+#ifndef weakify
+#if DEBUG
+#if __has_feature(objc_arc)
+#define lv_weakify(object) autoreleasepool{} __weak __typeof__(object) weak##_##object = object;
+#else
+#define lv_weakify(object) autoreleasepool{} __block __typeof__(object) block##_##object = object;
+#endif
+#else
+#if __has_feature(objc_arc)
+#define lv_weakify(object) try{} @finally{} {} __weak __typeof__(object) weak##_##object = object;
+#else
+#define lv_weakify(object) try{} @finally{} {} __block __typeof__(object) block##_##object = object;
+#endif
+#endif
+#endif
+
+#ifndef strongify
+#if DEBUG
+#if __has_feature(objc_arc)
+#define lv_strongify(object) autoreleasepool{} __typeof__(object) object = weak##_##object;
+#else
+#define lv_strongify(object) autoreleasepool{} __typeof__(object) object = block##_##object;
+#endif
+#else
+#if __has_feature(objc_arc)
+#define lv_strongify(object) try{} @finally{} __typeof__(object) object = weak##_##object;
+#else
+#define lv_strongify(object) try{} @finally{} __typeof__(object) object = block##_##object;
+#endif
+#endif
+#endif
+
+//---------------------------------UI-------------------------------------------------------
+#define UI_SCREEN_W  ([[UIScreen mainScreen] bounds].size.width)
+#define UI_SCREEN_H  ([[UIScreen mainScreen] bounds].size.height)
+
+#define kIsBangsScreen ({\
+    BOOL isBangsScreen = NO; \
+    if (@available(iOS 11.0, *)) { \
+    UIWindow *window = [[UIApplication sharedApplication] delegate].window; \
+    isBangsScreen = window.safeAreaInsets.bottom > 0; \
+    } \
+    isBangsScreen; \
+})
+
+#define UINavBar_H 44.0f
+#define UITabbar_H 49.0f
+#define UIStatusBar_H [UIhelpTools getStatusBarHight]
+#define UISafeAreaBottom_H (kIsBangsScreen ? 34.0f : 0.0f)
+#define UIStatusBarAndNavBar_H (UIStatusBar_H + UINavBar_H)
+#define UISafeAreaBottomAndTabbar_H (UISafeAreaBottom_H + UITabbar_H)
+
+#define RefereWidth 375.0  //以iphoneX为基准,等比例适配尺寸宽度
+#define RefereHeight 812.0  //以iphoneX为基准,等比例适配尺寸高度
+#define ScaleW(floatValue) ([[UIScreen mainScreen] bounds].size.width * (floatValue) / RefereWidth)
+#define ScaleH(floatValue) ([[UIScreen mainScreen] bounds].size.height * (floatValue) / RefereHeight)
+
+//--------------------------------Font-------------------------------------------------------
+#define Font(size)       [UIFont systemFontOfSize:size]
+#define Adapt_Font(size) [UIFont systemFontOfSize:ScaleW(size)]  //以iphoneX为基准,等比例适配字体尺寸
+#define Adapt_FontSize(size) ScaleW(size)
+
+//--------------------------------Color------------------------------------------------------
+#define HEX_COLOR(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+#define RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
+#define RGB(r,g,b) RGBA(r,g,b,1.0f)
+
+//#define LP_MAIN_COLOR HEX_COLOR(0x32CAA6) //项目主颜色
+
+//---------------------------------Application message-----------------------------------------
+#define kAPPDelegate ((AppDelegate*)[UIApplication sharedApplication].delegate)
+#define APP_DISPLAY_NAME [[NSBundle mainBundle] infoDictionary][@"CFBundleDisplayName"]
+
+
+//---------------------------------other-------------------------------------------------------
+#define SWKeyChainStoreUUIDKey @"com.LongTV.mop.keychainstore.key"
+//#define SWKeyChainStoreUUIDKey @"com.longVision.LongTV.keychainstore.key"
+#define GCDMain(block)       dispatch_async(dispatch_get_main_queue(),block)
+
+#define _WEAK_SELF __weak typeof(self)weakSelf = self;
+
+
+#endif /* MGPrefixHeader_pch */

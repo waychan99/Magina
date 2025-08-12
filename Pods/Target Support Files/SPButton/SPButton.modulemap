@@ -1,0 +1,6 @@
+framework module SPButton {
+  umbrella header "SPButton-umbrella.h"
+
+  export *
+  module * { export * }
+}

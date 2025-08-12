@@ -1,0 +1,802 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 63;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04A9F2FE2E4AE1EA005F3FC2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F2F52E4AE1EA005F3FC2 /* AppDelegate.m */; };
+		04A9F2FF2E4AE1EA005F3FC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F2FA2E4AE1EA005F3FC2 /* main.m */; };
+		04A9F3012E4AE1EA005F3FC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04A9F2F62E4AE1EA005F3FC2 /* Assets.xcassets */; };
+		04A9F3032E4AE1EA005F3FC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A9F2F92E4AE1EA005F3FC2 /* LaunchScreen.storyboard */; };
+		04A9F32A2E4AE6D3005F3FC2 /* UIView+GradientColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F3222E4AE6D3005F3FC2 /* UIView+GradientColors.m */; };
+		04A9F32B2E4AE6D3005F3FC2 /* NSLayoutConstraint+BSIBDesignable.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F31A2E4AE6D3005F3FC2 /* NSLayoutConstraint+BSIBDesignable.m */; };
+		04A9F32C2E4AE6D3005F3FC2 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F3282E4AE6D3005F3FC2 /* UIView+Toast.m */; };
+		04A9F32D2E4AE6D3005F3FC2 /* UIView+LPRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F3262E4AE6D3005F3FC2 /* UIView+LPRadius.m */; };
+		04A9F32E2E4AE6D3005F3FC2 /* UIImage+LP.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F3202E4AE6D3005F3FC2 /* UIImage+LP.m */; };
+		04A9F32F2E4AE6D3005F3FC2 /* NSString+LP.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F31C2E4AE6D3005F3FC2 /* NSString+LP.m */; };
+		04A9F3302E4AE6D3005F3FC2 /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F3242E4AE6D3005F3FC2 /* UIView+Layout.m */; };
+		04A9F3312E4AE6D3005F3FC2 /* UIhelpTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F31E2E4AE6D3005F3FC2 /* UIhelpTools.m */; };
+		04A9F3322E4AE6D3005F3FC2 /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F3182E4AE6D3005F3FC2 /* NSDate+Helper.m */; };
+		04A9F33D2E4AE6F6005F3FC2 /* LVHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F3392E4AE6F6005F3FC2 /* LVHttpRequest.m */; };
+		04A9F33E2E4AE6F6005F3FC2 /* SWDeviceCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F3342E4AE6F6005F3FC2 /* SWDeviceCenter.m */; };
+		04A9F33F2E4AE6F6005F3FC2 /* LVHttpRequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F33B2E4AE6F6005F3FC2 /* LVHttpRequestHelper.m */; };
+		04A9F3402E4AE6F6005F3FC2 /* SWKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F3362E4AE6F6005F3FC2 /* SWKeyChainStore.m */; };
+		04A9F3442E4AE730005F3FC2 /* LPNetwortReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F3432E4AE730005F3FC2 /* LPNetwortReachability.m */; };
+		04A9F34D2E4AE749005F3FC2 /* LVKeyboardLaunch.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F3462E4AE749005F3FC2 /* LVKeyboardLaunch.m */; };
+		04A9F34E2E4AE749005F3FC2 /* LVTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F34A2E4AE749005F3FC2 /* LVTimer.m */; };
+		04A9F34F2E4AE749005F3FC2 /* LVCommonTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F3482E4AE749005F3FC2 /* LVCommonTool.m */; };
+		04A9F3502E4AE749005F3FC2 /* LTVWaterFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F34C2E4AE749005F3FC2 /* LTVWaterFlowLayout.m */; };
+		04A9F3532E4AE780005F3FC2 /* MGLoginFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F3522E4AE780005F3FC2 /* MGLoginFactory.m */; };
+		04A9F3562E4AE796005F3FC2 /* MGAppleLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F3552E4AE796005F3FC2 /* MGAppleLogin.m */; };
+		04A9F35C2E4B0C73005F3FC2 /* MGGlobalManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F35B2E4B0C73005F3FC2 /* MGGlobalManager.m */; };
+		04E6E1B62E4B200A00407F94 /* MGMainNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E1B52E4B200A00407F94 /* MGMainNavigationController.m */; };
+		04E6E1BC2E4B217D00407F94 /* MGBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E1BB2E4B217D00407F94 /* MGBaseController.m */; };
+		04E6E1BF2E4B299A00407F94 /* MGHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E1BE2E4B299A00407F94 /* MGHomeController.m */; };
+		04E6E1C22E4B49E800407F94 /* MGHomeListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E1C12E4B49E800407F94 /* MGHomeListController.m */; };
+		8AE9E8B1543D003823C4F1E4 /* Pods_Magina.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C50838DFF8AFFA3B1D401A /* Pods_Magina.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		04A9F2D72E4ADF56005F3FC2 /* Magina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Magina.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04A9F2F42E4AE1EA005F3FC2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		04A9F2F52E4AE1EA005F3FC2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		04A9F2F62E4AE1EA005F3FC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		04A9F2F72E4AE1EA005F3FC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04A9F2F82E4AE1EA005F3FC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		04A9F2FA2E4AE1EA005F3FC2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		04A9F3152E4AE4E2005F3FC2 /* MGHttpMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGHttpMacros.h; sourceTree = "<group>"; };
+		04A9F3162E4AE530005F3FC2 /* MGPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGPrefixHeader.pch; sourceTree = "<group>"; };
+		04A9F3172E4AE6D3005F3FC2 /* NSDate+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helper.h"; sourceTree = "<group>"; };
+		04A9F3182E4AE6D3005F3FC2 /* NSDate+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helper.m"; sourceTree = "<group>"; };
+		04A9F3192E4AE6D3005F3FC2 /* NSLayoutConstraint+BSIBDesignable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+BSIBDesignable.h"; sourceTree = "<group>"; };
+		04A9F31A2E4AE6D3005F3FC2 /* NSLayoutConstraint+BSIBDesignable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+BSIBDesignable.m"; sourceTree = "<group>"; };
+		04A9F31B2E4AE6D3005F3FC2 /* NSString+LP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+LP.h"; sourceTree = "<group>"; };
+		04A9F31C2E4AE6D3005F3FC2 /* NSString+LP.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+LP.m"; sourceTree = "<group>"; };
+		04A9F31D2E4AE6D3005F3FC2 /* UIhelpTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIhelpTools.h; sourceTree = "<group>"; };
+		04A9F31E2E4AE6D3005F3FC2 /* UIhelpTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIhelpTools.m; sourceTree = "<group>"; };
+		04A9F31F2E4AE6D3005F3FC2 /* UIImage+LP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+LP.h"; sourceTree = "<group>"; };
+		04A9F3202E4AE6D3005F3FC2 /* UIImage+LP.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+LP.m"; sourceTree = "<group>"; };
+		04A9F3212E4AE6D3005F3FC2 /* UIView+GradientColors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+GradientColors.h"; sourceTree = "<group>"; };
+		04A9F3222E4AE6D3005F3FC2 /* UIView+GradientColors.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+GradientColors.m"; sourceTree = "<group>"; };
+		04A9F3232E4AE6D3005F3FC2 /* UIView+Layout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
+		04A9F3242E4AE6D3005F3FC2 /* UIView+Layout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
+		04A9F3252E4AE6D3005F3FC2 /* UIView+LPRadius.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+LPRadius.h"; sourceTree = "<group>"; };
+		04A9F3262E4AE6D3005F3FC2 /* UIView+LPRadius.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+LPRadius.m"; sourceTree = "<group>"; };
+		04A9F3272E4AE6D3005F3FC2 /* UIView+Toast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
+		04A9F3282E4AE6D3005F3FC2 /* UIView+Toast.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
+		04A9F3332E4AE6F6005F3FC2 /* SWDeviceCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWDeviceCenter.h; sourceTree = "<group>"; };
+		04A9F3342E4AE6F6005F3FC2 /* SWDeviceCenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWDeviceCenter.m; sourceTree = "<group>"; };
+		04A9F3352E4AE6F6005F3FC2 /* SWKeyChainStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWKeyChainStore.h; sourceTree = "<group>"; };
+		04A9F3362E4AE6F6005F3FC2 /* SWKeyChainStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWKeyChainStore.m; sourceTree = "<group>"; };
+		04A9F3382E4AE6F6005F3FC2 /* LVHttpRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LVHttpRequest.h; sourceTree = "<group>"; };
+		04A9F3392E4AE6F6005F3FC2 /* LVHttpRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LVHttpRequest.m; sourceTree = "<group>"; };
+		04A9F33A2E4AE6F6005F3FC2 /* LVHttpRequestHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LVHttpRequestHelper.h; sourceTree = "<group>"; };
+		04A9F33B2E4AE6F6005F3FC2 /* LVHttpRequestHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LVHttpRequestHelper.m; sourceTree = "<group>"; };
+		04A9F3422E4AE730005F3FC2 /* LPNetwortReachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LPNetwortReachability.h; sourceTree = "<group>"; };
+		04A9F3432E4AE730005F3FC2 /* LPNetwortReachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LPNetwortReachability.m; sourceTree = "<group>"; };
+		04A9F3452E4AE749005F3FC2 /* LVKeyboardLaunch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LVKeyboardLaunch.h; sourceTree = "<group>"; };
+		04A9F3462E4AE749005F3FC2 /* LVKeyboardLaunch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LVKeyboardLaunch.m; sourceTree = "<group>"; };
+		04A9F3472E4AE749005F3FC2 /* LVCommonTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LVCommonTool.h; sourceTree = "<group>"; };
+		04A9F3482E4AE749005F3FC2 /* LVCommonTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LVCommonTool.m; sourceTree = "<group>"; };
+		04A9F3492E4AE749005F3FC2 /* LVTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LVTimer.h; sourceTree = "<group>"; };
+		04A9F34A2E4AE749005F3FC2 /* LVTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LVTimer.m; sourceTree = "<group>"; };
+		04A9F34B2E4AE749005F3FC2 /* LTVWaterFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTVWaterFlowLayout.h; sourceTree = "<group>"; };
+		04A9F34C2E4AE749005F3FC2 /* LTVWaterFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTVWaterFlowLayout.m; sourceTree = "<group>"; };
+		04A9F3512E4AE780005F3FC2 /* MGLoginFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGLoginFactory.h; sourceTree = "<group>"; };
+		04A9F3522E4AE780005F3FC2 /* MGLoginFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGLoginFactory.m; sourceTree = "<group>"; };
+		04A9F3542E4AE796005F3FC2 /* MGAppleLogin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGAppleLogin.h; sourceTree = "<group>"; };
+		04A9F3552E4AE796005F3FC2 /* MGAppleLogin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGAppleLogin.m; sourceTree = "<group>"; };
+		04A9F35A2E4B0C73005F3FC2 /* MGGlobalManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGGlobalManager.h; sourceTree = "<group>"; };
+		04A9F35B2E4B0C73005F3FC2 /* MGGlobalManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGGlobalManager.m; sourceTree = "<group>"; };
+		04E6E1B42E4B200A00407F94 /* MGMainNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGMainNavigationController.h; sourceTree = "<group>"; };
+		04E6E1B52E4B200A00407F94 /* MGMainNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGMainNavigationController.m; sourceTree = "<group>"; };
+		04E6E1BA2E4B217D00407F94 /* MGBaseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGBaseController.h; sourceTree = "<group>"; };
+		04E6E1BB2E4B217D00407F94 /* MGBaseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGBaseController.m; sourceTree = "<group>"; };
+		04E6E1BD2E4B299A00407F94 /* MGHomeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGHomeController.h; sourceTree = "<group>"; };
+		04E6E1BE2E4B299A00407F94 /* MGHomeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGHomeController.m; sourceTree = "<group>"; };
+		04E6E1C02E4B49E800407F94 /* MGHomeListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGHomeListController.h; sourceTree = "<group>"; };
+		04E6E1C12E4B49E800407F94 /* MGHomeListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGHomeListController.m; sourceTree = "<group>"; };
+		64DD56DCE6B674BEB2758DF4 /* Pods-Magina.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Magina.debug.xcconfig"; path = "Target Support Files/Pods-Magina/Pods-Magina.debug.xcconfig"; sourceTree = "<group>"; };
+		75C50838DFF8AFFA3B1D401A /* Pods_Magina.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Magina.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		924A495E2CEAA3C9DFE27B07 /* Pods-Magina.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Magina.release.xcconfig"; path = "Target Support Files/Pods-Magina/Pods-Magina.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		04A9F2D42E4ADF56005F3FC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AE9E8B1543D003823C4F1E4 /* Pods_Magina.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		04A9F2CE2E4ADF56005F3FC2 = {
+			isa = PBXGroup;
+			children = (
+				04A9F2FD2E4AE1EA005F3FC2 /* Magina */,
+				04A9F2D82E4ADF56005F3FC2 /* Products */,
+				3FDB2C28B0A4DC0EE45210CD /* Pods */,
+				B68C92882A6D1FE19D88DE51 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		04A9F2D82E4ADF56005F3FC2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				04A9F2D72E4ADF56005F3FC2 /* Magina.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		04A9F2FD2E4AE1EA005F3FC2 /* Magina */ = {
+			isa = PBXGroup;
+			children = (
+				04A9F3142E4AE436005F3FC2 /* Classes */,
+				04A9F2F62E4AE1EA005F3FC2 /* Assets.xcassets */,
+				04A9F2F72E4AE1EA005F3FC2 /* Info.plist */,
+				04A9F2F92E4AE1EA005F3FC2 /* LaunchScreen.storyboard */,
+			);
+			path = Magina;
+			sourceTree = "<group>";
+		};
+		04A9F3042E4AE436005F3FC2 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				04E6E1B72E4B215500407F94 /* Controller */,
+				04E6E1B82E4B215500407F94 /* Model */,
+				04E6E1B92E4B215500407F94 /* View */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		04A9F3052E4AE436005F3FC2 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				04A9F35A2E4B0C73005F3FC2 /* MGGlobalManager.h */,
+				04A9F35B2E4B0C73005F3FC2 /* MGGlobalManager.m */,
+				04A9F3572E4B0C19005F3FC2 /* Controller */,
+				04A9F3582E4B0C19005F3FC2 /* Model */,
+				04A9F3592E4B0C19005F3FC2 /* View */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		04A9F3062E4AE436005F3FC2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04E6E1BD2E4B299A00407F94 /* MGHomeController.h */,
+				04E6E1BE2E4B299A00407F94 /* MGHomeController.m */,
+				04E6E1C02E4B49E800407F94 /* MGHomeListController.h */,
+				04E6E1C12E4B49E800407F94 /* MGHomeListController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		04A9F3072E4AE436005F3FC2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04A9F3082E4AE436005F3FC2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		04A9F3092E4AE436005F3FC2 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				04A9F3062E4AE436005F3FC2 /* Controller */,
+				04A9F3072E4AE436005F3FC2 /* Model */,
+				04A9F3082E4AE436005F3FC2 /* View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		04A9F30A2E4AE436005F3FC2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		04A9F30B2E4AE436005F3FC2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04A9F30C2E4AE436005F3FC2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		04A9F30D2E4AE436005F3FC2 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				04A9F30A2E4AE436005F3FC2 /* Controller */,
+				04A9F30B2E4AE436005F3FC2 /* Model */,
+				04A9F30C2E4AE436005F3FC2 /* View */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		04A9F30E2E4AE436005F3FC2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		04A9F30F2E4AE436005F3FC2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04A9F3102E4AE436005F3FC2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		04A9F3112E4AE436005F3FC2 /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				04A9F30E2E4AE436005F3FC2 /* Controller */,
+				04A9F30F2E4AE436005F3FC2 /* Model */,
+				04A9F3102E4AE436005F3FC2 /* View */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		04A9F3122E4AE436005F3FC2 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				04A9F2F42E4AE1EA005F3FC2 /* AppDelegate.h */,
+				04A9F2F52E4AE1EA005F3FC2 /* AppDelegate.m */,
+				04A9F3152E4AE4E2005F3FC2 /* MGHttpMacros.h */,
+				04A9F3162E4AE530005F3FC2 /* MGPrefixHeader.pch */,
+				04A9F2FA2E4AE1EA005F3FC2 /* main.m */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		04A9F3132E4AE436005F3FC2 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				04A9F3292E4AE6D3005F3FC2 /* Category */,
+				04A9F3372E4AE6F6005F3FC2 /* DevicCenter */,
+				04A9F33C2E4AE6F6005F3FC2 /* HttpHandler */,
+				04A9F3412E4AE719005F3FC2 /* LoginHandler */,
+				04A9F3422E4AE730005F3FC2 /* LPNetwortReachability.h */,
+				04A9F3432E4AE730005F3FC2 /* LPNetwortReachability.m */,
+				04A9F3452E4AE749005F3FC2 /* LVKeyboardLaunch.h */,
+				04A9F3462E4AE749005F3FC2 /* LVKeyboardLaunch.m */,
+				04A9F3472E4AE749005F3FC2 /* LVCommonTool.h */,
+				04A9F3482E4AE749005F3FC2 /* LVCommonTool.m */,
+				04A9F3492E4AE749005F3FC2 /* LVTimer.h */,
+				04A9F34A2E4AE749005F3FC2 /* LVTimer.m */,
+				04A9F34B2E4AE749005F3FC2 /* LTVWaterFlowLayout.h */,
+				04A9F34C2E4AE749005F3FC2 /* LTVWaterFlowLayout.m */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		04A9F3142E4AE436005F3FC2 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				04A9F30D2E4AE436005F3FC2 /* Login */,
+				04A9F3092E4AE436005F3FC2 /* Home */,
+				04A9F3112E4AE436005F3FC2 /* Mine */,
+				04A9F3052E4AE436005F3FC2 /* Global */,
+				04A9F3042E4AE436005F3FC2 /* Base */,
+				04A9F3132E4AE436005F3FC2 /* Tools */,
+				04A9F3122E4AE436005F3FC2 /* Other */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		04A9F3292E4AE6D3005F3FC2 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				04A9F3172E4AE6D3005F3FC2 /* NSDate+Helper.h */,
+				04A9F3182E4AE6D3005F3FC2 /* NSDate+Helper.m */,
+				04A9F31B2E4AE6D3005F3FC2 /* NSString+LP.h */,
+				04A9F31C2E4AE6D3005F3FC2 /* NSString+LP.m */,
+				04A9F31D2E4AE6D3005F3FC2 /* UIhelpTools.h */,
+				04A9F31E2E4AE6D3005F3FC2 /* UIhelpTools.m */,
+				04A9F31F2E4AE6D3005F3FC2 /* UIImage+LP.h */,
+				04A9F3202E4AE6D3005F3FC2 /* UIImage+LP.m */,
+				04A9F3212E4AE6D3005F3FC2 /* UIView+GradientColors.h */,
+				04A9F3222E4AE6D3005F3FC2 /* UIView+GradientColors.m */,
+				04A9F3232E4AE6D3005F3FC2 /* UIView+Layout.h */,
+				04A9F3242E4AE6D3005F3FC2 /* UIView+Layout.m */,
+				04A9F3252E4AE6D3005F3FC2 /* UIView+LPRadius.h */,
+				04A9F3262E4AE6D3005F3FC2 /* UIView+LPRadius.m */,
+				04A9F3272E4AE6D3005F3FC2 /* UIView+Toast.h */,
+				04A9F3282E4AE6D3005F3FC2 /* UIView+Toast.m */,
+				04A9F3192E4AE6D3005F3FC2 /* NSLayoutConstraint+BSIBDesignable.h */,
+				04A9F31A2E4AE6D3005F3FC2 /* NSLayoutConstraint+BSIBDesignable.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		04A9F3372E4AE6F6005F3FC2 /* DevicCenter */ = {
+			isa = PBXGroup;
+			children = (
+				04A9F3332E4AE6F6005F3FC2 /* SWDeviceCenter.h */,
+				04A9F3342E4AE6F6005F3FC2 /* SWDeviceCenter.m */,
+				04A9F3352E4AE6F6005F3FC2 /* SWKeyChainStore.h */,
+				04A9F3362E4AE6F6005F3FC2 /* SWKeyChainStore.m */,
+			);
+			path = DevicCenter;
+			sourceTree = "<group>";
+		};
+		04A9F33C2E4AE6F6005F3FC2 /* HttpHandler */ = {
+			isa = PBXGroup;
+			children = (
+				04A9F3382E4AE6F6005F3FC2 /* LVHttpRequest.h */,
+				04A9F3392E4AE6F6005F3FC2 /* LVHttpRequest.m */,
+				04A9F33A2E4AE6F6005F3FC2 /* LVHttpRequestHelper.h */,
+				04A9F33B2E4AE6F6005F3FC2 /* LVHttpRequestHelper.m */,
+			);
+			path = HttpHandler;
+			sourceTree = "<group>";
+		};
+		04A9F3412E4AE719005F3FC2 /* LoginHandler */ = {
+			isa = PBXGroup;
+			children = (
+				04A9F3512E4AE780005F3FC2 /* MGLoginFactory.h */,
+				04A9F3522E4AE780005F3FC2 /* MGLoginFactory.m */,
+				04A9F3542E4AE796005F3FC2 /* MGAppleLogin.h */,
+				04A9F3552E4AE796005F3FC2 /* MGAppleLogin.m */,
+			);
+			path = LoginHandler;
+			sourceTree = "<group>";
+		};
+		04A9F3572E4B0C19005F3FC2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04E6E1B42E4B200A00407F94 /* MGMainNavigationController.h */,
+				04E6E1B52E4B200A00407F94 /* MGMainNavigationController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		04A9F3582E4B0C19005F3FC2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04A9F3592E4B0C19005F3FC2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		04E6E1B72E4B215500407F94 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04E6E1BA2E4B217D00407F94 /* MGBaseController.h */,
+				04E6E1BB2E4B217D00407F94 /* MGBaseController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		04E6E1B82E4B215500407F94 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04E6E1B92E4B215500407F94 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3FDB2C28B0A4DC0EE45210CD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				64DD56DCE6B674BEB2758DF4 /* Pods-Magina.debug.xcconfig */,
+				924A495E2CEAA3C9DFE27B07 /* Pods-Magina.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B68C92882A6D1FE19D88DE51 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				75C50838DFF8AFFA3B1D401A /* Pods_Magina.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		04A9F2D62E4ADF56005F3FC2 /* Magina */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04A9F2EF2E4ADF58005F3FC2 /* Build configuration list for PBXNativeTarget "Magina" */;
+			buildPhases = (
+				E29DE33B92061E3488121D56 /* [CP] Check Pods Manifest.lock */,
+				04A9F2D32E4ADF56005F3FC2 /* Sources */,
+				04A9F2D42E4ADF56005F3FC2 /* Frameworks */,
+				04A9F2D52E4ADF56005F3FC2 /* Resources */,
+				EFF40287EC1BB9FFCE80E8F2 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Magina;
+			productName = Magina;
+			productReference = 04A9F2D72E4ADF56005F3FC2 /* Magina.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		04A9F2CF2E4ADF56005F3FC2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				CLASSPREFIX = MG;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					04A9F2D62E4ADF56005F3FC2 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+				};
+			};
+			buildConfigurationList = 04A9F2D22E4ADF56005F3FC2 /* Build configuration list for PBXProject "Magina" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 04A9F2CE2E4ADF56005F3FC2;
+			minimizedProjectReferenceProxies = 1;
+			productRefGroup = 04A9F2D82E4ADF56005F3FC2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				04A9F2D62E4ADF56005F3FC2 /* Magina */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		04A9F2D52E4ADF56005F3FC2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04A9F3012E4AE1EA005F3FC2 /* Assets.xcassets in Resources */,
+				04A9F3032E4AE1EA005F3FC2 /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E29DE33B92061E3488121D56 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Magina-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EFF40287EC1BB9FFCE80E8F2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Magina/Pods-Magina-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Magina/Pods-Magina-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Magina/Pods-Magina-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		04A9F2D32E4ADF56005F3FC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04A9F2FE2E4AE1EA005F3FC2 /* AppDelegate.m in Sources */,
+				04A9F2FF2E4AE1EA005F3FC2 /* main.m in Sources */,
+				04E6E1BF2E4B299A00407F94 /* MGHomeController.m in Sources */,
+				04A9F33D2E4AE6F6005F3FC2 /* LVHttpRequest.m in Sources */,
+				04A9F35C2E4B0C73005F3FC2 /* MGGlobalManager.m in Sources */,
+				04A9F34D2E4AE749005F3FC2 /* LVKeyboardLaunch.m in Sources */,
+				04E6E1C22E4B49E800407F94 /* MGHomeListController.m in Sources */,
+				04A9F34E2E4AE749005F3FC2 /* LVTimer.m in Sources */,
+				04A9F3562E4AE796005F3FC2 /* MGAppleLogin.m in Sources */,
+				04A9F34F2E4AE749005F3FC2 /* LVCommonTool.m in Sources */,
+				04A9F3502E4AE749005F3FC2 /* LTVWaterFlowLayout.m in Sources */,
+				04A9F33E2E4AE6F6005F3FC2 /* SWDeviceCenter.m in Sources */,
+				04A9F33F2E4AE6F6005F3FC2 /* LVHttpRequestHelper.m in Sources */,
+				04A9F3402E4AE6F6005F3FC2 /* SWKeyChainStore.m in Sources */,
+				04A9F32A2E4AE6D3005F3FC2 /* UIView+GradientColors.m in Sources */,
+				04E6E1BC2E4B217D00407F94 /* MGBaseController.m in Sources */,
+				04A9F32B2E4AE6D3005F3FC2 /* NSLayoutConstraint+BSIBDesignable.m in Sources */,
+				04A9F3442E4AE730005F3FC2 /* LPNetwortReachability.m in Sources */,
+				04A9F3532E4AE780005F3FC2 /* MGLoginFactory.m in Sources */,
+				04A9F32C2E4AE6D3005F3FC2 /* UIView+Toast.m in Sources */,
+				04A9F32D2E4AE6D3005F3FC2 /* UIView+LPRadius.m in Sources */,
+				04A9F32E2E4AE6D3005F3FC2 /* UIImage+LP.m in Sources */,
+				04A9F32F2E4AE6D3005F3FC2 /* NSString+LP.m in Sources */,
+				04E6E1B62E4B200A00407F94 /* MGMainNavigationController.m in Sources */,
+				04A9F3302E4AE6D3005F3FC2 /* UIView+Layout.m in Sources */,
+				04A9F3312E4AE6D3005F3FC2 /* UIhelpTools.m in Sources */,
+				04A9F3322E4AE6D3005F3FC2 /* NSDate+Helper.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		04A9F2F92E4AE1EA005F3FC2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04A9F2F82E4AE1EA005F3FC2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		04A9F2F02E4ADF58005F3FC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64DD56DCE6B674BEB2758DF4 /* Pods-Magina.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4PGNNN9ZX4;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREFIX_HEADER = /Users/mac/Desktop/Magina/Magina/Classes/Other/MGPrefixHeader.pch;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Magina/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Magina;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apollo.Magina;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		04A9F2F12E4ADF58005F3FC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 924A495E2CEAA3C9DFE27B07 /* Pods-Magina.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4PGNNN9ZX4;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREFIX_HEADER = /Users/mac/Desktop/Magina/Magina/Classes/Other/MGPrefixHeader.pch;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Magina/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Magina;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apollo.Magina;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		04A9F2F22E4ADF58005F3FC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 4PGNNN9ZX4;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		04A9F2F32E4ADF58005F3FC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 4PGNNN9ZX4;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		04A9F2D22E4ADF56005F3FC2 /* Build configuration list for PBXProject "Magina" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04A9F2F22E4ADF58005F3FC2 /* Debug */,
+				04A9F2F32E4ADF58005F3FC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04A9F2EF2E4ADF58005F3FC2 /* Build configuration list for PBXNativeTarget "Magina" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04A9F2F02E4ADF58005F3FC2 /* Debug */,
+				04A9F2F12E4ADF58005F3FC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 04A9F2CF2E4ADF56005F3FC2 /* Project object */;
+}

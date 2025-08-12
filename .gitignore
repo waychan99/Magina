@@ -1,0 +1,12 @@
+# CocoaPods 依赖库
+Pods/                # 忽略所有 Pods 目录内容
+*.xcworkspace        # 忽略 CocoaPods 生成的工作区文件
+
+# Xcode 缓存与构建产物
+DerivedData/
+build/
+*.xcuserdata
+*.xcuserstate
+
+# 系统文件
+.DS_Store
