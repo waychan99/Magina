@@ -7,7 +7,12 @@
 
 #import "MGHomeController.h"
 #import "MGHomeListController.h"
-#import <JXPagingView/JXPagerView.h>
+#import "MGMineController.h"
+#import "MGTemplateCategoryModel.h"
+#import "MGTemplateFilterSheet.h"
+#import "MGGetPointsView.h"
+#import "MGGetPointsFreeAlertView.h"
+#import "JXCategoryListContainerView.h"
 #import <JXCategoryView/JXCategoryView.h>
 #import "UIView+GradientColors.h"
 
@@ -23,9 +28,11 @@
 @property (nonatomic, strong) JXCategoryTitleView *categoryView;
 @property (nonatomic, strong) JXCategoryIndicatorLineView *lineView;
 @property (nonatomic, strong) JXCategoryListContainerView *listContainerView;
-@property (nonatomic, strong) UIButton *filterBtn;
 
-@property (nonatomic, strong) NSArray *titles;
+@property (nonatomic, strong) UIButton *filterBtn;
+@property (nonatomic, strong) UIActivityIndicatorView *indicator;
+
+@property (nonatomic, strong) NSMutableArray<MGTemplateCategoryModel *> *categoryList;
 @property (nonatomic, assign) int testCount;
 @end
 
@@ -35,9 +42,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.titles = @[@"Popular", @"Career", @"Street", @"Surrealism", @"afffff", @"fffdadd"];
+//    self.navigationController.navigationBar.translucent = false;
+//    self.edgesForExtendedLayout = UIRectEdgeNone;
     
     [self setupUIComponents];
+    [self requestCategoryList];
+    
+//    LVLog(@"fffff == %zd -- %zd", 9 / 2, 9 % 2);
 }
 
 #pragma mark - setupUIComponents
@@ -48,7 +59,9 @@
     [self.topBar addSubview:self.pointsBgView];
     [self.pointsBgView addSubview:self.pointsImageView];
     [self.pointsBgView addSubview:self.pointsLab];
+    [self.pointsBgView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapPointsBgViewAction:)]];
     [self.topBar addSubview:self.headerIcon];
+    [self.headerIcon addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHeaderIconAction:)]];
     
     [self.topBar addSubview:self.categoryView];
     [self.topBar addSubview:self.filterBtn];
@@ -56,8 +69,6 @@
     
     self.categoryView.indicators = @[self.lineView];
     self.categoryView.listContainer = self.listContainerView;
-    
-    self.categoryView.titles = self.titles;
 }
 
 #pragma mark - override
@@ -70,46 +81,104 @@
     [self.topBar.layer insertSublayer:self.topBarGradientLayer atIndex:0];
     
     self.logoImageView.frame = CGRectMake(23, 52.5, 111, 29);
-    self.headerIcon.frame = CGRectMake(selfW - 31 - 15.5, 0, 31, 31);
+    self.headerIcon.frame = CGRectMake(selfW - 32 - 15.5, 0, 32, 32);
     self.headerIcon.lv_centerY = self.logoImageView.lv_centerY;
     self.pointsImageView.frame = CGRectMake(14, (31 - 17) / 2, 18, 17);
     self.pointsLab.frame = CGRectMake(CGRectGetMaxX(self.pointsImageView.frame) + 5, (31 - 17) / 2, self.pointsLab.lv_width, 17);
     CGFloat pointsBgViewW = 14 + self.pointsImageView.lv_width + 5 + self.pointsLab.lv_width + 16;
     self.pointsBgView.frame = CGRectMake(self.headerIcon.lv_x - 12.5 - pointsBgViewW, 0, pointsBgViewW, 31);
     self.pointsBgView.lv_centerY = self.logoImageView.lv_centerY;
-
+    
     self.categoryView.frame = CGRectMake(0, 138 - 50, selfW - 50, 50);
+    self.indicator.frame = CGRectMake(0, 138 - 50, selfW, 50);
     self.filterBtn.frame = CGRectMake(selfW - 50, 138 - 50, 50, 50);
     self.listContainerView.frame = CGRectMake(0, 138, selfW, self.view.lv_height - 138);
 }
 
 #pragma mark - eventClick
 - (void)clickFilterBtn:(UIButton *)sender {
-    self.testCount ++;
+//    self.testCount ++;
+//    
+//    if (self.testCount == 3) {
+//        self.pointsLab.text = @"fdasd";
+//    } else if (self.testCount == 4) {
+//        self.pointsLab.text = @"40";
+//    } else if (self.testCount == 5) {
+//        self.pointsLab.text = @"fdasdfasdf";
+//    } else {
+//        self.pointsLab.text = @"50";
+//    }
+//    [self.pointsLab sizeToFit];
+//    CGFloat pointsBgViewW = 14 + self.pointsImageView.lv_width + 5 + self.pointsLab.lv_width + 16;
+//    self.pointsBgView.frame = CGRectMake(self.headerIcon.lv_x - 12.5 - pointsBgViewW, 0, pointsBgViewW, 31);
+//    self.pointsBgView.lv_centerY = self.logoImageView.lv_centerY;
     
-    if (self.testCount == 3) {
-        self.pointsLab.text = @"fdasd";
-    } else if (self.testCount == 4) {
-        self.pointsLab.text = @"40";
-    } else if (self.testCount == 5) {
-        self.pointsLab.text = @"fdasdfasdf";
-    } else {
-        self.pointsLab.text = @"50";
-    }
-    [self.pointsLab sizeToFit];
-    CGFloat pointsBgViewW = 14 + self.pointsImageView.lv_width + 5 + self.pointsLab.lv_width + 16;
-    self.pointsBgView.frame = CGRectMake(self.headerIcon.lv_x - 12.5 - pointsBgViewW, 0, pointsBgViewW, 31);
-    self.pointsBgView.lv_centerY = self.logoImageView.lv_centerY;
+    [MGTemplateFilterSheet showWithCategorys:self.categoryList resultBlock:^(MGTemplateCategoryModel * _Nonnull categoryModel, NSString * _Nonnull genderType) {
+        
+    } completion:nil];
+}
+
+- (void)tapPointsBgViewAction:(UIGestureRecognizer *)sender {
+//    [MGGetPointsView showWithResultBlock:^(NSInteger actionType) {
+//            
+//    } completion:nil];
+    
+    [MGGetPointsFreeAlertView showWithResultBlock:^(NSInteger actionType) {
+            
+    } completion:nil];
+}
+
+- (void)tapHeaderIconAction:(UIGestureRecognizer *)sender {
+    MGMineController *vc = [[MGMineController  alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - request
+- (void)requestCategoryList {
+    [self showLoading];
+    [LVHttpRequest get:@"/magina-api/api/v1/get_template_categorys/" param:@{} header:@{} baseUrlType:CDHttpBaseUrlTypeMagina isNeedPublickParam:YES isNeedPublickHeader:YES isNeedEncryptHeader:YES isNeedEncryptParam:YES isNeedDecryptResponse:YES encryptType:CDHttpBaseUrlTypeMagina timeout:20.0 modelClass:nil completion:^(NSInteger status, NSString * _Nonnull message, id  _Nullable result, NSError * _Nullable error, id  _Nullable responseObject) {
+        [self hideLoading];
+        if (status != 1 || error) {
+            [self.view makeToast:NSLocalizedString(@"global_request_error", nil)];
+            return;
+        }
+        self.categoryList = [MGTemplateCategoryModel mj_objectArrayWithKeyValuesArray:result];
+        self.categoryView.titles = [self.categoryList valueForKeyPath:@"category_name"];
+        [self.categoryView reloadData];
+        [self.listContainerView reloadData];
+    }];
+}
+
+#pragma mark - JXCategoryListContentViewDelegate
+- (UIView *)listView {
+    return self.view;
 }
 
 #pragma mark - JXCategoryListContainerViewDelegate
 - (NSInteger)numberOfListsInlistContainerView:(JXCategoryListContainerView *)listContainerView {
-    return self.titles.count;
+    return self.categoryView.titles.count;
 }
 
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     MGHomeListController *list = [[MGHomeListController alloc] init];
+    list.cateogryModel = self.categoryList[index];
     return list;
+}
+
+#pragma mark - assistMethod
+- (void)showLoading {
+    if (self.indicator.superview == nil || self.indicator.superview != self.topBar) {
+        [self.topBar addSubview:self.indicator];
+        [self.topBar bringSubviewToFront:self.indicator];
+        [self.indicator startAnimating];
+    }
+}
+
+- (void)hideLoading {
+    if (self.indicator.superview) {
+        [self.indicator stopAnimating];
+        [self.indicator removeFromSuperview];
+    }
 }
 
 #pragma mark - getter
@@ -137,7 +206,7 @@
 - (UIView *)pointsBgView {
     if (!_pointsBgView) {
         _pointsBgView = [[UIView alloc] init];
-        _pointsBgView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.5];
+        _pointsBgView.backgroundColor = [UIColor colorWithWhite:0.7 alpha:0.1];
         _pointsBgView.layer.cornerRadius = 15.5;
     }
     return _pointsBgView;
@@ -164,6 +233,7 @@
 - (UIImageView *)headerIcon {
     if (!_headerIcon) {
         _headerIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MG_home_topbar_user_placeholder_icon"]];
+        _headerIcon.userInteractionEnabled = YES;
     }
     return _headerIcon;
 }
@@ -209,6 +279,22 @@
         [_filterBtn addTarget:self action:@selector(clickFilterBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _filterBtn;
+}
+
+- (UIActivityIndicatorView *)indicator {
+    if (!_indicator) {
+        _indicator = [[UIActivityIndicatorView alloc] init];
+        _indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleMedium;
+        _indicator.color = [UIColor lightGrayColor];
+    }
+    return _indicator;
+}
+
+- (NSMutableArray<MGTemplateCategoryModel *> *)categoryList {
+    if (!_categoryList) {
+        _categoryList = [NSMutableArray array];
+    }
+    return _categoryList;
 }
 
 @end

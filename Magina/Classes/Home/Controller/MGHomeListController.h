@@ -10,7 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class MGTemplateCategoryModel;
+
 @interface MGHomeListController : UIViewController<JXCategoryListContentViewDelegate>
+
+@property (nonatomic, strong) MGTemplateCategoryModel *cateogryModel;
 
 @end
 

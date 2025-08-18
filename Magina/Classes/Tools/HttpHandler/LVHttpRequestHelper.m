@@ -38,6 +38,9 @@ static NSString *const aes_iv_enjoy_lxc_video  = @"enjoy_k2na_u8_iv";
 static NSString *const aes_key_enjoy_lxc_shared = @"enjoy_a22a_ua8a3";
 static NSString *const aes_iv_enjoy_lxc_shared  = @"enjoy_c5c5_u5c5v";
 
+static NSString *const aes_key_magina = @"change8_face9_fg";
+static NSString *const aes_iv_magina  = @"change3_face8_zz";
+
 @implementation LVHttpRequestHelper
 
 + (NSString *)getRequestPathWithPath:(NSString *)path baseUrlType:(CDHttpBaseUrlType)baseUrlType {
@@ -72,6 +75,9 @@ static NSString *const aes_iv_enjoy_lxc_shared  = @"enjoy_c5c5_u5c5v";
             break;
         case CDHttpBaseUrlTypeCommonDomain:
             requestPath  = [NSString stringWithFormat:@"%@%@",kCommonDomainService,path];
+            break;
+        case CDHttpBaseUrlTypeMagina:
+            requestPath = [NSString stringWithFormat:@"%@%@", kMaginaService, path];
             break;
         default:
             break;
@@ -299,6 +305,9 @@ static NSString *const aes_iv_enjoy_lxc_shared  = @"enjoy_c5c5_u5c5v";
     } else if (type == CDHttpBaseUrlTypeEnjoy_lxc_shared) {
         keyData = [aes_key_enjoy_lxc_shared dataUsingEncoding:NSUTF8StringEncoding];
         ivData = [aes_iv_enjoy_lxc_shared dataUsingEncoding:NSUTF8StringEncoding];
+    } else if (type == CDHttpBaseUrlTypeMagina) {
+        keyData = [aes_key_magina dataUsingEncoding:NSUTF8StringEncoding];
+        ivData = [aes_iv_magina dataUsingEncoding:NSUTF8StringEncoding];
     } else {
         keyData = [aes_key_desktop dataUsingEncoding:NSUTF8StringEncoding];
         ivData  = [aes_iv_desktop dataUsingEncoding:NSUTF8StringEncoding];

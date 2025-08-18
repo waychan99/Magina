@@ -48,6 +48,10 @@
 #define kLxcEnjoySharedService  @"https://enjoyshorts.com" //分享、下载
 /////////////////////////////////
 
+///////////////////////////////// magina
+#define kMaginaService @"https://user.magina.ai"
+/////////////////////////////////
+
 #elif HTTP_ENVIROMENT_TYPE == 0 // 测试环境
 #define kHttpTotalService @"http://10.20.63.215:39036"
 #define kDynamicSubService [LSUserCenter shareInstance].selectIptvModel.domainName
@@ -77,6 +81,10 @@
 #define kLxcEnjoyCommentService @"http://103.82.219.73:39132"
 #define kLxcEnjoyRecordService  @"http://103.82.219.73:39132"
 #define kLxcEnjoyUploadService  @"http://103.82.219.73:39132"
+/////////////////////////////////
+
+//////////////////////////////////// magina
+#define kMaginaService @"https://user.magina.ai"
 /////////////////////////////////
 
 #endif

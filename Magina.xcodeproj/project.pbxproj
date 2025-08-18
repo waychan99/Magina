@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		047473152E52F271004AFE7D /* MGPersonalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047473142E52F271004AFE7D /* MGPersonalController.m */; };
+		047473182E52F306004AFE7D /* MGPersonalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 047473172E52F306004AFE7D /* MGPersonalCell.m */; };
+		0474731A2E52F323004AFE7D /* MGPersonalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047473192E52F323004AFE7D /* MGPersonalCell.xib */; };
+		0474731D2E52F829004AFE7D /* MGPointsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0474731C2E52F829004AFE7D /* MGPointsListCell.m */; };
+		0474731F2E52F84D004AFE7D /* MGPointsListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0474731E2E52F84D004AFE7D /* MGPointsListCell.xib */; };
+		047473222E52F9A8004AFE7D /* MGPointsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047473212E52F9A8004AFE7D /* MGPointsListController.m */; };
+		047473252E532386004AFE7D /* MGMainContainerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047473242E532386004AFE7D /* MGMainContainerController.m */; };
 		04A9F2FE2E4AE1EA005F3FC2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F2F52E4AE1EA005F3FC2 /* AppDelegate.m */; };
 		04A9F2FF2E4AE1EA005F3FC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F2FA2E4AE1EA005F3FC2 /* main.m */; };
 		04A9F3012E4AE1EA005F3FC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04A9F2F62E4AE1EA005F3FC2 /* Assets.xcassets */; };
@@ -36,10 +43,38 @@
 		04E6E1BC2E4B217D00407F94 /* MGBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E1BB2E4B217D00407F94 /* MGBaseController.m */; };
 		04E6E1BF2E4B299A00407F94 /* MGHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E1BE2E4B299A00407F94 /* MGHomeController.m */; };
 		04E6E1C22E4B49E800407F94 /* MGHomeListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E1C12E4B49E800407F94 /* MGHomeListController.m */; };
+		04E6E1C62E4C29F700407F94 /* MGHomeListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E6E1C52E4C29F700407F94 /* MGHomeListCell.xib */; };
+		04E6E1C72E4C29F700407F94 /* MGHomeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E1C42E4C29F700407F94 /* MGHomeListCell.m */; };
+		04E6E1CA2E4C3BC200407F94 /* MGBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E1C92E4C3BC200407F94 /* MGBaseModel.m */; };
+		04E6E1CD2E4C3BF700407F94 /* MGTemplateCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E1CC2E4C3BF700407F94 /* MGTemplateCategoryModel.m */; };
+		04E6E1D02E4C62D700407F94 /* MGTemplateListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E1CF2E4C62D700407F94 /* MGTemplateListModel.m */; };
+		04E6E1D32E4C7B0700407F94 /* MGTemplateFilterSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E1D22E4C7B0700407F94 /* MGTemplateFilterSheet.m */; };
+		04E6E1D62E4ED0F700407F94 /* MGGetPointsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E1D52E4ED0F700407F94 /* MGGetPointsView.m */; };
+		04E6E1D82E4ED2BA00407F94 /* MGGetPointsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E6E1D72E4ED2BA00407F94 /* MGGetPointsView.xib */; };
+		04E8C4012E4EE33800EC2E96 /* MGGetPointsFreeAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E8C4002E4EE33800EC2E96 /* MGGetPointsFreeAlertView.m */; };
+		04E8C4032E4EE34300EC2E96 /* MGGetPointsFreeAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E8C4022E4EE34300EC2E96 /* MGGetPointsFreeAlertView.xib */; };
+		04E8C4062E4F1FEB00EC2E96 /* MGMineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E8C4052E4F1FEB00EC2E96 /* MGMineController.m */; };
+		04E8C4092E4F200900EC2E96 /* MGMineHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E8C4082E4F200900EC2E96 /* MGMineHeaderView.m */; };
+		04E8C40B2E4F201300EC2E96 /* MGMineHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E8C40A2E4F201300EC2E96 /* MGMineHeaderView.xib */; };
+		04E8C40F2E4F28BA00EC2E96 /* MGMineListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E8C40E2E4F28BA00EC2E96 /* MGMineListCell.xib */; };
+		04E8C4102E4F28BA00EC2E96 /* MGMineListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E8C40D2E4F28BA00EC2E96 /* MGMineListCell.m */; };
+		04E8C4132E4F297300EC2E96 /* MGMineListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E8C4122E4F297300EC2E96 /* MGMineListController.m */; };
 		8AE9E8B1543D003823C4F1E4 /* Pods_Magina.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C50838DFF8AFFA3B1D401A /* Pods_Magina.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		047473132E52F271004AFE7D /* MGPersonalController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGPersonalController.h; sourceTree = "<group>"; };
+		047473142E52F271004AFE7D /* MGPersonalController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGPersonalController.m; sourceTree = "<group>"; };
+		047473162E52F306004AFE7D /* MGPersonalCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGPersonalCell.h; sourceTree = "<group>"; };
+		047473172E52F306004AFE7D /* MGPersonalCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGPersonalCell.m; sourceTree = "<group>"; };
+		047473192E52F323004AFE7D /* MGPersonalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGPersonalCell.xib; sourceTree = "<group>"; };
+		0474731B2E52F829004AFE7D /* MGPointsListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGPointsListCell.h; sourceTree = "<group>"; };
+		0474731C2E52F829004AFE7D /* MGPointsListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGPointsListCell.m; sourceTree = "<group>"; };
+		0474731E2E52F84D004AFE7D /* MGPointsListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGPointsListCell.xib; sourceTree = "<group>"; };
+		047473202E52F9A8004AFE7D /* MGPointsListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGPointsListController.h; sourceTree = "<group>"; };
+		047473212E52F9A8004AFE7D /* MGPointsListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGPointsListController.m; sourceTree = "<group>"; };
+		047473232E532386004AFE7D /* MGMainContainerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGMainContainerController.h; sourceTree = "<group>"; };
+		047473242E532386004AFE7D /* MGMainContainerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGMainContainerController.m; sourceTree = "<group>"; };
 		04A9F2D72E4ADF56005F3FC2 /* Magina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Magina.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04A9F2F42E4AE1EA005F3FC2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		04A9F2F52E4AE1EA005F3FC2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -99,6 +134,33 @@
 		04E6E1BE2E4B299A00407F94 /* MGHomeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGHomeController.m; sourceTree = "<group>"; };
 		04E6E1C02E4B49E800407F94 /* MGHomeListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGHomeListController.h; sourceTree = "<group>"; };
 		04E6E1C12E4B49E800407F94 /* MGHomeListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGHomeListController.m; sourceTree = "<group>"; };
+		04E6E1C32E4C29F700407F94 /* MGHomeListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGHomeListCell.h; sourceTree = "<group>"; };
+		04E6E1C42E4C29F700407F94 /* MGHomeListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGHomeListCell.m; sourceTree = "<group>"; };
+		04E6E1C52E4C29F700407F94 /* MGHomeListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGHomeListCell.xib; sourceTree = "<group>"; };
+		04E6E1C82E4C3BC200407F94 /* MGBaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGBaseModel.h; sourceTree = "<group>"; };
+		04E6E1C92E4C3BC200407F94 /* MGBaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGBaseModel.m; sourceTree = "<group>"; };
+		04E6E1CB2E4C3BF700407F94 /* MGTemplateCategoryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGTemplateCategoryModel.h; sourceTree = "<group>"; };
+		04E6E1CC2E4C3BF700407F94 /* MGTemplateCategoryModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGTemplateCategoryModel.m; sourceTree = "<group>"; };
+		04E6E1CE2E4C62D700407F94 /* MGTemplateListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGTemplateListModel.h; sourceTree = "<group>"; };
+		04E6E1CF2E4C62D700407F94 /* MGTemplateListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGTemplateListModel.m; sourceTree = "<group>"; };
+		04E6E1D12E4C7B0700407F94 /* MGTemplateFilterSheet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGTemplateFilterSheet.h; sourceTree = "<group>"; };
+		04E6E1D22E4C7B0700407F94 /* MGTemplateFilterSheet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGTemplateFilterSheet.m; sourceTree = "<group>"; };
+		04E6E1D42E4ED0F700407F94 /* MGGetPointsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGGetPointsView.h; sourceTree = "<group>"; };
+		04E6E1D52E4ED0F700407F94 /* MGGetPointsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGGetPointsView.m; sourceTree = "<group>"; };
+		04E6E1D72E4ED2BA00407F94 /* MGGetPointsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGGetPointsView.xib; sourceTree = "<group>"; };
+		04E8C3FF2E4EE33800EC2E96 /* MGGetPointsFreeAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGGetPointsFreeAlertView.h; sourceTree = "<group>"; };
+		04E8C4002E4EE33800EC2E96 /* MGGetPointsFreeAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGGetPointsFreeAlertView.m; sourceTree = "<group>"; };
+		04E8C4022E4EE34300EC2E96 /* MGGetPointsFreeAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGGetPointsFreeAlertView.xib; sourceTree = "<group>"; };
+		04E8C4042E4F1FEB00EC2E96 /* MGMineController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGMineController.h; sourceTree = "<group>"; };
+		04E8C4052E4F1FEB00EC2E96 /* MGMineController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGMineController.m; sourceTree = "<group>"; };
+		04E8C4072E4F200900EC2E96 /* MGMineHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGMineHeaderView.h; sourceTree = "<group>"; };
+		04E8C4082E4F200900EC2E96 /* MGMineHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGMineHeaderView.m; sourceTree = "<group>"; };
+		04E8C40A2E4F201300EC2E96 /* MGMineHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGMineHeaderView.xib; sourceTree = "<group>"; };
+		04E8C40C2E4F28BA00EC2E96 /* MGMineListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGMineListCell.h; sourceTree = "<group>"; };
+		04E8C40D2E4F28BA00EC2E96 /* MGMineListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGMineListCell.m; sourceTree = "<group>"; };
+		04E8C40E2E4F28BA00EC2E96 /* MGMineListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGMineListCell.xib; sourceTree = "<group>"; };
+		04E8C4112E4F297300EC2E96 /* MGMineListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGMineListController.h; sourceTree = "<group>"; };
+		04E8C4122E4F297300EC2E96 /* MGMineListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGMineListController.m; sourceTree = "<group>"; };
 		64DD56DCE6B674BEB2758DF4 /* Pods-Magina.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Magina.debug.xcconfig"; path = "Target Support Files/Pods-Magina/Pods-Magina.debug.xcconfig"; sourceTree = "<group>"; };
 		75C50838DFF8AFFA3B1D401A /* Pods_Magina.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Magina.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		924A495E2CEAA3C9DFE27B07 /* Pods-Magina.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Magina.release.xcconfig"; path = "Target Support Files/Pods-Magina/Pods-Magina.release.xcconfig"; sourceTree = "<group>"; };
@@ -181,6 +243,10 @@
 		04A9F3072E4AE436005F3FC2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				04E6E1CB2E4C3BF700407F94 /* MGTemplateCategoryModel.h */,
+				04E6E1CC2E4C3BF700407F94 /* MGTemplateCategoryModel.m */,
+				04E6E1CE2E4C62D700407F94 /* MGTemplateListModel.h */,
+				04E6E1CF2E4C62D700407F94 /* MGTemplateListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -188,6 +254,17 @@
 		04A9F3082E4AE436005F3FC2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				04E6E1C32E4C29F700407F94 /* MGHomeListCell.h */,
+				04E6E1C42E4C29F700407F94 /* MGHomeListCell.m */,
+				04E6E1C52E4C29F700407F94 /* MGHomeListCell.xib */,
+				04E6E1D12E4C7B0700407F94 /* MGTemplateFilterSheet.h */,
+				04E6E1D22E4C7B0700407F94 /* MGTemplateFilterSheet.m */,
+				04E6E1D42E4ED0F700407F94 /* MGGetPointsView.h */,
+				04E6E1D52E4ED0F700407F94 /* MGGetPointsView.m */,
+				04E6E1D72E4ED2BA00407F94 /* MGGetPointsView.xib */,
+				04E8C3FF2E4EE33800EC2E96 /* MGGetPointsFreeAlertView.h */,
+				04E8C4002E4EE33800EC2E96 /* MGGetPointsFreeAlertView.m */,
+				04E8C4022E4EE34300EC2E96 /* MGGetPointsFreeAlertView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -236,6 +313,14 @@
 		04A9F30E2E4AE436005F3FC2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				04E8C4042E4F1FEB00EC2E96 /* MGMineController.h */,
+				04E8C4052E4F1FEB00EC2E96 /* MGMineController.m */,
+				04E8C4112E4F297300EC2E96 /* MGMineListController.h */,
+				04E8C4122E4F297300EC2E96 /* MGMineListController.m */,
+				047473132E52F271004AFE7D /* MGPersonalController.h */,
+				047473142E52F271004AFE7D /* MGPersonalController.m */,
+				047473202E52F9A8004AFE7D /* MGPointsListController.h */,
+				047473212E52F9A8004AFE7D /* MGPointsListController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -250,6 +335,18 @@
 		04A9F3102E4AE436005F3FC2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				04E8C4072E4F200900EC2E96 /* MGMineHeaderView.h */,
+				04E8C4082E4F200900EC2E96 /* MGMineHeaderView.m */,
+				04E8C40A2E4F201300EC2E96 /* MGMineHeaderView.xib */,
+				04E8C40C2E4F28BA00EC2E96 /* MGMineListCell.h */,
+				04E8C40D2E4F28BA00EC2E96 /* MGMineListCell.m */,
+				04E8C40E2E4F28BA00EC2E96 /* MGMineListCell.xib */,
+				047473162E52F306004AFE7D /* MGPersonalCell.h */,
+				047473172E52F306004AFE7D /* MGPersonalCell.m */,
+				047473192E52F323004AFE7D /* MGPersonalCell.xib */,
+				0474731B2E52F829004AFE7D /* MGPointsListCell.h */,
+				0474731C2E52F829004AFE7D /* MGPointsListCell.m */,
+				0474731E2E52F84D004AFE7D /* MGPointsListCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -374,6 +471,8 @@
 			children = (
 				04E6E1B42E4B200A00407F94 /* MGMainNavigationController.h */,
 				04E6E1B52E4B200A00407F94 /* MGMainNavigationController.m */,
+				047473232E532386004AFE7D /* MGMainContainerController.h */,
+				047473242E532386004AFE7D /* MGMainContainerController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -404,6 +503,8 @@
 		04E6E1B82E4B215500407F94 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				04E6E1C82E4C3BC200407F94 /* MGBaseModel.h */,
+				04E6E1C92E4C3BC200407F94 /* MGBaseModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -493,7 +594,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0474731F2E52F84D004AFE7D /* MGPointsListCell.xib in Resources */,
+				04E6E1D82E4ED2BA00407F94 /* MGGetPointsView.xib in Resources */,
+				04E8C40F2E4F28BA00EC2E96 /* MGMineListCell.xib in Resources */,
+				04E6E1C62E4C29F700407F94 /* MGHomeListCell.xib in Resources */,
+				0474731A2E52F323004AFE7D /* MGPersonalCell.xib in Resources */,
+				04E8C40B2E4F201300EC2E96 /* MGMineHeaderView.xib in Resources */,
 				04A9F3012E4AE1EA005F3FC2 /* Assets.xcassets in Resources */,
+				04E8C4032E4EE34300EC2E96 /* MGGetPointsFreeAlertView.xib in Resources */,
 				04A9F3032E4AE1EA005F3FC2 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -552,9 +660,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				04A9F2FE2E4AE1EA005F3FC2 /* AppDelegate.m in Sources */,
+				04E6E1D32E4C7B0700407F94 /* MGTemplateFilterSheet.m in Sources */,
+				04E6E1CA2E4C3BC200407F94 /* MGBaseModel.m in Sources */,
 				04A9F2FF2E4AE1EA005F3FC2 /* main.m in Sources */,
 				04E6E1BF2E4B299A00407F94 /* MGHomeController.m in Sources */,
+				04E6E1D02E4C62D700407F94 /* MGTemplateListModel.m in Sources */,
+				04E8C4092E4F200900EC2E96 /* MGMineHeaderView.m in Sources */,
 				04A9F33D2E4AE6F6005F3FC2 /* LVHttpRequest.m in Sources */,
+				04E6E1C72E4C29F700407F94 /* MGHomeListCell.m in Sources */,
 				04A9F35C2E4B0C73005F3FC2 /* MGGlobalManager.m in Sources */,
 				04A9F34D2E4AE749005F3FC2 /* LVKeyboardLaunch.m in Sources */,
 				04E6E1C22E4B49E800407F94 /* MGHomeListController.m in Sources */,
@@ -562,22 +675,33 @@
 				04A9F3562E4AE796005F3FC2 /* MGAppleLogin.m in Sources */,
 				04A9F34F2E4AE749005F3FC2 /* LVCommonTool.m in Sources */,
 				04A9F3502E4AE749005F3FC2 /* LTVWaterFlowLayout.m in Sources */,
+				047473222E52F9A8004AFE7D /* MGPointsListController.m in Sources */,
 				04A9F33E2E4AE6F6005F3FC2 /* SWDeviceCenter.m in Sources */,
+				04E8C4102E4F28BA00EC2E96 /* MGMineListCell.m in Sources */,
 				04A9F33F2E4AE6F6005F3FC2 /* LVHttpRequestHelper.m in Sources */,
+				047473182E52F306004AFE7D /* MGPersonalCell.m in Sources */,
+				0474731D2E52F829004AFE7D /* MGPointsListCell.m in Sources */,
 				04A9F3402E4AE6F6005F3FC2 /* SWKeyChainStore.m in Sources */,
 				04A9F32A2E4AE6D3005F3FC2 /* UIView+GradientColors.m in Sources */,
 				04E6E1BC2E4B217D00407F94 /* MGBaseController.m in Sources */,
 				04A9F32B2E4AE6D3005F3FC2 /* NSLayoutConstraint+BSIBDesignable.m in Sources */,
 				04A9F3442E4AE730005F3FC2 /* LPNetwortReachability.m in Sources */,
+				04E8C4132E4F297300EC2E96 /* MGMineListController.m in Sources */,
 				04A9F3532E4AE780005F3FC2 /* MGLoginFactory.m in Sources */,
 				04A9F32C2E4AE6D3005F3FC2 /* UIView+Toast.m in Sources */,
 				04A9F32D2E4AE6D3005F3FC2 /* UIView+LPRadius.m in Sources */,
+				04E8C4062E4F1FEB00EC2E96 /* MGMineController.m in Sources */,
+				04E6E1CD2E4C3BF700407F94 /* MGTemplateCategoryModel.m in Sources */,
 				04A9F32E2E4AE6D3005F3FC2 /* UIImage+LP.m in Sources */,
 				04A9F32F2E4AE6D3005F3FC2 /* NSString+LP.m in Sources */,
 				04E6E1B62E4B200A00407F94 /* MGMainNavigationController.m in Sources */,
 				04A9F3302E4AE6D3005F3FC2 /* UIView+Layout.m in Sources */,
+				04E6E1D62E4ED0F700407F94 /* MGGetPointsView.m in Sources */,
 				04A9F3312E4AE6D3005F3FC2 /* UIhelpTools.m in Sources */,
+				047473252E532386004AFE7D /* MGMainContainerController.m in Sources */,
 				04A9F3322E4AE6D3005F3FC2 /* NSDate+Helper.m in Sources */,
+				04E8C4012E4EE33800EC2E96 /* MGGetPointsFreeAlertView.m in Sources */,
+				047473152E52F271004AFE7D /* MGPersonalController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

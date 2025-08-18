@@ -6,10 +6,11 @@
 //
 
 #import "MGBaseController.h"
+#import "JXCategoryListContainerView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MGHomeController : MGBaseController
+@interface MGHomeController : MGBaseController<JXCategoryListContentViewDelegate>
 
 @end
 

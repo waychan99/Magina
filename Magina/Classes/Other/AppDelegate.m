@@ -7,6 +7,7 @@
 
 #import "AppDelegate.h"
 #import "MGMainNavigationController.h"
+#import "MGMainContainerController.h"
 #import "MGHomeController.h"
 
 @interface AppDelegate ()
@@ -21,8 +22,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    MGHomeController *homeVC = [[MGHomeController alloc] init];
-    MGMainNavigationController *navi = [[MGMainNavigationController alloc] initWithRootViewController:homeVC];
+//    MGHomeController *homeVC = [[MGHomeController alloc] init];
+    MGMainContainerController *containerVC = [[MGMainContainerController alloc] init];
+    MGMainNavigationController *navi = [[MGMainNavigationController alloc] initWithRootViewController:containerVC];
     
     self.window.rootViewController = navi;
     [self.window makeKeyAndVisible];
