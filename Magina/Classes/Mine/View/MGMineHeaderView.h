@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) CGFloat headerHeight;
 
+@property (nonatomic, copy) void (^tapBgImageViewCallback)(UIGestureRecognizer *sender);
+
 @end
 
 NS_ASSUME_NONNULL_END

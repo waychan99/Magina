@@ -8,6 +8,7 @@
 #import "MGMineController.h"
 #import "MGMineListController.h"
 #import "MGPersonalController.h"
+#import "MGMemberController.h"
 #import "MGMineHeaderView.h"
 
 static const CGFloat MGMineCategoryHeight = 56;
@@ -73,6 +74,13 @@ static const CGFloat MGMineCategoryHeight = 56;
     self.categoryView.listContainer = (id<JXCategoryViewListContainer>)self.pagerView.listContainerView;
     
     [self.view bringSubviewToFront:self.customNavBar];
+    
+    @lv_weakify(self)
+    self.header.tapBgImageViewCallback = ^(UIGestureRecognizer * _Nonnull sender) {
+        @lv_strongify(self)
+        MGMemberController *vc = [[MGMemberController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    };
 }
 
 #pragma mark - eventClick

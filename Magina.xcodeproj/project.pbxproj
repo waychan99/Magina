@@ -14,6 +14,16 @@
 		0474731F2E52F84D004AFE7D /* MGPointsListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0474731E2E52F84D004AFE7D /* MGPointsListCell.xib */; };
 		047473222E52F9A8004AFE7D /* MGPointsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047473212E52F9A8004AFE7D /* MGPointsListController.m */; };
 		047473252E532386004AFE7D /* MGMainContainerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047473242E532386004AFE7D /* MGMainContainerController.m */; };
+		047473292E5413ED004AFE7D /* MGInviteFriendsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047473282E5413ED004AFE7D /* MGInviteFriendsController.xib */; };
+		0474732A2E5413ED004AFE7D /* MGInviteFriendsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047473272E5413ED004AFE7D /* MGInviteFriendsController.m */; };
+		0474732D2E542458004AFE7D /* MGMemberController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0474732C2E542458004AFE7D /* MGMemberController.m */; };
+		047473302E54248F004AFE7D /* MGMemberHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0474732F2E54248F004AFE7D /* MGMemberHeader.m */; };
+		047473322E54249A004AFE7D /* MGMemberHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047473312E54249A004AFE7D /* MGMemberHeader.xib */; };
+		047473352E542AE0004AFE7D /* MGMemberListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047473342E542AE0004AFE7D /* MGMemberListController.m */; };
+		047473392E545CCF004AFE7D /* MGTemplateDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047473372E545CCF004AFE7D /* MGTemplateDetailsController.m */; };
+		0474733A2E545CCF004AFE7D /* MGTemplateDetailsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047473382E545CCF004AFE7D /* MGTemplateDetailsController.xib */; };
+		0474733E2E546DB1004AFE7D /* MGAddPhotosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0474733C2E546DB1004AFE7D /* MGAddPhotosController.m */; };
+		0474733F2E546DB1004AFE7D /* MGAddPhotosController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0474733D2E546DB1004AFE7D /* MGAddPhotosController.xib */; };
 		04A9F2FE2E4AE1EA005F3FC2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F2F52E4AE1EA005F3FC2 /* AppDelegate.m */; };
 		04A9F2FF2E4AE1EA005F3FC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F2FA2E4AE1EA005F3FC2 /* main.m */; };
 		04A9F3012E4AE1EA005F3FC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04A9F2F62E4AE1EA005F3FC2 /* Assets.xcassets */; };
@@ -75,6 +85,22 @@
 		047473212E52F9A8004AFE7D /* MGPointsListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGPointsListController.m; sourceTree = "<group>"; };
 		047473232E532386004AFE7D /* MGMainContainerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGMainContainerController.h; sourceTree = "<group>"; };
 		047473242E532386004AFE7D /* MGMainContainerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGMainContainerController.m; sourceTree = "<group>"; };
+		047473262E5413ED004AFE7D /* MGInviteFriendsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGInviteFriendsController.h; sourceTree = "<group>"; };
+		047473272E5413ED004AFE7D /* MGInviteFriendsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGInviteFriendsController.m; sourceTree = "<group>"; };
+		047473282E5413ED004AFE7D /* MGInviteFriendsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGInviteFriendsController.xib; sourceTree = "<group>"; };
+		0474732B2E542458004AFE7D /* MGMemberController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGMemberController.h; sourceTree = "<group>"; };
+		0474732C2E542458004AFE7D /* MGMemberController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGMemberController.m; sourceTree = "<group>"; };
+		0474732E2E54248F004AFE7D /* MGMemberHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGMemberHeader.h; sourceTree = "<group>"; };
+		0474732F2E54248F004AFE7D /* MGMemberHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGMemberHeader.m; sourceTree = "<group>"; };
+		047473312E54249A004AFE7D /* MGMemberHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGMemberHeader.xib; sourceTree = "<group>"; };
+		047473332E542AE0004AFE7D /* MGMemberListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGMemberListController.h; sourceTree = "<group>"; };
+		047473342E542AE0004AFE7D /* MGMemberListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGMemberListController.m; sourceTree = "<group>"; };
+		047473362E545CCF004AFE7D /* MGTemplateDetailsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGTemplateDetailsController.h; sourceTree = "<group>"; };
+		047473372E545CCF004AFE7D /* MGTemplateDetailsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGTemplateDetailsController.m; sourceTree = "<group>"; };
+		047473382E545CCF004AFE7D /* MGTemplateDetailsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGTemplateDetailsController.xib; sourceTree = "<group>"; };
+		0474733B2E546DB1004AFE7D /* MGAddPhotosController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGAddPhotosController.h; sourceTree = "<group>"; };
+		0474733C2E546DB1004AFE7D /* MGAddPhotosController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGAddPhotosController.m; sourceTree = "<group>"; };
+		0474733D2E546DB1004AFE7D /* MGAddPhotosController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGAddPhotosController.xib; sourceTree = "<group>"; };
 		04A9F2D72E4ADF56005F3FC2 /* Magina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Magina.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04A9F2F42E4AE1EA005F3FC2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		04A9F2F52E4AE1EA005F3FC2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -236,6 +262,12 @@
 				04E6E1BE2E4B299A00407F94 /* MGHomeController.m */,
 				04E6E1C02E4B49E800407F94 /* MGHomeListController.h */,
 				04E6E1C12E4B49E800407F94 /* MGHomeListController.m */,
+				047473362E545CCF004AFE7D /* MGTemplateDetailsController.h */,
+				047473372E545CCF004AFE7D /* MGTemplateDetailsController.m */,
+				047473382E545CCF004AFE7D /* MGTemplateDetailsController.xib */,
+				0474733B2E546DB1004AFE7D /* MGAddPhotosController.h */,
+				0474733C2E546DB1004AFE7D /* MGAddPhotosController.m */,
+				0474733D2E546DB1004AFE7D /* MGAddPhotosController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -321,6 +353,13 @@
 				047473142E52F271004AFE7D /* MGPersonalController.m */,
 				047473202E52F9A8004AFE7D /* MGPointsListController.h */,
 				047473212E52F9A8004AFE7D /* MGPointsListController.m */,
+				0474732B2E542458004AFE7D /* MGMemberController.h */,
+				0474732C2E542458004AFE7D /* MGMemberController.m */,
+				047473332E542AE0004AFE7D /* MGMemberListController.h */,
+				047473342E542AE0004AFE7D /* MGMemberListController.m */,
+				047473262E5413ED004AFE7D /* MGInviteFriendsController.h */,
+				047473272E5413ED004AFE7D /* MGInviteFriendsController.m */,
+				047473282E5413ED004AFE7D /* MGInviteFriendsController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -347,6 +386,9 @@
 				0474731B2E52F829004AFE7D /* MGPointsListCell.h */,
 				0474731C2E52F829004AFE7D /* MGPointsListCell.m */,
 				0474731E2E52F84D004AFE7D /* MGPointsListCell.xib */,
+				0474732E2E54248F004AFE7D /* MGMemberHeader.h */,
+				0474732F2E54248F004AFE7D /* MGMemberHeader.m */,
+				047473312E54249A004AFE7D /* MGMemberHeader.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -595,12 +637,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				0474731F2E52F84D004AFE7D /* MGPointsListCell.xib in Resources */,
+				047473322E54249A004AFE7D /* MGMemberHeader.xib in Resources */,
 				04E6E1D82E4ED2BA00407F94 /* MGGetPointsView.xib in Resources */,
 				04E8C40F2E4F28BA00EC2E96 /* MGMineListCell.xib in Resources */,
 				04E6E1C62E4C29F700407F94 /* MGHomeListCell.xib in Resources */,
 				0474731A2E52F323004AFE7D /* MGPersonalCell.xib in Resources */,
+				0474733A2E545CCF004AFE7D /* MGTemplateDetailsController.xib in Resources */,
 				04E8C40B2E4F201300EC2E96 /* MGMineHeaderView.xib in Resources */,
+				047473292E5413ED004AFE7D /* MGInviteFriendsController.xib in Resources */,
 				04A9F3012E4AE1EA005F3FC2 /* Assets.xcassets in Resources */,
+				0474733F2E546DB1004AFE7D /* MGAddPhotosController.xib in Resources */,
 				04E8C4032E4EE34300EC2E96 /* MGGetPointsFreeAlertView.xib in Resources */,
 				04A9F3032E4AE1EA005F3FC2 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -639,13 +685,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Magina/Pods-Magina-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Magina/Pods-Magina-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -664,8 +706,10 @@
 				04E6E1CA2E4C3BC200407F94 /* MGBaseModel.m in Sources */,
 				04A9F2FF2E4AE1EA005F3FC2 /* main.m in Sources */,
 				04E6E1BF2E4B299A00407F94 /* MGHomeController.m in Sources */,
+				0474733E2E546DB1004AFE7D /* MGAddPhotosController.m in Sources */,
 				04E6E1D02E4C62D700407F94 /* MGTemplateListModel.m in Sources */,
 				04E8C4092E4F200900EC2E96 /* MGMineHeaderView.m in Sources */,
+				047473352E542AE0004AFE7D /* MGMemberListController.m in Sources */,
 				04A9F33D2E4AE6F6005F3FC2 /* LVHttpRequest.m in Sources */,
 				04E6E1C72E4C29F700407F94 /* MGHomeListCell.m in Sources */,
 				04A9F35C2E4B0C73005F3FC2 /* MGGlobalManager.m in Sources */,
@@ -679,6 +723,8 @@
 				04A9F33E2E4AE6F6005F3FC2 /* SWDeviceCenter.m in Sources */,
 				04E8C4102E4F28BA00EC2E96 /* MGMineListCell.m in Sources */,
 				04A9F33F2E4AE6F6005F3FC2 /* LVHttpRequestHelper.m in Sources */,
+				0474732D2E542458004AFE7D /* MGMemberController.m in Sources */,
+				0474732A2E5413ED004AFE7D /* MGInviteFriendsController.m in Sources */,
 				047473182E52F306004AFE7D /* MGPersonalCell.m in Sources */,
 				0474731D2E52F829004AFE7D /* MGPointsListCell.m in Sources */,
 				04A9F3402E4AE6F6005F3FC2 /* SWKeyChainStore.m in Sources */,
@@ -690,6 +736,7 @@
 				04A9F3532E4AE780005F3FC2 /* MGLoginFactory.m in Sources */,
 				04A9F32C2E4AE6D3005F3FC2 /* UIView+Toast.m in Sources */,
 				04A9F32D2E4AE6D3005F3FC2 /* UIView+LPRadius.m in Sources */,
+				047473392E545CCF004AFE7D /* MGTemplateDetailsController.m in Sources */,
 				04E8C4062E4F1FEB00EC2E96 /* MGMineController.m in Sources */,
 				04E6E1CD2E4C3BF700407F94 /* MGTemplateCategoryModel.m in Sources */,
 				04A9F32E2E4AE6D3005F3FC2 /* UIImage+LP.m in Sources */,
@@ -699,6 +746,7 @@
 				04E6E1D62E4ED0F700407F94 /* MGGetPointsView.m in Sources */,
 				04A9F3312E4AE6D3005F3FC2 /* UIhelpTools.m in Sources */,
 				047473252E532386004AFE7D /* MGMainContainerController.m in Sources */,
+				047473302E54248F004AFE7D /* MGMemberHeader.m in Sources */,
 				04A9F3322E4AE6D3005F3FC2 /* NSDate+Helper.m in Sources */,
 				04E8C4012E4EE33800EC2E96 /* MGGetPointsFreeAlertView.m in Sources */,
 				047473152E52F271004AFE7D /* MGPersonalController.m in Sources */,

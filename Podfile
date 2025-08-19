@@ -34,7 +34,8 @@ target 'Magina' do
   pod 'SDWebImage'
   # 按钮图片文字位置灵活调整
   pod 'SPButton'
-
+  # PanModal
+  pod 'HWPanModal'
 
 
 end

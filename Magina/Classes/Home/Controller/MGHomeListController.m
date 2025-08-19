@@ -6,6 +6,7 @@
 //
 
 #import "MGHomeListController.h"
+#import "MGTemplateDetailsController.h"
 #import "MGTemplateCategoryModel.h"
 #import "MGTemplateListModel.h"
 #import "MGHomeListCell.h"
@@ -105,7 +106,8 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-  
+    MGTemplateDetailsController *vc = [[MGTemplateDetailsController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - JXPagerViewListViewDelegate

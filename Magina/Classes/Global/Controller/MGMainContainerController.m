@@ -76,6 +76,7 @@
     if (!_listContainerView) {
         _listContainerView = [[JXCategoryListContainerView alloc] initWithType:JXCategoryListContainerType_ScrollView delegate:self];
         _listContainerView.scrollView.backgroundColor = [UIColor blackColor];
+        _listContainerView.scrollView.scrollEnabled = NO;
     }
     return _listContainerView;
 }

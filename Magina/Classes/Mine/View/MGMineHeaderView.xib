@@ -115,6 +115,9 @@
                 <constraint firstItem="imH-3R-X8U" firstAttribute="centerY" secondItem="HNa-5M-mqW" secondAttribute="centerY" id="zQB-hd-QHu"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="bgImageView" destination="o9z-z0-6ku" id="yio-8P-P7Z"/>
+            </connections>
             <point key="canvasLocation" x="23.664122137404579" y="-176.05633802816902"/>
         </view>
     </objects>

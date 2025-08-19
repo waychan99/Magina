@@ -8,6 +8,7 @@
 #import "MGMineHeaderView.h"
 
 @interface MGMineHeaderView ()
+@property (weak, nonatomic) IBOutlet UIImageView *bgImageView;
 
 @end
 
@@ -17,6 +18,13 @@
     [super awakeFromNib];
     
     self.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.0];
+    
+    self.bgImageView.userInteractionEnabled = YES;
+    [self.bgImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapBgImageView:)]];
+}
+
+- (void)tapBgImageView:(UIGestureRecognizer *)sender {
+    !self.tapBgImageViewCallback ?: self.tapBgImageViewCallback(sender);
 }
 
 - (CGFloat)headerHeight {

@@ -18,7 +18,7 @@
                             @{@"cellType"        : @(MGPersonalCellTypeInviteFriends),
                               @"titleText"       : NSLocalizedString(@"Invite friends", nil),
                               @"contentText"     : @"",
-                              @"jumbController"  : @""}]];
+                              @"jumbController"  : @"MGInviteFriendsController"}]];
      
      [originData addObject:@[@{@"cellType"        : @(MGPersonalCellTypeContactUs),
                                @"titleText"       : NSLocalizedString(@"Contact Us", nil),

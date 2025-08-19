@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MG_member_list_header_bg" translatesAutoresizingMaskIntoConstraints="NO" id="rf3-92-USm">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="412"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="rf3-92-USm" secondAttribute="height" multiplier="375:412" id="fi5-4D-FzG"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KvU-Wh-RHY">
+                    <rect key="frame" x="39" y="324" width="307" height="67"/>
+                    <string key="text">Get 1000 points 
+immediately</string>
+                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="28"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MG_mine_memberHeader_hook_icon" translatesAutoresizingMaskIntoConstraints="NO" id="gCu-gb-gaz">
+                    <rect key="frame" x="40" y="412" width="13" height="13"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="13" id="G1b-iF-xlS"/>
+                        <constraint firstAttribute="width" constant="13" id="pA4-Tw-qhK"/>
+                    </constraints>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MG_mine_memberHeader_hook_icon" translatesAutoresizingMaskIntoConstraints="NO" id="wLK-Zy-W5F">
+                    <rect key="frame" x="40" y="434" width="13" height="13"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="13" id="Vsf-Nj-6TZ"/>
+                        <constraint firstAttribute="width" constant="13" id="YUU-Ap-TnB"/>
+                    </constraints>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MG_mine_memberHeader_hook_icon" translatesAutoresizingMaskIntoConstraints="NO" id="cft-w6-72e">
+                    <rect key="frame" x="201" y="412" width="13" height="13"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="13" id="XQa-Ir-IHv"/>
+                        <constraint firstAttribute="width" constant="13" id="gjL-uG-bKy"/>
+                    </constraints>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MG_mine_memberHeader_hook_icon" translatesAutoresizingMaskIntoConstraints="NO" id="bbk-gb-7sF">
+                    <rect key="frame" x="201" y="434" width="13" height="13"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="13" id="cfU-0k-nJG"/>
+                        <constraint firstAttribute="width" constant="13" id="pDs-nn-eOZ"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Faster generation speed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AHe-gh-9DD">
+                    <rect key="frame" x="58" y="413" width="138" height="12"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
+                    <color key="textColor" red="0.48627450980392156" green="0.48627450980392156" blue="0.48627450980392156" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Faster generation speed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VRQ-2c-0Ic">
+                    <rect key="frame" x="58" y="435" width="138" height="12"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
+                    <color key="textColor" red="0.48627450979999998" green="0.48627450979999998" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Faster generation speed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZT5-RM-iRa">
+                    <rect key="frame" x="219" y="413" width="146" height="12"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
+                    <color key="textColor" red="0.48627450979999998" green="0.48627450979999998" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Faster generation speed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JRV-7x-K1k">
+                    <rect key="frame" x="219" y="435" width="146" height="12"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
+                    <color key="textColor" red="0.48627450979999998" green="0.48627450979999998" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ZT5-RM-iRa" secondAttribute="trailing" constant="10" id="3gh-va-A0o"/>
+                <constraint firstItem="AHe-gh-9DD" firstAttribute="leading" secondItem="gCu-gb-gaz" secondAttribute="trailing" constant="5" id="4Kb-1D-Pph"/>
+                <constraint firstItem="VRQ-2c-0Ic" firstAttribute="leading" secondItem="wLK-Zy-W5F" secondAttribute="trailing" constant="5" id="5Vd-bs-yab"/>
+                <constraint firstItem="bbk-gb-7sF" firstAttribute="leading" secondItem="VRQ-2c-0Ic" secondAttribute="trailing" constant="5" id="6QG-2F-K4o"/>
+                <constraint firstItem="bbk-gb-7sF" firstAttribute="top" secondItem="wLK-Zy-W5F" secondAttribute="top" id="9g7-7X-oYn"/>
+                <constraint firstItem="VRQ-2c-0Ic" firstAttribute="bottom" secondItem="wLK-Zy-W5F" secondAttribute="bottom" id="CdC-bT-ipq"/>
+                <constraint firstAttribute="trailing" secondItem="KvU-Wh-RHY" secondAttribute="trailing" constant="29" id="D5V-Bf-apy"/>
+                <constraint firstItem="gCu-gb-gaz" firstAttribute="top" secondItem="rf3-92-USm" secondAttribute="bottom" id="DgM-SH-TgV"/>
+                <constraint firstItem="JRV-7x-K1k" firstAttribute="leading" secondItem="bbk-gb-7sF" secondAttribute="trailing" constant="5" id="FnV-Kl-B3p"/>
+                <constraint firstItem="ZT5-RM-iRa" firstAttribute="leading" secondItem="cft-w6-72e" secondAttribute="trailing" constant="5" id="IVB-xO-J2m"/>
+                <constraint firstItem="cft-w6-72e" firstAttribute="leading" secondItem="AHe-gh-9DD" secondAttribute="trailing" constant="5" id="JKN-Kt-Ob0"/>
+                <constraint firstItem="ZT5-RM-iRa" firstAttribute="bottom" secondItem="cft-w6-72e" secondAttribute="bottom" id="KCd-Pe-E5r"/>
+                <constraint firstItem="cft-w6-72e" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="20" id="MFi-9f-8GX"/>
+                <constraint firstItem="wLK-Zy-W5F" firstAttribute="leading" secondItem="gCu-gb-gaz" secondAttribute="leading" id="Mph-vX-4wd"/>
+                <constraint firstAttribute="trailing" secondItem="rf3-92-USm" secondAttribute="trailing" id="Pc4-H1-4JZ"/>
+                <constraint firstItem="bbk-gb-7sF" firstAttribute="centerX" secondItem="cft-w6-72e" secondAttribute="centerX" id="Uo0-wg-NeY"/>
+                <constraint firstItem="cft-w6-72e" firstAttribute="firstBaseline" secondItem="gCu-gb-gaz" secondAttribute="firstBaseline" id="WLL-Ja-Ube"/>
+                <constraint firstItem="gCu-gb-gaz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="ap1-4r-blw"/>
+                <constraint firstItem="rf3-92-USm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ecp-89-iJB"/>
+                <constraint firstItem="wLK-Zy-W5F" firstAttribute="top" secondItem="gCu-gb-gaz" secondAttribute="bottom" constant="9" id="iAf-vH-RDC"/>
+                <constraint firstItem="rf3-92-USm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mQV-ZD-gle"/>
+                <constraint firstItem="KvU-Wh-RHY" firstAttribute="bottom" secondItem="rf3-92-USm" secondAttribute="bottom" constant="-21" id="mv5-th-qi1"/>
+                <constraint firstAttribute="trailing" secondItem="JRV-7x-K1k" secondAttribute="trailing" constant="10" id="phd-9e-Tjv"/>
+                <constraint firstItem="JRV-7x-K1k" firstAttribute="bottom" secondItem="bbk-gb-7sF" secondAttribute="bottom" id="rp4-rZ-Z80"/>
+                <constraint firstItem="KvU-Wh-RHY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="39" id="t96-2w-dRy"/>
+                <constraint firstItem="gCu-gb-gaz" firstAttribute="bottom" secondItem="AHe-gh-9DD" secondAttribute="bottom" id="xMa-ag-Quv"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="81.679389312977094" y="-225.35211267605635"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="MG_member_list_header_bg" width="375" height="412"/>
+        <image name="MG_mine_memberHeader_hook_icon" width="13" height="13.666666984558105"/>
+    </resources>
+</document>
