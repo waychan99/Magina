@@ -9,6 +9,7 @@
 #import "MGAddPhotosController.h"
 #import "SPButton.h"
 #import <HWPanModal/HWPanModal.h>
+#import <Photos/Photos.h>
 
 @interface MGTemplateDetailsController ()
 @property (nonatomic, strong) UILabel *pointsLab;
@@ -65,6 +66,37 @@
 
 #pragma mark - eventClick
 - (void)tapAddPhotoImageView:(UIGestureRecognizer *)sender {
+    [self requestPermission];
+}
+
+#pragma mark - assistMethod
+- (void)requestPermission {
+    if ([PHPhotoLibrary authorizationStatus] != PHAuthorizationStatusAuthorized) {
+        [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+            if ([PHPhotoLibrary authorizationStatus] != PHAuthorizationStatusAuthorized) {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Unable to access album",nil) message:NSLocalizedString(@"Please allow to access your album",nil) preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel",nil) style:UIAlertActionStyleDefault handler:nil]];
+                [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Setting",nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    NSURL *settingsUrl = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+                    if ([[UIApplication sharedApplication] canOpenURL:settingsUrl]) {
+                        [[UIApplication sharedApplication] openURL:settingsUrl options:@{} completionHandler:nil];
+                    }
+                }]];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self presentViewController:alert animated:YES completion:nil];
+                });
+            } else {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self openAddPhotosVc];
+                });
+            }
+        }];
+    } else {
+        [self openAddPhotosVc];
+    }
+}
+
+- (void)openAddPhotosVc {
     MGAddPhotosController *vc = [[MGAddPhotosController alloc] init];
     [self.navigationController presentPanModal:vc completion:nil];
 }

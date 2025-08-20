@@ -24,6 +24,10 @@
 		0474733A2E545CCF004AFE7D /* MGTemplateDetailsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047473382E545CCF004AFE7D /* MGTemplateDetailsController.xib */; };
 		0474733E2E546DB1004AFE7D /* MGAddPhotosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0474733C2E546DB1004AFE7D /* MGAddPhotosController.m */; };
 		0474733F2E546DB1004AFE7D /* MGAddPhotosController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0474733D2E546DB1004AFE7D /* MGAddPhotosController.xib */; };
+		047473432E559E98004AFE7D /* MGImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 047473422E559E98004AFE7D /* MGImageManager.m */; };
+		047473472E55ABE6004AFE7D /* MGAssetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 047473462E55ABE6004AFE7D /* MGAssetModel.m */; };
+		0474734B2E55C1C1004AFE7D /* MGAlbumPhotoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 047473492E55C1C1004AFE7D /* MGAlbumPhotoListCell.m */; };
+		0474734C2E55C1C1004AFE7D /* MGAlbumPhotoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0474734A2E55C1C1004AFE7D /* MGAlbumPhotoListCell.xib */; };
 		04A9F2FE2E4AE1EA005F3FC2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F2F52E4AE1EA005F3FC2 /* AppDelegate.m */; };
 		04A9F2FF2E4AE1EA005F3FC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F2FA2E4AE1EA005F3FC2 /* main.m */; };
 		04A9F3012E4AE1EA005F3FC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04A9F2F62E4AE1EA005F3FC2 /* Assets.xcassets */; };
@@ -101,6 +105,13 @@
 		0474733B2E546DB1004AFE7D /* MGAddPhotosController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGAddPhotosController.h; sourceTree = "<group>"; };
 		0474733C2E546DB1004AFE7D /* MGAddPhotosController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGAddPhotosController.m; sourceTree = "<group>"; };
 		0474733D2E546DB1004AFE7D /* MGAddPhotosController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGAddPhotosController.xib; sourceTree = "<group>"; };
+		047473412E559E98004AFE7D /* MGImageManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGImageManager.h; sourceTree = "<group>"; };
+		047473422E559E98004AFE7D /* MGImageManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGImageManager.m; sourceTree = "<group>"; };
+		047473452E55ABE6004AFE7D /* MGAssetModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGAssetModel.h; sourceTree = "<group>"; };
+		047473462E55ABE6004AFE7D /* MGAssetModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGAssetModel.m; sourceTree = "<group>"; };
+		047473482E55C1C1004AFE7D /* MGAlbumPhotoListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGAlbumPhotoListCell.h; sourceTree = "<group>"; };
+		047473492E55C1C1004AFE7D /* MGAlbumPhotoListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGAlbumPhotoListCell.m; sourceTree = "<group>"; };
+		0474734A2E55C1C1004AFE7D /* MGAlbumPhotoListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGAlbumPhotoListCell.xib; sourceTree = "<group>"; };
 		04A9F2D72E4ADF56005F3FC2 /* Magina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Magina.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04A9F2F42E4AE1EA005F3FC2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		04A9F2F52E4AE1EA005F3FC2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -204,6 +215,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		047473402E559E6D004AFE7D /* AlbumPhotosHandler */ = {
+			isa = PBXGroup;
+			children = (
+				047473412E559E98004AFE7D /* MGImageManager.h */,
+				047473422E559E98004AFE7D /* MGImageManager.m */,
+				047473452E55ABE6004AFE7D /* MGAssetModel.h */,
+				047473462E55ABE6004AFE7D /* MGAssetModel.m */,
+			);
+			path = AlbumPhotosHandler;
+			sourceTree = "<group>";
+		};
 		04A9F2CE2E4ADF56005F3FC2 = {
 			isa = PBXGroup;
 			children = (
@@ -297,6 +319,9 @@
 				04E8C3FF2E4EE33800EC2E96 /* MGGetPointsFreeAlertView.h */,
 				04E8C4002E4EE33800EC2E96 /* MGGetPointsFreeAlertView.m */,
 				04E8C4022E4EE34300EC2E96 /* MGGetPointsFreeAlertView.xib */,
+				047473482E55C1C1004AFE7D /* MGAlbumPhotoListCell.h */,
+				047473492E55C1C1004AFE7D /* MGAlbumPhotoListCell.m */,
+				0474734A2E55C1C1004AFE7D /* MGAlbumPhotoListCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -422,6 +447,7 @@
 				04A9F3372E4AE6F6005F3FC2 /* DevicCenter */,
 				04A9F33C2E4AE6F6005F3FC2 /* HttpHandler */,
 				04A9F3412E4AE719005F3FC2 /* LoginHandler */,
+				047473402E559E6D004AFE7D /* AlbumPhotosHandler */,
 				04A9F3422E4AE730005F3FC2 /* LPNetwortReachability.h */,
 				04A9F3432E4AE730005F3FC2 /* LPNetwortReachability.m */,
 				04A9F3452E4AE749005F3FC2 /* LVKeyboardLaunch.h */,
@@ -636,6 +662,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0474734C2E55C1C1004AFE7D /* MGAlbumPhotoListCell.xib in Resources */,
 				0474731F2E52F84D004AFE7D /* MGPointsListCell.xib in Resources */,
 				047473322E54249A004AFE7D /* MGMemberHeader.xib in Resources */,
 				04E6E1D82E4ED2BA00407F94 /* MGGetPointsView.xib in Resources */,
@@ -685,9 +712,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Magina/Pods-Magina-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Magina/Pods-Magina-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -707,11 +738,13 @@
 				04A9F2FF2E4AE1EA005F3FC2 /* main.m in Sources */,
 				04E6E1BF2E4B299A00407F94 /* MGHomeController.m in Sources */,
 				0474733E2E546DB1004AFE7D /* MGAddPhotosController.m in Sources */,
+				047473472E55ABE6004AFE7D /* MGAssetModel.m in Sources */,
 				04E6E1D02E4C62D700407F94 /* MGTemplateListModel.m in Sources */,
 				04E8C4092E4F200900EC2E96 /* MGMineHeaderView.m in Sources */,
 				047473352E542AE0004AFE7D /* MGMemberListController.m in Sources */,
 				04A9F33D2E4AE6F6005F3FC2 /* LVHttpRequest.m in Sources */,
 				04E6E1C72E4C29F700407F94 /* MGHomeListCell.m in Sources */,
+				0474734B2E55C1C1004AFE7D /* MGAlbumPhotoListCell.m in Sources */,
 				04A9F35C2E4B0C73005F3FC2 /* MGGlobalManager.m in Sources */,
 				04A9F34D2E4AE749005F3FC2 /* LVKeyboardLaunch.m in Sources */,
 				04E6E1C22E4B49E800407F94 /* MGHomeListController.m in Sources */,
@@ -742,6 +775,7 @@
 				04A9F32E2E4AE6D3005F3FC2 /* UIImage+LP.m in Sources */,
 				04A9F32F2E4AE6D3005F3FC2 /* NSString+LP.m in Sources */,
 				04E6E1B62E4B200A00407F94 /* MGMainNavigationController.m in Sources */,
+				047473432E559E98004AFE7D /* MGImageManager.m in Sources */,
 				04A9F3302E4AE6D3005F3FC2 /* UIView+Layout.m in Sources */,
 				04E6E1D62E4ED0F700407F94 /* MGGetPointsView.m in Sources */,
 				04A9F3312E4AE6D3005F3FC2 /* UIhelpTools.m in Sources */,
@@ -781,6 +815,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Magina/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Magina;
+				INFOPLIST_KEY_NSCameraUsageDescription = "The app needs to call the camera to scan the QR code or take a photo.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow location to be saved in photos";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "App needs access to your photo album for profile picture upload or upload media you've already created.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Please rest assured that enabling the permission will not obtain your private information on other sites. The permission is only used to identify the device and ensure service security and improve browsing experience.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -812,6 +850,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Magina/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Magina;
+				INFOPLIST_KEY_NSCameraUsageDescription = "The app needs to call the camera to scan the QR code or take a photo.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow location to be saved in photos";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "App needs access to your photo album for profile picture upload or upload media you've already created.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Please rest assured that enabling the permission will not obtain your private information on other sites. The permission is only used to identify the device and ensure service security and improve browsing experience.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
