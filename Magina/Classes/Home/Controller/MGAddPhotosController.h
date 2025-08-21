@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MGAddPhotosController : MGBaseController
 
+@property (nonatomic, copy) void (^dismissCallback)(void);
+
 @end
 
 NS_ASSUME_NONNULL_END

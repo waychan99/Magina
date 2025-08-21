@@ -42,9 +42,4 @@
     self.imageRequestID = imageRequestID;
 }
 
-- (CGFloat)mg_albumPhotoListCellWidth {
-    return self.frame.size.width;
-}
-
-
 @end

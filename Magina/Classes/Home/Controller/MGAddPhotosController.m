@@ -7,6 +7,7 @@
 
 #import "MGAddPhotosController.h"
 #import "MGAlbumPhotoListCell.h"
+#import "MGAlbumTakePhotoCell.h"
 #import "MGImageManager.h"
 #import "MGAssetModel.h"
 #import <HWPanModal/HWPanModal.h>
@@ -24,9 +25,12 @@
     
     [self setupUIComponents];
     
-    
     [[MGImageManager shareInstance] getCameraRollAlbumWithFetchAssets:YES completion:^(MGAlbumModel * _Nonnull model) {
         self->_albumModel = model;
+        MGAssetModel *takePhotoModel = [[MGAssetModel alloc] init];
+        takePhotoModel.modelType = MGAssetModelTypeTakePhoto;
+        [self->_albumModel.models insertObject:takePhotoModel atIndex:0];
+        self->_albumModel.count += 1;
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.collectionView reloadData];
         });
@@ -42,6 +46,7 @@
     self.collectionView.dataSource = self;
     self.collectionView.backgroundColor = HEX_COLOR(0x1E1F24);
     [self.collectionView registerNib:[UINib nibWithNibName:MGAlbumPhotoListCellKey bundle:nil] forCellWithReuseIdentifier:MGAlbumPhotoListCellKey];
+    [self.collectionView registerNib:[UINib nibWithNibName:MGAlbumTakePhotoCellKey bundle:nil] forCellWithReuseIdentifier:MGAlbumTakePhotoCellKey];
 }
 
 #pragma mark - eventClick
@@ -76,13 +81,29 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    MGAlbumPhotoListCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MGAlbumPhotoListCellKey forIndexPath:indexPath];
-    cell.assetModel = self.albumModel.models[indexPath.item];
-    return cell;
+    MGAssetModel *assetModel = self.albumModel.models[indexPath.item];
+    if (assetModel.modelType == MGAssetModelTypeNormal) {
+        MGAlbumPhotoListCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MGAlbumPhotoListCellKey forIndexPath:indexPath];
+        cell.assetModel = assetModel;
+        return cell;
+    } else {
+        MGAlbumTakePhotoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MGAlbumTakePhotoCellKey forIndexPath:indexPath];
+        cell.assetModel = assetModel;
+        return cell;
+    }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-
+    MGAssetModel *assetModel = self.albumModel.models[indexPath.item];
+    if (assetModel.modelType == MGAssetModelTypeNormal) {
+        [[MGImageManager shareInstance] getPhotoWithAsset:assetModel.asset completion:^(UIImage * _Nonnull photo, NSDictionary * _Nonnull info, BOOL isDegraded) {
+            LVLog(@"fffff --- %@ -- %i", photo, isDegraded);
+        }];
+    } else {
+        [self dismissViewControllerAnimated:YES completion:^{
+            !self.dismissCallback ?: self.dismissCallback();
+        }];
+    }
 }
 
 #pragma mark - HWPanModalPresentable

@@ -44,8 +44,18 @@ static MGImageManager *_instance;
     if (self = [super init]) {
         self.photoWidth = 828;
         self.photoPreviewMaxWidth = 600;
+        MGScreenScale = 2.0;
+        CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+        CGFloat margin = 2;
+        CGFloat itemWH = (screenWidth - 5 * margin) / 4;
+        AssetGridThumbnailSize = CGSizeMake(itemWH * MGScreenScale, itemWH * MGScreenScale);
     }
     return self;
+}
+
+- (void)setPhotoWidth:(CGFloat)photoWidth {
+    _photoWidth = photoWidth;
+    MGScreenWidth = photoWidth / 2;
 }
 
 /// Get Album 获得相册/相册数组
@@ -66,6 +76,39 @@ static MGImageManager *_instance;
             if (completion) completion(model);
             break;
         }
+    }
+}
+
+- (void)getAllAlbumsWithFetchAssets:(BOOL)needFetchAssets completion:(void (^)(NSArray<MGAlbumModel *> * _Nonnull))completion {
+    NSMutableArray *albumArr = [NSMutableArray array];
+    PHFetchOptions *option = [[PHFetchOptions alloc] init];
+    option.predicate = [NSPredicate predicateWithFormat:@"mediaType == %ld", PHAssetMediaTypeImage];
+    option.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES]];
+    PHFetchResult *myPhotoStreamAlbum = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAlbumMyPhotoStream options:nil];
+    PHFetchResult *smartAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeAny options:nil];
+    PHFetchResult *topLevelUserCollections = [PHCollectionList fetchTopLevelUserCollectionsWithOptions:nil];
+    PHFetchResult *syncedAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAlbumSyncedAlbum options:nil];
+    PHFetchResult *sharedAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAlbumCloudShared options:nil];
+    NSArray *allAlbums = @[myPhotoStreamAlbum,smartAlbums,topLevelUserCollections,syncedAlbums,sharedAlbums];
+    for (PHFetchResult *fetchResult in allAlbums) {
+        for (PHAssetCollection *collection in fetchResult) {
+            // 有可能是PHCollectionList类的的对象，过滤掉
+            if (![collection isKindOfClass:[PHAssetCollection class]]) continue;
+            // 过滤空相册
+            if (collection.estimatedAssetCount <= 0 && ![self isCameraRollAlbum:collection]) continue;
+            PHFetchResult *fetchResult = [PHAsset fetchAssetsInAssetCollection:collection options:option];
+            if (fetchResult.count < 1 && ![self isCameraRollAlbum:collection]) continue;
+            if (collection.assetCollectionSubtype == PHAssetCollectionSubtypeSmartAlbumAllHidden) continue;
+            if (collection.assetCollectionSubtype == 1000000201) continue; //『最近删除』相册
+            if ([self isCameraRollAlbum:collection]) {
+                [albumArr insertObject:[self modelWithResult:fetchResult collection:collection isCameraRoll:YES needFetchAssets:needFetchAssets options:option] atIndex:0];
+            } else {
+                [albumArr addObject:[self modelWithResult:fetchResult collection:collection isCameraRoll:NO needFetchAssets:needFetchAssets options:option]];
+            }
+        }
+    }
+    if (completion) {
+        completion(albumArr);
     }
 }
 
@@ -123,8 +166,37 @@ static MGImageManager *_instance;
 }
 
 /// Get photo 获得照片
+- (PHImageRequestID)getPhotoWithAsset:(PHAsset *)asset completion:(void (^)(UIImage *, NSDictionary *, BOOL isDegraded))completion {
+    return [self getPhotoWithAsset:asset completion:completion progressHandler:nil networkAccessAllowed:YES];
+}
+
+- (PHImageRequestID)getPhotoWithAsset:(PHAsset *)asset completion:(void (^)(UIImage *photo,NSDictionary *info,BOOL isDegraded))completion progressHandler:(void (^)(double progress, NSError *error, BOOL *stop, NSDictionary *info))progressHandler networkAccessAllowed:(BOOL)networkAccessAllowed {
+    CGFloat fullScreenWidth = MGScreenWidth;
+    if (_photoPreviewMaxWidth > 0 && fullScreenWidth > _photoPreviewMaxWidth) {
+        fullScreenWidth = _photoPreviewMaxWidth;
+    }
+    return [self getPhotoWithAsset:asset photoWidth:fullScreenWidth completion:completion progressHandler:progressHandler networkAccessAllowed:networkAccessAllowed];
+}
+
 - (PHImageRequestID)getPhotoWithAsset:(PHAsset *)asset photoWidth:(CGFloat)photoWidth completion:(void (^)(UIImage *photo,NSDictionary *info,BOOL isDegraded))completion progressHandler:(void (^)(double progress, NSError *error, BOOL *stop, NSDictionary *info))progressHandler networkAccessAllowed:(BOOL)networkAccessAllowed {
-    CGSize imageSize = CGSizeMake(200, 200);
+    CGSize imageSize;
+    if (photoWidth < MGScreenWidth && photoWidth < _photoPreviewMaxWidth) {
+        imageSize = AssetGridThumbnailSize;
+    } else {
+        PHAsset *phAsset = (PHAsset *)asset;
+        CGFloat aspectRatio = phAsset.pixelWidth / (CGFloat)phAsset.pixelHeight;
+        CGFloat pixelWidth = photoWidth * MGScreenScale;
+        // 超宽图片
+        if (aspectRatio > 1.8) {
+            pixelWidth = pixelWidth * aspectRatio;
+        }
+        // 超高图片
+        if (aspectRatio < 0.2) {
+            pixelWidth = pixelWidth * 0.5;
+        }
+        CGFloat pixelHeight = pixelWidth / aspectRatio;
+        imageSize = CGSizeMake(pixelWidth, pixelHeight);
+    }
     PHImageRequestOptions *option = [[PHImageRequestOptions alloc] init];
     option.resizeMode = PHImageRequestOptionsResizeModeFast;
     int32_t imageRequestID = [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:imageSize contentMode:PHImageContentModeAspectFill options:option resultHandler:^(UIImage *result, NSDictionary *info) {
@@ -168,20 +240,6 @@ static MGImageManager *_instance;
     model.isCameraRoll = isCameraRoll;
     model.count = result.count;
     return model;
-}
-
-- (void)setPhotoWidth:(CGFloat)photoWidth {
-    _photoWidth = photoWidth;
-    MGScreenWidth = photoWidth / 2;
-}
-
-- (void)configTZScreenWidth {
-    MGScreenWidth = [UIScreen mainScreen].bounds.size.width;
-    // 测试发现，如果scale在plus真机上取到3.0，内存会增大特别多。故这里写死成2.0
-    MGScreenWidth = 2.0;
-    if (MGScreenWidth > 700) {
-        MGScreenWidth = 1.5;
-    }
 }
 
 /// 修正图片转向
@@ -265,3 +323,4 @@ static MGImageManager *_instance;
 
 
 @end
+

@@ -7,6 +7,7 @@
 
 #import "MGTemplateDetailsController.h"
 #import "MGAddPhotosController.h"
+#import "MGShotController.h"
 #import "SPButton.h"
 #import <HWPanModal/HWPanModal.h>
 #import <Photos/Photos.h>
@@ -98,6 +99,11 @@
 
 - (void)openAddPhotosVc {
     MGAddPhotosController *vc = [[MGAddPhotosController alloc] init];
+    vc.dismissCallback = ^{
+        MGShotController *vc = [[MGShotController alloc] init];
+        vc.modalPresentationStyle = UIModalPresentationFullScreen;
+        [self.navigationController presentViewController:vc animated:YES completion:nil];
+    };
     [self.navigationController presentPanModal:vc completion:nil];
 }
 

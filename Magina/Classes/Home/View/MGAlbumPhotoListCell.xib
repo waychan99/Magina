@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="145" height="145"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MG_takePhoto_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Vga-w5-RWk">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vga-w5-RWk">
                         <rect key="frame" x="0.0" y="0.0" width="145" height="145"/>
                     </imageView>
                 </subviews>
@@ -34,7 +34,4 @@
             <point key="canvasLocation" x="127.48091603053435" y="-66.197183098591552"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="MG_takePhoto_icon" width="92.666664123535156" height="92.666664123535156"/>
-    </resources>
 </document>

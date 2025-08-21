@@ -53,6 +53,13 @@
 		04A9F3532E4AE780005F3FC2 /* MGLoginFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F3522E4AE780005F3FC2 /* MGLoginFactory.m */; };
 		04A9F3562E4AE796005F3FC2 /* MGAppleLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F3552E4AE796005F3FC2 /* MGAppleLogin.m */; };
 		04A9F35C2E4B0C73005F3FC2 /* MGGlobalManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F35B2E4B0C73005F3FC2 /* MGGlobalManager.m */; };
+		04CDD0EC2E56CB5E00286F4C /* MGAlbumTakePhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CDD0EB2E56CB5E00286F4C /* MGAlbumTakePhotoCell.xib */; };
+		04CDD0ED2E56CB5E00286F4C /* MGAlbumTakePhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD0EA2E56CB5E00286F4C /* MGAlbumTakePhotoCell.m */; };
+		04CDD0F02E56E76F00286F4C /* SLAvCaptureTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD0EF2E56E76F00286F4C /* SLAvCaptureTool.m */; };
+		04CDD0F32E56EDA600286F4C /* MGShotController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD0F22E56EDA600286F4C /* MGShotController.m */; };
+		04CDD0F62E56EF7900286F4C /* MGShotFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD0F52E56EF7900286F4C /* MGShotFocusView.m */; };
+		04CDD12F2E570FFE00286F4C /* SLDelayPerform.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD12E2E570FFE00286F4C /* SLDelayPerform.m */; };
+		04CDD1322E574F6700286F4C /* WWZMenuPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD1312E574F6700286F4C /* WWZMenuPopover.m */; };
 		04E6E1B62E4B200A00407F94 /* MGMainNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E1B52E4B200A00407F94 /* MGMainNavigationController.m */; };
 		04E6E1BC2E4B217D00407F94 /* MGBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E1BB2E4B217D00407F94 /* MGBaseController.m */; };
 		04E6E1BF2E4B299A00407F94 /* MGHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E1BE2E4B299A00407F94 /* MGHomeController.m */; };
@@ -163,6 +170,19 @@
 		04A9F3552E4AE796005F3FC2 /* MGAppleLogin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGAppleLogin.m; sourceTree = "<group>"; };
 		04A9F35A2E4B0C73005F3FC2 /* MGGlobalManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGGlobalManager.h; sourceTree = "<group>"; };
 		04A9F35B2E4B0C73005F3FC2 /* MGGlobalManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGGlobalManager.m; sourceTree = "<group>"; };
+		04CDD0E92E56CB5E00286F4C /* MGAlbumTakePhotoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGAlbumTakePhotoCell.h; sourceTree = "<group>"; };
+		04CDD0EA2E56CB5E00286F4C /* MGAlbumTakePhotoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGAlbumTakePhotoCell.m; sourceTree = "<group>"; };
+		04CDD0EB2E56CB5E00286F4C /* MGAlbumTakePhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGAlbumTakePhotoCell.xib; sourceTree = "<group>"; };
+		04CDD0EE2E56E76F00286F4C /* SLAvCaptureTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLAvCaptureTool.h; sourceTree = "<group>"; };
+		04CDD0EF2E56E76F00286F4C /* SLAvCaptureTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLAvCaptureTool.m; sourceTree = "<group>"; };
+		04CDD0F12E56EDA600286F4C /* MGShotController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGShotController.h; sourceTree = "<group>"; };
+		04CDD0F22E56EDA600286F4C /* MGShotController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGShotController.m; sourceTree = "<group>"; };
+		04CDD0F42E56EF7900286F4C /* MGShotFocusView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGShotFocusView.h; sourceTree = "<group>"; };
+		04CDD0F52E56EF7900286F4C /* MGShotFocusView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGShotFocusView.m; sourceTree = "<group>"; };
+		04CDD12D2E570FFE00286F4C /* SLDelayPerform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLDelayPerform.h; sourceTree = "<group>"; };
+		04CDD12E2E570FFE00286F4C /* SLDelayPerform.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLDelayPerform.m; sourceTree = "<group>"; };
+		04CDD1302E574F6700286F4C /* WWZMenuPopover.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWZMenuPopover.h; sourceTree = "<group>"; };
+		04CDD1312E574F6700286F4C /* WWZMenuPopover.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWZMenuPopover.m; sourceTree = "<group>"; };
 		04E6E1B42E4B200A00407F94 /* MGMainNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGMainNavigationController.h; sourceTree = "<group>"; };
 		04E6E1B52E4B200A00407F94 /* MGMainNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGMainNavigationController.m; sourceTree = "<group>"; };
 		04E6E1BA2E4B217D00407F94 /* MGBaseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGBaseController.h; sourceTree = "<group>"; };
@@ -290,6 +310,8 @@
 				0474733B2E546DB1004AFE7D /* MGAddPhotosController.h */,
 				0474733C2E546DB1004AFE7D /* MGAddPhotosController.m */,
 				0474733D2E546DB1004AFE7D /* MGAddPhotosController.xib */,
+				04CDD0F12E56EDA600286F4C /* MGShotController.h */,
+				04CDD0F22E56EDA600286F4C /* MGShotController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -322,6 +344,11 @@
 				047473482E55C1C1004AFE7D /* MGAlbumPhotoListCell.h */,
 				047473492E55C1C1004AFE7D /* MGAlbumPhotoListCell.m */,
 				0474734A2E55C1C1004AFE7D /* MGAlbumPhotoListCell.xib */,
+				04CDD0E92E56CB5E00286F4C /* MGAlbumTakePhotoCell.h */,
+				04CDD0EA2E56CB5E00286F4C /* MGAlbumTakePhotoCell.m */,
+				04CDD0EB2E56CB5E00286F4C /* MGAlbumTakePhotoCell.xib */,
+				04CDD0F42E56EF7900286F4C /* MGShotFocusView.h */,
+				04CDD0F52E56EF7900286F4C /* MGShotFocusView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -458,6 +485,12 @@
 				04A9F34A2E4AE749005F3FC2 /* LVTimer.m */,
 				04A9F34B2E4AE749005F3FC2 /* LTVWaterFlowLayout.h */,
 				04A9F34C2E4AE749005F3FC2 /* LTVWaterFlowLayout.m */,
+				04CDD0EE2E56E76F00286F4C /* SLAvCaptureTool.h */,
+				04CDD0EF2E56E76F00286F4C /* SLAvCaptureTool.m */,
+				04CDD12D2E570FFE00286F4C /* SLDelayPerform.h */,
+				04CDD12E2E570FFE00286F4C /* SLDelayPerform.m */,
+				04CDD1302E574F6700286F4C /* WWZMenuPopover.h */,
+				04CDD1312E574F6700286F4C /* WWZMenuPopover.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -665,6 +698,7 @@
 				0474734C2E55C1C1004AFE7D /* MGAlbumPhotoListCell.xib in Resources */,
 				0474731F2E52F84D004AFE7D /* MGPointsListCell.xib in Resources */,
 				047473322E54249A004AFE7D /* MGMemberHeader.xib in Resources */,
+				04CDD0EC2E56CB5E00286F4C /* MGAlbumTakePhotoCell.xib in Resources */,
 				04E6E1D82E4ED2BA00407F94 /* MGGetPointsView.xib in Resources */,
 				04E8C40F2E4F28BA00EC2E96 /* MGMineListCell.xib in Resources */,
 				04E6E1C62E4C29F700407F94 /* MGHomeListCell.xib in Resources */,
@@ -735,6 +769,7 @@
 				04A9F2FE2E4AE1EA005F3FC2 /* AppDelegate.m in Sources */,
 				04E6E1D32E4C7B0700407F94 /* MGTemplateFilterSheet.m in Sources */,
 				04E6E1CA2E4C3BC200407F94 /* MGBaseModel.m in Sources */,
+				04CDD0F32E56EDA600286F4C /* MGShotController.m in Sources */,
 				04A9F2FF2E4AE1EA005F3FC2 /* main.m in Sources */,
 				04E6E1BF2E4B299A00407F94 /* MGHomeController.m in Sources */,
 				0474733E2E546DB1004AFE7D /* MGAddPhotosController.m in Sources */,
@@ -746,13 +781,16 @@
 				04E6E1C72E4C29F700407F94 /* MGHomeListCell.m in Sources */,
 				0474734B2E55C1C1004AFE7D /* MGAlbumPhotoListCell.m in Sources */,
 				04A9F35C2E4B0C73005F3FC2 /* MGGlobalManager.m in Sources */,
+				04CDD12F2E570FFE00286F4C /* SLDelayPerform.m in Sources */,
 				04A9F34D2E4AE749005F3FC2 /* LVKeyboardLaunch.m in Sources */,
 				04E6E1C22E4B49E800407F94 /* MGHomeListController.m in Sources */,
+				04CDD0F62E56EF7900286F4C /* MGShotFocusView.m in Sources */,
 				04A9F34E2E4AE749005F3FC2 /* LVTimer.m in Sources */,
 				04A9F3562E4AE796005F3FC2 /* MGAppleLogin.m in Sources */,
 				04A9F34F2E4AE749005F3FC2 /* LVCommonTool.m in Sources */,
 				04A9F3502E4AE749005F3FC2 /* LTVWaterFlowLayout.m in Sources */,
 				047473222E52F9A8004AFE7D /* MGPointsListController.m in Sources */,
+				04CDD0ED2E56CB5E00286F4C /* MGAlbumTakePhotoCell.m in Sources */,
 				04A9F33E2E4AE6F6005F3FC2 /* SWDeviceCenter.m in Sources */,
 				04E8C4102E4F28BA00EC2E96 /* MGMineListCell.m in Sources */,
 				04A9F33F2E4AE6F6005F3FC2 /* LVHttpRequestHelper.m in Sources */,
@@ -761,12 +799,14 @@
 				047473182E52F306004AFE7D /* MGPersonalCell.m in Sources */,
 				0474731D2E52F829004AFE7D /* MGPointsListCell.m in Sources */,
 				04A9F3402E4AE6F6005F3FC2 /* SWKeyChainStore.m in Sources */,
+				04CDD1322E574F6700286F4C /* WWZMenuPopover.m in Sources */,
 				04A9F32A2E4AE6D3005F3FC2 /* UIView+GradientColors.m in Sources */,
 				04E6E1BC2E4B217D00407F94 /* MGBaseController.m in Sources */,
 				04A9F32B2E4AE6D3005F3FC2 /* NSLayoutConstraint+BSIBDesignable.m in Sources */,
 				04A9F3442E4AE730005F3FC2 /* LPNetwortReachability.m in Sources */,
 				04E8C4132E4F297300EC2E96 /* MGMineListController.m in Sources */,
 				04A9F3532E4AE780005F3FC2 /* MGLoginFactory.m in Sources */,
+				04CDD0F02E56E76F00286F4C /* SLAvCaptureTool.m in Sources */,
 				04A9F32C2E4AE6D3005F3FC2 /* UIView+Toast.m in Sources */,
 				04A9F32D2E4AE6D3005F3FC2 /* UIView+LPRadius.m in Sources */,
 				047473392E545CCF004AFE7D /* MGTemplateDetailsController.m in Sources */,
@@ -817,6 +857,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Magina;
 				INFOPLIST_KEY_NSCameraUsageDescription = "The app needs to call the camera to scan the QR code or take a photo.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow location to be saved in photos";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This lets you include audio with your videos.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "App needs access to your photo album for profile picture upload or upload media you've already created.";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Please rest assured that enabling the permission will not obtain your private information on other sites. The permission is only used to identify the device and ensure service security and improve browsing experience.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -852,6 +893,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Magina;
 				INFOPLIST_KEY_NSCameraUsageDescription = "The app needs to call the camera to scan the QR code or take a photo.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow location to be saved in photos";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This lets you include audio with your videos.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "App needs access to your photo album for profile picture upload or upload media you've already created.";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Please rest assured that enabling the permission will not obtain your private information on other sites. The permission is only used to identify the device and ensure service security and improve browsing experience.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

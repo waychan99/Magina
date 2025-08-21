@@ -21,11 +21,18 @@
 
 @implementation MGAlbumModel
 
+- (instancetype)init {
+    if (self = [super init]) {
+        _models = [NSMutableArray array];
+    }
+    return self;
+}
+
 - (void)setResult:(PHFetchResult *)result needFetchAssets:(BOOL)needFetchAssets {
     _result = result;
     if (needFetchAssets) {
         [[MGImageManager shareInstance] getAssetsFromFetchResult:result completion:^(NSArray<MGAssetModel *> * _Nonnull models) {
-            self->_models = models;
+            [self->_models addObjectsFromArray:models];
         }];
     }
 }
