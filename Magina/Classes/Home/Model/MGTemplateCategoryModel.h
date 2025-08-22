@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - help
 
-@property (nonatomic, copy) NSString *genderType;
+@property (nonatomic, assign) BOOL isSelectedCategory;
 
 @end
 

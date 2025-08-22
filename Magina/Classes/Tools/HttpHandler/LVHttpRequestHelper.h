@@ -25,6 +25,7 @@ typedef NS_ENUM(NSUInteger, CDHttpBaseUrlType) {
     CDHttpBaseUrlTypeEnjoy_lxc_video = 120,
     CDHttpBaseUrlTypeEnjoy_lxc_shared = 130,
     CDHttpBaseUrlTypeMagina = 140,
+    CDHttpBaseUrlTypeMagina_ljw = 150,
     CDHttpBaseUrlTypeFullLink,
 };
 

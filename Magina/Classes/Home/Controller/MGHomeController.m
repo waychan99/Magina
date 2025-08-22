@@ -12,7 +12,6 @@
 #import "MGTemplateFilterSheet.h"
 #import "MGGetPointsView.h"
 #import "MGGetPointsFreeAlertView.h"
-#import "JXCategoryListContainerView.h"
 #import <JXCategoryView/JXCategoryView.h>
 #import "UIView+GradientColors.h"
 
@@ -33,7 +32,8 @@
 @property (nonatomic, strong) UIActivityIndicatorView *indicator;
 
 @property (nonatomic, strong) NSMutableArray<MGTemplateCategoryModel *> *categoryList;
-@property (nonatomic, assign) int testCount;
+@property (nonatomic, assign) NSInteger genderIndex;
+@property (nonatomic, assign) NSInteger categoryIndex;
 @end
 
 @implementation MGHomeController
@@ -42,8 +42,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    self.navigationController.navigationBar.translucent = false;
-//    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.genderIndex = 0;
+    self.categoryIndex = 0;
     
     [self setupUIComponents];
     [self requestCategoryList];
@@ -69,6 +69,16 @@
     
     self.categoryView.indicators = @[self.lineView];
     self.categoryView.listContainer = self.listContainerView;
+    
+    @lv_weakify(self)
+    [self.KVOController observe:[MGGlobalManager shareInstance] keyPath:@"currentPoints" options:NSKeyValueObservingOptionNew block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
+        @lv_strongify(self)
+        self.pointsLab.text = [NSString stringWithFormat:@"%.0f", [MGGlobalManager shareInstance].currentPoints];
+        [self.pointsLab sizeToFit];
+        CGFloat pointsBgViewW = 14 + self.pointsImageView.lv_width + 5 + self.pointsLab.lv_width + 16;
+        self.pointsBgView.frame = CGRectMake(self.headerIcon.lv_x - 12.5 - pointsBgViewW, 0, pointsBgViewW, 31);
+        self.pointsBgView.lv_centerY = self.logoImageView.lv_centerY;
+    }];
 }
 
 #pragma mark - override
@@ -97,24 +107,11 @@
 
 #pragma mark - eventClick
 - (void)clickFilterBtn:(UIButton *)sender {
-//    self.testCount ++;
-//    
-//    if (self.testCount == 3) {
-//        self.pointsLab.text = @"fdasd";
-//    } else if (self.testCount == 4) {
-//        self.pointsLab.text = @"40";
-//    } else if (self.testCount == 5) {
-//        self.pointsLab.text = @"fdasdfasdf";
-//    } else {
-//        self.pointsLab.text = @"50";
-//    }
-//    [self.pointsLab sizeToFit];
-//    CGFloat pointsBgViewW = 14 + self.pointsImageView.lv_width + 5 + self.pointsLab.lv_width + 16;
-//    self.pointsBgView.frame = CGRectMake(self.headerIcon.lv_x - 12.5 - pointsBgViewW, 0, pointsBgViewW, 31);
-//    self.pointsBgView.lv_centerY = self.logoImageView.lv_centerY;
-    
-    [MGTemplateFilterSheet showWithCategorys:self.categoryList resultBlock:^(MGTemplateCategoryModel * _Nonnull categoryModel, NSString * _Nonnull genderType) {
-        
+    [MGTemplateFilterSheet showWithGenderIndex:self.genderIndex categoryIndex:self.categoryIndex categorys:self.categoryList resultBlock:^(NSInteger genderIndex, NSInteger categoryIndex) {
+        self.genderIndex = genderIndex;
+        self.categoryIndex = categoryIndex;
+        LVLog(@"genderIndex ---- %zd, categoryIndex -- %zd", self.genderIndex, self.categoryIndex);
+        [self.categoryView selectItemAtIndex:self.categoryIndex];
     } completion:nil];
 }
 
@@ -161,7 +158,9 @@
 
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     MGHomeListController *list = [[MGHomeListController alloc] init];
+    self.categoryIndex = index;
     list.cateogryModel = self.categoryList[index];
+    list.genderIndex = self.genderIndex;
     return list;
 }
 
@@ -224,7 +223,7 @@
         _pointsLab = [[UILabel alloc] init];
         _pointsLab.textColor = [UIColor whiteColor];
         _pointsLab.font = [UIFont systemFontOfSize:14.0 weight:UIFontWeightMedium];
-        _pointsLab.text = @"0";
+        _pointsLab.text = [NSString stringWithFormat:@"%.0f", [MGGlobalManager shareInstance].currentPoints];
         [_pointsLab sizeToFit];
     }
     return _pointsLab;

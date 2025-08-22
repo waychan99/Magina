@@ -42,9 +42,8 @@
 @end
 
 @interface MGTemplateFilterSheetCell : UICollectionViewCell
-
+@property (nonatomic, strong) MGTemplateCategoryModel *categoryModel;
 @property (nonatomic, strong) UILabel *titleLab;
-
 @end
 
 @implementation MGTemplateFilterSheetCell
@@ -56,6 +55,19 @@
         [self.contentView addSubview:self.titleLab];
     }
     return self;
+}
+
+- (void)setCategoryModel:(MGTemplateCategoryModel *)categoryModel {
+    _categoryModel = categoryModel;
+    
+    self.titleLab.text = categoryModel.category_name;
+    if (categoryModel.isSelectedCategory) {
+        self.backgroundColor = RGBA(234, 76, 137, 0.1);
+        self.titleLab.textColor = RGBA(234, 76, 137, 1);
+    } else {
+        self.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.1];
+        self.titleLab.textColor = [UIColor whiteColor];
+    }
 }
 
 - (void)layoutSubviews {
@@ -80,15 +92,19 @@
 @property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UIButton *comfirnBtn;
+@property (nonatomic, assign) NSInteger genderIndex;
+@property (nonatomic, assign) NSInteger categoryIndex;
 @property (nonatomic, strong) NSArray<MGTemplateCategoryModel *> *categorys;
 @property (nonatomic, strong) NSMutableArray<NSArray *> *dateSource;
-@property (nonatomic, copy) void (^resultBlcok)(MGTemplateCategoryModel *categoryModel, NSString *genderType);
+@property (nonatomic, copy) void (^resultBlcok)(NSInteger genderIndex, NSInteger categoryIndex);
 @end
 
 @implementation MGTemplateFilterSheet
 
-+ (instancetype)showWithCategorys:(NSArray<MGTemplateCategoryModel *> *)categorys resultBlock:(void (^)(MGTemplateCategoryModel * _Nonnull, NSString * _Nonnull))resultBlock completion:(void (^)(BOOL))completion {
++ (instancetype)showWithGenderIndex:(NSInteger)genderIndex categoryIndex:(NSInteger)categoryIndex categorys:(NSArray<MGTemplateCategoryModel *> *)categorys resultBlock:(void (^)(NSInteger, NSInteger))resultBlock completion:(void (^)(BOOL))completion {
     MGTemplateFilterSheet *filterSheet = [[MGTemplateFilterSheet alloc] init];
+    filterSheet.genderIndex = genderIndex;
+    filterSheet.categoryIndex = categoryIndex;
     filterSheet.categorys = categorys;
     filterSheet.resultBlcok = resultBlock;
     [filterSheet lv_showWithAnimateType:LVShowViewAnimateTypeAlpha dismissTapEnable:YES completion:completion];
@@ -96,7 +112,8 @@
 }
 
 - (void)clickComfirnBtn:(UIButton *)sender {
-    
+    [self lv_dismiss];
+    !self.resultBlcok ?: self.resultBlcok(self.genderIndex, self.categoryIndex);
 }
 
 - (void)setCategorys:(NSArray<MGTemplateCategoryModel *> *)categorys {
@@ -106,17 +123,14 @@
     
     NSMutableArray *genderArrM = [NSMutableArray array];
     MGTemplateCategoryModel *allModel = [[MGTemplateCategoryModel alloc] init];
-    allModel.genderType = @"-1";
     allModel.category_name = NSLocalizedString(@"All", nil);
     [genderArrM addObject:allModel];
     
     MGTemplateCategoryModel *manModel = [[MGTemplateCategoryModel alloc] init];
-    manModel.genderType = @"1";
     manModel.category_name = NSLocalizedString(@"Man", nil);
     [genderArrM addObject:manModel];
     
     MGTemplateCategoryModel *womanModel = [[MGTemplateCategoryModel alloc] init];
-    womanModel.genderType = @"0";
     womanModel.category_name = NSLocalizedString(@"Woman", nil);
     [genderArrM addObject:womanModel];
     
@@ -195,7 +209,12 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MGTemplateFilterSheetCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MGTemplateFilterSheetCellId" forIndexPath:indexPath];
     MGTemplateCategoryModel *categoryModel = self.dateSource[indexPath.section][indexPath.item];
-    cell.titleLab.text = categoryModel.category_name;
+    if (indexPath.section == 0) {
+        categoryModel.isSelectedCategory = self.genderIndex == indexPath.item;
+    } else if (indexPath.section == 1) {
+        categoryModel.isSelectedCategory = self.categoryIndex == indexPath.item;
+    }
+    cell.categoryModel = categoryModel;
     return cell;
 }
 
@@ -209,7 +228,12 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-  
+    if (indexPath.section == 0) {
+        self.genderIndex = indexPath.item;
+    } else if (indexPath.section == 1) {
+        self.categoryIndex = indexPath.item;
+    }
+    [self.collectionView reloadData];
 }
 
 #pragma mark - getter

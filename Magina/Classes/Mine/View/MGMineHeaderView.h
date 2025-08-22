@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) void (^tapBgImageViewCallback)(UIGestureRecognizer *sender);
 
+@property (nonatomic, copy) void (^tapHeaderIconCallback)(UIGestureRecognizer *sender);
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -11,6 +11,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MGLoginFactory : NSObject
 
++ (void)saveAccountInfo:(NSDictionary *)accountInfo;
+
++ (void)removeAccountInfo;
+
++ (NSDictionary *)getAccountInfo;
+
 @end
 
 NS_ASSUME_NONNULL_END

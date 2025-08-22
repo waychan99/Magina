@@ -79,6 +79,9 @@ static NSString *const aes_iv_magina  = @"change3_face8_zz";
         case CDHttpBaseUrlTypeMagina:
             requestPath = [NSString stringWithFormat:@"%@%@", kMaginaService, path];
             break;
+        case CDHttpBaseUrlTypeMagina_ljw:
+            requestPath = [NSString stringWithFormat:@"%@%@", kLjwMaginaService, path];
+            break;;
         default:
             break;
     }
@@ -287,7 +290,8 @@ static NSString *const aes_iv_magina  = @"change3_face8_zz";
     } else if (type == CDHttpBaseUrlTypeAppUpdate) {
         keyData = [@"8D5852ABBFB2E939" dataUsingEncoding:NSUTF8StringEncoding];
         ivData  = [@"C27A04797A8BADBA" dataUsingEncoding:NSUTF8StringEncoding];
-    } else if (type == CDHttpBaseUrlTypeAds) {
+    } else if (type == CDHttpBaseUrlTypeAds ||
+               type == CDHttpBaseUrlTypeMagina_ljw) {
         keyData = [aes_key_ads dataUsingEncoding:NSUTF8StringEncoding];
         ivData  = [aes_iv_ads dataUsingEncoding:NSUTF8StringEncoding];
     }  else if (type == CDHttpBaseUrlTypeNewAddedLongTV) {

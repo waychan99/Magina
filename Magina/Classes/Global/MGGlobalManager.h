@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SWDeviceCenter.h"
+#import "MGAccountInfo.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -24,6 +25,21 @@ NS_ASSUME_NONNULL_BEGIN
 /** 用户本地信息参数 */
 @property (nonatomic, strong) NSMutableDictionary *userLocalInfoParams;
 
+/** 账号信息 */
+@property (nonatomic, strong) MGAccountInfo * __nullable accountInfo;
+
+/** 是否为当天 */
+@property (nonatomic, assign) BOOL isToday;
+
+/** 是否登录 */
+@property (nonatomic, assign, getter=isLoggedIn) BOOL loggedIn;
+
+/** 当前总积分（已经登录） */
+@property (nonatomic, assign) CGFloat currentPoints;
+
+/** 本地总积分（未登录） */
+@property (nonatomic, assign) CGFloat localPoints;
+
 + (instancetype)shareInstance;
 
 // 请求用户本地信息
@@ -37,6 +53,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeCacheWithDirectoryPath:(NSString *)directoryPath completion:(void (^ __nullable)(void))completion;
 // 定期清理缓存
 - (void)clearCacheRegularlyWithSecondsLimit:(NSInteger)secondsLimit;
+
+// 检查是否为当天
+- (void)checkCurrentDate;
+
+// 获取总积分
+- (void)requestTotoalPoints;
+// 每日赠送积分
+- (void)requestDailyBonusPoints;
+// 刷新本地积分
+- (void)refreshLocalPoints;
 
 @end
 

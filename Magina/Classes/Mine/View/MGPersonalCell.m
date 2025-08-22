@@ -73,11 +73,11 @@
     self.bgView.backgroundColor = [UIColor blackColor];
     if (personalListCellModel.cellType == MGPersonalCellTypePointsDetails ||
         personalListCellModel.cellType == MGPersonalCellTypeContactUs) {
-        self.bgView.frame = CGRectMake(20, 0, self.contentView.lv_width - 40, 53);
+        self.bgView.frame = CGRectMake(15, 0, self.contentView.lv_width - 30, 53);
         [self.bgView lp_setImageWithRadius:LPRadiusMake(16, 16, 0, 0) image:nil borderColor:nil borderWidth:0 backgroundColor:HEX_COLOR(0x15161A) contentMode:0 forState:0 completion:nil];
     } else if (personalListCellModel.cellType == MGPersonalCellTypeInviteFriends ||
                personalListCellModel.cellType == MGPersonalCellTypeApplicationVersion) {
-        self.bgView.frame = CGRectMake(20, 0, self.contentView.lv_width - 40, 53);
+        self.bgView.frame = CGRectMake(15, 0, self.contentView.lv_width - 30, 53);
         [self.bgView lp_setImageWithRadius:LPRadiusMake(0, 0, 16, 16) image:nil borderColor:nil borderWidth:0 backgroundColor:HEX_COLOR(0x15161A) contentMode:0 forState:0 completion:nil];
     } else {
         self.bgView.backgroundColor = HEX_COLOR(0x15161A);

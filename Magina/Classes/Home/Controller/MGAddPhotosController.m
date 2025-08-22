@@ -14,6 +14,7 @@
 
 @interface MGAddPhotosController ()<HWPanModalPresentable, UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UILabel *allPhotosLab;
 @property (nonatomic, strong) MGAlbumModel *albumModel;
 @end
 
@@ -47,11 +48,17 @@
     self.collectionView.backgroundColor = HEX_COLOR(0x1E1F24);
     [self.collectionView registerNib:[UINib nibWithNibName:MGAlbumPhotoListCellKey bundle:nil] forCellWithReuseIdentifier:MGAlbumPhotoListCellKey];
     [self.collectionView registerNib:[UINib nibWithNibName:MGAlbumTakePhotoCellKey bundle:nil] forCellWithReuseIdentifier:MGAlbumTakePhotoCellKey];
+    
+    self.allPhotosLab.userInteractionEnabled = YES;
+    [self.allPhotosLab addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAllPhotoAction:)]];
 }
 
 #pragma mark - eventClick
 - (IBAction)clickDismissBtn:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:^{}];
+}
+
+- (void)tapAllPhotoAction:(UIGestureRecognizer *)sender {
 }
 
 #pragma mark - UICollectionViewDelegate, UICollectionViewDataSource

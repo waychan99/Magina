@@ -7,7 +7,8 @@
 
 #import "MGMainContainerController.h"
 #import "MGHomeController.h"
-#import "MGMineController.h"
+#import "MGPersonalController.h"
+#import "MGPhotosController.h"
 #import "JXCategoryListContainerView.h"
 #import "JXCategoryImageView.h"
 
@@ -60,8 +61,11 @@
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     if (index == 0) {
         return [[MGHomeController alloc] init];
+    } else if (index == 1) {
+        return [[MGPhotosController alloc] init];
+    } else {
+        return [[MGPersonalController alloc] init];
     }
-    return [[MGMineController alloc] init];
 }
 
 #pragma mark - getter

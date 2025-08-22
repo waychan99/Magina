@@ -11,124 +11,208 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MGMineHeaderView">
-            <rect key="frame" x="0.0" y="0.0" width="345" height="180"/>
+            <rect key="frame" x="0.0" y="0.0" width="407" height="401"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MG_mine_header_bg" translatesAutoresizingMaskIntoConstraints="NO" id="o9z-z0-6ku">
-                    <rect key="frame" x="12" y="0.0" width="321" height="180"/>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No advertising required" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imH-3R-X8U">
-                    <rect key="frame" x="46.999999999999993" y="82.666666666666671" width="123.33333333333331" height="14"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MG_home_topbar_user_placeholder_icon" translatesAutoresizingMaskIntoConstraints="NO" id="vZ8-WC-gdJ">
+                    <rect key="frame" x="36" y="60" width="53" height="53"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="14" id="Lak-7u-SMh"/>
+                        <constraint firstAttribute="width" constant="53" id="EHV-eP-Swi"/>
+                        <constraint firstAttribute="height" constant="53" id="Vu1-h0-2em"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <real key="value" value="26.5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Magina" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mhs-WV-uw5">
+                    <rect key="frame" x="103" y="77" width="206" height="19.333333333333329"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No watermark" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ue8-aH-G41">
-                    <rect key="frame" x="46.999999999999993" y="101.66666666666667" width="73.333333333333314" height="14"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDz-4W-da9">
+                    <rect key="frame" x="319" y="71" width="65" height="31"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MG_mine_header_points_icon" translatesAutoresizingMaskIntoConstraints="NO" id="RQ0-rU-ZtY">
+                            <rect key="frame" x="16" y="7" width="18" height="17"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="17" id="0hb-J3-FnV"/>
+                                <constraint firstAttribute="width" constant="18" id="XRO-YB-371"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUc-gY-qXT">
+                            <rect key="frame" x="39" y="7" width="10" height="17"/>
+                            <constraints>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="10" id="0xx-ju-BVR"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemGrayColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="14" id="2zT-kl-XHx"/>
+                        <constraint firstItem="RQ0-rU-ZtY" firstAttribute="leading" secondItem="gDz-4W-da9" secondAttribute="leading" constant="16" id="2j2-M9-B53"/>
+                        <constraint firstItem="GUc-gY-qXT" firstAttribute="leading" secondItem="RQ0-rU-ZtY" secondAttribute="trailing" constant="5" id="DK2-se-yVQ"/>
+                        <constraint firstAttribute="height" constant="31" id="GyA-r3-ZQ0"/>
+                        <constraint firstAttribute="trailing" secondItem="GUc-gY-qXT" secondAttribute="trailing" constant="16" id="itb-PV-eJF"/>
+                        <constraint firstItem="RQ0-rU-ZtY" firstAttribute="centerY" secondItem="gDz-4W-da9" secondAttribute="centerY" id="j5D-QV-T4z"/>
+                        <constraint firstItem="GUc-gY-qXT" firstAttribute="centerY" secondItem="gDz-4W-da9" secondAttribute="centerY" id="jpl-pe-Utr"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MG_mine_header_hook_second" translatesAutoresizingMaskIntoConstraints="NO" id="HNa-5M-mqW">
-                    <rect key="frame" x="30" y="84" width="11" height="11"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <real key="value" value="15.5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="crG-pU-kwj">
+                    <rect key="frame" x="15" y="130" width="377" height="196.66666666666663"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MG_mine_header_bg" translatesAutoresizingMaskIntoConstraints="NO" id="o9z-z0-6ku">
+                            <rect key="frame" x="0.0" y="0.0" width="377" height="196.66666666666666"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Magina Pro" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KN6-Vx-ygv">
+                            <rect key="frame" x="24" y="28" width="203" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="Ssc-t0-POY"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MG_mine_header_hook_second" translatesAutoresizingMaskIntoConstraints="NO" id="HNa-5M-mqW">
+                            <rect key="frame" x="24" y="84" width="11" height="11"/>
+                        </imageView>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MG_mine_header_hook_third" translatesAutoresizingMaskIntoConstraints="NO" id="Lhh-MK-Pbb">
+                            <rect key="frame" x="24" y="103" width="11" height="11"/>
+                        </imageView>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MG_mine_header_hook_first" translatesAutoresizingMaskIntoConstraints="NO" id="PGt-ik-eQ1">
+                            <rect key="frame" x="24" y="65" width="11" height="11"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="11" id="CUE-kS-VHZ"/>
+                                <constraint firstAttribute="width" constant="11" id="cY4-Ga-XZ3"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No advertising required" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imH-3R-X8U">
+                            <rect key="frame" x="40.999999999999993" y="82.666666666666657" width="123.33333333333331" height="14"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="14" id="Xdo-n2-s0n"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Faster generation speed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1x-zj-MWV">
+                            <rect key="frame" x="40.999999999999993" y="63.666666666666657" width="127.33333333333331" height="14"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="14" id="8Cg-gl-qsX"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Members as low as 0.3 yuan per day" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRi-ps-QY2">
+                            <rect key="frame" x="24" y="170.66666666666669" width="303" height="14"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MG_mine_header_right_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="UCM-Wi-vbv">
+                            <rect key="frame" x="337" y="173.66666666666669" width="16" height="8"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="16" id="Bc4-kI-1sx"/>
+                                <constraint firstAttribute="height" constant="8" id="mOn-6y-oj8"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No watermark" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ue8-aH-G41">
+                            <rect key="frame" x="40.999999999999993" y="101.66666666666666" width="73.333333333333314" height="14"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="14" id="8j9-AM-a1E"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="11" id="EHx-0R-BGQ"/>
-                        <constraint firstAttribute="height" constant="11" id="R91-On-qfs"/>
+                        <constraint firstItem="HNa-5M-mqW" firstAttribute="width" secondItem="PGt-ik-eQ1" secondAttribute="width" id="4CP-pV-kC2"/>
+                        <constraint firstItem="Lhh-MK-Pbb" firstAttribute="leading" secondItem="PGt-ik-eQ1" secondAttribute="leading" id="73Z-gd-xy9"/>
+                        <constraint firstItem="PGt-ik-eQ1" firstAttribute="top" secondItem="KN6-Vx-ygv" secondAttribute="bottom" constant="13" id="7gv-rT-8nH"/>
+                        <constraint firstAttribute="bottom" secondItem="UCM-Wi-vbv" secondAttribute="bottom" constant="15" id="97r-CZ-QIw"/>
+                        <constraint firstItem="Lhh-MK-Pbb" firstAttribute="width" secondItem="PGt-ik-eQ1" secondAttribute="width" id="98e-Rh-Z6y"/>
+                        <constraint firstItem="imH-3R-X8U" firstAttribute="leading" secondItem="HNa-5M-mqW" secondAttribute="trailing" constant="6" id="BVn-az-Br4"/>
+                        <constraint firstItem="PGt-ik-eQ1" firstAttribute="leading" secondItem="KN6-Vx-ygv" secondAttribute="leading" id="FRF-PP-ptF"/>
+                        <constraint firstItem="imH-3R-X8U" firstAttribute="centerY" secondItem="HNa-5M-mqW" secondAttribute="centerY" id="HQA-rJ-nQq"/>
+                        <constraint firstItem="Lhh-MK-Pbb" firstAttribute="height" secondItem="PGt-ik-eQ1" secondAttribute="height" id="HoH-4E-Ipe"/>
+                        <constraint firstAttribute="trailing" secondItem="o9z-z0-6ku" secondAttribute="trailing" id="HwK-xY-eEM"/>
+                        <constraint firstAttribute="trailing" secondItem="UCM-Wi-vbv" secondAttribute="trailing" constant="24" id="MAJ-vS-NPI"/>
+                        <constraint firstItem="o9z-z0-6ku" firstAttribute="top" secondItem="crG-pU-kwj" secondAttribute="top" id="NVx-Md-jdo"/>
+                        <constraint firstItem="HNa-5M-mqW" firstAttribute="leading" secondItem="PGt-ik-eQ1" secondAttribute="leading" id="OQI-h0-8Cs"/>
+                        <constraint firstItem="y1x-zj-MWV" firstAttribute="leading" secondItem="PGt-ik-eQ1" secondAttribute="trailing" constant="6" id="Peq-fW-EWz"/>
+                        <constraint firstItem="PRi-ps-QY2" firstAttribute="leading" secondItem="crG-pU-kwj" secondAttribute="leading" constant="24" id="ZSa-l9-gpU"/>
+                        <constraint firstItem="UCM-Wi-vbv" firstAttribute="leading" secondItem="PRi-ps-QY2" secondAttribute="trailing" constant="10" id="Zls-Eu-7wE"/>
+                        <constraint firstItem="UCM-Wi-vbv" firstAttribute="centerY" secondItem="PRi-ps-QY2" secondAttribute="centerY" id="bDC-4P-LTB"/>
+                        <constraint firstAttribute="width" secondItem="crG-pU-kwj" secondAttribute="height" multiplier="345:180" id="bto-dp-mFV"/>
+                        <constraint firstItem="ue8-aH-G41" firstAttribute="leading" secondItem="Lhh-MK-Pbb" secondAttribute="trailing" constant="6" id="f1b-hH-FLE"/>
+                        <constraint firstAttribute="bottom" secondItem="o9z-z0-6ku" secondAttribute="bottom" id="hEy-y8-FEd"/>
+                        <constraint firstItem="ue8-aH-G41" firstAttribute="centerY" secondItem="Lhh-MK-Pbb" secondAttribute="centerY" id="jxx-57-2y6"/>
+                        <constraint firstAttribute="trailing" secondItem="KN6-Vx-ygv" secondAttribute="trailing" constant="150" id="lJk-eG-oVC"/>
+                        <constraint firstItem="KN6-Vx-ygv" firstAttribute="top" secondItem="crG-pU-kwj" secondAttribute="top" constant="28" id="oBd-OL-Ruz"/>
+                        <constraint firstItem="HNa-5M-mqW" firstAttribute="top" secondItem="PGt-ik-eQ1" secondAttribute="bottom" constant="8" id="p9l-Sf-Erk"/>
+                        <constraint firstItem="Lhh-MK-Pbb" firstAttribute="top" secondItem="HNa-5M-mqW" secondAttribute="bottom" constant="8" id="uFk-Kw-8A9"/>
+                        <constraint firstItem="y1x-zj-MWV" firstAttribute="centerY" secondItem="PGt-ik-eQ1" secondAttribute="centerY" id="vks-sA-vD9"/>
+                        <constraint firstItem="HNa-5M-mqW" firstAttribute="height" secondItem="PGt-ik-eQ1" secondAttribute="height" id="w0m-th-iKZ"/>
+                        <constraint firstItem="KN6-Vx-ygv" firstAttribute="leading" secondItem="crG-pU-kwj" secondAttribute="leading" constant="24" id="wdk-QX-A5S"/>
+                        <constraint firstItem="o9z-z0-6ku" firstAttribute="leading" secondItem="crG-pU-kwj" secondAttribute="leading" id="yZV-uf-6Yi"/>
                     </constraints>
-                </imageView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MG_mine_header_hook_third" translatesAutoresizingMaskIntoConstraints="NO" id="Lhh-MK-Pbb">
-                    <rect key="frame" x="30" y="103" width="11" height="11"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="11" id="Q91-sl-jY7"/>
-                        <constraint firstAttribute="width" constant="11" id="gbK-cB-PYG"/>
-                    </constraints>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Magina Pro" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KN6-Vx-ygv">
-                    <rect key="frame" x="30" y="28" width="175" height="24"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="24" id="OBp-eZ-0jo"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MG_mine_header_hook_first" translatesAutoresizingMaskIntoConstraints="NO" id="PGt-ik-eQ1">
-                    <rect key="frame" x="30" y="65" width="11" height="11"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="11" id="aFN-bC-awq"/>
-                        <constraint firstAttribute="height" constant="11" id="qmV-I7-oUL"/>
-                    </constraints>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Faster generation speed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1x-zj-MWV">
-                    <rect key="frame" x="46.999999999999993" y="63.666666666666657" width="127.33333333333331" height="14"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="14" id="WcI-6e-IMf"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MG_mine_header_right_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="UCM-Wi-vbv">
-                    <rect key="frame" x="299" y="156" width="16" height="8"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="8" id="R3U-9X-QoA"/>
-                        <constraint firstAttribute="width" constant="16" id="S26-Wu-82U"/>
-                    </constraints>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Members as low as 0.3 yuan per day" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRi-ps-QY2">
-                    <rect key="frame" x="30.999999999999986" y="153" width="194.66666666666663" height="14"/>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                </view>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="y1x-zj-MWV" firstAttribute="centerY" secondItem="PGt-ik-eQ1" secondAttribute="centerY" id="0Sb-dI-IRo"/>
-                <constraint firstAttribute="trailing" secondItem="UCM-Wi-vbv" secondAttribute="trailing" constant="30" id="DEm-5k-AfR"/>
-                <constraint firstItem="HNa-5M-mqW" firstAttribute="leading" secondItem="PGt-ik-eQ1" secondAttribute="leading" id="GzW-Zz-xUB"/>
-                <constraint firstItem="PGt-ik-eQ1" firstAttribute="leading" secondItem="KN6-Vx-ygv" secondAttribute="leading" id="IdA-G9-TLN"/>
-                <constraint firstItem="ue8-aH-G41" firstAttribute="leading" secondItem="y1x-zj-MWV" secondAttribute="leading" id="KQY-KJ-7Cu"/>
-                <constraint firstItem="KN6-Vx-ygv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="Ksf-S1-y9t"/>
-                <constraint firstItem="o9z-z0-6ku" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="MIl-lh-ust"/>
-                <constraint firstItem="HNa-5M-mqW" firstAttribute="top" secondItem="PGt-ik-eQ1" secondAttribute="bottom" constant="8" id="MuK-as-1oZ"/>
-                <constraint firstAttribute="trailing" secondItem="KN6-Vx-ygv" secondAttribute="trailing" constant="140" id="WQa-yD-dLU"/>
-                <constraint firstItem="Lhh-MK-Pbb" firstAttribute="leading" secondItem="PGt-ik-eQ1" secondAttribute="leading" id="XgV-oh-hPy"/>
-                <constraint firstItem="ue8-aH-G41" firstAttribute="centerY" secondItem="Lhh-MK-Pbb" secondAttribute="centerY" id="YsB-yF-jND"/>
-                <constraint firstItem="KN6-Vx-ygv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="28" id="ZfK-1c-zC9"/>
-                <constraint firstItem="PRi-ps-QY2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="31" id="agO-kx-pwv"/>
-                <constraint firstAttribute="bottom" secondItem="UCM-Wi-vbv" secondAttribute="bottom" constant="16" id="b4Q-cM-GCj"/>
-                <constraint firstItem="Lhh-MK-Pbb" firstAttribute="top" secondItem="HNa-5M-mqW" secondAttribute="bottom" constant="8" id="fvv-G7-w1C"/>
-                <constraint firstItem="UCM-Wi-vbv" firstAttribute="centerY" secondItem="PRi-ps-QY2" secondAttribute="centerY" id="gtg-a4-r75"/>
-                <constraint firstItem="imH-3R-X8U" firstAttribute="leading" secondItem="y1x-zj-MWV" secondAttribute="leading" id="hyU-ec-Eqm"/>
-                <constraint firstItem="o9z-z0-6ku" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="jGZ-nx-wDm"/>
-                <constraint firstAttribute="trailing" secondItem="o9z-z0-6ku" secondAttribute="trailing" constant="12" id="o6h-V9-TK6"/>
-                <constraint firstItem="y1x-zj-MWV" firstAttribute="leading" secondItem="PGt-ik-eQ1" secondAttribute="trailing" constant="6" id="oeZ-bV-mH7"/>
-                <constraint firstItem="PGt-ik-eQ1" firstAttribute="top" secondItem="KN6-Vx-ygv" secondAttribute="bottom" constant="13" id="rHR-iI-uFM"/>
-                <constraint firstAttribute="bottom" secondItem="o9z-z0-6ku" secondAttribute="bottom" id="w9D-bT-uJ0"/>
-                <constraint firstItem="imH-3R-X8U" firstAttribute="centerY" secondItem="HNa-5M-mqW" secondAttribute="centerY" id="zQB-hd-QHu"/>
+                <constraint firstItem="vZ8-WC-gdJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="36" id="IQk-2B-wav"/>
+                <constraint firstItem="Mhs-WV-uw5" firstAttribute="centerY" secondItem="vZ8-WC-gdJ" secondAttribute="centerY" id="KT9-S5-olq"/>
+                <constraint firstAttribute="trailing" secondItem="crG-pU-kwj" secondAttribute="trailing" constant="15" id="KhJ-ua-3vo"/>
+                <constraint firstItem="gDz-4W-da9" firstAttribute="leading" secondItem="Mhs-WV-uw5" secondAttribute="trailing" constant="10" id="LCR-dX-4Hj"/>
+                <constraint firstItem="crG-pU-kwj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="X8g-V3-ED2"/>
+                <constraint firstItem="crG-pU-kwj" firstAttribute="top" secondItem="vZ8-WC-gdJ" secondAttribute="bottom" constant="17" id="XVc-Jk-EEd"/>
+                <constraint firstItem="Mhs-WV-uw5" firstAttribute="leading" secondItem="vZ8-WC-gdJ" secondAttribute="trailing" constant="14" id="kyV-zv-a9d"/>
+                <constraint firstAttribute="trailing" secondItem="gDz-4W-da9" secondAttribute="trailing" constant="23" id="mRB-eo-yYj"/>
+                <constraint firstItem="gDz-4W-da9" firstAttribute="centerY" secondItem="vZ8-WC-gdJ" secondAttribute="centerY" id="ndM-WD-iPD"/>
+                <constraint firstItem="vZ8-WC-gdJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="60" id="pN8-ql-5gp"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="bgContentView" destination="crG-pU-kwj" id="hGS-bL-f9E"/>
                 <outlet property="bgImageView" destination="o9z-z0-6ku" id="yio-8P-P7Z"/>
+                <outlet property="contentLab1" destination="y1x-zj-MWV" id="G5F-Bd-QHW"/>
+                <outlet property="contentLab2" destination="imH-3R-X8U" id="Sl5-Dv-Ye6"/>
+                <outlet property="contentLab3" destination="ue8-aH-G41" id="PCe-bU-0al"/>
+                <outlet property="contentLab4" destination="PRi-ps-QY2" id="GMf-Dt-WMj"/>
+                <outlet property="headerIcon" destination="vZ8-WC-gdJ" id="Jok-hR-aCy"/>
+                <outlet property="pointsBgView" destination="gDz-4W-da9" id="Hpi-22-sMF"/>
+                <outlet property="pointsLab" destination="GUc-gY-qXT" id="oIK-3R-g2S"/>
+                <outlet property="subTitleLab" destination="KN6-Vx-ygv" id="eCG-bd-GIo"/>
+                <outlet property="titleLab" destination="Mhs-WV-uw5" id="9c4-KB-ohE"/>
             </connections>
-            <point key="canvasLocation" x="23.664122137404579" y="-176.05633802816902"/>
+            <point key="canvasLocation" x="-417.55725190839695" y="-166.5492957746479"/>
         </view>
     </objects>
     <resources>
+        <image name="MG_home_topbar_user_placeholder_icon" width="32" height="32"/>
         <image name="MG_mine_header_bg" width="345" height="180"/>
         <image name="MG_mine_header_hook_first" width="11" height="11.666666984558105"/>
         <image name="MG_mine_header_hook_second" width="11" height="11.666666984558105"/>
         <image name="MG_mine_header_hook_third" width="11" height="11.666666984558105"/>
+        <image name="MG_mine_header_points_icon" width="18" height="17"/>
         <image name="MG_mine_header_right_arrow" width="17" height="8"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

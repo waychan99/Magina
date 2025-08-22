@@ -1,0 +1,28 @@
+//
+//  LVEmptyView.m
+//  Enjoy
+//
+//  Created by mac on 2023/1/15.
+//
+
+#import "LVEmptyView.h"
+
+@implementation LVEmptyView
+
+- (void)prepare {
+    [super prepare];
+    
+    //如果想要DemoEmptyView的效果都不是自动显隐的，这里统一设置为NO，初始化时就不必再一一去写了
+    self.autoShowEmptyView = NO;
+    
+    self.titleLabTextColor = [UIColor colorWithRed:181/255.0 green:181/255.0 blue:181/255.0 alpha:1.0];
+    self.titleLabFont = [UIFont systemFontOfSize:16.0 weight:UIFontWeightBold];
+    
+    self.actionBtnBackGroundColor = [UIColor clearColor];
+    self.actionBtnBorderWidth = 1.0;
+    self.actionBtnBorderColor = [UIColor colorWithRed:181/255.0 green:181/255.0 blue:181/255.0 alpha:1.0];
+    self.actionBtnCornerRadius = 5.0;
+    self.actionBtnTitleColor = [UIColor colorWithRed:181/255.0 green:181/255.0 blue:181/255.0 alpha:1.0];
+}
+
+@end

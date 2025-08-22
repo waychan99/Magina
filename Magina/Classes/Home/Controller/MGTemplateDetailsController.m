@@ -113,7 +113,7 @@
         _pointsLab = [[UILabel alloc] init];
         _pointsLab.textColor = [UIColor whiteColor];
         _pointsLab.font = [UIFont systemFontOfSize:14.0 weight:UIFontWeightMedium];
-        _pointsLab.text = @"100";
+        _pointsLab.text = [NSString stringWithFormat:@"%.0f", [MGGlobalManager shareInstance].currentPoints];
         [_pointsLab sizeToFit];
     }
     return _pointsLab;

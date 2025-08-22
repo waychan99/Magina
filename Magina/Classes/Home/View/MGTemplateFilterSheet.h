@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MGTemplateFilterSheet : UIView
 
-+ (instancetype)showWithCategorys:(NSArray<MGTemplateCategoryModel *> *)categorys resultBlock:(void (^ __nullable)(MGTemplateCategoryModel *categoryModel, NSString *genderType))resultBlock completion:(void (^ __nullable)(BOOL finished))completion;
++ (instancetype)showWithGenderIndex:(NSInteger)genderIndex categoryIndex:(NSInteger)categoryIndex categorys:(NSArray<MGTemplateCategoryModel *> *)categorys resultBlock:(void (^ __nullable)(NSInteger genderIndex, NSInteger categoryIndex))resultBlock completion:(void (^ __nullable)(BOOL finished))completion;
 
 @end
 

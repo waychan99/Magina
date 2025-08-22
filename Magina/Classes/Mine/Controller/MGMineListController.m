@@ -49,7 +49,7 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat itemW = floorf((UI_SCREEN_W - 1.5) / 3);
+    CGFloat itemW = floorf((UI_SCREEN_W - 3) / 3);
     CGFloat itemH = floorf((itemW * 163) / 123);
     return CGSizeMake(itemW, itemH);
 }

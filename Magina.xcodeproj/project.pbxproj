@@ -20,10 +20,6 @@
 		047473302E54248F004AFE7D /* MGMemberHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0474732F2E54248F004AFE7D /* MGMemberHeader.m */; };
 		047473322E54249A004AFE7D /* MGMemberHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047473312E54249A004AFE7D /* MGMemberHeader.xib */; };
 		047473352E542AE0004AFE7D /* MGMemberListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047473342E542AE0004AFE7D /* MGMemberListController.m */; };
-		047473392E545CCF004AFE7D /* MGTemplateDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047473372E545CCF004AFE7D /* MGTemplateDetailsController.m */; };
-		0474733A2E545CCF004AFE7D /* MGTemplateDetailsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047473382E545CCF004AFE7D /* MGTemplateDetailsController.xib */; };
-		0474733E2E546DB1004AFE7D /* MGAddPhotosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0474733C2E546DB1004AFE7D /* MGAddPhotosController.m */; };
-		0474733F2E546DB1004AFE7D /* MGAddPhotosController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0474733D2E546DB1004AFE7D /* MGAddPhotosController.xib */; };
 		047473432E559E98004AFE7D /* MGImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 047473422E559E98004AFE7D /* MGImageManager.m */; };
 		047473472E55ABE6004AFE7D /* MGAssetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 047473462E55ABE6004AFE7D /* MGAssetModel.m */; };
 		0474734B2E55C1C1004AFE7D /* MGAlbumPhotoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 047473492E55C1C1004AFE7D /* MGAlbumPhotoListCell.m */; };
@@ -56,14 +52,25 @@
 		04CDD0EC2E56CB5E00286F4C /* MGAlbumTakePhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CDD0EB2E56CB5E00286F4C /* MGAlbumTakePhotoCell.xib */; };
 		04CDD0ED2E56CB5E00286F4C /* MGAlbumTakePhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD0EA2E56CB5E00286F4C /* MGAlbumTakePhotoCell.m */; };
 		04CDD0F02E56E76F00286F4C /* SLAvCaptureTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD0EF2E56E76F00286F4C /* SLAvCaptureTool.m */; };
-		04CDD0F32E56EDA600286F4C /* MGShotController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD0F22E56EDA600286F4C /* MGShotController.m */; };
 		04CDD0F62E56EF7900286F4C /* MGShotFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD0F52E56EF7900286F4C /* MGShotFocusView.m */; };
 		04CDD12F2E570FFE00286F4C /* SLDelayPerform.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD12E2E570FFE00286F4C /* SLDelayPerform.m */; };
 		04CDD1322E574F6700286F4C /* WWZMenuPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD1312E574F6700286F4C /* WWZMenuPopover.m */; };
+		04CDD13E2E580FA700286F4C /* MGPhotoListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD1342E580FA600286F4C /* MGPhotoListController.m */; };
+		04CDD13F2E580FA700286F4C /* MGPhotosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD1362E580FA600286F4C /* MGPhotosController.m */; };
+		04CDD1402E580FA700286F4C /* MGPhotoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD13A2E580FA600286F4C /* MGPhotoListCell.m */; };
+		04CDD1412E580FA700286F4C /* MGPhotoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CDD13B2E580FA600286F4C /* MGPhotoListCell.xib */; };
+		04CDD1502E5815C300286F4C /* MGAddPhotosController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CDD1462E5815C300286F4C /* MGAddPhotosController.xib */; };
+		04CDD1512E5815C300286F4C /* MGTemplateDetailsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CDD14F2E5815C300286F4C /* MGTemplateDetailsController.xib */; };
+		04CDD1522E5815C300286F4C /* MGAddPhotosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD1452E5815C300286F4C /* MGAddPhotosController.m */; };
+		04CDD1532E5815C300286F4C /* MGShotController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD14C2E5815C300286F4C /* MGShotController.m */; };
+		04CDD1542E5815C300286F4C /* MGHomeListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD14A2E5815C300286F4C /* MGHomeListController.m */; };
+		04CDD1552E5815C300286F4C /* MGTemplateDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD14E2E5815C300286F4C /* MGTemplateDetailsController.m */; };
+		04CDD1562E5815C300286F4C /* MGHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD1482E5815C300286F4C /* MGHomeController.m */; };
+		04CDD1592E58492E00286F4C /* MGAccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD1582E58492E00286F4C /* MGAccountInfo.m */; };
+		04CDD15C2E5859F400286F4C /* LVEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD15B2E5859F400286F4C /* LVEmptyView.m */; };
+		04CDD15F2E585A5000286F4C /* MGPointsDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD15E2E585A5000286F4C /* MGPointsDetailsModel.m */; };
 		04E6E1B62E4B200A00407F94 /* MGMainNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E1B52E4B200A00407F94 /* MGMainNavigationController.m */; };
 		04E6E1BC2E4B217D00407F94 /* MGBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E1BB2E4B217D00407F94 /* MGBaseController.m */; };
-		04E6E1BF2E4B299A00407F94 /* MGHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E1BE2E4B299A00407F94 /* MGHomeController.m */; };
-		04E6E1C22E4B49E800407F94 /* MGHomeListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E1C12E4B49E800407F94 /* MGHomeListController.m */; };
 		04E6E1C62E4C29F700407F94 /* MGHomeListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E6E1C52E4C29F700407F94 /* MGHomeListCell.xib */; };
 		04E6E1C72E4C29F700407F94 /* MGHomeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E1C42E4C29F700407F94 /* MGHomeListCell.m */; };
 		04E6E1CA2E4C3BC200407F94 /* MGBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E1C92E4C3BC200407F94 /* MGBaseModel.m */; };
@@ -106,12 +113,6 @@
 		047473312E54249A004AFE7D /* MGMemberHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGMemberHeader.xib; sourceTree = "<group>"; };
 		047473332E542AE0004AFE7D /* MGMemberListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGMemberListController.h; sourceTree = "<group>"; };
 		047473342E542AE0004AFE7D /* MGMemberListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGMemberListController.m; sourceTree = "<group>"; };
-		047473362E545CCF004AFE7D /* MGTemplateDetailsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGTemplateDetailsController.h; sourceTree = "<group>"; };
-		047473372E545CCF004AFE7D /* MGTemplateDetailsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGTemplateDetailsController.m; sourceTree = "<group>"; };
-		047473382E545CCF004AFE7D /* MGTemplateDetailsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGTemplateDetailsController.xib; sourceTree = "<group>"; };
-		0474733B2E546DB1004AFE7D /* MGAddPhotosController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGAddPhotosController.h; sourceTree = "<group>"; };
-		0474733C2E546DB1004AFE7D /* MGAddPhotosController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGAddPhotosController.m; sourceTree = "<group>"; };
-		0474733D2E546DB1004AFE7D /* MGAddPhotosController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGAddPhotosController.xib; sourceTree = "<group>"; };
 		047473412E559E98004AFE7D /* MGImageManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGImageManager.h; sourceTree = "<group>"; };
 		047473422E559E98004AFE7D /* MGImageManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGImageManager.m; sourceTree = "<group>"; };
 		047473452E55ABE6004AFE7D /* MGAssetModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGAssetModel.h; sourceTree = "<group>"; };
@@ -175,22 +176,42 @@
 		04CDD0EB2E56CB5E00286F4C /* MGAlbumTakePhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGAlbumTakePhotoCell.xib; sourceTree = "<group>"; };
 		04CDD0EE2E56E76F00286F4C /* SLAvCaptureTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLAvCaptureTool.h; sourceTree = "<group>"; };
 		04CDD0EF2E56E76F00286F4C /* SLAvCaptureTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLAvCaptureTool.m; sourceTree = "<group>"; };
-		04CDD0F12E56EDA600286F4C /* MGShotController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGShotController.h; sourceTree = "<group>"; };
-		04CDD0F22E56EDA600286F4C /* MGShotController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGShotController.m; sourceTree = "<group>"; };
 		04CDD0F42E56EF7900286F4C /* MGShotFocusView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGShotFocusView.h; sourceTree = "<group>"; };
 		04CDD0F52E56EF7900286F4C /* MGShotFocusView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGShotFocusView.m; sourceTree = "<group>"; };
 		04CDD12D2E570FFE00286F4C /* SLDelayPerform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLDelayPerform.h; sourceTree = "<group>"; };
 		04CDD12E2E570FFE00286F4C /* SLDelayPerform.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLDelayPerform.m; sourceTree = "<group>"; };
 		04CDD1302E574F6700286F4C /* WWZMenuPopover.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWZMenuPopover.h; sourceTree = "<group>"; };
 		04CDD1312E574F6700286F4C /* WWZMenuPopover.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWZMenuPopover.m; sourceTree = "<group>"; };
+		04CDD1332E580FA600286F4C /* MGPhotoListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGPhotoListController.h; sourceTree = "<group>"; };
+		04CDD1342E580FA600286F4C /* MGPhotoListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGPhotoListController.m; sourceTree = "<group>"; };
+		04CDD1352E580FA600286F4C /* MGPhotosController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGPhotosController.h; sourceTree = "<group>"; };
+		04CDD1362E580FA600286F4C /* MGPhotosController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGPhotosController.m; sourceTree = "<group>"; };
+		04CDD1392E580FA600286F4C /* MGPhotoListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGPhotoListCell.h; sourceTree = "<group>"; };
+		04CDD13A2E580FA600286F4C /* MGPhotoListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGPhotoListCell.m; sourceTree = "<group>"; };
+		04CDD13B2E580FA600286F4C /* MGPhotoListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGPhotoListCell.xib; sourceTree = "<group>"; };
+		04CDD1422E58145900286F4C /* Magina.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Magina.entitlements; sourceTree = "<group>"; };
+		04CDD1442E5815C300286F4C /* MGAddPhotosController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGAddPhotosController.h; sourceTree = "<group>"; };
+		04CDD1452E5815C300286F4C /* MGAddPhotosController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGAddPhotosController.m; sourceTree = "<group>"; };
+		04CDD1462E5815C300286F4C /* MGAddPhotosController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGAddPhotosController.xib; sourceTree = "<group>"; };
+		04CDD1472E5815C300286F4C /* MGHomeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGHomeController.h; sourceTree = "<group>"; };
+		04CDD1482E5815C300286F4C /* MGHomeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGHomeController.m; sourceTree = "<group>"; };
+		04CDD1492E5815C300286F4C /* MGHomeListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGHomeListController.h; sourceTree = "<group>"; };
+		04CDD14A2E5815C300286F4C /* MGHomeListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGHomeListController.m; sourceTree = "<group>"; };
+		04CDD14B2E5815C300286F4C /* MGShotController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGShotController.h; sourceTree = "<group>"; };
+		04CDD14C2E5815C300286F4C /* MGShotController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGShotController.m; sourceTree = "<group>"; };
+		04CDD14D2E5815C300286F4C /* MGTemplateDetailsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGTemplateDetailsController.h; sourceTree = "<group>"; };
+		04CDD14E2E5815C300286F4C /* MGTemplateDetailsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGTemplateDetailsController.m; sourceTree = "<group>"; };
+		04CDD14F2E5815C300286F4C /* MGTemplateDetailsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGTemplateDetailsController.xib; sourceTree = "<group>"; };
+		04CDD1572E58492E00286F4C /* MGAccountInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGAccountInfo.h; sourceTree = "<group>"; };
+		04CDD1582E58492E00286F4C /* MGAccountInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGAccountInfo.m; sourceTree = "<group>"; };
+		04CDD15A2E5859F400286F4C /* LVEmptyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LVEmptyView.h; sourceTree = "<group>"; };
+		04CDD15B2E5859F400286F4C /* LVEmptyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LVEmptyView.m; sourceTree = "<group>"; };
+		04CDD15D2E585A5000286F4C /* MGPointsDetailsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGPointsDetailsModel.h; sourceTree = "<group>"; };
+		04CDD15E2E585A5000286F4C /* MGPointsDetailsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGPointsDetailsModel.m; sourceTree = "<group>"; };
 		04E6E1B42E4B200A00407F94 /* MGMainNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGMainNavigationController.h; sourceTree = "<group>"; };
 		04E6E1B52E4B200A00407F94 /* MGMainNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGMainNavigationController.m; sourceTree = "<group>"; };
 		04E6E1BA2E4B217D00407F94 /* MGBaseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGBaseController.h; sourceTree = "<group>"; };
 		04E6E1BB2E4B217D00407F94 /* MGBaseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGBaseController.m; sourceTree = "<group>"; };
-		04E6E1BD2E4B299A00407F94 /* MGHomeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGHomeController.h; sourceTree = "<group>"; };
-		04E6E1BE2E4B299A00407F94 /* MGHomeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGHomeController.m; sourceTree = "<group>"; };
-		04E6E1C02E4B49E800407F94 /* MGHomeListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGHomeListController.h; sourceTree = "<group>"; };
-		04E6E1C12E4B49E800407F94 /* MGHomeListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGHomeListController.m; sourceTree = "<group>"; };
 		04E6E1C32E4C29F700407F94 /* MGHomeListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGHomeListCell.h; sourceTree = "<group>"; };
 		04E6E1C42E4C29F700407F94 /* MGHomeListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGHomeListCell.m; sourceTree = "<group>"; };
 		04E6E1C52E4C29F700407F94 /* MGHomeListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGHomeListCell.xib; sourceTree = "<group>"; };
@@ -271,6 +292,7 @@
 				04A9F2F62E4AE1EA005F3FC2 /* Assets.xcassets */,
 				04A9F2F72E4AE1EA005F3FC2 /* Info.plist */,
 				04A9F2F92E4AE1EA005F3FC2 /* LaunchScreen.storyboard */,
+				04CDD1422E58145900286F4C /* Magina.entitlements */,
 			);
 			path = Magina;
 			sourceTree = "<group>";
@@ -295,25 +317,6 @@
 				04A9F3592E4B0C19005F3FC2 /* View */,
 			);
 			path = Global;
-			sourceTree = "<group>";
-		};
-		04A9F3062E4AE436005F3FC2 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				04E6E1BD2E4B299A00407F94 /* MGHomeController.h */,
-				04E6E1BE2E4B299A00407F94 /* MGHomeController.m */,
-				04E6E1C02E4B49E800407F94 /* MGHomeListController.h */,
-				04E6E1C12E4B49E800407F94 /* MGHomeListController.m */,
-				047473362E545CCF004AFE7D /* MGTemplateDetailsController.h */,
-				047473372E545CCF004AFE7D /* MGTemplateDetailsController.m */,
-				047473382E545CCF004AFE7D /* MGTemplateDetailsController.xib */,
-				0474733B2E546DB1004AFE7D /* MGAddPhotosController.h */,
-				0474733C2E546DB1004AFE7D /* MGAddPhotosController.m */,
-				0474733D2E546DB1004AFE7D /* MGAddPhotosController.xib */,
-				04CDD0F12E56EDA600286F4C /* MGShotController.h */,
-				04CDD0F22E56EDA600286F4C /* MGShotController.m */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		04A9F3072E4AE436005F3FC2 /* Model */ = {
@@ -356,7 +359,7 @@
 		04A9F3092E4AE436005F3FC2 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				04A9F3062E4AE436005F3FC2 /* Controller */,
+				04CDD1432E5815BB00286F4C /* Controller */,
 				04A9F3072E4AE436005F3FC2 /* Model */,
 				04A9F3082E4AE436005F3FC2 /* View */,
 			);
@@ -419,6 +422,8 @@
 		04A9F30F2E4AE436005F3FC2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				04CDD15D2E585A5000286F4C /* MGPointsDetailsModel.h */,
+				04CDD15E2E585A5000286F4C /* MGPointsDetailsModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -500,6 +505,7 @@
 			children = (
 				04A9F30D2E4AE436005F3FC2 /* Login */,
 				04A9F3092E4AE436005F3FC2 /* Home */,
+				04CDD13D2E580FA600286F4C /* Photos */,
 				04A9F3112E4AE436005F3FC2 /* Mine */,
 				04A9F3052E4AE436005F3FC2 /* Global */,
 				04A9F3042E4AE436005F3FC2 /* Base */,
@@ -581,6 +587,8 @@
 		04A9F3582E4B0C19005F3FC2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				04CDD1572E58492E00286F4C /* MGAccountInfo.h */,
+				04CDD1582E58492E00286F4C /* MGAccountInfo.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -588,8 +596,67 @@
 		04A9F3592E4B0C19005F3FC2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				04CDD15A2E5859F400286F4C /* LVEmptyView.h */,
+				04CDD15B2E5859F400286F4C /* LVEmptyView.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		04CDD1372E580FA600286F4C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04CDD1332E580FA600286F4C /* MGPhotoListController.h */,
+				04CDD1342E580FA600286F4C /* MGPhotoListController.m */,
+				04CDD1352E580FA600286F4C /* MGPhotosController.h */,
+				04CDD1362E580FA600286F4C /* MGPhotosController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		04CDD1382E580FA600286F4C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04CDD13C2E580FA600286F4C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04CDD1392E580FA600286F4C /* MGPhotoListCell.h */,
+				04CDD13A2E580FA600286F4C /* MGPhotoListCell.m */,
+				04CDD13B2E580FA600286F4C /* MGPhotoListCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		04CDD13D2E580FA600286F4C /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				04CDD1372E580FA600286F4C /* Controller */,
+				04CDD1382E580FA600286F4C /* Model */,
+				04CDD13C2E580FA600286F4C /* View */,
+			);
+			path = Photos;
+			sourceTree = "<group>";
+		};
+		04CDD1432E5815BB00286F4C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04CDD1472E5815C300286F4C /* MGHomeController.h */,
+				04CDD1482E5815C300286F4C /* MGHomeController.m */,
+				04CDD1492E5815C300286F4C /* MGHomeListController.h */,
+				04CDD14A2E5815C300286F4C /* MGHomeListController.m */,
+				04CDD14D2E5815C300286F4C /* MGTemplateDetailsController.h */,
+				04CDD14E2E5815C300286F4C /* MGTemplateDetailsController.m */,
+				04CDD14F2E5815C300286F4C /* MGTemplateDetailsController.xib */,
+				04CDD1442E5815C300286F4C /* MGAddPhotosController.h */,
+				04CDD1452E5815C300286F4C /* MGAddPhotosController.m */,
+				04CDD1462E5815C300286F4C /* MGAddPhotosController.xib */,
+				04CDD14B2E5815C300286F4C /* MGShotController.h */,
+				04CDD14C2E5815C300286F4C /* MGShotController.m */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		04E6E1B72E4B215500407F94 /* Controller */ = {
@@ -697,18 +764,19 @@
 			files = (
 				0474734C2E55C1C1004AFE7D /* MGAlbumPhotoListCell.xib in Resources */,
 				0474731F2E52F84D004AFE7D /* MGPointsListCell.xib in Resources */,
+				04CDD1502E5815C300286F4C /* MGAddPhotosController.xib in Resources */,
+				04CDD1512E5815C300286F4C /* MGTemplateDetailsController.xib in Resources */,
 				047473322E54249A004AFE7D /* MGMemberHeader.xib in Resources */,
 				04CDD0EC2E56CB5E00286F4C /* MGAlbumTakePhotoCell.xib in Resources */,
 				04E6E1D82E4ED2BA00407F94 /* MGGetPointsView.xib in Resources */,
 				04E8C40F2E4F28BA00EC2E96 /* MGMineListCell.xib in Resources */,
 				04E6E1C62E4C29F700407F94 /* MGHomeListCell.xib in Resources */,
 				0474731A2E52F323004AFE7D /* MGPersonalCell.xib in Resources */,
-				0474733A2E545CCF004AFE7D /* MGTemplateDetailsController.xib in Resources */,
 				04E8C40B2E4F201300EC2E96 /* MGMineHeaderView.xib in Resources */,
 				047473292E5413ED004AFE7D /* MGInviteFriendsController.xib in Resources */,
 				04A9F3012E4AE1EA005F3FC2 /* Assets.xcassets in Resources */,
-				0474733F2E546DB1004AFE7D /* MGAddPhotosController.xib in Resources */,
 				04E8C4032E4EE34300EC2E96 /* MGGetPointsFreeAlertView.xib in Resources */,
+				04CDD1412E580FA700286F4C /* MGPhotoListCell.xib in Resources */,
 				04A9F3032E4AE1EA005F3FC2 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -769,10 +837,7 @@
 				04A9F2FE2E4AE1EA005F3FC2 /* AppDelegate.m in Sources */,
 				04E6E1D32E4C7B0700407F94 /* MGTemplateFilterSheet.m in Sources */,
 				04E6E1CA2E4C3BC200407F94 /* MGBaseModel.m in Sources */,
-				04CDD0F32E56EDA600286F4C /* MGShotController.m in Sources */,
 				04A9F2FF2E4AE1EA005F3FC2 /* main.m in Sources */,
-				04E6E1BF2E4B299A00407F94 /* MGHomeController.m in Sources */,
-				0474733E2E546DB1004AFE7D /* MGAddPhotosController.m in Sources */,
 				047473472E55ABE6004AFE7D /* MGAssetModel.m in Sources */,
 				04E6E1D02E4C62D700407F94 /* MGTemplateListModel.m in Sources */,
 				04E8C4092E4F200900EC2E96 /* MGMineHeaderView.m in Sources */,
@@ -780,15 +845,20 @@
 				04A9F33D2E4AE6F6005F3FC2 /* LVHttpRequest.m in Sources */,
 				04E6E1C72E4C29F700407F94 /* MGHomeListCell.m in Sources */,
 				0474734B2E55C1C1004AFE7D /* MGAlbumPhotoListCell.m in Sources */,
+				04CDD1592E58492E00286F4C /* MGAccountInfo.m in Sources */,
 				04A9F35C2E4B0C73005F3FC2 /* MGGlobalManager.m in Sources */,
 				04CDD12F2E570FFE00286F4C /* SLDelayPerform.m in Sources */,
 				04A9F34D2E4AE749005F3FC2 /* LVKeyboardLaunch.m in Sources */,
-				04E6E1C22E4B49E800407F94 /* MGHomeListController.m in Sources */,
 				04CDD0F62E56EF7900286F4C /* MGShotFocusView.m in Sources */,
 				04A9F34E2E4AE749005F3FC2 /* LVTimer.m in Sources */,
 				04A9F3562E4AE796005F3FC2 /* MGAppleLogin.m in Sources */,
 				04A9F34F2E4AE749005F3FC2 /* LVCommonTool.m in Sources */,
 				04A9F3502E4AE749005F3FC2 /* LTVWaterFlowLayout.m in Sources */,
+				04CDD1522E5815C300286F4C /* MGAddPhotosController.m in Sources */,
+				04CDD1532E5815C300286F4C /* MGShotController.m in Sources */,
+				04CDD1542E5815C300286F4C /* MGHomeListController.m in Sources */,
+				04CDD1552E5815C300286F4C /* MGTemplateDetailsController.m in Sources */,
+				04CDD1562E5815C300286F4C /* MGHomeController.m in Sources */,
 				047473222E52F9A8004AFE7D /* MGPointsListController.m in Sources */,
 				04CDD0ED2E56CB5E00286F4C /* MGAlbumTakePhotoCell.m in Sources */,
 				04A9F33E2E4AE6F6005F3FC2 /* SWDeviceCenter.m in Sources */,
@@ -809,7 +879,6 @@
 				04CDD0F02E56E76F00286F4C /* SLAvCaptureTool.m in Sources */,
 				04A9F32C2E4AE6D3005F3FC2 /* UIView+Toast.m in Sources */,
 				04A9F32D2E4AE6D3005F3FC2 /* UIView+LPRadius.m in Sources */,
-				047473392E545CCF004AFE7D /* MGTemplateDetailsController.m in Sources */,
 				04E8C4062E4F1FEB00EC2E96 /* MGMineController.m in Sources */,
 				04E6E1CD2E4C3BF700407F94 /* MGTemplateCategoryModel.m in Sources */,
 				04A9F32E2E4AE6D3005F3FC2 /* UIImage+LP.m in Sources */,
@@ -820,6 +889,11 @@
 				04E6E1D62E4ED0F700407F94 /* MGGetPointsView.m in Sources */,
 				04A9F3312E4AE6D3005F3FC2 /* UIhelpTools.m in Sources */,
 				047473252E532386004AFE7D /* MGMainContainerController.m in Sources */,
+				04CDD13E2E580FA700286F4C /* MGPhotoListController.m in Sources */,
+				04CDD13F2E580FA700286F4C /* MGPhotosController.m in Sources */,
+				04CDD15F2E585A5000286F4C /* MGPointsDetailsModel.m in Sources */,
+				04CDD1402E580FA700286F4C /* MGPhotoListCell.m in Sources */,
+				04CDD15C2E5859F400286F4C /* LVEmptyView.m in Sources */,
 				047473302E54248F004AFE7D /* MGMemberHeader.m in Sources */,
 				04A9F3322E4AE6D3005F3FC2 /* NSDate+Helper.m in Sources */,
 				04E8C4012E4EE33800EC2E96 /* MGGetPointsFreeAlertView.m in Sources */,
@@ -847,6 +921,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Magina/Magina.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4PGNNN9ZX4;
@@ -870,7 +945,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.apollo.Magina;
+				PRODUCT_BUNDLE_IDENTIFIER = com.magina.ai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -883,6 +958,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Magina/Magina.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4PGNNN9ZX4;
@@ -906,7 +982,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.apollo.Magina;
+				PRODUCT_BUNDLE_IDENTIFIER = com.magina.ai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";

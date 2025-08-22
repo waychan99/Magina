@@ -20,6 +20,9 @@
 
 @implementation MGGlobalManager
 
+@synthesize isToday  = _isToday;
+@synthesize loggedIn = _loggedIn;
+
 static MGGlobalManager *_instance;
 
 + (id)allocWithZone:(struct _NSZone *)zone{
@@ -248,6 +251,84 @@ static MGGlobalManager *_instance;
             [[NSUserDefaults standardUserDefaults] synchronize];
         }
     });
+}
+
+// 获取总积分
+- (void)requestTotoalPoints {
+    if (self.isLoggedIn) {
+        NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+        [params setValue:self.accountInfo.user_id forKey:@"user_id"];
+        [LVHttpRequest get:@"/api/v1/getTotalPoints" param:params header:@{} baseUrlType:CDHttpBaseUrlTypeMagina_ljw isNeedPublickParam:YES isNeedPublickHeader:YES isNeedEncryptHeader:YES isNeedEncryptParam:YES isNeedDecryptResponse:YES encryptType:CDHttpBaseUrlTypeMagina_ljw timeout:20.0 modelClass:nil completion:^(NSInteger status, NSString * _Nonnull message, id  _Nullable result, NSError * _Nullable error, id  _Nullable responseObject) {
+            if (status != 1 || error) {
+                return;
+            }
+            self.currentPoints = [result[@"coin"] floatValue];
+        }];
+    }
+}
+
+// 每日赠送积分
+- (void)requestDailyBonusPoints {
+    if (self.isLoggedIn) {
+        NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+        [params setValue:self.accountInfo.user_id forKey:@"user_id"];
+        [LVHttpRequest post:@"/api/v1/dailyBonus" param:params header:@{} baseUrlType:CDHttpBaseUrlTypeMagina_ljw isNeedPublickParam:YES isNeedPublickHeader:YES isNeedEncryptHeader:YES isNeedEncryptParam:YES isNeedDecryptResponse:YES encryptType:CDHttpBaseUrlTypeMagina_ljw timeout:20.0 modelClass:nil completion:^(NSInteger status, NSString * _Nonnull message, id  _Nullable result, NSError * _Nullable error, id  _Nullable responseObject) {
+            if (status != 1 || error) {
+                return;
+            }
+            self.currentPoints = [result[@"coin"] floatValue];
+        }];
+    }
+}
+
+- (MGAccountInfo *)accountInfo {
+    if (!_accountInfo) {
+        _accountInfo = [MGAccountInfo mj_objectWithKeyValues:[MGLoginFactory getAccountInfo]];
+        if (!_accountInfo) {
+            _accountInfo = [[MGAccountInfo alloc] init];
+        }
+    }
+    return _accountInfo;
+}
+
+- (BOOL)isLoggedIn {
+    return self.accountInfo.access_token.length;
+}
+
+- (void)setLoggedIn:(BOOL)loggedIn {
+}
+
+- (BOOL)isToday {
+    return _isToday;
+}
+
+- (void)setIsToday:(BOOL)isToday {
+}
+
+- (void)checkCurrentDate {
+    NSDateComponents *currentDateCmps = [[NSDate sharedCalendar] components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:[NSDate date]];
+    NSDate *currentDate = [[NSDate sharedCalendar] dateFromComponents:currentDateCmps];
+    NSDate *localDate = [[NSUserDefaults standardUserDefaults] objectForKey:MG_CURRENT_DATE_KEY];
+    if (!localDate) {
+        _isToday = NO;
+        [[NSUserDefaults standardUserDefaults] setObject:currentDate forKey:MG_CURRENT_DATE_KEY];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    } else {
+        NSDateComponents *dayInterval = [[NSDate sharedCalendar] components:NSCalendarUnitDay fromDate:currentDate toDate:localDate options:0];
+        if (dayInterval.day == 0) {
+            _isToday = YES;
+        } else {
+            _isToday = NO;
+            [[NSUserDefaults standardUserDefaults] setObject:currentDate forKey:MG_CURRENT_DATE_KEY];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+    }
+}
+
+- (void)refreshLocalPoints {
+    if (!self.isToday && !self.isLoggedIn) {
+        self.localPoints = 30.0;
+    }
 }
 
 @end

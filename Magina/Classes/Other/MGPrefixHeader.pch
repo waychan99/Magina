@@ -18,6 +18,7 @@
 #import "MGGlobalManager.h"
 #import "UIhelpTools.h"
 #import "NSDate+Helper.h"
+#import "MGLoginFactory.h"
 
 #import <MJExtension/MJExtension.h>
 #import <Masonry/Masonry.h>
@@ -31,9 +32,12 @@
 
 //key
 static NSString *const LTV_CLEAN_CACHE_TIMESTAMPS_KEY = @"LTV_CLEAN_CACHE_TIMESTAMPS_KEY"; //定期清理缓存时间戳
+static NSString *const MG_ACCOUNT_INFO_KEY = @"MG_ACCOUNT_INFO_KEY"; //存储账号信息
+static NSString *const MG_CURRENT_DATE_KEY = @"MG_CURRENT_DATE_KEY"; //存储当天日期
 
 //Notification
 static NSString *const MG_USER_LOCAL_INFO_REQUEST_SUCCESSED_NOTI = @"MG_USER_LOCAL_INFO_REQUEST_SUCCESSED_NOTI";//用户本地信息请求成功
+static NSString *const MG_LOGIN_SUCCESSED_NOTI =  @"MG_LOGIN_SUCCESSED_NOTI";   //登录成功通知
 
 //path
 static NSString *const LP_USER_LOCAL_INFO_PATH = @"lp_user_local_info"; //用户本地信息存储路径

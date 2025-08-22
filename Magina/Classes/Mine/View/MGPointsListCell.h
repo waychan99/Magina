@@ -11,7 +11,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 static NSString * const MGPointsListCellKey = @"MGPointsListCell";
 
+@class MGPointsDetailsModel;
+
 @interface MGPointsListCell : UICollectionViewCell
+
+@property (nonatomic, strong) MGPointsDetailsModel *pointsDetailsModel;
 
 @end
 

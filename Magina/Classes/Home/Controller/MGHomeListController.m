@@ -131,6 +131,14 @@
     }
 }
 
+- (void)setGenderIndex:(NSInteger)genderIndex {
+    if (_genderIndex != genderIndex) {
+        LVLog(@"需要刷新列表 --- %zd", genderIndex);
+    }
+    _genderIndex = genderIndex;
+    LVLog(@"初始的 --- %zd", genderIndex);
+}
+
 #pragma mark - getter
 - (UICollectionView *)templateListView {
     if (!_templateListView) {
