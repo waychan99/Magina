@@ -36,6 +36,7 @@ target 'Magina' do
   pod 'SPButton'
   # PanModal
   pod 'HWPanModal'
-
+  # google人脸识别
+  # pod 'GoogleMLKit/FaceDetection', '8.0.0'
 
 end

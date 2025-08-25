@@ -11,11 +11,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 static NSString * const MGHomeListCellKey = @"MGHomeListCell";
 
-@class MGTemplateListModel;
+@class MGTemplateListViewModel;
 
 @interface MGHomeListCell : UICollectionViewCell
 
-@property (nonatomic, strong) MGTemplateListModel *templateListModel;
+@property (nonatomic, strong) MGTemplateListViewModel *templateListViewModel;
 
 @end
 

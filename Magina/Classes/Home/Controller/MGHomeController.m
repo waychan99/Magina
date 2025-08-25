@@ -14,6 +14,7 @@
 #import "MGGetPointsFreeAlertView.h"
 #import <JXCategoryView/JXCategoryView.h>
 #import "UIView+GradientColors.h"
+#import "SPButton.h"
 
 @interface MGHomeController ()<JXCategoryListContainerViewDelegate, JXCategoryViewDelegate>
 @property (nonatomic, strong) UIView *topBar;
@@ -28,8 +29,10 @@
 @property (nonatomic, strong) JXCategoryIndicatorLineView *lineView;
 @property (nonatomic, strong) JXCategoryListContainerView *listContainerView;
 
-@property (nonatomic, strong) UIButton *filterBtn;
+@property (nonatomic, strong) SPButton *filterBtn;
 @property (nonatomic, strong) UIActivityIndicatorView *indicator;
+@property (nonatomic, strong) UIButton *noDataBtn;
+@property (nonatomic, strong) NSValue *toastPointValue;
 
 @property (nonatomic, strong) NSMutableArray<MGTemplateCategoryModel *> *categoryList;
 @property (nonatomic, assign) NSInteger genderIndex;
@@ -41,9 +44,6 @@
 #pragma mark - lifeCycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.genderIndex = 0;
-    self.categoryIndex = 0;
     
     [self setupUIComponents];
     [self requestCategoryList];
@@ -69,6 +69,8 @@
     
     self.categoryView.indicators = @[self.lineView];
     self.categoryView.listContainer = self.listContainerView;
+    
+    [self.view addSubview:self.noDataBtn];
     
     @lv_weakify(self)
     [self.KVOController observe:[MGGlobalManager shareInstance] keyPath:@"currentPoints" options:NSKeyValueObservingOptionNew block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
@@ -99,25 +101,30 @@
     self.pointsBgView.frame = CGRectMake(self.headerIcon.lv_x - 12.5 - pointsBgViewW, 0, pointsBgViewW, 31);
     self.pointsBgView.lv_centerY = self.logoImageView.lv_centerY;
     
-    self.categoryView.frame = CGRectMake(0, 138 - 50, selfW - 50, 50);
+    self.categoryView.frame = CGRectMake(0, 138 - 50, selfW - 80, 50);
     self.indicator.frame = CGRectMake(0, 138 - 50, selfW, 50);
-    self.filterBtn.frame = CGRectMake(selfW - 50, 138 - 50, 50, 50);
+    self.filterBtn.frame = CGRectMake(selfW - 80, 0, 75, 25);
+    self.filterBtn.lv_centerY = self.categoryView.lv_centerY;
     self.listContainerView.frame = CGRectMake(0, 138, selfW, self.view.lv_height - 138);
+    
+    self.noDataBtn.frame = CGRectMake(10, self.view.lv_centerY, selfW - 20, 40);
 }
 
 #pragma mark - eventClick
 - (void)clickFilterBtn:(UIButton *)sender {
     [MGTemplateFilterSheet showWithGenderIndex:self.genderIndex categoryIndex:self.categoryIndex categorys:self.categoryList resultBlock:^(NSInteger genderIndex, NSInteger categoryIndex) {
-        self.genderIndex = genderIndex;
         self.categoryIndex = categoryIndex;
-        LVLog(@"genderIndex ---- %zd, categoryIndex -- %zd", self.genderIndex, self.categoryIndex);
         [self.categoryView selectItemAtIndex:self.categoryIndex];
+        if (self.genderIndex != genderIndex) {
+            self.genderIndex = genderIndex;
+            [self.listContainerView reloadData];
+        }
     } completion:nil];
 }
 
 - (void)tapPointsBgViewAction:(UIGestureRecognizer *)sender {
 //    [MGGetPointsView showWithResultBlock:^(NSInteger actionType) {
-//            
+//
 //    } completion:nil];
     
     [MGGetPointsFreeAlertView showWithResultBlock:^(NSInteger actionType) {
@@ -130,15 +137,21 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)clickNoDataBtn:(UIButton *)sender {
+    [self requestCategoryList];
+}
+
 #pragma mark - request
 - (void)requestCategoryList {
     [self showLoading];
     [LVHttpRequest get:@"/magina-api/api/v1/get_template_categorys/" param:@{} header:@{} baseUrlType:CDHttpBaseUrlTypeMagina isNeedPublickParam:YES isNeedPublickHeader:YES isNeedEncryptHeader:YES isNeedEncryptParam:YES isNeedDecryptResponse:YES encryptType:CDHttpBaseUrlTypeMagina timeout:20.0 modelClass:nil completion:^(NSInteger status, NSString * _Nonnull message, id  _Nullable result, NSError * _Nullable error, id  _Nullable responseObject) {
         [self hideLoading];
         if (status != 1 || error) {
-            [self.view makeToast:NSLocalizedString(@"global_request_error", nil)];
+            [self.view makeToast:NSLocalizedString(@"global_request_error", nil) duration:2.0 position:self.toastPointValue];
+            self.noDataBtn.hidden = NO;
             return;
         }
+        self.noDataBtn.hidden = YES;
         self.categoryList = [MGTemplateCategoryModel mj_objectArrayWithKeyValuesArray:result];
         self.categoryView.titles = [self.categoryList valueForKeyPath:@"category_name"];
         [self.categoryView reloadData];
@@ -158,10 +171,13 @@
 
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     MGHomeListController *list = [[MGHomeListController alloc] init];
-    self.categoryIndex = index;
     list.cateogryModel = self.categoryList[index];
     list.genderIndex = self.genderIndex;
     return list;
+}
+
+- (void)categoryView:(JXCategoryBaseView *)categoryView didSelectedItemAtIndex:(NSInteger)index {
+    self.categoryIndex = index;
 }
 
 #pragma mark - assistMethod
@@ -177,6 +193,19 @@
     if (self.indicator.superview) {
         [self.indicator stopAnimating];
         [self.indicator removeFromSuperview];
+    }
+}
+
+#pragma mark - setter
+- (void)setGenderIndex:(NSInteger)genderIndex {
+    _genderIndex = genderIndex;
+    
+    if (genderIndex == 0) {
+        [self.filterBtn setTitle:NSLocalizedString(@"All", nil) forState:UIControlStateNormal];
+    } else if (genderIndex == 1) {
+        [self.filterBtn setTitle:NSLocalizedString(@"Man", nil) forState:UIControlStateNormal];
+    } else if (genderIndex == 2) {
+        [self.filterBtn setTitle:NSLocalizedString(@"Woman", nil) forState:UIControlStateNormal];
     }
 }
 
@@ -271,11 +300,18 @@
     return _listContainerView;
 }
 
-- (UIButton *)filterBtn {
+- (SPButton *)filterBtn {
     if (!_filterBtn) {
-        _filterBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _filterBtn = [[SPButton alloc] initWithImagePosition:SPButtonImagePositionRight];
         [_filterBtn setImage:[UIImage imageNamed:@"MG_home_topbar_menu_settings_icon"] forState:UIControlStateNormal];
+        [_filterBtn setTitle:@"All" forState:UIControlStateNormal];
+        [_filterBtn setTitleColor:HEX_COLOR(0xFF4E92) forState:UIControlStateNormal];
+        _filterBtn.titleLabel.font = [UIFont systemFontOfSize:13.0 weight:UIFontWeightMedium];
+        _filterBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
+        _filterBtn.imageTitleSpace = 5;
         [_filterBtn addTarget:self action:@selector(clickFilterBtn:) forControlEvents:UIControlEventTouchUpInside];
+        _filterBtn.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.1];
+        _filterBtn.layer.cornerRadius = 12.5;
     }
     return _filterBtn;
 }
@@ -289,6 +325,25 @@
     return _indicator;
 }
 
+- (UIButton *)noDataBtn {
+    if (!_noDataBtn) {
+        _noDataBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _noDataBtn.titleLabel.font = [UIFont systemFontOfSize:13.0 weight:UIFontWeightMedium];
+        _noDataBtn.titleLabel.textColor = HEX_COLOR(0x8C919D);
+        [_noDataBtn addTarget:self action:@selector(clickNoDataBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [_noDataBtn setTitle:NSLocalizedString(@"No content available at the moment", nil) forState:UIControlStateNormal];
+        _noDataBtn.hidden = YES;
+    }
+    return _noDataBtn;
+}
+
+- (NSValue *)toastPointValue {
+    if (!_toastPointValue) {
+        _toastPointValue = [NSValue valueWithCGPoint:CGPointMake(self.view.lv_width / 2, self.view.lv_height / 2 - 60)];
+    }
+    return _toastPointValue;
+}
+
 - (NSMutableArray<MGTemplateCategoryModel *> *)categoryList {
     if (!_categoryList) {
         _categoryList = [NSMutableArray array];
@@ -297,3 +352,4 @@
 }
 
 @end
+

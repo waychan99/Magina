@@ -83,7 +83,7 @@ static MGImageManager *_instance;
     NSMutableArray *albumArr = [NSMutableArray array];
     PHFetchOptions *option = [[PHFetchOptions alloc] init];
     option.predicate = [NSPredicate predicateWithFormat:@"mediaType == %ld", PHAssetMediaTypeImage];
-    option.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES]];
+    option.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
     PHFetchResult *myPhotoStreamAlbum = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAlbumMyPhotoStream options:nil];
     PHFetchResult *smartAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeAny options:nil];
     PHFetchResult *topLevelUserCollections = [PHCollectionList fetchTopLevelUserCollectionsWithOptions:nil];
@@ -170,6 +170,10 @@ static MGImageManager *_instance;
     return [self getPhotoWithAsset:asset completion:completion progressHandler:nil networkAccessAllowed:YES];
 }
 
+- (PHImageRequestID)getPhotoWithAsset:(PHAsset *)asset photoWidth:(CGFloat)photoWidth completion:(void (^)(UIImage * _Nonnull, NSDictionary * _Nonnull, BOOL))completion {
+    return [self getPhotoWithAsset:asset photoWidth:photoWidth completion:completion progressHandler:nil networkAccessAllowed:YES];
+}
+
 - (PHImageRequestID)getPhotoWithAsset:(PHAsset *)asset completion:(void (^)(UIImage *photo,NSDictionary *info,BOOL isDegraded))completion progressHandler:(void (^)(double progress, NSError *error, BOOL *stop, NSDictionary *info))progressHandler networkAccessAllowed:(BOOL)networkAccessAllowed {
     CGFloat fullScreenWidth = MGScreenWidth;
     if (_photoPreviewMaxWidth > 0 && fullScreenWidth > _photoPreviewMaxWidth) {
@@ -228,6 +232,16 @@ static MGImageManager *_instance;
         }
     }];
     return imageRequestID;
+}
+
+- (PHImageRequestID)getPostImageWithAlbumModel:(MGAlbumModel *)model completion:(void (^)(UIImage * _Nonnull))completion {
+    id asset = [model.result firstObject];
+    if (!asset) {
+        return -1;
+    }
+    return [[MGImageManager shareInstance] getPhotoWithAsset:asset photoWidth:80 completion:^(UIImage *photo, NSDictionary *info, BOOL isDegraded) {
+        if (completion) completion(photo);
+    }];
 }
 
 #pragma mark - Private Method

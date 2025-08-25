@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MGTemplateDetailsCell">
+            <rect key="frame" x="0.0" y="0.0" width="227" height="381"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="227" height="381"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rea-du-Xxh">
+                        <rect key="frame" x="0.0" y="0.0" width="227" height="381"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="73O-7t-fAT">
+                        <rect key="frame" x="52.666666666666657" y="322" width="122" height="42"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cI-es-yfq">
+                                <rect key="frame" x="3" y="3" width="58" height="36"/>
+                                <color key="backgroundColor" red="0.91764705882352937" green="0.29803921568627451" blue="0.53725490196078429" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="MG_thin_template_icon"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="18"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="clickThinBtn:" destination="gTV-IL-0wX" eventType="touchUpInside" id="eGd-HF-I4B"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="brr-YR-ItT">
+                                <rect key="frame" x="61" y="3" width="58" height="36"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="MG_fat_template_icon"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="18"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="clickFatBtn:" destination="gTV-IL-0wX" eventType="touchUpInside" id="EsF-Gz-mF1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="brr-YR-ItT" secondAttribute="bottom" constant="3" id="AIg-hx-AQ9"/>
+                            <constraint firstAttribute="height" constant="42" id="Ogd-PG-0Ks"/>
+                            <constraint firstItem="brr-YR-ItT" firstAttribute="width" secondItem="4cI-es-yfq" secondAttribute="width" id="VqY-R0-GCN"/>
+                            <constraint firstItem="brr-YR-ItT" firstAttribute="leading" secondItem="4cI-es-yfq" secondAttribute="trailing" id="apN-ex-Am2"/>
+                            <constraint firstAttribute="bottom" secondItem="4cI-es-yfq" secondAttribute="bottom" constant="3" id="fbc-Fm-Od7"/>
+                            <constraint firstAttribute="width" constant="122" id="g98-yZ-n61"/>
+                            <constraint firstItem="4cI-es-yfq" firstAttribute="top" secondItem="73O-7t-fAT" secondAttribute="top" constant="3" id="kud-JT-CAi"/>
+                            <constraint firstItem="brr-YR-ItT" firstAttribute="top" secondItem="73O-7t-fAT" secondAttribute="top" constant="3" id="rI1-0a-EuC"/>
+                            <constraint firstAttribute="trailing" secondItem="brr-YR-ItT" secondAttribute="trailing" constant="3" id="uYQ-oa-oZH"/>
+                            <constraint firstItem="4cI-es-yfq" firstAttribute="leading" secondItem="73O-7t-fAT" secondAttribute="leading" constant="3" id="upt-FA-Sqo"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="21"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Rea-du-Xxh" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="G2q-wo-t9Z"/>
+                <constraint firstAttribute="bottom" secondItem="Rea-du-Xxh" secondAttribute="bottom" id="Ixa-bv-KLL"/>
+                <constraint firstItem="73O-7t-fAT" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="PRJ-v3-W1y"/>
+                <constraint firstItem="Rea-du-Xxh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ZKJ-KR-qub"/>
+                <constraint firstAttribute="bottom" secondItem="73O-7t-fAT" secondAttribute="bottom" constant="17" id="iNh-SQ-Pf4"/>
+                <constraint firstAttribute="trailing" secondItem="Rea-du-Xxh" secondAttribute="trailing" id="tuj-t8-QDt"/>
+            </constraints>
+            <size key="customSize" width="227" height="381"/>
+            <connections>
+                <outlet property="btnBgView" destination="73O-7t-fAT" id="gNt-K2-wNj"/>
+                <outlet property="fatBtn" destination="brr-YR-ItT" id="0iE-NJ-g4k"/>
+                <outlet property="mainImageView" destination="Rea-du-Xxh" id="FRK-ir-lnR"/>
+                <outlet property="thinBtn" destination="4cI-es-yfq" id="AVV-65-ZBh"/>
+            </connections>
+            <point key="canvasLocation" x="-170.22900763358777" y="49.647887323943664"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="MG_fat_template_icon" width="32" height="23"/>
+        <image name="MG_thin_template_icon" width="32" height="23"/>
+    </resources>
+</document>

@@ -9,7 +9,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class MGTemplateListModel;
+
 @interface MGTemplateDetailsController : MGBaseController
+
+@property (nonatomic, strong) NSArray<MGTemplateListModel *> *templateModels;
+
+@property (nonatomic, assign) NSInteger currentFaceIndex;
 
 @end
 

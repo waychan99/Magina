@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MGFaceResultCell">
+            <rect key="frame" x="0.0" y="0.0" width="141" height="150"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="141" height="150"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eNc-HO-eYi">
+                        <rect key="frame" x="0.0" y="0.0" width="141" height="150"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <real key="value" value="29.5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrx-4P-Wqv">
+                        <rect key="frame" x="123.66666666666667" y="0.0" width="17.333333333333329" height="17.666666666666668"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17.5" id="e0q-4i-tTp"/>
+                            <constraint firstAttribute="width" constant="17.5" id="ygv-Gi-Vr7"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="MG_selected_face_icon"/>
+                        <connections>
+                            <action selector="clickDeleteFaceBtn:" destination="gTV-IL-0wX" eventType="touchUpInside" id="ifE-bV-eYA"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="hrx-4P-Wqv" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="7mH-xu-xPc"/>
+                <constraint firstItem="eNc-HO-eYi" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Qvr-FI-5Vh"/>
+                <constraint firstItem="eNc-HO-eYi" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="V2L-bo-1wJ"/>
+                <constraint firstAttribute="trailing" secondItem="hrx-4P-Wqv" secondAttribute="trailing" id="hy9-cO-PWW"/>
+                <constraint firstAttribute="trailing" secondItem="eNc-HO-eYi" secondAttribute="trailing" id="xIk-eC-Akd"/>
+                <constraint firstAttribute="bottom" secondItem="eNc-HO-eYi" secondAttribute="bottom" id="yYi-yC-agX"/>
+            </constraints>
+            <size key="customSize" width="141" height="150"/>
+            <connections>
+                <outlet property="contentImageView" destination="eNc-HO-eYi" id="X28-Tb-mgt"/>
+            </connections>
+            <point key="canvasLocation" x="199.23664122137404" y="11.971830985915494"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="MG_selected_face_icon" width="17.666666030883789" height="17.666666030883789"/>
+    </resources>
+</document>

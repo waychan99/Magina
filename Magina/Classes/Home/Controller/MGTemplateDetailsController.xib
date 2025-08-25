@@ -55,6 +55,9 @@
                             <real key="value" value="9"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="clickPhotographBtn:" destination="-1" eventType="touchUpInside" id="9gq-hb-LjG"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ImN-Du-kMe">
                     <rect key="frame" x="25" y="769" width="100" height="49"/>

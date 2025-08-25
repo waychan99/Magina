@@ -134,7 +134,10 @@
 #pragma mark - SLAvCaptureToolDelegate  图片、音视频输出代理
 - (void)captureTool:(SLAvCaptureTool *)captureTool didOutputPhoto:(UIImage *)image error:(NSError *)error {
     [self.avCaptureTool stopRunning];
-    NSLog(@"拍照结束 -- %@", image);
+    if (image) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+        !self.outputPhotoCallback ?: self.outputPhotoCallback(image);
+    }
 }
 
 #pragma mark - getter

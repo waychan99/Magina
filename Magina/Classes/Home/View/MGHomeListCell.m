@@ -7,26 +7,47 @@
 
 #import "MGHomeListCell.h"
 #import "MGTemplateListModel.h"
+#import "MGTemplateListViewModel.h"
 
 @interface MGHomeListCell ()
-@property (weak, nonatomic) IBOutlet UIImageView *topImageView;
-@property (weak, nonatomic) IBOutlet UILabel *titleLab;
+@property (nonatomic, weak) UIImageView *topImageView;
+@property (nonatomic, weak) UILabel *titleLab;
 @end
 
 @implementation MGHomeListCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
-    self.topImageView.layer.cornerRadius = 13.0f;
-    self.topImageView.contentMode = UIViewContentModeScaleAspectFill;
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        [self setupUIComponents];
+    }
+    return self;
 }
 
-- (void)setTemplateListModel:(MGTemplateListModel *)templateListModel {
-    _templateListModel = templateListModel;
+- (void)setupUIComponents {
+    UIImageView *topImageView = [[UIImageView alloc] init];
+    topImageView.layer.cornerRadius = 13.0f;
+    topImageView.layer.masksToBounds = YES;
+    topImageView.contentMode = UIViewContentModeScaleAspectFill;
+    [self.contentView addSubview:topImageView];
+    self.topImageView = topImageView;
     
-    [self.topImageView sd_setImageWithURL:[NSURL URLWithString:templateListModel.change_face_thumbnai] placeholderImage:nil];
-    self.titleLab.text = templateListModel.title;
+    UILabel *titleLab = [[UILabel alloc] init];
+    titleLab.textColor = [UIColor whiteColor];
+    titleLab.font = [UIFont systemFontOfSize:12.0 weight:UIFontWeightSemibold];
+    titleLab.textAlignment = NSTextAlignmentLeft;
+    titleLab.numberOfLines = 0;
+    [self.contentView addSubview:titleLab];
+    self.titleLab = titleLab;
+}
+
+- (void)setTemplateListViewModel:(MGTemplateListViewModel *)templateListViewModel {
+    _templateListViewModel = templateListViewModel;
+    
+    self.topImageView.frame = templateListViewModel.contentImageViewF;
+    [self.topImageView sd_setImageWithURL:[NSURL URLWithString:templateListViewModel.listModel.change_face_thumbnai] placeholderImage:nil];
+    
+    self.titleLab.frame = templateListViewModel.titleLabF;
+    self.titleLab.text = templateListViewModel.listModel.title;
 }
 
 @end

@@ -524,13 +524,51 @@
 #pragma mark - AVCapturePhotoCaptureDelegate 图片输出代理
 /// 捕获拍摄图片的回调
 - (void)captureOutput:(AVCapturePhotoOutput *)output didFinishProcessingPhoto:(AVCapturePhoto *)photo error:(nullable NSError *)error API_AVAILABLE(ios(11.0)) {
+    UIDeviceOrientation deviceOrientation = [[UIDevice currentDevice] orientation];
+    CGImagePropertyOrientation imageOrientation = [self imageOrientationFromDeviceOrientation:deviceOrientation];
+    
     NSData *data = [photo fileDataRepresentation];
     UIImage *image  = [UIImage imageWithData:data];
+    
+    UIImage *orientedImage = [self fixImageOrientation:image withOrientation:imageOrientation];
+    
     if ([self.delegate respondsToSelector:@selector(captureTool:didOutputPhoto:error:)]) {
-        [self.delegate captureTool:self didOutputPhoto:image error:error];
-    }else {
+        [self.delegate captureTool:self didOutputPhoto:orientedImage error:error];
+    } else {
         NSLog(@"请实现代理方法：captureTool:didOutputPhoto:error:");
     }
+}
+
+// 将设备方向转换为图像方向
+- (CGImagePropertyOrientation)imageOrientationFromDeviceOrientation:(UIDeviceOrientation)deviceOrientation {
+    switch (deviceOrientation) {
+        case UIDeviceOrientationPortrait:
+            return kCGImagePropertyOrientationRight; // 相机传感器方向是横屏
+        case UIDeviceOrientationPortraitUpsideDown:
+            return kCGImagePropertyOrientationLeft;
+        case UIDeviceOrientationLandscapeLeft:
+            return kCGImagePropertyOrientationUp;
+        case UIDeviceOrientationLandscapeRight:
+            return kCGImagePropertyOrientationDown;
+        default:
+            return kCGImagePropertyOrientationRight;
+    }
+}
+
+// 修正图像方向
+- (UIImage *)fixImageOrientation:(UIImage *)image withOrientation:(CGImagePropertyOrientation)orientation {
+    // 如果方向正确，直接返回
+    if (orientation == kCGImagePropertyOrientationUp) {
+        return image;
+    }
+    
+    // 创建上下文并绘制正确方向的图像
+    UIGraphicsBeginImageContext(image.size);
+    [image drawInRect:CGRectMake(0, 0, image.size.width, image.size.height)];
+    UIImage *fixedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return fixedImage;
 }
 
 #pragma mark -  AVCaptureVideoDataOutputSampleBufferDelegate AVCaptureAudioDataOutputSampleBufferDelegate 实时输出帧内容

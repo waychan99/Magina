@@ -54,13 +54,11 @@
 		04CDD0F02E56E76F00286F4C /* SLAvCaptureTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD0EF2E56E76F00286F4C /* SLAvCaptureTool.m */; };
 		04CDD0F62E56EF7900286F4C /* MGShotFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD0F52E56EF7900286F4C /* MGShotFocusView.m */; };
 		04CDD12F2E570FFE00286F4C /* SLDelayPerform.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD12E2E570FFE00286F4C /* SLDelayPerform.m */; };
-		04CDD1322E574F6700286F4C /* WWZMenuPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD1312E574F6700286F4C /* WWZMenuPopover.m */; };
 		04CDD13E2E580FA700286F4C /* MGPhotoListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD1342E580FA600286F4C /* MGPhotoListController.m */; };
 		04CDD13F2E580FA700286F4C /* MGPhotosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD1362E580FA600286F4C /* MGPhotosController.m */; };
 		04CDD1402E580FA700286F4C /* MGPhotoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD13A2E580FA600286F4C /* MGPhotoListCell.m */; };
 		04CDD1412E580FA700286F4C /* MGPhotoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CDD13B2E580FA600286F4C /* MGPhotoListCell.xib */; };
 		04CDD1502E5815C300286F4C /* MGAddPhotosController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CDD1462E5815C300286F4C /* MGAddPhotosController.xib */; };
-		04CDD1512E5815C300286F4C /* MGTemplateDetailsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CDD14F2E5815C300286F4C /* MGTemplateDetailsController.xib */; };
 		04CDD1522E5815C300286F4C /* MGAddPhotosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD1452E5815C300286F4C /* MGAddPhotosController.m */; };
 		04CDD1532E5815C300286F4C /* MGShotController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD14C2E5815C300286F4C /* MGShotController.m */; };
 		04CDD1542E5815C300286F4C /* MGHomeListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD14A2E5815C300286F4C /* MGHomeListController.m */; };
@@ -71,7 +69,6 @@
 		04CDD15F2E585A5000286F4C /* MGPointsDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CDD15E2E585A5000286F4C /* MGPointsDetailsModel.m */; };
 		04E6E1B62E4B200A00407F94 /* MGMainNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E1B52E4B200A00407F94 /* MGMainNavigationController.m */; };
 		04E6E1BC2E4B217D00407F94 /* MGBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E1BB2E4B217D00407F94 /* MGBaseController.m */; };
-		04E6E1C62E4C29F700407F94 /* MGHomeListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E6E1C52E4C29F700407F94 /* MGHomeListCell.xib */; };
 		04E6E1C72E4C29F700407F94 /* MGHomeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E1C42E4C29F700407F94 /* MGHomeListCell.m */; };
 		04E6E1CA2E4C3BC200407F94 /* MGBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E1C92E4C3BC200407F94 /* MGBaseModel.m */; };
 		04E6E1CD2E4C3BF700407F94 /* MGTemplateCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E1CC2E4C3BF700407F94 /* MGTemplateCategoryModel.m */; };
@@ -87,6 +84,22 @@
 		04E8C40F2E4F28BA00EC2E96 /* MGMineListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E8C40E2E4F28BA00EC2E96 /* MGMineListCell.xib */; };
 		04E8C4102E4F28BA00EC2E96 /* MGMineListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E8C40D2E4F28BA00EC2E96 /* MGMineListCell.m */; };
 		04E8C4132E4F297300EC2E96 /* MGMineListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E8C4122E4F297300EC2E96 /* MGMineListController.m */; };
+		04F54C492E5BF8D400769DAA /* MGTemplateDetailsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54C482E5BF8D400769DAA /* MGTemplateDetailsController.xib */; };
+		04F54C4D2E5BF8ED00769DAA /* MGSelectFaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54C4B2E5BF8ED00769DAA /* MGSelectFaceController.m */; };
+		04F54C4E2E5BF8ED00769DAA /* MGSelectFaceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54C4C2E5BF8ED00769DAA /* MGSelectFaceController.xib */; };
+		04F54C512E5BF90400769DAA /* MGTemplateListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54C502E5BF90400769DAA /* MGTemplateListViewModel.m */; };
+		04F54C582E5BF94200769DAA /* MGSelectFaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54C532E5BF94200769DAA /* MGSelectFaceCell.m */; };
+		04F54C592E5BF94200769DAA /* MGFaceResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54C562E5BF94200769DAA /* MGFaceResultCell.m */; };
+		04F54C5A2E5BF94200769DAA /* MGSelectFaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54C542E5BF94200769DAA /* MGSelectFaceCell.xib */; };
+		04F54C5B2E5BF94200769DAA /* MGFaceResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54C572E5BF94200769DAA /* MGFaceResultCell.xib */; };
+		04F54C612E5BF95000769DAA /* MGAlbumListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54C5D2E5BF95000769DAA /* MGAlbumListView.m */; };
+		04F54C622E5BF95000769DAA /* MGTemplateDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54C5F2E5BF95000769DAA /* MGTemplateDetailsCell.m */; };
+		04F54C632E5BF95000769DAA /* MGTemplateDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54C602E5BF95000769DAA /* MGTemplateDetailsCell.xib */; };
+		04F54C662E5BF9E000769DAA /* MGFaceRecognition.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54C652E5BF9E000769DAA /* MGFaceRecognition.m */; };
+		04F54C6A2E5BFE3000769DAA /* MGProductionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54C682E5BFE3000769DAA /* MGProductionController.m */; };
+		04F54C6B2E5BFE3000769DAA /* MGProductionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54C692E5BFE3000769DAA /* MGProductionController.xib */; };
+		04F54C6E2E5C124700769DAA /* MGProductionProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54C6D2E5C124700769DAA /* MGProductionProgress.m */; };
+		04F54C712E5C583000769DAA /* MGFaceDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54C702E5C583000769DAA /* MGFaceDetection.m */; };
 		8AE9E8B1543D003823C4F1E4 /* Pods_Magina.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C50838DFF8AFFA3B1D401A /* Pods_Magina.framework */; };
 /* End PBXBuildFile section */
 
@@ -180,8 +193,6 @@
 		04CDD0F52E56EF7900286F4C /* MGShotFocusView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGShotFocusView.m; sourceTree = "<group>"; };
 		04CDD12D2E570FFE00286F4C /* SLDelayPerform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLDelayPerform.h; sourceTree = "<group>"; };
 		04CDD12E2E570FFE00286F4C /* SLDelayPerform.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLDelayPerform.m; sourceTree = "<group>"; };
-		04CDD1302E574F6700286F4C /* WWZMenuPopover.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWZMenuPopover.h; sourceTree = "<group>"; };
-		04CDD1312E574F6700286F4C /* WWZMenuPopover.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWZMenuPopover.m; sourceTree = "<group>"; };
 		04CDD1332E580FA600286F4C /* MGPhotoListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGPhotoListController.h; sourceTree = "<group>"; };
 		04CDD1342E580FA600286F4C /* MGPhotoListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGPhotoListController.m; sourceTree = "<group>"; };
 		04CDD1352E580FA600286F4C /* MGPhotosController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGPhotosController.h; sourceTree = "<group>"; };
@@ -201,7 +212,6 @@
 		04CDD14C2E5815C300286F4C /* MGShotController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGShotController.m; sourceTree = "<group>"; };
 		04CDD14D2E5815C300286F4C /* MGTemplateDetailsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGTemplateDetailsController.h; sourceTree = "<group>"; };
 		04CDD14E2E5815C300286F4C /* MGTemplateDetailsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGTemplateDetailsController.m; sourceTree = "<group>"; };
-		04CDD14F2E5815C300286F4C /* MGTemplateDetailsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGTemplateDetailsController.xib; sourceTree = "<group>"; };
 		04CDD1572E58492E00286F4C /* MGAccountInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGAccountInfo.h; sourceTree = "<group>"; };
 		04CDD1582E58492E00286F4C /* MGAccountInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGAccountInfo.m; sourceTree = "<group>"; };
 		04CDD15A2E5859F400286F4C /* LVEmptyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LVEmptyView.h; sourceTree = "<group>"; };
@@ -214,7 +224,6 @@
 		04E6E1BB2E4B217D00407F94 /* MGBaseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGBaseController.m; sourceTree = "<group>"; };
 		04E6E1C32E4C29F700407F94 /* MGHomeListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGHomeListCell.h; sourceTree = "<group>"; };
 		04E6E1C42E4C29F700407F94 /* MGHomeListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGHomeListCell.m; sourceTree = "<group>"; };
-		04E6E1C52E4C29F700407F94 /* MGHomeListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGHomeListCell.xib; sourceTree = "<group>"; };
 		04E6E1C82E4C3BC200407F94 /* MGBaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGBaseModel.h; sourceTree = "<group>"; };
 		04E6E1C92E4C3BC200407F94 /* MGBaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGBaseModel.m; sourceTree = "<group>"; };
 		04E6E1CB2E4C3BF700407F94 /* MGTemplateCategoryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGTemplateCategoryModel.h; sourceTree = "<group>"; };
@@ -239,6 +248,32 @@
 		04E8C40E2E4F28BA00EC2E96 /* MGMineListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGMineListCell.xib; sourceTree = "<group>"; };
 		04E8C4112E4F297300EC2E96 /* MGMineListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGMineListController.h; sourceTree = "<group>"; };
 		04E8C4122E4F297300EC2E96 /* MGMineListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGMineListController.m; sourceTree = "<group>"; };
+		04F54C482E5BF8D400769DAA /* MGTemplateDetailsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGTemplateDetailsController.xib; sourceTree = "<group>"; };
+		04F54C4A2E5BF8ED00769DAA /* MGSelectFaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGSelectFaceController.h; sourceTree = "<group>"; };
+		04F54C4B2E5BF8ED00769DAA /* MGSelectFaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGSelectFaceController.m; sourceTree = "<group>"; };
+		04F54C4C2E5BF8ED00769DAA /* MGSelectFaceController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGSelectFaceController.xib; sourceTree = "<group>"; };
+		04F54C4F2E5BF90400769DAA /* MGTemplateListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGTemplateListViewModel.h; sourceTree = "<group>"; };
+		04F54C502E5BF90400769DAA /* MGTemplateListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGTemplateListViewModel.m; sourceTree = "<group>"; };
+		04F54C522E5BF94200769DAA /* MGSelectFaceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGSelectFaceCell.h; sourceTree = "<group>"; };
+		04F54C532E5BF94200769DAA /* MGSelectFaceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGSelectFaceCell.m; sourceTree = "<group>"; };
+		04F54C542E5BF94200769DAA /* MGSelectFaceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGSelectFaceCell.xib; sourceTree = "<group>"; };
+		04F54C552E5BF94200769DAA /* MGFaceResultCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGFaceResultCell.h; sourceTree = "<group>"; };
+		04F54C562E5BF94200769DAA /* MGFaceResultCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGFaceResultCell.m; sourceTree = "<group>"; };
+		04F54C572E5BF94200769DAA /* MGFaceResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGFaceResultCell.xib; sourceTree = "<group>"; };
+		04F54C5C2E5BF95000769DAA /* MGAlbumListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGAlbumListView.h; sourceTree = "<group>"; };
+		04F54C5D2E5BF95000769DAA /* MGAlbumListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGAlbumListView.m; sourceTree = "<group>"; };
+		04F54C5E2E5BF95000769DAA /* MGTemplateDetailsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGTemplateDetailsCell.h; sourceTree = "<group>"; };
+		04F54C5F2E5BF95000769DAA /* MGTemplateDetailsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGTemplateDetailsCell.m; sourceTree = "<group>"; };
+		04F54C602E5BF95000769DAA /* MGTemplateDetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGTemplateDetailsCell.xib; sourceTree = "<group>"; };
+		04F54C642E5BF9E000769DAA /* MGFaceRecognition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGFaceRecognition.h; sourceTree = "<group>"; };
+		04F54C652E5BF9E000769DAA /* MGFaceRecognition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGFaceRecognition.m; sourceTree = "<group>"; };
+		04F54C672E5BFE3000769DAA /* MGProductionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGProductionController.h; sourceTree = "<group>"; };
+		04F54C682E5BFE3000769DAA /* MGProductionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGProductionController.m; sourceTree = "<group>"; };
+		04F54C692E5BFE3000769DAA /* MGProductionController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGProductionController.xib; sourceTree = "<group>"; };
+		04F54C6C2E5C124700769DAA /* MGProductionProgress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGProductionProgress.h; sourceTree = "<group>"; };
+		04F54C6D2E5C124700769DAA /* MGProductionProgress.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGProductionProgress.m; sourceTree = "<group>"; };
+		04F54C6F2E5C583000769DAA /* MGFaceDetection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGFaceDetection.h; sourceTree = "<group>"; };
+		04F54C702E5C583000769DAA /* MGFaceDetection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGFaceDetection.m; sourceTree = "<group>"; };
 		64DD56DCE6B674BEB2758DF4 /* Pods-Magina.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Magina.debug.xcconfig"; path = "Target Support Files/Pods-Magina/Pods-Magina.debug.xcconfig"; sourceTree = "<group>"; };
 		75C50838DFF8AFFA3B1D401A /* Pods_Magina.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Magina.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		924A495E2CEAA3C9DFE27B07 /* Pods-Magina.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Magina.release.xcconfig"; path = "Target Support Files/Pods-Magina/Pods-Magina.release.xcconfig"; sourceTree = "<group>"; };
@@ -326,6 +361,8 @@
 				04E6E1CC2E4C3BF700407F94 /* MGTemplateCategoryModel.m */,
 				04E6E1CE2E4C62D700407F94 /* MGTemplateListModel.h */,
 				04E6E1CF2E4C62D700407F94 /* MGTemplateListModel.m */,
+				04F54C4F2E5BF90400769DAA /* MGTemplateListViewModel.h */,
+				04F54C502E5BF90400769DAA /* MGTemplateListViewModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -335,7 +372,6 @@
 			children = (
 				04E6E1C32E4C29F700407F94 /* MGHomeListCell.h */,
 				04E6E1C42E4C29F700407F94 /* MGHomeListCell.m */,
-				04E6E1C52E4C29F700407F94 /* MGHomeListCell.xib */,
 				04E6E1D12E4C7B0700407F94 /* MGTemplateFilterSheet.h */,
 				04E6E1D22E4C7B0700407F94 /* MGTemplateFilterSheet.m */,
 				04E6E1D42E4ED0F700407F94 /* MGGetPointsView.h */,
@@ -350,8 +386,21 @@
 				04CDD0E92E56CB5E00286F4C /* MGAlbumTakePhotoCell.h */,
 				04CDD0EA2E56CB5E00286F4C /* MGAlbumTakePhotoCell.m */,
 				04CDD0EB2E56CB5E00286F4C /* MGAlbumTakePhotoCell.xib */,
+				04F54C522E5BF94200769DAA /* MGSelectFaceCell.h */,
+				04F54C532E5BF94200769DAA /* MGSelectFaceCell.m */,
+				04F54C542E5BF94200769DAA /* MGSelectFaceCell.xib */,
+				04F54C552E5BF94200769DAA /* MGFaceResultCell.h */,
+				04F54C562E5BF94200769DAA /* MGFaceResultCell.m */,
+				04F54C572E5BF94200769DAA /* MGFaceResultCell.xib */,
 				04CDD0F42E56EF7900286F4C /* MGShotFocusView.h */,
 				04CDD0F52E56EF7900286F4C /* MGShotFocusView.m */,
+				04F54C5C2E5BF95000769DAA /* MGAlbumListView.h */,
+				04F54C5D2E5BF95000769DAA /* MGAlbumListView.m */,
+				04F54C5E2E5BF95000769DAA /* MGTemplateDetailsCell.h */,
+				04F54C5F2E5BF95000769DAA /* MGTemplateDetailsCell.m */,
+				04F54C602E5BF95000769DAA /* MGTemplateDetailsCell.xib */,
+				04F54C6C2E5C124700769DAA /* MGProductionProgress.h */,
+				04F54C6D2E5C124700769DAA /* MGProductionProgress.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -494,8 +543,10 @@
 				04CDD0EF2E56E76F00286F4C /* SLAvCaptureTool.m */,
 				04CDD12D2E570FFE00286F4C /* SLDelayPerform.h */,
 				04CDD12E2E570FFE00286F4C /* SLDelayPerform.m */,
-				04CDD1302E574F6700286F4C /* WWZMenuPopover.h */,
-				04CDD1312E574F6700286F4C /* WWZMenuPopover.m */,
+				04F54C642E5BF9E000769DAA /* MGFaceRecognition.h */,
+				04F54C652E5BF9E000769DAA /* MGFaceRecognition.m */,
+				04F54C6F2E5C583000769DAA /* MGFaceDetection.h */,
+				04F54C702E5C583000769DAA /* MGFaceDetection.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -649,12 +700,18 @@
 				04CDD14A2E5815C300286F4C /* MGHomeListController.m */,
 				04CDD14D2E5815C300286F4C /* MGTemplateDetailsController.h */,
 				04CDD14E2E5815C300286F4C /* MGTemplateDetailsController.m */,
-				04CDD14F2E5815C300286F4C /* MGTemplateDetailsController.xib */,
+				04F54C482E5BF8D400769DAA /* MGTemplateDetailsController.xib */,
 				04CDD1442E5815C300286F4C /* MGAddPhotosController.h */,
 				04CDD1452E5815C300286F4C /* MGAddPhotosController.m */,
 				04CDD1462E5815C300286F4C /* MGAddPhotosController.xib */,
+				04F54C4A2E5BF8ED00769DAA /* MGSelectFaceController.h */,
+				04F54C4B2E5BF8ED00769DAA /* MGSelectFaceController.m */,
+				04F54C4C2E5BF8ED00769DAA /* MGSelectFaceController.xib */,
 				04CDD14B2E5815C300286F4C /* MGShotController.h */,
 				04CDD14C2E5815C300286F4C /* MGShotController.m */,
+				04F54C672E5BFE3000769DAA /* MGProductionController.h */,
+				04F54C682E5BFE3000769DAA /* MGProductionController.m */,
+				04F54C692E5BFE3000769DAA /* MGProductionController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -762,22 +819,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04F54C5A2E5BF94200769DAA /* MGSelectFaceCell.xib in Resources */,
+				04F54C5B2E5BF94200769DAA /* MGFaceResultCell.xib in Resources */,
 				0474734C2E55C1C1004AFE7D /* MGAlbumPhotoListCell.xib in Resources */,
 				0474731F2E52F84D004AFE7D /* MGPointsListCell.xib in Resources */,
 				04CDD1502E5815C300286F4C /* MGAddPhotosController.xib in Resources */,
-				04CDD1512E5815C300286F4C /* MGTemplateDetailsController.xib in Resources */,
 				047473322E54249A004AFE7D /* MGMemberHeader.xib in Resources */,
+				04F54C6B2E5BFE3000769DAA /* MGProductionController.xib in Resources */,
 				04CDD0EC2E56CB5E00286F4C /* MGAlbumTakePhotoCell.xib in Resources */,
+				04F54C4E2E5BF8ED00769DAA /* MGSelectFaceController.xib in Resources */,
 				04E6E1D82E4ED2BA00407F94 /* MGGetPointsView.xib in Resources */,
 				04E8C40F2E4F28BA00EC2E96 /* MGMineListCell.xib in Resources */,
-				04E6E1C62E4C29F700407F94 /* MGHomeListCell.xib in Resources */,
 				0474731A2E52F323004AFE7D /* MGPersonalCell.xib in Resources */,
 				04E8C40B2E4F201300EC2E96 /* MGMineHeaderView.xib in Resources */,
+				04F54C492E5BF8D400769DAA /* MGTemplateDetailsController.xib in Resources */,
 				047473292E5413ED004AFE7D /* MGInviteFriendsController.xib in Resources */,
 				04A9F3012E4AE1EA005F3FC2 /* Assets.xcassets in Resources */,
 				04E8C4032E4EE34300EC2E96 /* MGGetPointsFreeAlertView.xib in Resources */,
 				04CDD1412E580FA700286F4C /* MGPhotoListCell.xib in Resources */,
 				04A9F3032E4AE1EA005F3FC2 /* LaunchScreen.storyboard in Resources */,
+				04F54C632E5BF95000769DAA /* MGTemplateDetailsCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -814,13 +875,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Magina/Pods-Magina-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Magina/Pods-Magina-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -840,22 +897,30 @@
 				04A9F2FF2E4AE1EA005F3FC2 /* main.m in Sources */,
 				047473472E55ABE6004AFE7D /* MGAssetModel.m in Sources */,
 				04E6E1D02E4C62D700407F94 /* MGTemplateListModel.m in Sources */,
+				04F54C512E5BF90400769DAA /* MGTemplateListViewModel.m in Sources */,
 				04E8C4092E4F200900EC2E96 /* MGMineHeaderView.m in Sources */,
 				047473352E542AE0004AFE7D /* MGMemberListController.m in Sources */,
 				04A9F33D2E4AE6F6005F3FC2 /* LVHttpRequest.m in Sources */,
 				04E6E1C72E4C29F700407F94 /* MGHomeListCell.m in Sources */,
+				04F54C4D2E5BF8ED00769DAA /* MGSelectFaceController.m in Sources */,
 				0474734B2E55C1C1004AFE7D /* MGAlbumPhotoListCell.m in Sources */,
+				04F54C582E5BF94200769DAA /* MGSelectFaceCell.m in Sources */,
+				04F54C592E5BF94200769DAA /* MGFaceResultCell.m in Sources */,
 				04CDD1592E58492E00286F4C /* MGAccountInfo.m in Sources */,
 				04A9F35C2E4B0C73005F3FC2 /* MGGlobalManager.m in Sources */,
 				04CDD12F2E570FFE00286F4C /* SLDelayPerform.m in Sources */,
 				04A9F34D2E4AE749005F3FC2 /* LVKeyboardLaunch.m in Sources */,
 				04CDD0F62E56EF7900286F4C /* MGShotFocusView.m in Sources */,
+				04F54C712E5C583000769DAA /* MGFaceDetection.m in Sources */,
 				04A9F34E2E4AE749005F3FC2 /* LVTimer.m in Sources */,
 				04A9F3562E4AE796005F3FC2 /* MGAppleLogin.m in Sources */,
 				04A9F34F2E4AE749005F3FC2 /* LVCommonTool.m in Sources */,
 				04A9F3502E4AE749005F3FC2 /* LTVWaterFlowLayout.m in Sources */,
 				04CDD1522E5815C300286F4C /* MGAddPhotosController.m in Sources */,
+				04F54C6E2E5C124700769DAA /* MGProductionProgress.m in Sources */,
 				04CDD1532E5815C300286F4C /* MGShotController.m in Sources */,
+				04F54C612E5BF95000769DAA /* MGAlbumListView.m in Sources */,
+				04F54C622E5BF95000769DAA /* MGTemplateDetailsCell.m in Sources */,
 				04CDD1542E5815C300286F4C /* MGHomeListController.m in Sources */,
 				04CDD1552E5815C300286F4C /* MGTemplateDetailsController.m in Sources */,
 				04CDD1562E5815C300286F4C /* MGHomeController.m in Sources */,
@@ -869,12 +934,13 @@
 				047473182E52F306004AFE7D /* MGPersonalCell.m in Sources */,
 				0474731D2E52F829004AFE7D /* MGPointsListCell.m in Sources */,
 				04A9F3402E4AE6F6005F3FC2 /* SWKeyChainStore.m in Sources */,
-				04CDD1322E574F6700286F4C /* WWZMenuPopover.m in Sources */,
+				04F54C662E5BF9E000769DAA /* MGFaceRecognition.m in Sources */,
 				04A9F32A2E4AE6D3005F3FC2 /* UIView+GradientColors.m in Sources */,
 				04E6E1BC2E4B217D00407F94 /* MGBaseController.m in Sources */,
 				04A9F32B2E4AE6D3005F3FC2 /* NSLayoutConstraint+BSIBDesignable.m in Sources */,
 				04A9F3442E4AE730005F3FC2 /* LPNetwortReachability.m in Sources */,
 				04E8C4132E4F297300EC2E96 /* MGMineListController.m in Sources */,
+				04F54C6A2E5BFE3000769DAA /* MGProductionController.m in Sources */,
 				04A9F3532E4AE780005F3FC2 /* MGLoginFactory.m in Sources */,
 				04CDD0F02E56E76F00286F4C /* SLAvCaptureTool.m in Sources */,
 				04A9F32C2E4AE6D3005F3FC2 /* UIView+Toast.m in Sources */,
@@ -926,7 +992,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4PGNNN9ZX4;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GCC_PREFIX_HEADER = /Users/mac/Desktop/Magina/Magina/Classes/Other/MGPrefixHeader.pch;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Magina/Classes/Other/MGPrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Magina/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Magina;
@@ -963,7 +1029,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4PGNNN9ZX4;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GCC_PREFIX_HEADER = /Users/mac/Desktop/Magina/Magina/Classes/Other/MGPrefixHeader.pch;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Magina/Classes/Other/MGPrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Magina/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Magina;
