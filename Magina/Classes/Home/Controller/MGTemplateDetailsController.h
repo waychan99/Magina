@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSArray<MGTemplateListModel *> *templateModels;
 
-@property (nonatomic, assign) NSInteger currentFaceIndex;
+@property (nonatomic, assign) NSInteger currentTemplateIndex;
 
 @end
 

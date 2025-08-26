@@ -331,4 +331,54 @@ static MGGlobalManager *_instance;
     }
 }
 
+- (void)saveFavoriteTemplateRecord:(NSDictionary *)record {
+    NSArray *ids = [self.favoriteTemplates valueForKeyPath:@"id"];
+    ids = [ids valueForKey:@"stringValue"];
+    if ([ids containsObject:record[@"id"]]) {
+        [self.favoriteTemplates removeObjectAtIndex:[ids indexOfObject:record[@"id"]]];
+    }
+    [self.favoriteTemplates insertObject:record atIndex:0];
+    [self.favoriteTemplates writeToFile:self.favoriteTemplatesPath atomically:YES];
+}
+
+- (void)deleteFavoriteTemplateRecord:(NSDictionary *)record {
+    NSArray *ids = [self.favoriteTemplates valueForKeyPath:@"id"];
+    ids = [ids valueForKey:@"stringValue"];
+    if ([ids containsObject:record[@"id"]]) {
+        [self.favoriteTemplates removeObjectAtIndex:[ids indexOfObject:record[@"id"]]];
+    }
+    [self.favoriteTemplates writeToFile:self.favoriteTemplatesPath atomically:YES];
+}
+
+- (void)deleteFavoriteTemplateRecords {
+    [self.favoriteTemplates removeAllObjects];
+    [self.favoriteTemplates writeToFile:self.favoriteTemplatesPath atomically:YES];
+}
+
+- (NSMutableArray<NSDictionary *> *)favoriteTemplates {
+    if (!_favoriteTemplates) {
+        _favoriteTemplates = [[NSMutableArray alloc] initWithContentsOfFile:self.favoriteTemplatesPath];
+        if (!_favoriteTemplates) {
+            _favoriteTemplates = [NSMutableArray array];
+        }
+    }
+    return _favoriteTemplates;
+}
+
+- (NSString *)favoriteTemplatesPath {
+    if (!_favoriteTemplatesPath) {
+        _favoriteTemplatesPath = [NSString lp_documentFilePathWithFileName:[NSString stringWithFormat:@"%@_%@", MG_FAVORITE_TEMPLATE_RECORD_PATH, self.accountInfo.user_id]];
+    }
+    return _favoriteTemplatesPath;
+}
+
+- (void)requestSseConfig {
+    [LVHttpRequest get:@"/api/v1/sseConfig" param:@{} header:@{} baseUrlType:CDHttpBaseUrlTypeMagina_ljw isNeedPublickParam:YES isNeedPublickHeader:YES isNeedEncryptHeader:YES isNeedEncryptParam:YES isNeedDecryptResponse:YES encryptType:CDHttpBaseUrlTypeMagina_ljw timeout:20.0 modelClass:nil completion:^(NSInteger status, NSString * _Nonnull message, id  _Nullable result, NSError * _Nullable error, id  _Nullable responseObject) {
+        if (status != 1 || error) {
+            return;
+        }
+        self.sse_url = result[@"sse_url"];
+    }];
+}
+
 @end

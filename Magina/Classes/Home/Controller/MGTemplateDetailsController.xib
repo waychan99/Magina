@@ -66,12 +66,16 @@
                         <constraint firstAttribute="height" constant="49" id="Xlz-Ht-6gr"/>
                     </constraints>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" image="MG_home_collection_template_selected"/>
+                    <state key="normal" image="MG_home_collection_template_normal"/>
+                    <state key="selected" image="MG_home_collection_template_selected"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                             <real key="value" value="24.5"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="clickCollectBtn:" destination="-1" eventType="touchUpInside" id="diV-Xl-Xvi"/>
+                    </connections>
                 </button>
                 <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MG_home_add_photo_icon" translatesAutoresizingMaskIntoConstraints="NO" id="K9J-FG-eEH">
                     <rect key="frame" x="25" y="690" width="59" height="59"/>
@@ -128,6 +132,7 @@
     </objects>
     <resources>
         <image name="MG_home_add_photo_icon" width="59" height="59"/>
+        <image name="MG_home_collection_template_normal" width="37" height="37"/>
         <image name="MG_home_collection_template_selected" width="19.666666030883789" height="19.666666030883789"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

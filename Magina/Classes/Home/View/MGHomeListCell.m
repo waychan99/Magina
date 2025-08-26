@@ -25,9 +25,9 @@
 
 - (void)setupUIComponents {
     UIImageView *topImageView = [[UIImageView alloc] init];
+    topImageView.contentMode = UIViewContentModeScaleAspectFill;
     topImageView.layer.cornerRadius = 13.0f;
     topImageView.layer.masksToBounds = YES;
-    topImageView.contentMode = UIViewContentModeScaleAspectFill;
     [self.contentView addSubview:topImageView];
     self.topImageView = topImageView;
     

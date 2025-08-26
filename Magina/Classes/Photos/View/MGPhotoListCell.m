@@ -6,6 +6,7 @@
 //
 
 #import "MGPhotoListCell.h"
+#import "MGFavoriteTemplateModel.h"
 
 @interface MGPhotoListCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *contentImageView;
@@ -17,7 +18,14 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.contentImageView.image = [UIImage imageNamed:@"MG_home_getPoints_free_alert_bg"];
+    self.contentImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.contentImageView.layer.masksToBounds = YES;
+}
+
+- (void)setFavoriteModel:(MGFavoriteTemplateModel *)favoriteModel {
+    _favoriteModel = favoriteModel;
+    
+    [self.contentImageView sd_setImageWithURL:[NSURL URLWithString:favoriteModel.template_img] placeholderImage:nil];
 }
 
 @end

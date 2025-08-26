@@ -29,6 +29,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *title;
 
+#pragma mark - help
+
+/** 0:标准   1:肥胖 */
+@property (nonatomic, assign) NSInteger bodyTye;
+
 @end
 
 NS_ASSUME_NONNULL_END

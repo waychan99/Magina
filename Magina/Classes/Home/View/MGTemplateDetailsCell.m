@@ -30,16 +30,42 @@
 - (void)setListModel:(MGTemplateListModel *)listModel {
     _listModel = listModel;
     
-    [self.mainImageView sd_setImageWithURL:[NSURL URLWithString:listModel.change_face_thumbnai] placeholderImage:nil];
+    if (listModel.bodyTye == 0) {
+        if (listModel.standardImgs.count > 0) {
+            [self.mainImageView sd_setImageWithURL:[NSURL URLWithString:listModel.standardImgs.firstObject] placeholderImage:nil options:SDWebImageScaleDownLargeImages context:@{SDWebImageContextImageThumbnailPixelSize : [NSValue valueWithCGSize:CGSizeMake(self.mainImageView.lv_width * 2.0, self.mainImageView.lv_height * 2.0)]}];
+        } else {
+            [self.mainImageView sd_setImageWithURL:[NSURL URLWithString:listModel.change_face_thumbnai] placeholderImage:nil];
+        }
+    } else {
+        if (listModel.fatImgs.count > 0) {
+            [self.mainImageView sd_setImageWithURL:[NSURL URLWithString:listModel.fatImgs.firstObject] placeholderImage:nil options:SDWebImageScaleDownLargeImages context:@{SDWebImageContextImageThumbnailPixelSize : [NSValue valueWithCGSize:CGSizeMake(self.mainImageView.lv_width * 2.0, self.mainImageView.lv_height * 2.0)]}];
+        } else {
+            [self.mainImageView sd_setImageWithURL:[NSURL URLWithString:listModel.change_face_thumbnai] placeholderImage:nil];
+        }
+    }
+    
 }
+
 - (IBAction)clickThinBtn:(UIButton *)sender {
     sender.backgroundColor = HEX_COLOR(0xEA4C89);
     self.fatBtn.backgroundColor = [UIColor colorWithWhite:.0 alpha:.0];
+    self.listModel.bodyTye = 0;
+    if (self.listModel.standardImgs.count > 0) {
+        [self.mainImageView sd_setImageWithURL:[NSURL URLWithString:self.listModel.standardImgs.firstObject] placeholderImage:nil options:SDWebImageScaleDownLargeImages context:@{SDWebImageContextImageThumbnailPixelSize : [NSValue valueWithCGSize:CGSizeMake(self.mainImageView.lv_width * 2.0, self.mainImageView.lv_height * 2.0)]}];
+    } else {
+        [self.mainImageView sd_setImageWithURL:[NSURL URLWithString:self.listModel.change_face_thumbnai] placeholderImage:nil];
+    }
 }
 
 - (IBAction)clickFatBtn:(UIButton *)sender {
     sender.backgroundColor = HEX_COLOR(0xEA4C89);
     self.thinBtn.backgroundColor = [UIColor colorWithWhite:.0 alpha:.0];
+    self.listModel.bodyTye = 1;
+    if (self.listModel.fatImgs.count > 0) {
+        [self.mainImageView sd_setImageWithURL:[NSURL URLWithString:self.listModel.fatImgs.firstObject] placeholderImage:nil options:SDWebImageScaleDownLargeImages context:@{SDWebImageContextImageThumbnailPixelSize : [NSValue valueWithCGSize:CGSizeMake(self.mainImageView.lv_width * 2.0, self.mainImageView.lv_height * 2.0)]}];
+    } else {
+        [self.mainImageView sd_setImageWithURL:[NSURL URLWithString:self.listModel.change_face_thumbnai] placeholderImage:nil];
+    }
 }
 
 @end

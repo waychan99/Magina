@@ -92,9 +92,9 @@ static MGFaceRecognition *_instance;
 // 将归一化坐标转换为图像坐标
 - (CGRect)convertNormalizedRect:(CGRect)normalizedRect toImageSize:(CGSize)imageSize {
     CGRect rect = CGRectMake(normalizedRect.origin.x * imageSize.width,
-                            (1 - normalizedRect.origin.y - normalizedRect.size.height) * imageSize.height,
-                            normalizedRect.size.width * imageSize.width,
-                            normalizedRect.size.height * imageSize.height);
+                             (1 - normalizedRect.origin.y - normalizedRect.size.height) * imageSize.height,
+                             normalizedRect.size.width * imageSize.width,
+                             normalizedRect.size.height * imageSize.height);
     return rect;
 }
 
@@ -109,9 +109,9 @@ static MGFaceRecognition *_instance;
     
     // 创建新区域
     CGRect doubleSizeRect = CGRectMake(faceCenter.x - newWidth/2,
-                                      faceCenter.y - newHeight/2,
-                                      newWidth,
-                                      newHeight);
+                                       faceCenter.y - newHeight/2,
+                                       newWidth,
+                                       newHeight);
     
     // 确保区域在图像范围内
     return [self adjustRect:doubleSizeRect toFitInSize:imageSize];
@@ -153,9 +153,9 @@ static MGFaceRecognition *_instance;
 - (UIImage *)cropImage:(UIImage *)image toRect:(CGRect)rect {
     // 确保裁剪区域在图像范围内
     rect = CGRectMake(MAX(0, rect.origin.x),
-                     MAX(0, rect.origin.y),
-                     MIN(image.size.width - rect.origin.x, rect.size.width),
-                     MIN(image.size.height - rect.origin.y, rect.size.height));
+                      MAX(0, rect.origin.y),
+                      MIN(image.size.width - rect.origin.x, rect.size.width),
+                      MIN(image.size.height - rect.origin.y, rect.size.height));
     
     CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, rect);
     UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
@@ -163,30 +163,5 @@ static MGFaceRecognition *_instance;
     
     return croppedImage;
 }
-
-// 裁剪图像
-//- (UIImage *)cropImage:(UIImage *)image toRect:(CGRect)rect {
-//    // 确保裁剪区域在图像范围内
-//    rect = CGRectMake(MAX(0, rect.origin.x),
-//                     MAX(0, rect.origin.y),
-//                     MIN(image.size.width - rect.origin.x, rect.size.width),
-//                     MIN(image.size.height - rect.origin.y, rect.size.height));
-//    
-//    // 创建图像上下文
-//    UIGraphicsBeginImageContextWithOptions(rect.size, NO, image.scale);
-//    CGContextRef context = UIGraphicsGetCurrentContext();
-//    
-//    // 绘制裁剪区域
-//    CGRect drawRect = CGRectMake(-rect.origin.x, -rect.origin.y, image.size.width, image.size.height);
-//    CGContextTranslateCTM(context, 0, rect.size.height);
-//    CGContextScaleCTM(context, 1.0, -1.0);
-//    CGContextDrawImage(context, drawRect, image.CGImage);
-//    
-//    // 获取裁剪后的图像
-//    UIImage *croppedImage = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//    
-//    return croppedImage;
-//}
 
 @end

@@ -61,6 +61,48 @@ static NSString *const kAppleLoginKey  = @"apple";
     };
 }
 
+#pragma mark - request
+- (void)loginRequestWithCode:(NSString *)code fromType:(NSString *)fromType email:(NSString *)email userName:(NSString *)userName userAvatar:(NSString *)userAvatar {
+    [SVProgressHUD show];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setValue:code forKey:@"from_code"];
+    [params setValue:fromType forKey:@"from_type"];
+    [params setValue:email forKey:@"third_email"];
+    [params setValue:userName forKey:@"third_user_name"];
+    [params setValue:userAvatar forKey:@"third_user_avatar"];
+    [LVHttpRequest get:@"/magina-api/api/v1/login/index.php" param:params header:@{} baseUrlType:CDHttpBaseUrlTypeMagina isNeedPublickParam:YES isNeedPublickHeader:YES isNeedEncryptHeader:YES isNeedEncryptParam:YES isNeedDecryptResponse:YES encryptType:CDHttpBaseUrlTypeMagina timeout:20.0 modelClass:nil completion:^(NSInteger status, NSString * _Nonnull message, id  _Nullable result, NSError * _Nullable error, id  _Nullable responseObject) {
+        [SVProgressHUD dismiss];
+        if (status != 1 || error) {
+            [self.view makeToast:NSLocalizedString(@"global_request_error", nil)];
+            return;
+        }
+        [MGLoginFactory saveAccountInfo:result];
+        [MGGlobalManager shareInstance].accountInfo = [MGAccountInfo mj_objectWithKeyValues:result];
+        [[NSNotificationCenter defaultCenter] postNotificationName:MG_LOGIN_SUCCESSED_NOTI object:nil];
+        [self requestFavoriteList];
+    }];
+}
+
+- (void)requestFavoriteList {
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setValue:[MGGlobalManager shareInstance].accountInfo.user_id forKey:@"user_id"];
+    [params setValue:@(1) forKey:@"page"];
+    [params setValue:@(3000) forKey:@"limit"];
+    [LVHttpRequest get:@"/api/v1/getUserCollections" param:params header:@{} baseUrlType:CDHttpBaseUrlTypeMagina_ljw isNeedPublickParam:YES isNeedPublickHeader:YES isNeedEncryptHeader:YES isNeedEncryptParam:YES isNeedDecryptResponse:YES encryptType:CDHttpBaseUrlTypeMagina_ljw timeout:20.0 modelClass:nil completion:^(NSInteger status, NSString * _Nonnull message, id  _Nullable result, NSError * _Nullable error, id  _Nullable responseObject) {
+        if (status != 1 || error) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:MG_REQUEST_FAVORITE_TEMPLATE_STATUS_NOTI object:@{@"status" : @(0)}];
+            return;
+        }
+        NSArray *resultArr = (NSArray *)result;
+        if (resultArr.count > 0) {
+            NSMutableArray *resultArrM = [resultArr mutableCopy];
+            [MGGlobalManager shareInstance].favoriteTemplates = resultArrM;
+            [resultArrM writeToFile:[MGGlobalManager shareInstance].favoriteTemplatesPath atomically:YES];
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:MG_REQUEST_FAVORITE_TEMPLATE_STATUS_NOTI object:@{@"status" : @(1)}];
+    }];
+}
+
 #pragma mark - UITableViewDelegate, UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.dataSource.count;
@@ -114,26 +156,6 @@ static NSString *const kAppleLoginKey  = @"apple";
             @lv_strongify(self)
             [self loginRequestWithCode:user fromType:kAppleLoginKey email:email userName:[NSString stringWithFormat:@"%@ %@", givenName, familyName] userAvatar:nil];
         }
-    }];
-}
-
-- (void)loginRequestWithCode:(NSString *)code fromType:(NSString *)fromType email:(NSString *)email userName:(NSString *)userName userAvatar:(NSString *)userAvatar {
-    [SVProgressHUD show];
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setValue:code forKey:@"from_code"];
-    [params setValue:fromType forKey:@"from_type"];
-    [params setValue:email forKey:@"third_email"];
-    [params setValue:userName forKey:@"third_user_name"];
-    [params setValue:userAvatar forKey:@"third_user_avatar"];
-    [LVHttpRequest get:@"/magina-api/api/v1/login/index.php" param:params header:@{} baseUrlType:CDHttpBaseUrlTypeMagina isNeedPublickParam:YES isNeedPublickHeader:YES isNeedEncryptHeader:YES isNeedEncryptParam:YES isNeedDecryptResponse:YES encryptType:CDHttpBaseUrlTypeMagina timeout:20.0 modelClass:nil completion:^(NSInteger status, NSString * _Nonnull message, id  _Nullable result, NSError * _Nullable error, id  _Nullable responseObject) {
-        [SVProgressHUD dismiss];
-        if (status != 1 || error) {
-            [self.view makeToast:NSLocalizedString(@"global_request_error", nil)];
-            return;
-        }
-        [MGLoginFactory saveAccountInfo:result];
-        [MGGlobalManager shareInstance].accountInfo = [MGAccountInfo mj_objectWithKeyValues:result];
-        [[NSNotificationCenter defaultCenter] postNotificationName:MG_LOGIN_SUCCESSED_NOTI object:nil];
     }];
 }
 

@@ -99,7 +99,12 @@
 		04F54C6A2E5BFE3000769DAA /* MGProductionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54C682E5BFE3000769DAA /* MGProductionController.m */; };
 		04F54C6B2E5BFE3000769DAA /* MGProductionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54C692E5BFE3000769DAA /* MGProductionController.xib */; };
 		04F54C6E2E5C124700769DAA /* MGProductionProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54C6D2E5C124700769DAA /* MGProductionProgress.m */; };
-		04F54C712E5C583000769DAA /* MGFaceDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54C702E5C583000769DAA /* MGFaceDetection.m */; };
+		04F54C742E5D4CA700769DAA /* MGFavoriteListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54C732E5D4CA700769DAA /* MGFavoriteListController.m */; };
+		04F54C782E5D4CE100769DAA /* MGFavoriteTemplateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54C762E5D4CE100769DAA /* MGFavoriteTemplateModel.m */; };
+		04F54C7D2E5D5BD200769DAA /* LVAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54C7B2E5D5BD200769DAA /* LVAlertView.m */; };
+		04F54C7E2E5D5BD200769DAA /* LVAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54C7C2E5D5BD200769DAA /* LVAlertView.xib */; };
+		04F54C802E5DA33A00769DAA /* right_loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 04F54C7F2E5DA33A00769DAA /* right_loading.gif */; };
+		04F54C822E5DA35500769DAA /* left_loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 04F54C812E5DA35500769DAA /* left_loading.gif */; };
 		8AE9E8B1543D003823C4F1E4 /* Pods_Magina.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C50838DFF8AFFA3B1D401A /* Pods_Magina.framework */; };
 /* End PBXBuildFile section */
 
@@ -272,8 +277,15 @@
 		04F54C692E5BFE3000769DAA /* MGProductionController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGProductionController.xib; sourceTree = "<group>"; };
 		04F54C6C2E5C124700769DAA /* MGProductionProgress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGProductionProgress.h; sourceTree = "<group>"; };
 		04F54C6D2E5C124700769DAA /* MGProductionProgress.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGProductionProgress.m; sourceTree = "<group>"; };
-		04F54C6F2E5C583000769DAA /* MGFaceDetection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGFaceDetection.h; sourceTree = "<group>"; };
-		04F54C702E5C583000769DAA /* MGFaceDetection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGFaceDetection.m; sourceTree = "<group>"; };
+		04F54C722E5D4CA700769DAA /* MGFavoriteListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGFavoriteListController.h; sourceTree = "<group>"; };
+		04F54C732E5D4CA700769DAA /* MGFavoriteListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGFavoriteListController.m; sourceTree = "<group>"; };
+		04F54C752E5D4CE100769DAA /* MGFavoriteTemplateModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGFavoriteTemplateModel.h; sourceTree = "<group>"; };
+		04F54C762E5D4CE100769DAA /* MGFavoriteTemplateModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGFavoriteTemplateModel.m; sourceTree = "<group>"; };
+		04F54C7A2E5D5BD200769DAA /* LVAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LVAlertView.h; sourceTree = "<group>"; };
+		04F54C7B2E5D5BD200769DAA /* LVAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LVAlertView.m; sourceTree = "<group>"; };
+		04F54C7C2E5D5BD200769DAA /* LVAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LVAlertView.xib; sourceTree = "<group>"; };
+		04F54C7F2E5DA33A00769DAA /* right_loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = right_loading.gif; sourceTree = "<group>"; };
+		04F54C812E5DA35500769DAA /* left_loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = left_loading.gif; sourceTree = "<group>"; };
 		64DD56DCE6B674BEB2758DF4 /* Pods-Magina.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Magina.debug.xcconfig"; path = "Target Support Files/Pods-Magina/Pods-Magina.debug.xcconfig"; sourceTree = "<group>"; };
 		75C50838DFF8AFFA3B1D401A /* Pods_Magina.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Magina.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		924A495E2CEAA3C9DFE27B07 /* Pods-Magina.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Magina.release.xcconfig"; path = "Target Support Files/Pods-Magina/Pods-Magina.release.xcconfig"; sourceTree = "<group>"; };
@@ -328,6 +340,8 @@
 				04A9F2F72E4AE1EA005F3FC2 /* Info.plist */,
 				04A9F2F92E4AE1EA005F3FC2 /* LaunchScreen.storyboard */,
 				04CDD1422E58145900286F4C /* Magina.entitlements */,
+				04F54C7F2E5DA33A00769DAA /* right_loading.gif */,
+				04F54C812E5DA35500769DAA /* left_loading.gif */,
 			);
 			path = Magina;
 			sourceTree = "<group>";
@@ -545,8 +559,6 @@
 				04CDD12E2E570FFE00286F4C /* SLDelayPerform.m */,
 				04F54C642E5BF9E000769DAA /* MGFaceRecognition.h */,
 				04F54C652E5BF9E000769DAA /* MGFaceRecognition.m */,
-				04F54C6F2E5C583000769DAA /* MGFaceDetection.h */,
-				04F54C702E5C583000769DAA /* MGFaceDetection.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -647,6 +659,9 @@
 		04A9F3592E4B0C19005F3FC2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				04F54C7A2E5D5BD200769DAA /* LVAlertView.h */,
+				04F54C7B2E5D5BD200769DAA /* LVAlertView.m */,
+				04F54C7C2E5D5BD200769DAA /* LVAlertView.xib */,
 				04CDD15A2E5859F400286F4C /* LVEmptyView.h */,
 				04CDD15B2E5859F400286F4C /* LVEmptyView.m */,
 			);
@@ -656,10 +671,12 @@
 		04CDD1372E580FA600286F4C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				04CDD1332E580FA600286F4C /* MGPhotoListController.h */,
-				04CDD1342E580FA600286F4C /* MGPhotoListController.m */,
 				04CDD1352E580FA600286F4C /* MGPhotosController.h */,
 				04CDD1362E580FA600286F4C /* MGPhotosController.m */,
+				04CDD1332E580FA600286F4C /* MGPhotoListController.h */,
+				04CDD1342E580FA600286F4C /* MGPhotoListController.m */,
+				04F54C722E5D4CA700769DAA /* MGFavoriteListController.h */,
+				04F54C732E5D4CA700769DAA /* MGFavoriteListController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -667,6 +684,8 @@
 		04CDD1382E580FA600286F4C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				04F54C752E5D4CE100769DAA /* MGFavoriteTemplateModel.h */,
+				04F54C762E5D4CE100769DAA /* MGFavoriteTemplateModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -821,12 +840,14 @@
 			files = (
 				04F54C5A2E5BF94200769DAA /* MGSelectFaceCell.xib in Resources */,
 				04F54C5B2E5BF94200769DAA /* MGFaceResultCell.xib in Resources */,
+				04F54C822E5DA35500769DAA /* left_loading.gif in Resources */,
 				0474734C2E55C1C1004AFE7D /* MGAlbumPhotoListCell.xib in Resources */,
 				0474731F2E52F84D004AFE7D /* MGPointsListCell.xib in Resources */,
 				04CDD1502E5815C300286F4C /* MGAddPhotosController.xib in Resources */,
 				047473322E54249A004AFE7D /* MGMemberHeader.xib in Resources */,
 				04F54C6B2E5BFE3000769DAA /* MGProductionController.xib in Resources */,
 				04CDD0EC2E56CB5E00286F4C /* MGAlbumTakePhotoCell.xib in Resources */,
+				04F54C802E5DA33A00769DAA /* right_loading.gif in Resources */,
 				04F54C4E2E5BF8ED00769DAA /* MGSelectFaceController.xib in Resources */,
 				04E6E1D82E4ED2BA00407F94 /* MGGetPointsView.xib in Resources */,
 				04E8C40F2E4F28BA00EC2E96 /* MGMineListCell.xib in Resources */,
@@ -838,6 +859,7 @@
 				04E8C4032E4EE34300EC2E96 /* MGGetPointsFreeAlertView.xib in Resources */,
 				04CDD1412E580FA700286F4C /* MGPhotoListCell.xib in Resources */,
 				04A9F3032E4AE1EA005F3FC2 /* LaunchScreen.storyboard in Resources */,
+				04F54C7E2E5D5BD200769DAA /* LVAlertView.xib in Resources */,
 				04F54C632E5BF95000769DAA /* MGTemplateDetailsCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -911,12 +933,12 @@
 				04CDD12F2E570FFE00286F4C /* SLDelayPerform.m in Sources */,
 				04A9F34D2E4AE749005F3FC2 /* LVKeyboardLaunch.m in Sources */,
 				04CDD0F62E56EF7900286F4C /* MGShotFocusView.m in Sources */,
-				04F54C712E5C583000769DAA /* MGFaceDetection.m in Sources */,
 				04A9F34E2E4AE749005F3FC2 /* LVTimer.m in Sources */,
 				04A9F3562E4AE796005F3FC2 /* MGAppleLogin.m in Sources */,
 				04A9F34F2E4AE749005F3FC2 /* LVCommonTool.m in Sources */,
 				04A9F3502E4AE749005F3FC2 /* LTVWaterFlowLayout.m in Sources */,
 				04CDD1522E5815C300286F4C /* MGAddPhotosController.m in Sources */,
+				04F54C782E5D4CE100769DAA /* MGFavoriteTemplateModel.m in Sources */,
 				04F54C6E2E5C124700769DAA /* MGProductionProgress.m in Sources */,
 				04CDD1532E5815C300286F4C /* MGShotController.m in Sources */,
 				04F54C612E5BF95000769DAA /* MGAlbumListView.m in Sources */,
@@ -925,12 +947,14 @@
 				04CDD1552E5815C300286F4C /* MGTemplateDetailsController.m in Sources */,
 				04CDD1562E5815C300286F4C /* MGHomeController.m in Sources */,
 				047473222E52F9A8004AFE7D /* MGPointsListController.m in Sources */,
+				04F54C7D2E5D5BD200769DAA /* LVAlertView.m in Sources */,
 				04CDD0ED2E56CB5E00286F4C /* MGAlbumTakePhotoCell.m in Sources */,
 				04A9F33E2E4AE6F6005F3FC2 /* SWDeviceCenter.m in Sources */,
 				04E8C4102E4F28BA00EC2E96 /* MGMineListCell.m in Sources */,
 				04A9F33F2E4AE6F6005F3FC2 /* LVHttpRequestHelper.m in Sources */,
 				0474732D2E542458004AFE7D /* MGMemberController.m in Sources */,
 				0474732A2E5413ED004AFE7D /* MGInviteFriendsController.m in Sources */,
+				04F54C742E5D4CA700769DAA /* MGFavoriteListController.m in Sources */,
 				047473182E52F306004AFE7D /* MGPersonalCell.m in Sources */,
 				0474731D2E52F829004AFE7D /* MGPointsListCell.m in Sources */,
 				04A9F3402E4AE6F6005F3FC2 /* SWKeyChainStore.m in Sources */,

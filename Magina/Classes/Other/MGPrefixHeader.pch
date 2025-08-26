@@ -19,6 +19,7 @@
 #import "UIhelpTools.h"
 #import "NSDate+Helper.h"
 #import "MGLoginFactory.h"
+#import "LVAlertView.h"
 
 #import <MJExtension/MJExtension.h>
 #import <Masonry/Masonry.h>
@@ -38,8 +39,12 @@ static NSString *const MG_CURRENT_DATE_KEY = @"MG_CURRENT_DATE_KEY"; //存储当
 //Notification
 static NSString *const MG_USER_LOCAL_INFO_REQUEST_SUCCESSED_NOTI = @"MG_USER_LOCAL_INFO_REQUEST_SUCCESSED_NOTI";//用户本地信息请求成功
 static NSString *const MG_LOGIN_SUCCESSED_NOTI =  @"MG_LOGIN_SUCCESSED_NOTI";   //登录成功通知
+static NSString *const MG_REQUEST_FAVORITE_TEMPLATE_STATUS_NOTI = @"MG_REQUEST_FAVORITE_TEMPLATE_STATUS_NOTI"; // 请求收藏模板列表状态(1:成功 0:失败)
+static NSString *const MG_FAVORITE_TEMPLATE_LIST_DID_CHANGED = @"MG_FAVORITE_TEMPLATE_LIST_DID_CHANGED";//收藏模板记录发生改变
 
 //path
+static NSString *const MG_FAVORITE_TEMPLATE_RECORD_PATH = @"MG_FAVORITE_TEMPLATE_RECORD_PATH"; // 收藏模板列表本地存储路径
+
 static NSString *const LP_USER_LOCAL_INFO_PATH = @"lp_user_local_info"; //用户本地信息存储路径
 static NSString *const LP_USER_LOCAL_INFO_REQUEST_PATH_1 = @"http://ip-api.com/json/"; //用户本地信息远程请求路径1
 static NSString *const LP_USER_LOCAL_INFO_REQUEST_PATH_2 = @"https://extreme-ip-lookup.com/json/"; //用户本地信息远程请求路径2
@@ -155,3 +160,4 @@ static NSString *const LP_USER_LOCAL_INFO_REQUEST_PATH_5 = @"https://ipapi.co/js
 
 
 #endif /* MGPrefixHeader_pch */
+

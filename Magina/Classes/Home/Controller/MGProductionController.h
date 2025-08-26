@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) MGTemplateListModel *templateModel;
 
+@property (nonatomic, copy) NSString *tagString;
+
 @end
 
 NS_ASSUME_NONNULL_END

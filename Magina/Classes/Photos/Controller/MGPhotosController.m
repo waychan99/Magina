@@ -7,6 +7,7 @@
 
 #import "MGPhotosController.h"
 #import "MGPhotoListController.h"
+#import "MGFavoriteListController.h"
 #import <JXCategoryView/JXCategoryView.h>
 
 @interface MGPhotosController ()<JXCategoryListContainerViewDelegate, JXCategoryViewDelegate>
@@ -54,8 +55,13 @@
 }
 
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
-    MGPhotoListController *list = [[MGPhotoListController alloc] init];
-    return list;
+    if (index == 0) {
+        MGPhotoListController *photoList = [[MGPhotoListController alloc] init];
+        return photoList;
+    } else {
+        MGFavoriteListController *favoriteList = [[MGFavoriteListController alloc] init];
+        return favoriteList;
+    }
 }
 
 #pragma mark - getter

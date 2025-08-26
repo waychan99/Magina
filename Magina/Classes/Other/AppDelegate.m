@@ -29,6 +29,8 @@
 //    [[MGGlobalManager shareInstance] checkCurrentDate];
 //    [[MGGlobalManager shareInstance] refreshLocalPoints];
     
+    [[MGGlobalManager shareInstance] requestSseConfig];
+    
     return YES;
 }
 

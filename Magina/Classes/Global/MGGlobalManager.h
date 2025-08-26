@@ -64,6 +64,23 @@ NS_ASSUME_NONNULL_BEGIN
 // 刷新本地积分
 - (void)refreshLocalPoints;
 
+/** 收藏模板记录 */
+@property (nonatomic, strong) NSMutableArray<NSDictionary *> * __nullable favoriteTemplates;
+/** 收藏模板记录存储路径 */
+@property (nonatomic, copy) NSString * __nullable favoriteTemplatesPath;
+// 添加收藏模板记录
+- (void)saveFavoriteTemplateRecord:(NSDictionary *)record;
+// 删除收藏模板记录
+- (void)deleteFavoriteTemplateRecord:(NSDictionary *)record;
+// 删除全部收藏模板记录
+- (void)deleteFavoriteTemplateRecords;
+
+// 获取sse服务器配置(链接地址)
+- (void)requestSseConfig;
+// sse服务器地址
+@property (nonatomic, copy) NSString *sse_url;
+
 @end
 
 NS_ASSUME_NONNULL_END
+

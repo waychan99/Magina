@@ -15,6 +15,8 @@ PODS:
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
   - CocoaSecurity (1.2.4)
+  - EventSource (1.0.4)
+  - FLAnimatedImage (1.0.17)
   - HWPanModal (0.9.9)
   - IQKeyboardManager (6.5.19)
   - JXCategoryView (1.6.8)
@@ -36,6 +38,8 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - CocoaSecurity
+  - EventSource
+  - FLAnimatedImage
   - HWPanModal
   - IQKeyboardManager
   - JXCategoryView
@@ -54,6 +58,8 @@ SPEC REPOS:
   trunk:
     - AFNetworking
     - CocoaSecurity
+    - EventSource
+    - FLAnimatedImage
     - HWPanModal
     - IQKeyboardManager
     - JXCategoryView
@@ -71,6 +77,8 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
   CocoaSecurity: d288a6f87e0f363823d2cb83e753814a6944f71a
+  EventSource: f7a143f7d87592a4adf2a8545bdb10701b5acf0e
+  FLAnimatedImage: bbf914596368867157cc71b38a8ec834b3eeb32b
   HWPanModal: b57a6717d3cdcd666bff44f9dd2a5be9f4d6f5d2
   IQKeyboardManager: c8665b3396bd0b79402b4c573eac345a31c7d485
   JXCategoryView: 262d503acea0b1278c79a1c25b7332ffaef4d518
@@ -85,6 +93,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 4837c74bdfe2e51e8821c397825996a8d7de6e22
   WRNavigationBar: 10bfdf96addf14d640d07c2ef08a029c18d8af10
 
-PODFILE CHECKSUM: 399df6cf5f532d1441d04457e3e889d9b18a107c
+PODFILE CHECKSUM: 84f4b5d82fe854c74b8f8a0c92e21ea8aa4e231a
 
 COCOAPODS: 1.15.2

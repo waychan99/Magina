@@ -10,6 +10,7 @@
 #import "MGTemplateListModel.h"
 #import "UIView+GradientColors.h"
 #import "LVTimer.h"
+#import "EventSource.h"
 
 @interface MGProductionController ()
 @property (nonatomic, strong) CAGradientLayer *bgViewGradientLayer;
@@ -29,6 +30,8 @@
     [super viewDidLoad];
     
     [self setupUIComponents];
+    
+    [self connectSseServices];
 }
 
 - (void)dealloc {
@@ -75,6 +78,46 @@
 
 - (IBAction)clickSeeLaterBtn:(UIButton *)sender {
     
+}
+
+#pragma mark - assistMethod
+- (void)connectSseServices {
+    NSString *domainStrig = [MGGlobalManager shareInstance].sse_url;
+    NSString *userID = [MGGlobalManager shareInstance].accountInfo.user_id;
+    long long currentTimeStamp = (long long)([[NSDate date] timeIntervalSince1970] * 1000);
+    NSString *timeStampString = [NSString stringWithFormat:@"%lld", currentTimeStamp];
+    NSString *paramString = [NSString stringWithFormat:@"time=%@&user_id=%@", timeStampString, userID];
+    NSString *encryptionParamString = [LVHttpRequestHelper encryptionString:paramString keyType:CDHttpBaseUrlTypeMagina];
+    NSString *encodeEncryption = [LVHttpRequestHelper URLEncodedString:encryptionParamString];
+    NSString *sseUrlString = [NSString stringWithFormat:@"%@?%@&rsv_t=%@", domainStrig, paramString, encodeEncryption];
+    LVLog(@"ffffff -- %@", sseUrlString);
+    EventSource *eventSource = [EventSource eventSourceWithURL:[NSURL URLWithString:sseUrlString]];
+   
+    [eventSource onReadyStateChanged:^(Event *event) {
+        LVLog(@"onReadyStateChanged = %@ -- %i", event.data, event.readyState);
+    }];
+    
+    // 监听消息事件
+    [eventSource onMessage:^(Event *event) {
+        LVLog(@"onMessage: %@", event.data);
+    }];
+
+    // 错误处理
+//    [eventSource onError:^(NSError *error) {
+//        NSLog(@"连接错误: %@", error.localizedDescription);
+//    }];
+    
+    [eventSource addEventListener:self.tagString handler:^(Event *event) {
+        LVLog(@"addEventListener --- %@", event.data);
+    }];
+    
+    [eventSource onError:^(Event *event) {
+        LVLog(@"onError -- %@", event.data);
+    }];
+    
+    [eventSource onOpen:^(Event *event) {
+        LVLog(@"onOpen -- %@", event.data);
+    }];
 }
 
 #pragma mark - getter
