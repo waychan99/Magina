@@ -6,6 +6,7 @@
 //
 
 #import "MGProductionController.h"
+#import "MGGeneratedListController.h"
 #import "MGProductionProgress.h"
 #import "MGTemplateListModel.h"
 #import "UIView+GradientColors.h"
@@ -13,14 +14,15 @@
 #import "EventSource.h"
 
 @interface MGProductionController ()
+@property (weak, nonatomic) IBOutlet UIButton *memberAccelerationBtn;
+@property (weak, nonatomic) IBOutlet UIButton *seeLaterBtn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *firstTextTopMargin;
 @property (nonatomic, strong) CAGradientLayer *bgViewGradientLayer;
 @property (nonatomic, strong) UIImageView *contentImageView;
 @property (nonatomic, strong) MGProductionProgress *progressView;
 @property (nonatomic, copy) NSString *timerIdentifier;
 @property (nonatomic, assign) CGFloat progress;
-@property (weak, nonatomic) IBOutlet UIButton *memberAccelerationBtn;
-@property (weak, nonatomic) IBOutlet UIButton *seeLaterBtn;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *firstTextTopMargin;
+@property (nonatomic, strong) NSMutableArray<NSString *> *resultImages;
 @end
 
 @implementation MGProductionController
@@ -62,18 +64,6 @@
 #pragma mark - eventClick
 - (IBAction)clickMemberAccelerationBtn:(UIButton *)sender {
 //    self.progressView.progress += 0.02;
-    
-    if (self.timerIdentifier.length > 0) [LVTimer cancelTask:self.timerIdentifier];
-    __weak typeof(self) weakSelf = self;
-    self.timerIdentifier = [LVTimer execTask:^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            weakSelf.progress += 0.02;
-            weakSelf.progressView.progress = weakSelf.progress;
-        });
-        if (weakSelf.progress >= 1) {
-            [LVTimer cancelTask:weakSelf.timerIdentifier];
-        }
-    } start:1 interval:0.05 repeats:YES async:YES];
 }
 
 - (IBAction)clickSeeLaterBtn:(UIButton *)sender {
@@ -82,6 +72,19 @@
 
 #pragma mark - assistMethod
 - (void)connectSseServices {
+    if (self.timerIdentifier.length > 0) [LVTimer cancelTask:self.timerIdentifier];
+    __weak typeof(self) weakSelf = self;
+    self.timerIdentifier = [LVTimer execTask:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (weakSelf.progress < 0.8) {
+                weakSelf.progress += 0.1;
+                weakSelf.progressView.progress = weakSelf.progress;
+            } else {
+                [LVTimer cancelTask:weakSelf.timerIdentifier];
+            }
+        });
+    } start:0 interval:1 repeats:YES async:YES];
+    
     NSString *domainStrig = [MGGlobalManager shareInstance].sse_url;
     NSString *userID = [MGGlobalManager shareInstance].accountInfo.user_id;
     long long currentTimeStamp = (long long)([[NSDate date] timeIntervalSince1970] * 1000);
@@ -90,9 +93,8 @@
     NSString *encryptionParamString = [LVHttpRequestHelper encryptionString:paramString keyType:CDHttpBaseUrlTypeMagina];
     NSString *encodeEncryption = [LVHttpRequestHelper URLEncodedString:encryptionParamString];
     NSString *sseUrlString = [NSString stringWithFormat:@"%@?%@&rsv_t=%@", domainStrig, paramString, encodeEncryption];
-    LVLog(@"ffffff -- %@", sseUrlString);
+    
     EventSource *eventSource = [EventSource eventSourceWithURL:[NSURL URLWithString:sseUrlString]];
-   
     [eventSource onReadyStateChanged:^(Event *event) {
         LVLog(@"onReadyStateChanged = %@ -- %i", event.data, event.readyState);
     }];
@@ -100,23 +102,34 @@
     // 监听消息事件
     [eventSource onMessage:^(Event *event) {
         LVLog(@"onMessage: %@", event.data);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([event.data containsString:self.tagString]) {
+                NSDictionary *info = [event.data mj_JSONObject];
+                LVLog(@"ffff --- %@", info);
+                [self.resultImages addObject:info[@"image"]];
+            }
+            if (self.resultImages.count == self.imageAmount) {
+                [eventSource close];
+                MGGeneratedListController *vc = [[MGGeneratedListController alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
+                vc.resultImages = self.resultImages;
+            }
+        });
     }];
 
     // 错误处理
-//    [eventSource onError:^(NSError *error) {
-//        NSLog(@"连接错误: %@", error.localizedDescription);
-//    }];
-    
-    [eventSource addEventListener:self.tagString handler:^(Event *event) {
-        LVLog(@"addEventListener --- %@", event.data);
-    }];
-    
     [eventSource onError:^(Event *event) {
-        LVLog(@"onError -- %@", event.data);
+        LVLog(@"onError -- %@ -- %i", event.data, event.readyState);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view makeToast:NSLocalizedString(@"生成图片失败了..", nil)];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            });
+        });
     }];
     
     [eventSource onOpen:^(Event *event) {
-        LVLog(@"onOpen -- %@", event.data);
+        LVLog(@"onOpen -- %@ -- %i", event.data, event.readyState);
     }];
 }
 
@@ -143,6 +156,13 @@
         _progressView = [[MGProductionProgress alloc] initWithFrame:CGRectZero];
     }
     return _progressView;
+}
+
+- (NSMutableArray<NSString *> *)resultImages {
+    if (!_resultImages) {
+        _resultImages = [NSMutableArray array];
+    }
+    return _resultImages;
 }
 
 @end

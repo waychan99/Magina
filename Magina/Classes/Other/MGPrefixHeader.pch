@@ -20,6 +20,7 @@
 #import "NSDate+Helper.h"
 #import "MGLoginFactory.h"
 #import "LVAlertView.h"
+#import "MGImageWorksManager.h"
 
 #import <MJExtension/MJExtension.h>
 #import <Masonry/Masonry.h>
@@ -44,6 +45,8 @@ static NSString *const MG_FAVORITE_TEMPLATE_LIST_DID_CHANGED = @"MG_FAVORITE_TEM
 
 //path
 static NSString *const MG_FAVORITE_TEMPLATE_RECORD_PATH = @"MG_FAVORITE_TEMPLATE_RECORD_PATH"; // 收藏模板列表本地存储路径
+static NSString *const MG_IMAGE_WORKS_LIST_CACHE_PATH = @"MG_IMAGE_WORKS_LIST_CACHE_PATH"; // 图片作品列表存储路径
+static NSString *const MG_IMAGE_WORKS_FILES_DIRECTORY_PATH = @"MaginaImageWorks"; // 沙盒中存储下载图片作品的文件夹路劲
 
 static NSString *const LP_USER_LOCAL_INFO_PATH = @"lp_user_local_info"; //用户本地信息存储路径
 static NSString *const LP_USER_LOCAL_INFO_REQUEST_PATH_1 = @"http://ip-api.com/json/"; //用户本地信息远程请求路径1

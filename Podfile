@@ -40,5 +40,7 @@ target 'Magina' do
   pod 'FLAnimatedImage'
   # sse service
   pod 'EventSource'
+  # 查看沙盒文件
+  pod 'SandBoxPreviewTool'
   
 end

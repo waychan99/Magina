@@ -16,6 +16,10 @@
 #import "UIView+GradientColors.h"
 #import "SPButton.h"
 
+#import <SandBoxPreviewTool/SandBoxPreviewTool.h>
+#import <SandBoxPreviewTool/SuspensionButton.h>//悬浮球按钮
+#import "MGImageWorksModel.h"
+
 @interface MGHomeController ()<JXCategoryListContainerViewDelegate, JXCategoryViewDelegate>
 @property (nonatomic, strong) UIView *topBar;
 @property (nonatomic, strong) CAGradientLayer *topBarGradientLayer;
@@ -47,8 +51,35 @@
     
     [self setupUIComponents];
     [self requestCategoryList];
+
+    SuspensionButton * button = [[SuspensionButton alloc] initWithFrame:CGRectMake(-5, [UIScreen mainScreen].bounds.size.height/2 - 100 , 50, 50) color:[UIColor colorWithRed:135/255.0 green:216/255.0 blue:80/255.0 alpha:1]];
+      button.leanType = SuspensionViewLeanTypeEachSide;
+      [button addTarget:self action:@selector(pushToDebugPage) forControlEvents:UIControlEventTouchUpInside];
+      [self.view addSubview:button];
     
-//    LVLog(@"fffff == %zd -- %zd", 9 / 2, 9 % 2);
+//    [MGImageWorksManager shareInstance];
+    
+    MGImageWorksModel *model = [[MGImageWorksModel alloc] init];
+    model.generatedTag = @"lllllll";
+    model.generatedImageWorksArr = @[@"https://img.magina.net/templates/2025/07/729268821b59a71f64127.jpg", @"https://img.magina.net/templates/2025/07/711968821b59ef1982952.jpg"];
+    
+    MGImageWorksModel *model1 = [[MGImageWorksModel alloc] init];
+    model1.generatedTag = @"ppppppp";
+    model1.generatedImageWorksArr = @[@"https://img.magina.net/templates/2025/08/523468abe61c64ccf5397.jpg", @"https://img.magina.net/templates/2025/08/342768abe61c66c778679.jpg"];
+    
+    [[MGImageWorksManager shareInstance] loadImageWorksCompletion:^(NSMutableArray<MGImageWorksModel *> * _Nonnull imageWorks) {
+        [imageWorks addObject:model];
+        [imageWorks addObject:model1];
+        [[MGImageWorksManager shareInstance] saveImageWorksCompletion:^(NSMutableArray<MGImageWorksModel *> * _Nonnull imageWorks) {
+            [[MGImageWorksManager shareInstance] downloadImageWorks];
+        }];
+    }];
+    
+    [[MGImageWorksManager shareInstance] downloadImageWorks];
+}
+
+- (void)pushToDebugPage {
+    [[SandBoxPreviewTool sharedTool] autoOpenCloseApplicationDiskDirectoryPanel];
 }
 
 #pragma mark - setupUIComponents

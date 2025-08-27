@@ -105,6 +105,11 @@
 		04F54C7E2E5D5BD200769DAA /* LVAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54C7C2E5D5BD200769DAA /* LVAlertView.xib */; };
 		04F54C802E5DA33A00769DAA /* right_loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 04F54C7F2E5DA33A00769DAA /* right_loading.gif */; };
 		04F54C822E5DA35500769DAA /* left_loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 04F54C812E5DA35500769DAA /* left_loading.gif */; };
+		04F54C852E5EB70600769DAA /* MGGeneratedListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54C842E5EB70600769DAA /* MGGeneratedListController.m */; };
+		04F54C892E5EB72900769DAA /* MGGeneratedListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54C882E5EB72900769DAA /* MGGeneratedListCell.xib */; };
+		04F54C8A2E5EB72900769DAA /* MGGeneratedListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54C872E5EB72900769DAA /* MGGeneratedListCell.m */; };
+		04F54C902E5EEED600769DAA /* MGImageWorksManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54C8F2E5EEED600769DAA /* MGImageWorksManager.m */; };
+		04F54C932E5EF0AB00769DAA /* MGImageWorksModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54C922E5EF0AB00769DAA /* MGImageWorksModel.m */; };
 		8AE9E8B1543D003823C4F1E4 /* Pods_Magina.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C50838DFF8AFFA3B1D401A /* Pods_Magina.framework */; };
 /* End PBXBuildFile section */
 
@@ -286,6 +291,15 @@
 		04F54C7C2E5D5BD200769DAA /* LVAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LVAlertView.xib; sourceTree = "<group>"; };
 		04F54C7F2E5DA33A00769DAA /* right_loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = right_loading.gif; sourceTree = "<group>"; };
 		04F54C812E5DA35500769DAA /* left_loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = left_loading.gif; sourceTree = "<group>"; };
+		04F54C832E5EB70600769DAA /* MGGeneratedListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGGeneratedListController.h; sourceTree = "<group>"; };
+		04F54C842E5EB70600769DAA /* MGGeneratedListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGGeneratedListController.m; sourceTree = "<group>"; };
+		04F54C862E5EB72900769DAA /* MGGeneratedListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGGeneratedListCell.h; sourceTree = "<group>"; };
+		04F54C872E5EB72900769DAA /* MGGeneratedListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGGeneratedListCell.m; sourceTree = "<group>"; };
+		04F54C882E5EB72900769DAA /* MGGeneratedListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGGeneratedListCell.xib; sourceTree = "<group>"; };
+		04F54C8E2E5EEED600769DAA /* MGImageWorksManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGImageWorksManager.h; sourceTree = "<group>"; };
+		04F54C8F2E5EEED600769DAA /* MGImageWorksManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGImageWorksManager.m; sourceTree = "<group>"; };
+		04F54C912E5EF0AB00769DAA /* MGImageWorksModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGImageWorksModel.h; sourceTree = "<group>"; };
+		04F54C922E5EF0AB00769DAA /* MGImageWorksModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGImageWorksModel.m; sourceTree = "<group>"; };
 		64DD56DCE6B674BEB2758DF4 /* Pods-Magina.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Magina.debug.xcconfig"; path = "Target Support Files/Pods-Magina/Pods-Magina.debug.xcconfig"; sourceTree = "<group>"; };
 		75C50838DFF8AFFA3B1D401A /* Pods_Magina.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Magina.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		924A495E2CEAA3C9DFE27B07 /* Pods-Magina.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Magina.release.xcconfig"; path = "Target Support Files/Pods-Magina/Pods-Magina.release.xcconfig"; sourceTree = "<group>"; };
@@ -361,6 +375,8 @@
 			children = (
 				04A9F35A2E4B0C73005F3FC2 /* MGGlobalManager.h */,
 				04A9F35B2E4B0C73005F3FC2 /* MGGlobalManager.m */,
+				04F54C8E2E5EEED600769DAA /* MGImageWorksManager.h */,
+				04F54C8F2E5EEED600769DAA /* MGImageWorksManager.m */,
 				04A9F3572E4B0C19005F3FC2 /* Controller */,
 				04A9F3582E4B0C19005F3FC2 /* Model */,
 				04A9F3592E4B0C19005F3FC2 /* View */,
@@ -415,6 +431,9 @@
 				04F54C602E5BF95000769DAA /* MGTemplateDetailsCell.xib */,
 				04F54C6C2E5C124700769DAA /* MGProductionProgress.h */,
 				04F54C6D2E5C124700769DAA /* MGProductionProgress.m */,
+				04F54C862E5EB72900769DAA /* MGGeneratedListCell.h */,
+				04F54C872E5EB72900769DAA /* MGGeneratedListCell.m */,
+				04F54C882E5EB72900769DAA /* MGGeneratedListCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -652,6 +671,8 @@
 			children = (
 				04CDD1572E58492E00286F4C /* MGAccountInfo.h */,
 				04CDD1582E58492E00286F4C /* MGAccountInfo.m */,
+				04F54C912E5EF0AB00769DAA /* MGImageWorksModel.h */,
+				04F54C922E5EF0AB00769DAA /* MGImageWorksModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -731,6 +752,8 @@
 				04F54C672E5BFE3000769DAA /* MGProductionController.h */,
 				04F54C682E5BFE3000769DAA /* MGProductionController.m */,
 				04F54C692E5BFE3000769DAA /* MGProductionController.xib */,
+				04F54C832E5EB70600769DAA /* MGGeneratedListController.h */,
+				04F54C842E5EB70600769DAA /* MGGeneratedListController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -861,6 +884,7 @@
 				04A9F3032E4AE1EA005F3FC2 /* LaunchScreen.storyboard in Resources */,
 				04F54C7E2E5D5BD200769DAA /* LVAlertView.xib in Resources */,
 				04F54C632E5BF95000769DAA /* MGTemplateDetailsCell.xib in Resources */,
+				04F54C892E5EB72900769DAA /* MGGeneratedListCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -958,6 +982,7 @@
 				047473182E52F306004AFE7D /* MGPersonalCell.m in Sources */,
 				0474731D2E52F829004AFE7D /* MGPointsListCell.m in Sources */,
 				04A9F3402E4AE6F6005F3FC2 /* SWKeyChainStore.m in Sources */,
+				04F54C852E5EB70600769DAA /* MGGeneratedListController.m in Sources */,
 				04F54C662E5BF9E000769DAA /* MGFaceRecognition.m in Sources */,
 				04A9F32A2E4AE6D3005F3FC2 /* UIView+GradientColors.m in Sources */,
 				04E6E1BC2E4B217D00407F94 /* MGBaseController.m in Sources */,
@@ -967,14 +992,17 @@
 				04F54C6A2E5BFE3000769DAA /* MGProductionController.m in Sources */,
 				04A9F3532E4AE780005F3FC2 /* MGLoginFactory.m in Sources */,
 				04CDD0F02E56E76F00286F4C /* SLAvCaptureTool.m in Sources */,
+				04F54C8A2E5EB72900769DAA /* MGGeneratedListCell.m in Sources */,
 				04A9F32C2E4AE6D3005F3FC2 /* UIView+Toast.m in Sources */,
 				04A9F32D2E4AE6D3005F3FC2 /* UIView+LPRadius.m in Sources */,
 				04E8C4062E4F1FEB00EC2E96 /* MGMineController.m in Sources */,
 				04E6E1CD2E4C3BF700407F94 /* MGTemplateCategoryModel.m in Sources */,
 				04A9F32E2E4AE6D3005F3FC2 /* UIImage+LP.m in Sources */,
 				04A9F32F2E4AE6D3005F3FC2 /* NSString+LP.m in Sources */,
+				04F54C932E5EF0AB00769DAA /* MGImageWorksModel.m in Sources */,
 				04E6E1B62E4B200A00407F94 /* MGMainNavigationController.m in Sources */,
 				047473432E559E98004AFE7D /* MGImageManager.m in Sources */,
+				04F54C902E5EEED600769DAA /* MGImageWorksManager.m in Sources */,
 				04A9F3302E4AE6D3005F3FC2 /* UIView+Layout.m in Sources */,
 				04E6E1D62E4ED0F700407F94 /* MGGetPointsView.m in Sources */,
 				04A9F3312E4AE6D3005F3FC2 /* UIhelpTools.m in Sources */,

@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="227" height="381"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rea-du-Xxh">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rea-du-Xxh" customClass="FLAnimatedImageView">
                         <rect key="frame" x="0.0" y="0.0" width="227" height="381"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="73O-7t-fAT">
@@ -83,7 +83,7 @@
             <connections>
                 <outlet property="btnBgView" destination="73O-7t-fAT" id="gNt-K2-wNj"/>
                 <outlet property="fatBtn" destination="brr-YR-ItT" id="0iE-NJ-g4k"/>
-                <outlet property="mainImageView" destination="Rea-du-Xxh" id="FRK-ir-lnR"/>
+                <outlet property="mainImageView" destination="Rea-du-Xxh" id="jx3-pf-NJx"/>
                 <outlet property="thinBtn" destination="4cI-es-yfq" id="AVV-65-ZBh"/>
             </connections>
             <point key="canvasLocation" x="-170.22900763358777" y="49.647887323943664"/>

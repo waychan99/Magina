@@ -212,25 +212,37 @@
         NSMutableDictionary *postParmas = [NSMutableDictionary dictionary];
         [postParmas setValue:[MGGlobalManager shareInstance].accountInfo.user_id forKey:@"user_id"];
         [postParmas setValue:resultUrl forKey:@"source_img"];
-        NSMutableDictionary *templateParams = [NSMutableDictionary dictionary];
-        MGTemplateListModel *templateModel = nil;
+        NSMutableArray *imagesArrM = [NSMutableArray array];
         if (self.currentTemplateIndex < self.templateModels.count) {
-            templateModel = [self.templateModels objectAtIndex:self.currentTemplateIndex];
+            MGTemplateListModel *templateModel = [self.templateModels objectAtIndex:self.currentTemplateIndex];
+            if (templateModel.standardImgs.count > 0) {
+                if (templateModel.standardImgs.count == 1) {
+                    NSString *firstImageUrl = templateModel.standardImgs.firstObject;
+                    [imagesArrM addObject:firstImageUrl];
+                    NSString *jsonString = [imagesArrM mj_JSONString];
+                    [postParmas setValue:jsonString forKey:@"imgs"];
+                } else {
+                    NSString *firstImageUrl = templateModel.standardImgs.firstObject;
+                    int i = (arc4random() % (templateModel.standardImgs.count - 1)) + 1;
+                    NSString *secondImageUrl = templateModel.standardImgs[i];
+                    [imagesArrM addObject:firstImageUrl];
+                    [imagesArrM addObject:secondImageUrl];
+                    NSString *jsonString = [imagesArrM mj_JSONString];
+                    [postParmas setValue:jsonString forKey:@"imgs"];
+                }
+            }
         }
-        [templateParams setValue:templateModel.ID forKey:@"client_id"];
-        [templateParams setValue:templateModel.standardImgs.firstObject forKey:@"template_img"];
-        NSString *jsonString = [@[templateModel.standardImgs.firstObject] mj_JSONString];
-        [postParmas setValue:jsonString forKey:@"imgs"];
         [LVHttpRequest post:@"/api/v1/generateImages" param:postParmas header:@{} baseUrlType:CDHttpBaseUrlTypeMagina_ljw isNeedPublickParam:YES isNeedPublickHeader:YES isNeedEncryptHeader:YES isNeedEncryptParam:YES isNeedDecryptResponse:YES encryptType:CDHttpBaseUrlTypeMagina_ljw timeout:2.0 modelClass:nil completion:^(NSInteger status, NSString * _Nonnull message, id  _Nullable result, NSError * _Nullable error, id  _Nullable responseObject) {
             [SVProgressHUD dismiss];
             if (status != 1 || error) {
-                [self.view makeToast:NSLocalizedString(@"global_request_error", nil)];
+                [self.view makeToast:message];
                 return;
             }
             NSString *tagString = result[@"tag"];
             MGProductionController *vc = [[MGProductionController alloc] init];
             vc.templateModel = [self.templateModels objectAtIndex:self.currentTemplateIndex];
             vc.tagString = tagString;
+            vc.imageAmount = imagesArrM.count;
             [self.navigationController pushViewController:vc animated:YES];
         }];
     } failure:^(NSError * _Nonnull error) {
