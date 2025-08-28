@@ -9,7 +9,7 @@
 #import "MGTemplateListModel.h"
 #import <FLAnimatedImage/FLAnimatedImage.h>
 
-@interface MGTemplateDetailsCell ()//mainImageView
+@interface MGTemplateDetailsCell ()
 @property (weak, nonatomic) IBOutlet FLAnimatedImageView *mainImageView;
 @property (weak, nonatomic) IBOutlet UIView *btnBgView;
 @property (weak, nonatomic) IBOutlet UIButton *thinBtn;

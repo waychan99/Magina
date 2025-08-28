@@ -22,7 +22,7 @@
 @property (nonatomic, strong) MGProductionProgress *progressView;
 @property (nonatomic, copy) NSString *timerIdentifier;
 @property (nonatomic, assign) CGFloat progress;
-@property (nonatomic, strong) NSMutableArray<NSString *> *resultImages;
+@property (nonatomic, strong) EventSource *eventSource;
 @end
 
 @implementation MGProductionController
@@ -38,6 +38,7 @@
 
 - (void)dealloc {
     LVLog(@"MGProductionController -- dealloc");
+    [self.eventSource close];
 }
 
 #pragma mark - override
@@ -94,31 +95,42 @@
     NSString *encodeEncryption = [LVHttpRequestHelper URLEncodedString:encryptionParamString];
     NSString *sseUrlString = [NSString stringWithFormat:@"%@?%@&rsv_t=%@", domainStrig, paramString, encodeEncryption];
     
-    EventSource *eventSource = [EventSource eventSourceWithURL:[NSURL URLWithString:sseUrlString]];
-    [eventSource onReadyStateChanged:^(Event *event) {
+    @lv_weakify(self)
+    self.eventSource = [EventSource eventSourceWithURL:[NSURL URLWithString:sseUrlString]];
+    [self.eventSource onReadyStateChanged:^(Event *event) {
         LVLog(@"onReadyStateChanged = %@ -- %i", event.data, event.readyState);
     }];
     
     // 监听消息事件
-    [eventSource onMessage:^(Event *event) {
+    [self.eventSource onMessage:^(Event *event) {
         LVLog(@"onMessage: %@", event.data);
+        @lv_strongify(self)
         dispatch_async(dispatch_get_main_queue(), ^{
-            if ([event.data containsString:self.tagString]) {
+            if ([event.data containsString:self.worksModel.generatedTag]) {
                 NSDictionary *info = [event.data mj_JSONObject];
-                LVLog(@"ffff --- %@", info);
-                [self.resultImages addObject:info[@"image"]];
+                LVLog(@"生成图片 = %@ -- %@", self.worksModel.generatedTag, info[@"image"]);
+                [self.worksModel.generatedImageWorksList addObject:info[@"image"]];
             }
-            if (self.resultImages.count == self.imageAmount) {
-                [eventSource close];
-                MGGeneratedListController *vc = [[MGGeneratedListController alloc] init];
-                [self.navigationController pushViewController:vc animated:YES];
-                vc.resultImages = self.resultImages;
+            if (self.worksModel.generatedImageWorksList.count == self.worksModel.generatedImageWorksCount) {
+                [self.eventSource close];
+                long long currentTimeStamp = (long long)([[NSDate date] timeIntervalSince1970] * 1000);
+                self.worksModel.generatedTime = currentTimeStamp;
+                [[MGImageWorksManager shareInstance].imageWorks insertObject:self.worksModel atIndex:0];
+                [[MGImageWorksManager shareInstance] saveImageWorksCompletion:^(NSMutableArray<MGImageWorksModel *> * _Nonnull imageWorks) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        MGGeneratedListController *vc = [[MGGeneratedListController alloc] init];
+                        vc.needDownload = YES;
+                        vc.worksModel = self.worksModel;
+                        [self.navigationController pushViewController:vc animated:YES];
+                    });
+                }];
             }
         });
     }];
 
     // 错误处理
-    [eventSource onError:^(Event *event) {
+    [self.eventSource onError:^(Event *event) {
+        @lv_strongify(self)
         LVLog(@"onError -- %@ -- %i", event.data, event.readyState);
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view makeToast:NSLocalizedString(@"生成图片失败了..", nil)];
@@ -128,7 +140,7 @@
         });
     }];
     
-    [eventSource onOpen:^(Event *event) {
+    [self.eventSource onOpen:^(Event *event) {
         LVLog(@"onOpen -- %@ -- %i", event.data, event.readyState);
     }];
 }
@@ -156,13 +168,6 @@
         _progressView = [[MGProductionProgress alloc] initWithFrame:CGRectZero];
     }
     return _progressView;
-}
-
-- (NSMutableArray<NSString *> *)resultImages {
-    if (!_resultImages) {
-        _resultImages = [NSMutableArray array];
-    }
-    return _resultImages;
 }
 
 @end

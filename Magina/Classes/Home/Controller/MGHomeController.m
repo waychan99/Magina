@@ -18,7 +18,6 @@
 
 #import <SandBoxPreviewTool/SandBoxPreviewTool.h>
 #import <SandBoxPreviewTool/SuspensionButton.h>//悬浮球按钮
-#import "MGImageWorksModel.h"
 
 @interface MGHomeController ()<JXCategoryListContainerViewDelegate, JXCategoryViewDelegate>
 @property (nonatomic, strong) UIView *topBar;
@@ -56,26 +55,6 @@
       button.leanType = SuspensionViewLeanTypeEachSide;
       [button addTarget:self action:@selector(pushToDebugPage) forControlEvents:UIControlEventTouchUpInside];
       [self.view addSubview:button];
-    
-//    [MGImageWorksManager shareInstance];
-    
-    MGImageWorksModel *model = [[MGImageWorksModel alloc] init];
-    model.generatedTag = @"lllllll";
-    model.generatedImageWorksArr = @[@"https://img.magina.net/templates/2025/07/729268821b59a71f64127.jpg", @"https://img.magina.net/templates/2025/07/711968821b59ef1982952.jpg"];
-    
-    MGImageWorksModel *model1 = [[MGImageWorksModel alloc] init];
-    model1.generatedTag = @"ppppppp";
-    model1.generatedImageWorksArr = @[@"https://img.magina.net/templates/2025/08/523468abe61c64ccf5397.jpg", @"https://img.magina.net/templates/2025/08/342768abe61c66c778679.jpg"];
-    
-    [[MGImageWorksManager shareInstance] loadImageWorksCompletion:^(NSMutableArray<MGImageWorksModel *> * _Nonnull imageWorks) {
-        [imageWorks addObject:model];
-        [imageWorks addObject:model1];
-        [[MGImageWorksManager shareInstance] saveImageWorksCompletion:^(NSMutableArray<MGImageWorksModel *> * _Nonnull imageWorks) {
-            [[MGImageWorksManager shareInstance] downloadImageWorks];
-        }];
-    }];
-    
-    [[MGImageWorksManager shareInstance] downloadImageWorks];
 }
 
 - (void)pushToDebugPage {

@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *desc;
 
-@property (nonatomic, assign) NSInteger integral;
+@property (nonatomic, assign) NSInteger points;
 
 /** 0 加分 1 减分 */
 @property (nonatomic, assign) NSInteger symbol;

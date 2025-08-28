@@ -17,6 +17,8 @@ static NSString * const MGPhotoListCellKey = @"MGPhotoListCell";
 
 @property (nonatomic, strong) MGFavoriteTemplateModel *favoriteModel;
 
+@property (nonatomic, strong) MGImageWorksModel *worksModel;
+
 @end
 
 NS_ASSUME_NONNULL_END

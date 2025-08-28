@@ -31,6 +31,11 @@
     
     [[MGGlobalManager shareInstance] requestSseConfig];
     
+    [[MGImageWorksManager shareInstance] loadImageWorksCompletion:^(NSMutableArray<MGImageWorksModel *> * _Nonnull imageWorks) {
+        [[MGImageWorksManager shareInstance] downloadImageWorks];
+    }];
+    
+    
     return YES;
 }
 

@@ -13,6 +13,8 @@ static NSString * const MGGeneratedListCellKey = @"MGGeneratedListCell";
 
 @interface MGGeneratedListCell : UICollectionViewCell
 
+@property (nonatomic, strong) MGImageWorksModel *worksModel;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -15,9 +15,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *generatedTag;
 
-@property (nonatomic, strong) NSArray<NSString *> *generatedImageWorksArr;
+@property (nonatomic, strong) NSMutableArray<NSString *> *generatedImageWorksList;
+
+@property (nonatomic, strong) NSMutableDictionary<NSString *, NSString *> *downloadedImagePathInfo;
 
 @property (nonatomic, assign) NSTimeInterval generatedTime;
+
+@property (nonatomic, assign) NSInteger generatedImageWorksCount;
 
 @property (nonatomic, assign) BOOL isDownloaded;
 

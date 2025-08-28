@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="156" height="181"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vc2-wN-Ykt">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vc2-wN-Ykt" customClass="FLAnimatedImageView">
                         <rect key="frame" x="0.0" y="0.0" width="156" height="181"/>
                     </imageView>
                 </subviews>
@@ -29,7 +29,7 @@
             </constraints>
             <size key="customSize" width="156" height="181"/>
             <connections>
-                <outlet property="mainImageView" destination="vc2-wN-Ykt" id="hRR-Z5-m8D"/>
+                <outlet property="mainImageView" destination="vc2-wN-Ykt" id="Ih3-o9-bdf"/>
             </connections>
             <point key="canvasLocation" x="138.93129770992365" y="-48.943661971830991"/>
         </collectionViewCell>

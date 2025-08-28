@@ -28,10 +28,10 @@
     self.gettingTimeLab.text = pointsDetailsModel.create_time;
     if (pointsDetailsModel.symbol == 0) {
         self.pointsAmountLab.textColor = HEX_COLOR(0x06CA8B);
-        self.pointsAmountLab.text = [NSString stringWithFormat:@"+%zd", pointsDetailsModel.integral];
+        self.pointsAmountLab.text = [NSString stringWithFormat:@"+%zd", pointsDetailsModel.points];
     } else {
         self.pointsAmountLab.textColor = HEX_COLOR(0xFFFC05);
-        self.pointsAmountLab.text = [NSString stringWithFormat:@"-%zd", pointsDetailsModel.integral];
+        self.pointsAmountLab.text = [NSString stringWithFormat:@"-%zd", pointsDetailsModel.points];
     }
 }
 

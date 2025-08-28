@@ -121,6 +121,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MGPointsListCell *pointsListCell = [collectionView dequeueReusableCellWithReuseIdentifier:MGPointsListCellKey forIndexPath:indexPath];
+    pointsListCell.pointsDetailsModel = self.pointsListData[indexPath.item];
     pointsListCell.contentView.backgroundColor = [UIColor blackColor];
     if (self.pointsListData.count <= 1) {
         pointsListCell.contentView.frame = CGRectMake(0, 0, pointsListCell.contentView.lv_width, 71);
@@ -129,7 +130,7 @@
         if (indexPath.row == 0) {
             pointsListCell.contentView.frame = CGRectMake(20, 0, pointsListCell.contentView.lv_width, 71);
             [pointsListCell.contentView lp_setImageWithRadius:LPRadiusMake(15, 15, 0, 0) image:nil borderColor:nil borderWidth:0 backgroundColor:HEX_COLOR(0x15161A) contentMode:0 forState:0 completion:nil];
-        } else if (indexPath.row == 49) {
+        } else if (indexPath.row == self.pointsListData.count - 1) {
             pointsListCell.contentView.frame = CGRectMake(20, 0, pointsListCell.contentView.lv_width, 71);
             [pointsListCell.contentView lp_setImageWithRadius:LPRadiusMake(0, 0, 15, 15) image:nil borderColor:nil borderWidth:0 backgroundColor:HEX_COLOR(0x15161A) contentMode:0 forState:0 completion:nil];
         } else {

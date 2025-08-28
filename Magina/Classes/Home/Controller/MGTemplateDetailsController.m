@@ -56,7 +56,7 @@
         [self.templateCollectionView setNeedsLayout];
         [self.templateCollectionView layoutIfNeeded];
         
-        if (self.templateModels.count > 0) {
+        if (self.templateModels.count > 0 && self.currentTemplateIndex < self.templateModels.count) {
             [self.templateCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentTemplateIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
         }
     }
@@ -239,10 +239,12 @@
                 return;
             }
             NSString *tagString = result[@"tag"];
+            MGImageWorksModel *worksModel = [[MGImageWorksModel alloc] init];
+            worksModel.generatedTag = tagString;
+            worksModel.generatedImageWorksCount = imagesArrM.count;
             MGProductionController *vc = [[MGProductionController alloc] init];
             vc.templateModel = [self.templateModels objectAtIndex:self.currentTemplateIndex];
-            vc.tagString = tagString;
-            vc.imageAmount = imagesArrM.count;
+            vc.worksModel = worksModel;
             [self.navigationController pushViewController:vc animated:YES];
         }];
     } failure:^(NSError * _Nonnull error) {

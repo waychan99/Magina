@@ -11,7 +11,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MGGeneratedListController : MGBaseController
 
-@property (nonatomic, strong) NSMutableArray<NSString *> *resultImages;
+@property (nonatomic, strong) MGImageWorksModel *worksModel;
+
+@property (nonatomic, assign) BOOL needDownload;
 
 @end
 

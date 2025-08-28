@@ -6,6 +6,7 @@
 //
 
 #import "MGGeneratedListController.h"
+#import "MGGeneratedDetailsController.h"
 #import "MGGeneratedListCell.h"
 
 @interface MGGeneratedListController ()<UICollectionViewDelegate, UICollectionViewDataSource>
@@ -18,7 +19,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imageWorksDidChange) name:MG_IMAGE_WORKS_DID_CHANGED_NOTI object:nil];
+    
     [self setupUIComponents];
+    if (self.needDownload) [self downloadImage];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - override
@@ -30,7 +38,20 @@
 
 #pragma mark - setupUIComponents
 - (void)setupUIComponents {
+    self.customNavBar.title = NSLocalizedString(@"Generated Records", nil);
     [self.view addSubview:self.collectionView];
+}
+
+#pragma mark - notification
+- (void)imageWorksDidChange {
+    [self.collectionView reloadData];
+}
+
+#pragma mark - request
+- (void)downloadImage {
+    [[MGImageWorksManager shareInstance] downloadImageWorksModel:self.worksModel completion:^(MGImageWorksModel * _Nonnull imageWorksModel) {
+        [self.collectionView reloadData];
+    }];
 }
 
 #pragma mark - UICollectionViewDelegate, UICollectionViewDataSource
@@ -39,7 +60,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.resultImages.count;
+    return self.worksModel.generatedImageWorksCount;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
@@ -62,13 +83,19 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MGGeneratedListCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MGGeneratedListCellKey forIndexPath:indexPath];
+    cell.tag = indexPath.item;
+    cell.worksModel = self.worksModel;
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if (self.worksModel.isDownloaded) {
+        MGGeneratedDetailsController *vc = [[MGGeneratedDetailsController alloc] init];
+        vc.worksModel = self.worksModel;
+        vc.currentIndex = indexPath.item;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
-
 
 #pragma mark - getter
 - (UICollectionView *)collectionView {
@@ -81,13 +108,6 @@
         [_collectionView registerNib:[UINib nibWithNibName:MGGeneratedListCellKey bundle:nil] forCellWithReuseIdentifier:MGGeneratedListCellKey];
     }
     return _collectionView;
-}
-
-- (NSMutableArray<NSString *> *)resultImages {
-    if (!_resultImages) {
-        _resultImages = [NSMutableArray array];
-    }
-    return _resultImages;
 }
 
 @end
