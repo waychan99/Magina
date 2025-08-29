@@ -135,7 +135,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     MGTemplateDetailsController *vc = [[MGTemplateDetailsController alloc] init];
-    vc.templateModels = [self.templateModels copy];
+    vc.templateModels = [self.templateModels mutableCopy];
     vc.currentTemplateIndex = indexPath.item;
     [self.navigationController pushViewController:vc animated:YES];
 }

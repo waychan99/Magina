@@ -6,14 +6,16 @@
 //
 
 #import "MGGeneratedDetailsController.h"
+#import "MGReviewImageController.h"
 #import "MGReviewImageCell.h"
 #import "NSString+LP.h"
 #import <PhotosUI/PhotosUI.h>
 
-@interface MGGeneratedDetailsController ()<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface MGGeneratedDetailsController ()<UICollectionViewDelegate, UICollectionViewDataSource, MGReviewImageCellDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
 @property (weak, nonatomic) IBOutlet UIButton *saveBtn;
 @property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) UIPageControl *pageControl;
 @property (nonatomic, strong) UIActivityIndicatorView *deleteActionIndicator;
 @property (nonatomic, assign) BOOL isFirstLoad;
 @end
@@ -29,15 +31,11 @@
     [self setupUIComponents];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
     
-    if (self.isFirstLoad) {
-        self.isFirstLoad = NO;
-        if (self.worksModel.generatedImageWorksCount > 0 && self.currentIndex < self.worksModel.generatedImageWorksCount) {
-            [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
-        }
-    }
+    MGReviewImageCell *imageCell = (MGReviewImageCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:self.currentIndex inSection:0]];
+    imageCell.cellZoomScale = MINZOOMSCALE;
 }
 
 #pragma mark - override
@@ -45,7 +43,15 @@
     [super viewDidLayoutSubviews];
     
     self.collectionView.frame = CGRectMake(0, 0, self.view.lv_width, self.saveBtn.lv_y - 24);
+    self.pageControl.frame = CGRectMake((self.view.lv_width - 60) / 2, self.saveBtn.lv_y - 74, 60, 24);
     self.deleteActionIndicator.frame = self.deleteBtn.bounds;
+    
+    if (self.isFirstLoad) {
+        self.isFirstLoad = NO;
+        if (self.worksModel.generatedImageWorksCount > 0 && self.currentIndex < self.worksModel.generatedImageWorksCount) {
+            [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+        }
+    }
 }
 
 #pragma mark - setupUIComponents
@@ -54,10 +60,11 @@
     [self.saveBtn setTitle:NSLocalizedString(@"Save", nil) forState:UIControlStateNormal];
     
     [self.view addSubview:self.collectionView];
-    [self.view bringSubviewToFront:self.customNavBar];
+    self.pageControl.numberOfPages = self.worksModel.generatedImageWorksCount;
+    [self.view addSubview:self.pageControl];
+    self.pageControl.currentPage = self.currentIndex;
     
-    self.collectionView.frame = CGRectMake(0, 0, self.view.lv_width, self.saveBtn.lv_y - 24);
-    self.deleteActionIndicator.frame = self.deleteBtn.bounds;
+    [self.view bringSubviewToFront:self.customNavBar];
 }
 
 #pragma mark - evnetClick
@@ -131,6 +138,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MGReviewImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MGReviewImageCellKey forIndexPath:indexPath];
+    cell.delegate = self;
     cell.tag = indexPath.item;
     cell.worksModel = self.worksModel;
     return cell;
@@ -146,7 +154,16 @@
         CGPoint pInView = [self.view convertPoint:self.collectionView.center toView:self.collectionView];
         NSIndexPath *indexPathNow = [self.collectionView indexPathForItemAtPoint:pInView];
         self.currentIndex = indexPathNow.item;
+        self.pageControl.currentPage = self.currentIndex;
     }
+}
+
+#pragma mark - MGReviewImageCellDelegate
+- (void)didClickedReviewImageCell:(MGReviewImageCell *)reviewImageCell index:(NSInteger)index {
+    MGReviewImageController *vc = [[MGReviewImageController alloc] init];
+    vc.currentIndex = self.currentIndex;
+    vc.worksModel = self.worksModel;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - assistMethod
@@ -217,6 +234,17 @@
         [_collectionView registerClass:[MGReviewImageCell class] forCellWithReuseIdentifier:MGReviewImageCellKey];
     }
     return _collectionView;
+}
+
+- (UIPageControl *)pageControl {
+    if (!_pageControl) {
+        _pageControl = [[UIPageControl alloc] init];
+        _pageControl.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.2];
+        _pageControl.pageIndicatorTintColor = [UIColor darkGrayColor];
+        _pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
+        _pageControl.layer.cornerRadius = 12.0f;
+    }
+    return _pageControl;
 }
 
 - (UIActivityIndicatorView *)deleteActionIndicator {

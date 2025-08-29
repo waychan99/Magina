@@ -80,6 +80,9 @@ NS_ASSUME_NONNULL_BEGIN
 // sse服务器地址
 @property (nonatomic, copy) NSString *sse_url;
 
+// 检查剪切板是否有分享链接
+- (void)checkPasteboardSharedLink;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -40,10 +40,14 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    
     [[MGGlobalManager shareInstance] checkCurrentDate];
+    
     [[MGGlobalManager shareInstance] refreshLocalPoints];
     
     [[MGGlobalManager shareInstance] requestDailyBonusPoints];
+    
+    [[MGGlobalManager shareInstance] checkPasteboardSharedLink];
     
     if (@available(iOS 14, *)) {
         [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {

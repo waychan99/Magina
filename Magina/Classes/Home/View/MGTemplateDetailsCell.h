@@ -17,6 +17,8 @@ static NSString * const MGTemplateDetailsCellKey = @"MGTemplateDetailsCell";
 
 @property (nonatomic, strong) MGTemplateListModel *listModel;
 
+- (void)loadImageWithUrlString:(NSString *)urlString;
+
 @end
 
 NS_ASSUME_NONNULL_END

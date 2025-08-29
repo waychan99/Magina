@@ -7,7 +7,6 @@
 
 #import "MGHomeController.h"
 #import "MGHomeListController.h"
-#import "MGMineController.h"
 #import "MGTemplateCategoryModel.h"
 #import "MGTemplateFilterSheet.h"
 #import "MGGetPointsView.h"
@@ -133,18 +132,16 @@
 }
 
 - (void)tapPointsBgViewAction:(UIGestureRecognizer *)sender {
-//    [MGGetPointsView showWithResultBlock:^(NSInteger actionType) {
-//
-//    } completion:nil];
-    
-    [MGGetPointsFreeAlertView showWithResultBlock:^(NSInteger actionType) {
-            
+    [MGGetPointsView showWithResultBlock:^(NSInteger actionType) {
+
     } completion:nil];
+    
+//    [MGGetPointsFreeAlertView showWithResultBlock:^(NSInteger actionType) {
+//            
+//    } completion:nil];
 }
 
 - (void)tapHeaderIconAction:(UIGestureRecognizer *)sender {
-    MGMineController *vc = [[MGMineController  alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)clickNoDataBtn:(UIButton *)sender {
@@ -314,6 +311,7 @@
     if (!_filterBtn) {
         _filterBtn = [[SPButton alloc] initWithImagePosition:SPButtonImagePositionRight];
         [_filterBtn setImage:[UIImage imageNamed:@"MG_home_topbar_menu_settings_icon"] forState:UIControlStateNormal];
+        [_filterBtn setImage:[UIImage imageNamed:@"MG_home_topbar_menu_settings_icon"] forState:UIControlStateHighlighted];
         [_filterBtn setTitle:@"All" forState:UIControlStateNormal];
         [_filterBtn setTitleColor:HEX_COLOR(0xFF4E92) forState:UIControlStateNormal];
         _filterBtn.titleLabel.font = [UIFont systemFontOfSize:13.0 weight:UIFontWeightMedium];

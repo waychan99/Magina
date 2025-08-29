@@ -29,27 +29,29 @@
     self.btnBgView.backgroundColor = [UIColor colorWithWhite:.3 alpha:.4];
 }
 
-- (void)prepareForReuse {
-    [super prepareForReuse];
-    
-}
+//- (void)prepareForReuse {
+//    [super prepareForReuse];
+//    
+//}
 
 - (void)setListModel:(MGTemplateListModel *)listModel {
     _listModel = listModel;
     
-    if (listModel.bodyTye == 0) {
-        self.thinBtn.selected = YES;
-        self.fatBtn.selected = NO;
-        if (listModel.standardImgs.count > 0) {
-            [self loadImageWithUrlString:listModel.standardImgs.firstObject];
-        }
-    } else {
-        self.thinBtn.selected = NO;
-        self.fatBtn.selected = YES;
-        if (listModel.fatImgs.count > 0) {
-            [self loadImageWithUrlString:listModel.fatImgs.firstObject];
-        }
-    }
+//    if (listModel.bodyTye == 0) {
+//        self.thinBtn.selected = YES;
+//        self.fatBtn.selected = NO;
+//        if (listModel.standardImgs.count > 0) {
+//            [self loadImageWithUrlString:listModel.standardImgs.firstObject];
+//        }
+//    } else {
+//        self.thinBtn.selected = NO;
+//        self.fatBtn.selected = YES;
+//        if (listModel.fatImgs.count > 0) {
+//            [self loadImageWithUrlString:listModel.fatImgs.firstObject];
+//        }
+//    }
+    
+    [self loadImageWithUrlString:listModel.standardImgs.firstObject];
 }
 
 - (void)loadImageWithUrlString:(NSString *)urlString {
@@ -63,23 +65,23 @@
     }];
 }
 
-- (IBAction)clickThinBtn:(UIButton *)sender {
-    sender.backgroundColor = HEX_COLOR(0xEA4C89);
-    self.fatBtn.backgroundColor = [UIColor colorWithWhite:.0 alpha:.0];
-    self.listModel.bodyTye = 0;
-    if (self.listModel.standardImgs.count > 0) {
-        [self loadImageWithUrlString:self.listModel.standardImgs.firstObject];
-    }
-}
-
-- (IBAction)clickFatBtn:(UIButton *)sender {
-    sender.backgroundColor = HEX_COLOR(0xEA4C89);
-    self.thinBtn.backgroundColor = [UIColor colorWithWhite:.0 alpha:.0];
-    self.listModel.bodyTye = 1;
-    if (self.listModel.fatImgs.count > 0) {
-        [self loadImageWithUrlString:self.listModel.fatImgs.firstObject];
-    }
-}
+//- (IBAction)clickThinBtn:(UIButton *)sender {
+//    sender.backgroundColor = HEX_COLOR(0xEA4C89);
+//    self.fatBtn.backgroundColor = [UIColor colorWithWhite:.0 alpha:.0];
+//    self.listModel.bodyTye = 0;
+//    if (self.listModel.standardImgs.count > 0) {
+//        [self loadImageWithUrlString:self.listModel.standardImgs.firstObject];
+//    }
+//}
+//
+//- (IBAction)clickFatBtn:(UIButton *)sender {
+//    sender.backgroundColor = HEX_COLOR(0xEA4C89);
+//    self.thinBtn.backgroundColor = [UIColor colorWithWhite:.0 alpha:.0];
+//    self.listModel.bodyTye = 1;
+//    if (self.listModel.fatImgs.count > 0) {
+//        [self loadImageWithUrlString:self.listModel.fatImgs.firstObject];
+//    }
+//}
 
 - (NSData *)imageLoadingGifData {
     if (!_imageLoadingGifData) {

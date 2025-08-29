@@ -38,7 +38,7 @@
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2SE-9s-P5f">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2SE-9s-P5f">
                     <rect key="frame" x="30" y="83" width="315" height="49"/>
                     <color key="backgroundColor" red="0.91764705882352937" green="0.29803921568627451" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -57,7 +57,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UGG-mc-LgW">
-                    <rect key="frame" x="30" y="142" width="315" height="49"/>
+                    <rect key="frame" x="30" y="83" width="315" height="49"/>
                     <color key="backgroundColor" red="0.11764705882352941" green="0.12156862745098039" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="49" id="1mf-eE-Xyg"/>
@@ -75,7 +75,7 @@
                     </connections>
                 </button>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UO5-tc-35w">
-                    <rect key="frame" x="35" y="201" width="320" height="50"/>
+                    <rect key="frame" x="35" y="142" width="320" height="50"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="dHh-zT-v9i"/>
@@ -101,7 +101,7 @@
                 <constraint firstAttribute="trailing" secondItem="s5r-Cp-aZY" secondAttribute="trailing" constant="20" id="V7a-28-GkB"/>
                 <constraint firstItem="SlA-rq-Omi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ZAE-lP-glW"/>
                 <constraint firstItem="dAW-3P-saR" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="eqH-HC-G9f"/>
-                <constraint firstItem="UGG-mc-LgW" firstAttribute="top" secondItem="2SE-9s-P5f" secondAttribute="bottom" constant="10" id="lTw-h0-ppf"/>
+                <constraint firstItem="UGG-mc-LgW" firstAttribute="top" secondItem="2SE-9s-P5f" secondAttribute="top" id="fy7-nE-lpo"/>
                 <constraint firstAttribute="trailing" secondItem="2SE-9s-P5f" secondAttribute="trailing" constant="30" id="q8T-tX-a0t"/>
                 <constraint firstItem="dAW-3P-saR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="32" id="xFP-Zh-oWZ"/>
             </constraints>

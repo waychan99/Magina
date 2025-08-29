@@ -6,8 +6,8 @@
 //
 
 #import "MGPersonalController.h"
-#import "MGPointsListController.h"
 #import "MGMemberController.h"
+#import "MGInviteFriendsController.h"
 #import "MGMineHeaderView.h"
 #import "MGPersonalCell.h"
 #import "MGAppleLogin.h"
@@ -51,7 +51,7 @@ static NSString *const kAppleLoginKey  = @"apple";
     @lv_weakify(self)
     self.header.tapBgImageViewCallback = ^(UIGestureRecognizer * _Nonnull sender) {
         @lv_strongify(self)
-        MGMemberController *vc = [[MGMemberController alloc] init];
+        MGInviteFriendsController *vc = [[MGInviteFriendsController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     };
     

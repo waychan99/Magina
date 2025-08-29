@@ -13,8 +13,11 @@
             <connections>
                 <outlet property="addPhotoImageView" destination="K9J-FG-eEH" id="xZD-Xb-FwL"/>
                 <outlet property="avatarCollectionView" destination="q6o-gF-Dwr" id="1Rn-nH-MfR"/>
+                <outlet property="btnBgView" destination="XyZ-Sz-YC3" id="P78-PE-oP0"/>
                 <outlet property="collectBtn" destination="ImN-Du-kMe" id="lbT-Mz-EZD"/>
+                <outlet property="fatBtn" destination="n1l-yD-XUU" id="EfH-PQ-LFn"/>
                 <outlet property="photographBtn" destination="JJz-BC-eav" id="elY-XL-XXs"/>
+                <outlet property="standardBtn" destination="nKt-6O-cgD" id="ckk-4Q-JVn"/>
                 <outlet property="templateCollectionView" destination="87H-37-Z9q" id="zNM-mr-Nrh"/>
                 <outlet property="templateCollectionViewTop" destination="tZ8-YX-EAb" id="ITr-y7-ILg"/>
                 <outlet property="titleLab" destination="vQI-Mt-LL6" id="2x3-Od-Nho"/>
@@ -39,6 +42,56 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XyZ-Sz-YC3">
+                    <rect key="frame" x="135.66666666666666" y="583" width="121.99999999999997" height="42"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKt-6O-cgD">
+                            <rect key="frame" x="3" y="3" width="58" height="36"/>
+                            <color key="backgroundColor" red="0.91764705879999997" green="0.29803921570000003" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="MG_thin_template_icon"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="18"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="clickStandardBtn:" destination="-1" eventType="touchUpInside" id="ivc-MW-AHp"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n1l-yD-XUU">
+                            <rect key="frame" x="61" y="3" width="58" height="36"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="MG_fat_template_icon"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="18"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="clickFatBtn:" destination="-1" eventType="touchUpInside" id="8Go-WR-4xT"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="n1l-yD-XUU" secondAttribute="trailing" constant="3" id="1gM-mF-Qfc"/>
+                        <constraint firstItem="n1l-yD-XUU" firstAttribute="width" secondItem="nKt-6O-cgD" secondAttribute="width" id="7Ev-KQ-h7d"/>
+                        <constraint firstItem="n1l-yD-XUU" firstAttribute="top" secondItem="XyZ-Sz-YC3" secondAttribute="top" constant="3" id="Cbd-7v-HFE"/>
+                        <constraint firstItem="nKt-6O-cgD" firstAttribute="top" secondItem="XyZ-Sz-YC3" secondAttribute="top" constant="3" id="MO4-hm-c8v"/>
+                        <constraint firstItem="nKt-6O-cgD" firstAttribute="leading" secondItem="XyZ-Sz-YC3" secondAttribute="leading" constant="3" id="N3W-91-WmY"/>
+                        <constraint firstAttribute="width" constant="122" id="TmP-ON-07d"/>
+                        <constraint firstItem="n1l-yD-XUU" firstAttribute="leading" secondItem="nKt-6O-cgD" secondAttribute="trailing" id="ebi-mJ-b1a"/>
+                        <constraint firstAttribute="bottom" secondItem="nKt-6O-cgD" secondAttribute="bottom" constant="3" id="fwg-aR-0e1"/>
+                        <constraint firstAttribute="bottom" secondItem="n1l-yD-XUU" secondAttribute="bottom" constant="3" id="tYR-v4-EZZ"/>
+                        <constraint firstAttribute="height" constant="42" id="ymf-FB-HbH"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="21"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJz-BC-eav" customClass="SPButton">
                     <rect key="frame" x="133" y="769" width="235" height="49"/>
                     <color key="backgroundColor" red="0.91764705882352937" green="0.29803921568627451" blue="0.53725490196078429" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -117,6 +170,7 @@
                 <constraint firstItem="87H-37-Z9q" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="FMf-fV-eAc"/>
                 <constraint firstAttribute="bottom" secondItem="JJz-BC-eav" secondAttribute="bottom" constant="34" id="JaW-q9-NTo"/>
                 <constraint firstAttribute="trailing" secondItem="JJz-BC-eav" secondAttribute="trailing" constant="25" id="NER-gr-LQu"/>
+                <constraint firstItem="XyZ-Sz-YC3" firstAttribute="bottom" secondItem="87H-37-Z9q" secondAttribute="bottom" constant="-17" id="QR3-w4-GIp"/>
                 <constraint firstItem="vQI-Mt-LL6" firstAttribute="top" secondItem="87H-37-Z9q" secondAttribute="bottom" constant="21" id="RNX-8G-v4G"/>
                 <constraint firstItem="JJz-BC-eav" firstAttribute="leading" secondItem="ImN-Du-kMe" secondAttribute="trailing" constant="8" id="RjG-W1-mc2"/>
                 <constraint firstItem="JJz-BC-eav" firstAttribute="bottom" secondItem="ImN-Du-kMe" secondAttribute="bottom" id="UYl-3u-cPb"/>
@@ -126,14 +180,17 @@
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="vQI-Mt-LL6" secondAttribute="trailing" constant="30" id="iuC-Vs-GfO"/>
                 <constraint firstItem="K9J-FG-eEH" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="25" id="jz7-R1-FBv"/>
                 <constraint firstItem="87H-37-Z9q" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="tZ8-YX-EAb"/>
+                <constraint firstItem="XyZ-Sz-YC3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="yur-XP-fwT"/>
             </constraints>
             <point key="canvasLocation" x="130.53435114503816" y="-11.267605633802818"/>
         </view>
     </objects>
     <resources>
+        <image name="MG_fat_template_icon" width="32" height="23"/>
         <image name="MG_home_add_photo_icon" width="59" height="59"/>
         <image name="MG_home_collection_template_normal" width="37" height="37"/>
         <image name="MG_home_collection_template_selected" width="19.666666030883789" height="19.666666030883789"/>
+        <image name="MG_thin_template_icon" width="32" height="23"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

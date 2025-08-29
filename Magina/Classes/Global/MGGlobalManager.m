@@ -381,4 +381,38 @@ static MGGlobalManager *_instance;
     }];
 }
 
+- (void)checkPasteboardSharedLink {
+    if (![MGGlobalManager shareInstance].isLoggedIn) return;
+    NSString *pastedString = [UIPasteboard generalPasteboard].string;
+    NSString *invite_code = @"";
+    if (pastedString.length > 0) {
+        NSString *sharedLink = @"https://user.magina.art/share/?invite_code";
+        if ([pastedString containsString:sharedLink]) {
+            NSURLComponents *components = [NSURLComponents componentsWithString:pastedString];
+            for (NSURLQueryItem *item in components.queryItems) {
+                if ([item.name isEqualToString:@"invite_code"]) {
+                    invite_code = item.value;
+                    break;
+                }
+            }
+        }
+    }
+    if (invite_code.length > 0) {
+        [self inviteFriendsRequestWitInviteCode:invite_code];
+    } else {
+        [UIPasteboard generalPasteboard].string = nil;
+    }
+}
+
+- (void)inviteFriendsRequestWitInviteCode:(NSString *)inviteCode {
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setValue:inviteCode forKey:@"invite_code"];
+    [params setValue:[MGGlobalManager shareInstance].accountInfo.access_token forKey:@"access_token"];
+    [LVHttpRequest get:@"/magina-api/api/v1/update_user_relation/index.php" param:params header:@{} baseUrlType:CDHttpBaseUrlTypeMagina isNeedPublickParam:YES isNeedPublickHeader:YES isNeedEncryptHeader:YES isNeedEncryptParam:YES isNeedDecryptResponse:YES encryptType:CDHttpBaseUrlTypeMagina timeout:20.0 modelClass:nil completion:^(NSInteger status, NSString * _Nonnull message, id  _Nullable result, NSError * _Nullable error, id  _Nullable responseObject) {
+        if (status != 1 || error) {
+            return;
+        }
+    }];
+}
+
 @end

@@ -22,6 +22,9 @@
 @property (nonatomic, strong) UILabel *pointsLab;
 @property (nonatomic, strong) UIImageView *pointsImageView;
 @property (weak, nonatomic) IBOutlet UICollectionView *templateCollectionView;
+@property (weak, nonatomic) IBOutlet UIView *btnBgView;
+@property (weak, nonatomic) IBOutlet UIButton *standardBtn;
+@property (weak, nonatomic) IBOutlet UIButton *fatBtn;
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
 @property (weak, nonatomic) IBOutlet UIImageView *addPhotoImageView;
 @property (weak, nonatomic) IBOutlet UICollectionView *avatarCollectionView;
@@ -30,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *templateCollectionViewTop;
 @property (nonatomic, strong) NSMutableArray<UIImage *> *faceImageResults;
 @property (nonatomic, assign) NSInteger currentFaceIndex;
+@property (nonatomic, assign) NSInteger bodyTye;/** 0:标准   1:肥胖 */
 @property (nonatomic, assign) BOOL isFirstLoad;
 @end
 
@@ -74,8 +78,11 @@
     [self.customNavBar addSubview:self.pointsLab];
     [self.customNavBar addSubview:self.pointsImageView];
     
+    self.btnBgView.backgroundColor = [UIColor colorWithWhite:.3 alpha:.4];
+    
     [self.photographBtn setTitle:NSLocalizedString(@"10  拍同款", nil) forState:UIControlStateNormal];
     [self.photographBtn setImage:[UIImage imageNamed:@"MG_home_topbar_points_icon"] forState:UIControlStateNormal];
+    [self.photographBtn setImage:[UIImage imageNamed:@"MG_home_topbar_points_icon"] forState:UIControlStateHighlighted];
     
     [self.addPhotoImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAddPhotoImageView:)]];
     
@@ -151,6 +158,27 @@
         }];
     } else {
         [self templateCollectionRequestWithIsCollection:!sender.isSelected];
+    }
+}
+- (IBAction)clickStandardBtn:(UIButton *)sender {
+    sender.backgroundColor = HEX_COLOR(0xEA4C89);
+    self.fatBtn.backgroundColor = [UIColor colorWithWhite:.0 alpha:.0];
+    if (self.bodyTye != 0) {
+        self.bodyTye = 0;
+        MGTemplateDetailsCell *detailsCell = (MGTemplateDetailsCell *)[self.templateCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:self.currentTemplateIndex inSection:0]];
+        MGTemplateListModel *currentModel = [self.templateModels objectAtIndex:self.currentTemplateIndex];
+        [detailsCell loadImageWithUrlString:currentModel.standardImgs.firstObject];
+    }
+}
+
+- (IBAction)clickFatBtn:(UIButton *)sender {
+    sender.backgroundColor = HEX_COLOR(0xEA4C89);
+    self.standardBtn.backgroundColor = [UIColor colorWithWhite:.0 alpha:.0];
+    if (self.bodyTye != 1) {
+        self.bodyTye = 1;
+        MGTemplateDetailsCell *detailsCell = (MGTemplateDetailsCell *)[self.templateCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:self.currentTemplateIndex inSection:0]];
+        MGTemplateListModel *currentModel = [self.templateModels objectAtIndex:self.currentTemplateIndex];
+        [detailsCell loadImageWithUrlString:currentModel.fatImgs.firstObject];
     }
 }
 
@@ -335,6 +363,13 @@
         CGPoint pInView = [self.view convertPoint:self.templateCollectionView.center toView:self.templateCollectionView];
         NSIndexPath *indexPathNow = [self.templateCollectionView indexPathForItemAtPoint:pInView];
         self.currentTemplateIndex = indexPathNow.item;
+        if (self.bodyTye != 0) {
+            self.bodyTye = 0;
+            self.standardBtn.backgroundColor = HEX_COLOR(0xEA4C89);
+            self.fatBtn.backgroundColor = [UIColor colorWithWhite:.0 alpha:.0];
+        }
+        NSIndexPath *index = [NSIndexPath indexPathForItem:self.currentTemplateIndex inSection:0];
+        [self.templateCollectionView reloadItemsAtIndexPaths:@[index]];
     }
 }
 
@@ -415,9 +450,9 @@
     return _faceImageResults;
 }
 
-- (NSArray<MGTemplateListModel *> *)templateModels {
+- (NSMutableArray<MGTemplateListModel *> *)templateModels {
     if (!_templateModels) {
-        _templateModels = [NSArray array];
+        _templateModels = [NSMutableArray array];
     }
     return _templateModels;
 }

@@ -24,8 +24,8 @@
         self.scrollView.delegate = self;
         self.scrollView.showsVerticalScrollIndicator = NO;
         self.scrollView.showsHorizontalScrollIndicator = NO;
-//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction)];
-//        [self.scrollView addGestureRecognizer:tap];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction)];
+        [self.scrollView addGestureRecognizer:tap];
         [self.contentView addSubview:self.scrollView];
         self.imageView = [[UIImageView alloc]initWithFrame:frame];
         self.imageView.userInteractionEnabled = YES;
@@ -34,10 +34,16 @@
         doubleTap.numberOfTapsRequired = 2;
         [self.imageView addGestureRecognizer:doubleTap];
         //优先触发双击手势
-//        [tap requireGestureRecognizerToFail:doubleTap];
+        [tap requireGestureRecognizerToFail:doubleTap];
         [self.scrollView addSubview:self.imageView];
     }
     return self;
+}
+
+- (void)tapAction {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didClickedReviewImageCell:index:)]) {
+        [self.delegate didClickedReviewImageCell:self index:self.tag];
+    }
 }
 
 - (void)doubleClickAction:(UIGestureRecognizer *)gesture {

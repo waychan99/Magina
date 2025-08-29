@@ -49,8 +49,8 @@
 /////////////////////////////////
 
 ///////////////////////////////// magina
-#define kMaginaService @"https://user.magina.net"
-#define kLjwMaginaService @"https://points.magina.net"
+#define kMaginaService @"https://user.magina.art"
+#define kLjwMaginaService @"https://points.magina.art"
 /////////////////////////////////
 
 #elif HTTP_ENVIROMENT_TYPE == 0 // 测试环境
@@ -85,8 +85,8 @@
 /////////////////////////////////
 
 //////////////////////////////////// magina
-#define kMaginaService @"https://user.magina.ai"
-#define kLjwMaginaService @"https://points.magina.net"
+#define kMaginaService @"https://user.magina.art"
+#define kLjwMaginaService @"https://points.magina.art"
 /////////////////////////////////
 
 #endif

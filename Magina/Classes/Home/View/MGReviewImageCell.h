@@ -14,7 +14,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 static NSString * const MGReviewImageCellKey = @"MGReviewImageCell";
 
+@class MGReviewImageCell;
+
+@protocol MGReviewImageCellDelegate<NSObject>
+
+- (void)didClickedReviewImageCell:(MGReviewImageCell *)reviewImageCell index:(NSInteger)index;
+
+@end
+
+
 @interface MGReviewImageCell : UICollectionViewCell
+
+@property (nonatomic, weak) NSObject<MGReviewImageCellDelegate> *delegate;
 
 @property (nonatomic, assign) NSUInteger cellZoomScale;
 

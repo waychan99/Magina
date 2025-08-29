@@ -113,6 +113,8 @@
 		04F54C972E6000B900769DAA /* MGGeneratedDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54C952E6000B900769DAA /* MGGeneratedDetailsController.m */; };
 		04F54C982E6000B900769DAA /* MGGeneratedDetailsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54C962E6000B900769DAA /* MGGeneratedDetailsController.xib */; };
 		04F54C9B2E602C7100769DAA /* MGReviewImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54C9A2E602C7100769DAA /* MGReviewImageCell.m */; };
+		04F54C9E2E617B6200769DAA /* MGPrivacyPolicyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54C9D2E617B6200769DAA /* MGPrivacyPolicyController.m */; };
+		04F54CA12E6198F100769DAA /* MGReviewImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54CA02E6198F100769DAA /* MGReviewImageController.m */; };
 		8AE9E8B1543D003823C4F1E4 /* Pods_Magina.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C50838DFF8AFFA3B1D401A /* Pods_Magina.framework */; };
 /* End PBXBuildFile section */
 
@@ -308,6 +310,10 @@
 		04F54C962E6000B900769DAA /* MGGeneratedDetailsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGGeneratedDetailsController.xib; sourceTree = "<group>"; };
 		04F54C992E602C7100769DAA /* MGReviewImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGReviewImageCell.h; sourceTree = "<group>"; };
 		04F54C9A2E602C7100769DAA /* MGReviewImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGReviewImageCell.m; sourceTree = "<group>"; };
+		04F54C9C2E617B6200769DAA /* MGPrivacyPolicyController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGPrivacyPolicyController.h; sourceTree = "<group>"; };
+		04F54C9D2E617B6200769DAA /* MGPrivacyPolicyController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGPrivacyPolicyController.m; sourceTree = "<group>"; };
+		04F54C9F2E6198F100769DAA /* MGReviewImageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGReviewImageController.h; sourceTree = "<group>"; };
+		04F54CA02E6198F100769DAA /* MGReviewImageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGReviewImageController.m; sourceTree = "<group>"; };
 		64DD56DCE6B674BEB2758DF4 /* Pods-Magina.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Magina.debug.xcconfig"; path = "Target Support Files/Pods-Magina/Pods-Magina.debug.xcconfig"; sourceTree = "<group>"; };
 		75C50838DFF8AFFA3B1D401A /* Pods_Magina.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Magina.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		924A495E2CEAA3C9DFE27B07 /* Pods-Magina.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Magina.release.xcconfig"; path = "Target Support Files/Pods-Magina/Pods-Magina.release.xcconfig"; sourceTree = "<group>"; };
@@ -507,6 +513,8 @@
 				047473262E5413ED004AFE7D /* MGInviteFriendsController.h */,
 				047473272E5413ED004AFE7D /* MGInviteFriendsController.m */,
 				047473282E5413ED004AFE7D /* MGInviteFriendsController.xib */,
+				04F54C9C2E617B6200769DAA /* MGPrivacyPolicyController.h */,
+				04F54C9D2E617B6200769DAA /* MGPrivacyPolicyController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -767,6 +775,8 @@
 				04F54C942E6000B900769DAA /* MGGeneratedDetailsController.h */,
 				04F54C952E6000B900769DAA /* MGGeneratedDetailsController.m */,
 				04F54C962E6000B900769DAA /* MGGeneratedDetailsController.xib */,
+				04F54C9F2E6198F100769DAA /* MGReviewImageController.h */,
+				04F54CA02E6198F100769DAA /* MGReviewImageController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -985,6 +995,8 @@
 				04CDD1532E5815C300286F4C /* MGShotController.m in Sources */,
 				04F54C612E5BF95000769DAA /* MGAlbumListView.m in Sources */,
 				04F54C622E5BF95000769DAA /* MGTemplateDetailsCell.m in Sources */,
+				04F54CA12E6198F100769DAA /* MGReviewImageController.m in Sources */,
+				04F54C9E2E617B6200769DAA /* MGPrivacyPolicyController.m in Sources */,
 				04CDD1542E5815C300286F4C /* MGHomeListController.m in Sources */,
 				04CDD1552E5815C300286F4C /* MGTemplateDetailsController.m in Sources */,
 				04CDD1562E5815C300286F4C /* MGHomeController.m in Sources */,

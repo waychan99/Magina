@@ -7,9 +7,13 @@
 
 #import "MGImageWorksManager.h"
 #import "NSString+LP.h"
+#import "EventSource.h"
 
 @interface MGImageWorksManager ()
 @property (nonatomic, strong) dispatch_queue_t imageWorksQueue;
+@property (nonatomic, strong) EventSource *eventSource;
+@property (nonatomic, strong) NSURL *sseUrl;
+@property (nonatomic, strong) NSMutableArray<MGImageWorksModel *> *inProductionWorksList;
 @end
 
 @implementation MGImageWorksManager
@@ -43,6 +47,82 @@ static MGImageWorksManager *_instance;
         [self createImageWorksSandBoxDirectory];
     }
     return self;
+}
+
+- (void)testSourceEvent {
+    if (![MGGlobalManager shareInstance].isLoggedIn) return;
+    if (!self.eventSource) {
+        self.eventSource = [EventSource eventSourceWithURL:self.sseUrl];
+        [self.eventSource onReadyStateChanged:^(Event *event) {
+            LVLog(@"onReadyStateChanged = %@ -- %i", event.data, event.readyState);
+        }];
+        
+        // 监听消息事件
+        [self.eventSource onMessage:^(Event *event) {
+            LVLog(@"onMessage: %@", event.data);
+       
+        }];
+
+        // 错误处理
+        [self.eventSource onError:^(Event *event) {
+            LVLog(@"onError -- %@ -- %i", event.data, event.readyState);
+        }];
+        
+        [self.eventSource onOpen:^(Event *event) {
+            LVLog(@"onOpen -- %@ -- %i", event.data, event.readyState);
+        }];
+    }
+}
+
+- (void)productionImageWorksWithName:(NSString *)name generatedTag:(NSString *)generatedTag worksCount:(NSInteger)worksCount completion:(void (^)(MGImageWorksModel * _Nonnull))completion {
+    if (![MGGlobalManager shareInstance].isLoggedIn || generatedTag.length <= 0 || worksCount <= 0) return;
+    dispatch_async(_imageWorksQueue, ^{
+        NSMutableIndexSet *indexSet = [NSMutableIndexSet indexSet];
+        [self.inProductionWorksList enumerateObjectsUsingBlock:^(MGImageWorksModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (obj.generatedImageWorksList.count == obj.generatedImageWorksCount) {
+                [indexSet addIndex:idx];
+            }
+        }];
+        if (indexSet.count > 0) {
+            [self.inProductionWorksList removeObjectsAtIndexes:indexSet];
+        }
+        MGImageWorksModel *worksModel = [[MGImageWorksModel alloc] init];
+        worksModel.generatedTag = generatedTag;
+        worksModel.generatedImageWorksCount = worksCount;
+        if (name.length > 0) worksModel.name = name;
+        [self.inProductionWorksList addObject:worksModel];
+        if (!self.eventSource) {
+            self.eventSource = [EventSource eventSourceWithURL:self.sseUrl];
+        }
+        [self.eventSource onMessage:^(Event *event) {
+            LVLog(@"onMessage: %@", event.data);
+            dispatch_async(self->_imageWorksQueue, ^{
+                if ([event.data containsString:@"finish"]) {
+                    [self.inProductionWorksList enumerateObjectsUsingBlock:^(MGImageWorksModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                        if ([event.data containsString:obj.generatedTag]) {
+                            NSDictionary *info = [event.data mj_JSONObject];
+                            [obj.generatedImageWorksList addObject:info[@"image"]];
+                            if (obj.generatedImageWorksList.count == obj.generatedImageWorksCount) {
+                                NSArray *generatedTags = [self.imageWorks valueForKeyPath:@"generatedTag"];
+                                if (![generatedTags containsObject:obj.generatedTag]) {
+                                    long long currentTimeStamp = (long long)([[NSDate date] timeIntervalSince1970] * 1000);
+                                    obj.generatedTime = currentTimeStamp;
+                                    [self.imageWorks insertObject:obj atIndex:0];
+                                    [self saveImageWorksCompletion:^(NSMutableArray<MGImageWorksModel *> * _Nonnull imageWorks) {
+                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                            !completion ?: completion(obj);
+                                        });
+                                        [self downloadImageWorksModel:obj completion:nil];
+                                    }];
+                                }
+                            }
+                            *stop = YES;
+                        }
+                    }];
+                }
+            });
+        }];
+    });
 }
 
 - (void)loadImageWorksCompletion:(void (^)(NSMutableArray<MGImageWorksModel *> * _Nonnull))completion { //路劲不对，还需处理登录情况
@@ -136,6 +216,28 @@ static MGImageWorksManager *_instance;
         _imageWorks = [NSMutableArray array];
     }
     return _imageWorks;
+}
+
+- (NSURL *)sseUrl {
+    if (!_sseUrl) {
+        NSString *domainStrig = [MGGlobalManager shareInstance].sse_url;
+        NSString *userID = [MGGlobalManager shareInstance].accountInfo.user_id;
+        long long currentTimeStamp = (long long)([[NSDate date] timeIntervalSince1970] * 1000);
+        NSString *timeStampString = [NSString stringWithFormat:@"%lld", currentTimeStamp];
+        NSString *paramString = [NSString stringWithFormat:@"time=%@&user_id=%@", timeStampString, userID];
+        NSString *encryptionParamString = [LVHttpRequestHelper encryptionString:paramString keyType:CDHttpBaseUrlTypeMagina];
+        NSString *encodeEncryption = [LVHttpRequestHelper URLEncodedString:encryptionParamString];
+        NSString *sseUrlString = [NSString stringWithFormat:@"%@?%@&rsv_t=%@", domainStrig, paramString, encodeEncryption];
+        _sseUrl = [NSURL URLWithString:sseUrlString];
+    }
+    return _sseUrl;
+}
+
+- (NSMutableArray<MGImageWorksModel *> *)inProductionWorksList {
+    if (!_inProductionWorksList) {
+        _inProductionWorksList = [NSMutableArray array];
+    }
+    return _inProductionWorksList;
 }
 
 @end

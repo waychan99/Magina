@@ -22,9 +22,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)saveImageWorksCompletion:(void (^ __nullable)(NSMutableArray<MGImageWorksModel *> *imageWorks))completion;
 
+- (void)productionImageWorksWithName:(NSString *)name generatedTag:(NSString *)generatedTag worksCount:(NSInteger)worksCount completion:(void (^ __nullable)(MGImageWorksModel *imageWorksModel))completion;
+
 - (void)downloadImageWorks;
 
 - (void)downloadImageWorksModel:(MGImageWorksModel *)worksModel completion:(void (^ __nullable)(MGImageWorksModel *imageWorksModel))completion;
+
+- (void)testSourceEvent;
 
 @end
 
