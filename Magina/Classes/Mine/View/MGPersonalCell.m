@@ -30,8 +30,17 @@
                                @"jumbController"  : @"MGPrivacyPolicyController"},
                              @{@"cellType"        : @(MGPersonalCellTypeApplicationVersion),
                                @"titleText"       : NSLocalizedString(@"Application version", nil),
-                               @"contentText"     : @"",
+                               @"contentText"     : [MGGlobalManager shareInstance].appVersion,
                                @"jumbController"  : @""}]];
+    
+    [originData addObject:@[@{@"cellType"        : @(MGPersonalCellTypeLogout),
+                              @"titleText"       : NSLocalizedString(@"Log out", nil),
+                              @"contentText"     : @"",
+                              @"jumbController"  : @""},
+                            @{@"cellType"        : @(MGPersonalCellTypeCancellation),
+                              @"titleText"       : NSLocalizedString(@"删除账号", nil),
+                              @"contentText"     : @"",
+                              @"jumbController"  : @"MGDelAccountController"}]];
     
     NSMutableArray *dataSource = [NSMutableArray array];
     for (NSArray *subArr in originData) {
@@ -72,11 +81,13 @@
     self.contentLab.text = personalListCellModel.contentText;
     self.bgView.backgroundColor = [UIColor blackColor];
     if (personalListCellModel.cellType == MGPersonalCellTypePointsDetails ||
-        personalListCellModel.cellType == MGPersonalCellTypeContactUs) {
+        personalListCellModel.cellType == MGPersonalCellTypeContactUs ||
+        personalListCellModel.cellType == MGPersonalCellTypeLogout) {
         self.bgView.frame = CGRectMake(15, 0, self.contentView.lv_width - 30, 53);
         [self.bgView lp_setImageWithRadius:LPRadiusMake(16, 16, 0, 0) image:nil borderColor:nil borderWidth:0 backgroundColor:HEX_COLOR(0x15161A) contentMode:0 forState:0 completion:nil];
     } else if (personalListCellModel.cellType == MGPersonalCellTypeInviteFriends ||
-               personalListCellModel.cellType == MGPersonalCellTypeApplicationVersion) {
+               personalListCellModel.cellType == MGPersonalCellTypeApplicationVersion ||
+               personalListCellModel.cellType == MGPersonalCellTypeCancellation) {
         self.bgView.frame = CGRectMake(15, 0, self.contentView.lv_width - 30, 53);
         [self.bgView lp_setImageWithRadius:LPRadiusMake(0, 0, 16, 16) image:nil borderColor:nil borderWidth:0 backgroundColor:HEX_COLOR(0x15161A) contentMode:0 forState:0 completion:nil];
     } else {

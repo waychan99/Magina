@@ -10,11 +10,13 @@
 #import "MGShotController.h"
 #import "MGSelectFaceController.h"
 #import "MGProductionController.h"
+#import "MGReviewImageController.h"
 #import "MGFaceResultCell.h"
 #import "MGTemplateDetailsCell.h"
 #import "MGTemplateListModel.h"
 #import "MGFaceRecognition.h"
 #import "SPButton.h"
+#import "NSString+LP.h"
 #import <HWPanModal/HWPanModal.h>
 #import <Photos/Photos.h>
 
@@ -31,10 +33,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *collectBtn;
 @property (weak, nonatomic) IBOutlet SPButton *photographBtn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *templateCollectionViewTop;
-@property (nonatomic, strong) NSMutableArray<UIImage *> *faceImageResults;
 @property (nonatomic, assign) NSInteger currentFaceIndex;
 @property (nonatomic, assign) NSInteger bodyTye;/** 0:标准   1:肥胖 */
 @property (nonatomic, assign) BOOL isFirstLoad;
+@property (nonatomic, weak) MGGlobalManager *globalManager;
 @end
 
 @implementation MGTemplateDetailsController
@@ -165,7 +167,7 @@
     self.fatBtn.backgroundColor = [UIColor colorWithWhite:.0 alpha:.0];
     if (self.bodyTye != 0) {
         self.bodyTye = 0;
-        MGTemplateDetailsCell *detailsCell = (MGTemplateDetailsCell *)[self.templateCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:self.currentTemplateIndex inSection:0]];
+        MGTemplateDetailsCell *detailsCell = (MGTemplateDetailsCell *)[self.templateCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentTemplateIndex inSection:0]];
         MGTemplateListModel *currentModel = [self.templateModels objectAtIndex:self.currentTemplateIndex];
         [detailsCell loadImageWithUrlString:currentModel.standardImgs.firstObject];
     }
@@ -176,7 +178,7 @@
     self.standardBtn.backgroundColor = [UIColor colorWithWhite:.0 alpha:.0];
     if (self.bodyTye != 1) {
         self.bodyTye = 1;
-        MGTemplateDetailsCell *detailsCell = (MGTemplateDetailsCell *)[self.templateCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:self.currentTemplateIndex inSection:0]];
+        MGTemplateDetailsCell *detailsCell = (MGTemplateDetailsCell *)[self.templateCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentTemplateIndex inSection:0]];
         MGTemplateListModel *currentModel = [self.templateModels objectAtIndex:self.currentTemplateIndex];
         [detailsCell loadImageWithUrlString:currentModel.fatImgs.firstObject];
     }
@@ -214,8 +216,10 @@
         return;
     }
     UIImage *faceImage = nil;
-    if (self.currentFaceIndex <= self.faceImageResults.count && self.faceImageResults.count > 0) {
-        faceImage = self.faceImageResults[self.currentFaceIndex];
+    if (self.currentFaceIndex <= self.globalManager.faceImageRecords.count && self.globalManager.faceImageRecords.count > 0) {
+        NSString *imageName = self.globalManager.faceImageRecords[self.currentFaceIndex];
+        NSString *imagePath = [self.globalManager.faceImageDataFileDirPath stringByAppendingPathComponent:imageName];
+        faceImage = [UIImage imageWithContentsOfFile:imagePath];
     }
     if (!faceImage) {
         [self.view makeToast:NSLocalizedString(@"请选择人脸", nil)];
@@ -243,14 +247,18 @@
         NSMutableArray *imagesArrM = [NSMutableArray array];
         if (self.currentTemplateIndex < self.templateModels.count) {
             MGTemplateListModel *templateModel = [self.templateModels objectAtIndex:self.currentTemplateIndex];
-            if (templateModel.standardImgs.count > 0) {
-                if (templateModel.standardImgs.count == 1) {
-                    NSString *firstImageUrl = templateModel.standardImgs.firstObject;
+            NSArray *templatedArr = templateModel.standardImgs;
+            if (self.bodyTye == 1) {
+                templatedArr = templateModel.fatImgs;
+            }
+            if (templatedArr.count > 0) {
+                if (templatedArr.count == 1) {
+                    NSString *firstImageUrl = templatedArr.firstObject;
                     [imagesArrM addObject:firstImageUrl];
                     NSString *jsonString = [imagesArrM mj_JSONString];
                     [postParmas setValue:jsonString forKey:@"imgs"];
                 } else {
-                    NSString *firstImageUrl = templateModel.standardImgs.firstObject;
+                    NSString *firstImageUrl = templatedArr.firstObject;
                     int i = (arc4random() % (templateModel.standardImgs.count - 1)) + 1;
                     NSString *secondImageUrl = templateModel.standardImgs[i];
                     [imagesArrM addObject:firstImageUrl];
@@ -267,12 +275,14 @@
                 return;
             }
             NSString *tagString = result[@"tag"];
-            MGImageWorksModel *worksModel = [[MGImageWorksModel alloc] init];
-            worksModel.generatedTag = tagString;
-            worksModel.generatedImageWorksCount = imagesArrM.count;
+//            MGImageWorksModel *worksModel = [[MGImageWorksModel alloc] init];
+//            worksModel.generatedTag = tagString;
+//            worksModel.generatedImageWorksCount = imagesArrM.count;
             MGProductionController *vc = [[MGProductionController alloc] init];
             vc.templateModel = [self.templateModels objectAtIndex:self.currentTemplateIndex];
-            vc.worksModel = worksModel;
+//            vc.worksModel = worksModel;
+            vc.generatedTag = tagString;
+            vc.imageWorksCount = imagesArrM.count;
             [self.navigationController pushViewController:vc animated:YES];
         }];
     } failure:^(NSError * _Nonnull error) {
@@ -287,7 +297,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (collectionView == self.avatarCollectionView) {
-        return self.faceImageResults.count;
+        return self.globalManager.faceImageRecords.count;
     } else {
         return self.templateModels.count;
     }
@@ -329,17 +339,20 @@
     if (collectionView == self.avatarCollectionView) {
         MGFaceResultCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MGFaceResultCellKey forIndexPath:indexPath];
         cell.tag = indexPath.item;
-        UIImage *image = self.faceImageResults[indexPath.row];
+        NSString *imageName = self.globalManager.faceImageRecords[indexPath.item];
+        NSString *imagePath = [self.globalManager.faceImageDataFileDirPath stringByAppendingPathComponent:imageName];
+        UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
         cell.contentImageView.image = image;
         cell.contentImageView.layer.borderWidth = self.currentFaceIndex == indexPath.item ? 2 : 0;
         @lv_weakify(self)
         cell.deleteFaceCallback = ^(UIButton * _Nonnull sender, NSInteger index) {
             @lv_strongify(self)
-            [self.faceImageResults removeObjectAtIndex:index];
-            if (self.currentFaceIndex >= self.faceImageResults.count) {
-                self.currentFaceIndex = 0;
+            if (index < self.globalManager.faceImageRecords.count) {
+                NSString *imageName = self.globalManager.faceImageRecords[index];
+                [self.globalManager deleteFaceImageRecord:imageName completion:^{
+                    [self.avatarCollectionView reloadData];
+                }];
             }
-            [self.avatarCollectionView reloadData];
         };
         return cell;
     } else {
@@ -349,12 +362,23 @@
     }
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (collectionView == self.templateCollectionView) {
+        MGTemplateListModel *currentModel = [self.templateModels objectAtIndex:indexPath.item];
+        MGTemplateDetailsCell *detailsCell = (MGTemplateDetailsCell *)cell;
+        [detailsCell loadImageWithUrlString:currentModel.standardImgs.firstObject];
+    }
+}
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (collectionView == self.avatarCollectionView)  {
         self.currentFaceIndex = indexPath.item;
         [self.avatarCollectionView reloadData];
     } else {
-        
+        MGReviewImageController *vc = [[MGReviewImageController alloc] init];
+        vc.currentIndex = self.bodyTye;
+        vc.templateModel = self.templateModels[indexPath.item];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 
@@ -368,8 +392,6 @@
             self.standardBtn.backgroundColor = HEX_COLOR(0xEA4C89);
             self.fatBtn.backgroundColor = [UIColor colorWithWhite:.0 alpha:.0];
         }
-        NSIndexPath *index = [NSIndexPath indexPathForItem:self.currentTemplateIndex inSection:0];
-        [self.templateCollectionView reloadItemsAtIndexPaths:@[index]];
     }
 }
 
@@ -382,15 +404,17 @@
             [[MGFaceRecognition shareInstance] detectFacesWithTargetImge:resultImage resultBlock:^(NSMutableArray<UIImage *> * _Nonnull images) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (images.count == 1) {
-                        [self.faceImageResults addObject:images.firstObject];
-                        [self.avatarCollectionView reloadData];
+                        [self.globalManager saveFaceImage:images.firstObject completion:^{
+                            [self.avatarCollectionView reloadData];
+                        }];
                     } else if (images.count > 1) {
                         MGSelectFaceController *vc = [[MGSelectFaceController alloc] init];
                         vc.originImage = resultImage;
                         vc.imageList = [images copy];
                         vc.selectedImageCallback = ^(UIImage * _Nonnull resultImage) {
-                            [self.faceImageResults addObject:resultImage];
-                            [self.avatarCollectionView reloadData];
+                            [self.globalManager saveFaceImage:resultImage completion:^{
+                                [self.avatarCollectionView reloadData];
+                            }];
                         };
                         vc.modalPresentationStyle = UIModalPresentationFullScreen;
                         [self.navigationController presentViewController:vc animated:YES completion:nil];
@@ -405,15 +429,17 @@
         [[MGFaceRecognition shareInstance] detectFacesWithTargetImge:resultImage resultBlock:^(NSMutableArray<UIImage *> * _Nonnull images) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (images.count == 1) {
-                    [self.faceImageResults addObject:images.firstObject];
-                    [self.avatarCollectionView reloadData];
+                    [self.globalManager saveFaceImage:images.firstObject completion:^{
+                        [self.avatarCollectionView reloadData];
+                    }];
                 } else if (images.count > 1) {
                     MGSelectFaceController *vc = [[MGSelectFaceController alloc] init];
                     vc.originImage = resultImage;
                     vc.imageList = [images copy];
                     vc.selectedImageCallback = ^(UIImage * _Nonnull resultImage) {
-                        [self.faceImageResults addObject:resultImage];
-                        [self.avatarCollectionView reloadData];
+                        [self.globalManager saveFaceImage:resultImage completion:^{
+                            [self.avatarCollectionView reloadData];
+                        }];
                     };
                     vc.modalPresentationStyle = UIModalPresentationFullScreen;
                     [self.navigationController presentViewController:vc animated:YES completion:nil];
@@ -443,18 +469,18 @@
     return _pointsImageView;
 }
 
-- (NSMutableArray<UIImage *> *)faceImageResults {
-    if (!_faceImageResults) {
-        _faceImageResults = [NSMutableArray array];
-    }
-    return _faceImageResults;
-}
-
-- (NSMutableArray<MGTemplateListModel *> *)templateModels {
+- (NSArray<MGTemplateListModel *> *)templateModels {
     if (!_templateModels) {
-        _templateModels = [NSMutableArray array];
+        _templateModels = [NSArray array];
     }
     return _templateModels;
+}
+
+- (MGGlobalManager *)globalManager {
+    if (!_globalManager) {
+        _globalManager = [MGGlobalManager shareInstance];
+    }
+    return _globalManager;
 }
 
 @end

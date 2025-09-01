@@ -14,7 +14,9 @@ typedef NS_ENUM(NSUInteger, MGPersonalCellType) {
     MGPersonalCellTypeInviteFriends,
     MGPersonalCellTypeContactUs,
     MGPersonalCellTypePrivacyPolicy,
-    MGPersonalCellTypeApplicationVersion
+    MGPersonalCellTypeApplicationVersion,
+    MGPersonalCellTypeLogout,
+    MGPersonalCellTypeCancellation
 };
 
 static NSString * const MGPersonalCellKey = @"MGPersonalCell";

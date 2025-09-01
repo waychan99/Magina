@@ -15,7 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) MGTemplateListModel *templateModel;
 
-@property (nonatomic, strong) MGImageWorksModel *worksModel;
+//@property (nonatomic, strong) MGImageWorksModel *worksModel;
+
+@property (nonatomic, copy) NSString *generatedTag;
+
+@property (nonatomic, assign) NSInteger imageWorksCount;
 
 @end
 

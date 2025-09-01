@@ -6,6 +6,7 @@
 //
 
 #import "MGReviewImageCell.h"
+#import "MGTemplateListModel.h"
 #import "NSString+LP.h"
 
 @interface MGReviewImageCell ()<UIScrollViewDelegate>
@@ -91,6 +92,28 @@
             UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
             [self setupImage:image];
         }
+    }
+}
+
+- (void)setTemplateModel:(MGTemplateListModel *)templateModel {
+    _templateModel = templateModel;
+    
+    NSString *urlString = @"";
+    if (self.tag == 0) {
+        if (templateModel.standardImgs.count > 0) {
+            urlString = templateModel.standardImgs.firstObject;
+        }
+    } else if (self.tag == 1) {
+        if (templateModel.fatImgs.count > 0) {
+            urlString = templateModel.fatImgs.firstObject;
+        }
+    }
+    if (urlString.length > 0) {
+        [self.imageView sd_setImageWithURL:[NSURL URLWithString:urlString] placeholderImage:nil options:SDWebImageScaleDownLargeImages context:@{SDWebImageContextImageThumbnailPixelSize : [NSValue valueWithCGSize:CGSizeMake(self.imageView.lv_width * 3.0, self.imageView.lv_height * 3.0)]} progress:nil completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+            if (image) {
+                [self setupImage:image];
+            }
+        }];
     }
 }
 

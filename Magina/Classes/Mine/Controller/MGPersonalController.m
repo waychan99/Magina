@@ -18,6 +18,7 @@ static NSString *const kAppleLoginKey  = @"apple";
 @property (nonatomic, strong) UIImageView *topImageView;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) MGMineHeaderView *header;
+@property (nonatomic, strong) UIView *footer;
 @property (nonatomic, strong) NSMutableArray<NSMutableArray *> *dataSource;
 @end
 
@@ -39,6 +40,7 @@ static NSString *const kAppleLoginKey  = @"apple";
     self.topImageView.frame = CGRectMake(0, 0, selfW, (selfW * 448) / 375);
     self.tableView.frame = CGRectMake(0, 0, selfW, selfH);
     self.header.frame = CGRectMake(0, 0, selfW, self.header.headerHeight);
+    self.footer.frame = CGRectMake(0, 0, selfW, 135);
 }
 
 #pragma mark - setupUIComponents
@@ -47,6 +49,7 @@ static NSString *const kAppleLoginKey  = @"apple";
     [self.view addSubview:self.topImageView];
     [self.view addSubview:self.tableView];
     self.tableView.tableHeaderView = self.header;
+    self.tableView.tableFooterView = self.footer;
     
     @lv_weakify(self)
     self.header.tapBgImageViewCallback = ^(UIGestureRecognizer * _Nonnull sender) {
@@ -103,6 +106,25 @@ static NSString *const kAppleLoginKey  = @"apple";
     }];
 }
 
+- (void)logoutRequest {
+    [SVProgressHUD show];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setValue:[MGGlobalManager shareInstance].accountInfo.access_token forKey:@"access_token"];
+    [LVHttpRequest get:@"/magina-api/api/v1/logout/index.php" param:params header:@{} baseUrlType:CDHttpBaseUrlTypeMagina isNeedPublickParam:YES isNeedPublickHeader:YES isNeedEncryptHeader:YES isNeedEncryptParam:YES isNeedDecryptResponse:YES encryptType:CDHttpBaseUrlTypeMagina timeout:20.0 modelClass:nil completion:^(NSInteger status, NSString * _Nonnull message, id  _Nullable result, NSError * _Nullable error, id  _Nullable responseObject) {
+        [SVProgressHUD dismiss];
+        if (status != 1 || error) {
+            [self.view makeToast:NSLocalizedString(@"global_request_error", nil)];
+            return;
+        }
+        // 缓存账号信息置空
+        [MGGlobalManager shareInstance].accountInfo = nil;
+        // 删除本地账号信息
+        [MGLoginFactory removeAccountInfo];
+        [self.view makeToast:NSLocalizedString(@"logout_successfully", nil) duration:1.0 position:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:MG_LOGOUT_SUCCESSED_NOTI object:nil];
+    }];
+}
+
 #pragma mark - UITableViewDelegate, UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.dataSource.count;
@@ -139,6 +161,21 @@ static NSString *const kAppleLoginKey  = @"apple";
         UIViewController *targetVC = [[NSClassFromString(model.jumbController) alloc] init];
         if (targetVC) {
             [self.navigationController pushViewController:targetVC animated:YES];
+        }
+    } else {
+        switch (model.cellType) {
+            case MGPersonalCellTypeApplicationVersion: {
+                
+            }
+                break;
+                
+            case MGPersonalCellTypeLogout: {
+                [self logoutRequest];
+            }
+                break;
+                
+            default:
+                break;
         }
     }
 }
@@ -187,6 +224,13 @@ static NSString *const kAppleLoginKey  = @"apple";
         _header =  (MGMineHeaderView *)[[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([MGMineHeaderView class]) owner:nil options:nil] lastObject];
     }
     return _header;
+}
+
+- (UIView *)footer {
+    if (!_footer) {
+        _footer = [[UIView alloc] init];
+    }
+    return _footer;
 }
 
 - (NSMutableArray<NSMutableArray *> *)dataSource {

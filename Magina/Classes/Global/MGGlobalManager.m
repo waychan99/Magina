@@ -7,10 +7,9 @@
 
 #import "MGGlobalManager.h"
 #import "NSString+LP.h"
+#import <CommonCrypto/CommonDigest.h>
 
-@interface MGGlobalManager () {
-    dispatch_queue_t _rwQueue;
-}
+@interface MGGlobalManager ()
 @property (nonatomic, copy) NSString *macAddr;
 @property (nonatomic, copy) NSString *appVersion;
 @property (nonatomic, copy) NSString *userLocalInfoPath;
@@ -48,7 +47,8 @@ static MGGlobalManager *_instance;
 #pragma mark businessMethod
 - (instancetype)init {
     if (self = [super init]) {
-        _rwQueue = dispatch_queue_create("rw_queue", DISPATCH_QUEUE_CONCURRENT);
+        _rwQueue = dispatch_queue_create("rw_queue", DISPATCH_QUEUE_SERIAL);
+        [self createFaceImageSandBoxDirectory];
     }
     return self;
 }
@@ -77,7 +77,7 @@ static MGGlobalManager *_instance;
 }
 
 - (void)saveUserLocalInfo:(NSDictionary *)localInfo {
-    dispatch_barrier_async(_rwQueue, ^{
+    dispatch_async(_rwQueue, ^{
         if (localInfo) {
             [localInfo writeToFile:self.userLocalInfoPath atomically:YES];
         }
@@ -210,6 +210,14 @@ static MGGlobalManager *_instance;
         });
     });
 }
+
+- (NSArray *)userLocalInfoUrlArr {
+    if (!_userLocalInfoUrlArr) {
+        _userLocalInfoUrlArr = @[LP_USER_LOCAL_INFO_REQUEST_PATH_1, LP_USER_LOCAL_INFO_REQUEST_PATH_3, LP_USER_LOCAL_INFO_REQUEST_PATH_5, LP_USER_LOCAL_INFO_REQUEST_PATH_4, LP_USER_LOCAL_INFO_REQUEST_PATH_2];
+    }
+    return _userLocalInfoUrlArr;
+}
+
 
 - (void)removeCacheWithDirectoryPath:(NSString *)directoryPath completion:(void (^)(void))completion {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -399,7 +407,6 @@ static MGGlobalManager *_instance;
     }
     if (invite_code.length > 0) {
         [self inviteFriendsRequestWitInviteCode:invite_code];
-    } else {
         [UIPasteboard generalPasteboard].string = nil;
     }
 }
@@ -413,6 +420,82 @@ static MGGlobalManager *_instance;
             return;
         }
     }];
+}
+
+- (void)createFaceImageSandBoxDirectory {
+    NSString *documentDir = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    _faceImageDataFileDirPath = [documentDir stringByAppendingPathComponent:MG_FACE_IMAGE_FILES_DIRECTORY_PATH];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    BOOL isDir = NO;
+    BOOL existed = [fileManager fileExistsAtPath:_faceImageDataFileDirPath isDirectory:&isDir];
+    if ( !(isDir == YES && existed == YES) ) {
+        [fileManager createDirectoryAtPath:_faceImageDataFileDirPath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+}
+
+- (NSString *)faceImageRecordsPath {
+    if (!_faceImageRecordsPath) {
+        _faceImageRecordsPath = [NSString lp_documentFilePathWithFileName:[NSString stringWithFormat:@"%@_%@", MG_FACE_IMAGE_LIST_CACHE_PATH, self.accountInfo.user_id]];
+    }
+    return _faceImageRecordsPath;
+}
+
+- (NSMutableArray<NSString *> *)faceImageRecords {
+    if (!_faceImageRecords) {
+        _faceImageRecords = [[NSMutableArray alloc] initWithContentsOfFile:self.faceImageRecordsPath];
+        if (!_faceImageRecords) {
+            _faceImageRecords = [NSMutableArray array];
+        }
+    }
+    return _faceImageRecords;
+}
+
+- (void)saveFaceImage:(UIImage *)image completion:(void (^ __nullable)(void))completion {
+    dispatch_async(self.rwQueue, ^{
+        NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+        NSString *imageName = [self md5Hash:imageData];
+        if ([self.faceImageRecords containsObject:imageName]) {
+            [self.faceImageRecords removeObject:imageName];
+        }
+        [self.faceImageRecords insertObject:imageName atIndex:0];
+        if (self.faceImageRecords.count > 20) {
+            NSString *lastRecordName = self.faceImageRecords.lastObject;
+            NSString *lastFilePath = [self.faceImageDataFileDirPath stringByAppendingPathComponent:lastRecordName];
+            [[NSFileManager defaultManager] removeItemAtPath:lastFilePath error:nil];
+            [self.faceImageRecords removeLastObject];
+        }
+        [self.faceImageRecords writeToFile:self.faceImageRecordsPath atomically:YES];
+        NSString *filePath = [self.faceImageDataFileDirPath stringByAppendingPathComponent:imageName];
+        [imageData writeToFile:filePath atomically:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            !completion ?: completion();
+        });
+    });
+}
+
+- (void)deleteFaceImageRecord:(NSString *)record completion:(void (^ __nullable)(void))completion {
+    dispatch_async(self.rwQueue, ^{
+        if ([self.faceImageRecords containsObject:record]) {
+            [self.faceImageRecords removeObject:record];
+            [self.faceImageRecords writeToFile:self.faceImageRecordsPath atomically:YES];
+            NSString *filePath = [self.faceImageDataFileDirPath stringByAppendingPathComponent:record];
+            [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                !completion ?: completion();
+            });
+        }
+    });
+}
+
+- (NSString *)md5Hash:(NSData *)data {
+    if (!data) return nil;
+    unsigned char digest[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(data.bytes, (CC_LONG)data.length, digest);
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
+        [output appendFormat:@"%02x", digest[i]];
+    }
+    return output;
 }
 
 @end

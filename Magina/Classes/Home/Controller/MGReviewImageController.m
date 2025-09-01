@@ -38,8 +38,14 @@
     
     if (self.isFirstLoad) {
         self.isFirstLoad = NO;
-        if (self.worksModel.generatedImageWorksCount > 0 && self.currentIndex < self.worksModel.generatedImageWorksCount) {
-            [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+        if (self.worksModel) {
+            if (self.worksModel.generatedImageWorksCount > 0 && self.currentIndex < self.worksModel.generatedImageWorksCount) {
+                [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+            }
+        } else if (self.templateModel) {
+            if (self.currentIndex < 2) {
+                [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+            }
         }
     }
 }
@@ -56,7 +62,12 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.worksModel.generatedImageWorksCount;
+    if (self.worksModel) {
+        return self.worksModel.generatedImageWorksCount;
+    } else if (self.templateModel) {
+        return 2;
+    }
+    return 0;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
@@ -79,7 +90,11 @@
     MGReviewImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MGReviewImageCellKey forIndexPath:indexPath];
     cell.delegate = self;
     cell.tag = indexPath.item;
-    cell.worksModel = self.worksModel;
+    if (self.worksModel) {
+        cell.worksModel = self.worksModel;
+    } else if (self.templateModel) {
+        cell.templateModel = self.templateModel;
+    }
     return cell;
 }
 

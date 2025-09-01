@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MGGlobalManager : NSObject
 
+/** 读写线程 */
+@property (nonatomic, strong) dispatch_queue_t rwQueue;
 /** mac地址 */
 @property (nonatomic, copy, readonly) NSString *macAddr;
 
@@ -46,7 +48,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)requestUserLocalInfo;
 // 存储用户本地信息
 - (void)saveUserLocalInfo:(NSDictionary *)localInfo;
-
 // 获取缓存大小 根据路径获得文件大小
 - (void)getCacheSizeWithDirectoryPath:(NSString *)directoryPath completion:(void (^ __nullable)(NSString *totalStr, NSInteger totalSize))completion;
 // 清除缓存
@@ -54,8 +55,12 @@ NS_ASSUME_NONNULL_BEGIN
 // 定期清理缓存
 - (void)clearCacheRegularlyWithSecondsLimit:(NSInteger)secondsLimit;
 
+
+
 // 检查是否为当天
 - (void)checkCurrentDate;
+
+
 
 // 获取总积分
 - (void)requestTotoalPoints;
@@ -63,6 +68,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)requestDailyBonusPoints;
 // 刷新本地积分
 - (void)refreshLocalPoints;
+
+
 
 /** 收藏模板记录 */
 @property (nonatomic, strong) NSMutableArray<NSDictionary *> * __nullable favoriteTemplates;
@@ -75,13 +82,32 @@ NS_ASSUME_NONNULL_BEGIN
 // 删除全部收藏模板记录
 - (void)deleteFavoriteTemplateRecords;
 
+
+
 // 获取sse服务器配置(链接地址)
 - (void)requestSseConfig;
 // sse服务器地址
 @property (nonatomic, copy) NSString *sse_url;
 
+
+
 // 检查剪切板是否有分享链接
 - (void)checkPasteboardSharedLink;
+
+
+
+/** 人脸图片的文件夹路径 */
+@property (nonatomic, copy) NSString *faceImageDataFileDirPath;
+/** 人脸图片记录的存储路径 */
+@property (nonatomic, copy) NSString *faceImageRecordsPath;
+/** 人脸图片记录列表 */
+@property (nonatomic, strong) NSMutableArray<NSString *> *__nullable faceImageRecords;
+/** 添加人脸图片记录 */
+- (void)saveFaceImage:(UIImage *)image completion:(void (^ __nullable)(void))completion;
+/** 删除人脸图片记录 */
+- (void)deleteFaceImageRecord:(NSString *)record completion:(void (^ __nullable)(void))completion;
+/** 获取图片md5值 */
+- (NSString *)md5Hash:(NSData *)data;
 
 @end
 

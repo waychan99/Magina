@@ -9,11 +9,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSUInteger, MGGeneratedListControllerType) {
+    MGGeneratedListControllerTypeNewGenerated,
+    MGGeneratedListControllerTypeViewWorks,
+};
+
 @interface MGGeneratedListController : MGBaseController
 
 @property (nonatomic, strong) MGImageWorksModel *worksModel;
 
-@property (nonatomic, assign) BOOL needDownload;
+@property (nonatomic, assign) MGGeneratedListControllerType type;
 
 @end
 

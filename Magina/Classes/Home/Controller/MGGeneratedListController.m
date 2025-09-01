@@ -7,6 +7,7 @@
 
 #import "MGGeneratedListController.h"
 #import "MGGeneratedDetailsController.h"
+#import "MGMainNavigationController.h"
 #import "MGGeneratedListCell.h"
 
 @interface MGGeneratedListController ()<UICollectionViewDelegate, UICollectionViewDataSource>
@@ -20,9 +21,8 @@
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imageWorksDidChange) name:MG_IMAGE_WORKS_DID_CHANGED_NOTI object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imageWorkDidDownload) name:MG_IMAGE_WORKS_DID_DOWNLOADED_NOTI object:nil];
     [self setupUIComponents];
-    if (self.needDownload) [self downloadImage];
 }
 
 - (void)dealloc {
@@ -38,12 +38,19 @@
 
 #pragma mark - setupUIComponents
 - (void)setupUIComponents {
+    if (self.type == MGGeneratedListControllerTypeNewGenerated) {
+        [(MGMainNavigationController *)self.navigationController assignPopToControllerClass:NSStringFromClass(self.navigationController.viewControllers.firstObject.class)];
+    }
     self.customNavBar.title = NSLocalizedString(@"Generated Records", nil);
     [self.view addSubview:self.collectionView];
 }
 
 #pragma mark - notification
 - (void)imageWorksDidChange {
+    [self.collectionView reloadData];
+}
+
+- (void)imageWorkDidDownload {
     [self.collectionView reloadData];
 }
 

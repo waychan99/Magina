@@ -106,7 +106,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     MGGeneratedListController *vc = [[MGGeneratedListController alloc] init];
-    vc.needDownload = YES;
+    vc.type = MGGeneratedListControllerTypeViewWorks;
     vc.worksModel = self.worksModelData[indexPath.item];
     [self.navigationController pushViewController:vc animated:YES];
 }

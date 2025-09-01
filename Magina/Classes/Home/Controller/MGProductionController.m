@@ -7,6 +7,7 @@
 
 #import "MGProductionController.h"
 #import "MGGeneratedListController.h"
+#import "MGMainNavigationController.h"
 #import "MGProductionProgress.h"
 #import "MGTemplateListModel.h"
 #import "UIView+GradientColors.h"
@@ -22,7 +23,7 @@
 @property (nonatomic, strong) MGProductionProgress *progressView;
 @property (nonatomic, copy) NSString *timerIdentifier;
 @property (nonatomic, assign) CGFloat progress;
-@property (nonatomic, strong) EventSource *eventSource;
+//@property (nonatomic, strong) EventSource *eventSource;
 @end
 
 @implementation MGProductionController
@@ -38,7 +39,7 @@
 
 - (void)dealloc {
     LVLog(@"MGProductionController -- dealloc");
-    [self.eventSource close];
+//    [self.eventSource close];
 }
 
 #pragma mark - override
@@ -48,14 +49,16 @@
     [self.view.layer insertSublayer:self.bgViewGradientLayer atIndex:0];
     
     CGFloat selfW = self.view.lv_width;
-    CGFloat progressViewW = selfW - 86 * 2;
-    self.progressView.frame = CGRectMake(86, 88, progressViewW, progressViewW * 361 / 203);
+    CGFloat progressViewW = selfW - 76 * 2;
+    self.progressView.frame = CGRectMake(76, 88, progressViewW, progressViewW * 361 / 203);
     self.contentImageView.frame = CGRectMake(1, 1, self.progressView.lv_width - 2, self.progressView.lv_height - 2);
     self.firstTextTopMargin.constant = CGRectGetMaxY(self.progressView.frame) + 46;
 }
 
 #pragma mark - setupUIComponents
 - (void)setupUIComponents {
+    [(MGMainNavigationController *)self.navigationController assignPopToControllerClass:NSStringFromClass(self.navigationController.viewControllers.firstObject.class)];
+    
     [self.view addSubview:self.progressView];
     [self.progressView addSubview:self.contentImageView];
     
@@ -68,7 +71,7 @@
 }
 
 - (IBAction)clickSeeLaterBtn:(UIButton *)sender {
-    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - assistMethod
@@ -86,63 +89,68 @@
         });
     } start:0 interval:1 repeats:YES async:YES];
     
-    NSString *domainStrig = [MGGlobalManager shareInstance].sse_url;
-    NSString *userID = [MGGlobalManager shareInstance].accountInfo.user_id;
-    long long currentTimeStamp = (long long)([[NSDate date] timeIntervalSince1970] * 1000);
-    NSString *timeStampString = [NSString stringWithFormat:@"%lld", currentTimeStamp];
-    NSString *paramString = [NSString stringWithFormat:@"time=%@&user_id=%@", timeStampString, userID];
-    NSString *encryptionParamString = [LVHttpRequestHelper encryptionString:paramString keyType:CDHttpBaseUrlTypeMagina];
-    NSString *encodeEncryption = [LVHttpRequestHelper URLEncodedString:encryptionParamString];
-    NSString *sseUrlString = [NSString stringWithFormat:@"%@?%@&rsv_t=%@", domainStrig, paramString, encodeEncryption];
-    
-    @lv_weakify(self)
-    self.eventSource = [EventSource eventSourceWithURL:[NSURL URLWithString:sseUrlString]];
-    [self.eventSource onReadyStateChanged:^(Event *event) {
-        LVLog(@"onReadyStateChanged = %@ -- %i", event.data, event.readyState);
+    [[MGImageWorksManager shareInstance] productionImageWorksWithName:nil generatedTag:self.generatedTag worksCount:self.imageWorksCount completion:^(MGImageWorksModel * _Nonnull imageWorksModel) {
+        MGGeneratedListController *vc = [[MGGeneratedListController alloc] init];
+        vc.worksModel = imageWorksModel;
+        [self.navigationController pushViewController:vc animated:YES];
     }];
     
-    // 监听消息事件
-    [self.eventSource onMessage:^(Event *event) {
-        LVLog(@"onMessage: %@", event.data);
-        @lv_strongify(self)
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if ([event.data containsString:self.worksModel.generatedTag]) {
-                NSDictionary *info = [event.data mj_JSONObject];
-                LVLog(@"生成图片 = %@ -- %@", self.worksModel.generatedTag, info[@"image"]);
-                [self.worksModel.generatedImageWorksList addObject:info[@"image"]];
-            }
-            if (self.worksModel.generatedImageWorksList.count == self.worksModel.generatedImageWorksCount) {
-                [self.eventSource close];
-                long long currentTimeStamp = (long long)([[NSDate date] timeIntervalSince1970] * 1000);
-                self.worksModel.generatedTime = currentTimeStamp;
-                [[MGImageWorksManager shareInstance].imageWorks insertObject:self.worksModel atIndex:0];
-                [[MGImageWorksManager shareInstance] saveImageWorksCompletion:^(NSMutableArray<MGImageWorksModel *> * _Nonnull imageWorks) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        MGGeneratedListController *vc = [[MGGeneratedListController alloc] init];
-                        vc.needDownload = YES;
-                        vc.worksModel = self.worksModel;
-                        [self.navigationController pushViewController:vc animated:YES];
-                    });
-                }];
-            }
-        });
-    }];
-
-    // 错误处理
-    [self.eventSource onError:^(Event *event) {
-        @lv_strongify(self)
-        LVLog(@"onError -- %@ -- %i", event.data, event.readyState);
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.view makeToast:NSLocalizedString(@"生成图片失败了..", nil)];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self.navigationController popToRootViewControllerAnimated:YES];
-            });
-        });
-    }];
-    
-    [self.eventSource onOpen:^(Event *event) {
-        LVLog(@"onOpen -- %@ -- %i", event.data, event.readyState);
-    }];
+//    NSString *domainStrig = [MGGlobalManager shareInstance].sse_url;
+//    NSString *userID = [MGGlobalManager shareInstance].accountInfo.user_id;
+//    long long currentTimeStamp = (long long)([[NSDate date] timeIntervalSince1970] * 1000);
+//    NSString *timeStampString = [NSString stringWithFormat:@"%lld", currentTimeStamp];
+//    NSString *paramString = [NSString stringWithFormat:@"time=%@&user_id=%@", timeStampString, userID];
+//    NSString *encryptionParamString = [LVHttpRequestHelper encryptionString:paramString keyType:CDHttpBaseUrlTypeMagina];
+//    NSString *encodeEncryption = [LVHttpRequestHelper URLEncodedString:encryptionParamString];
+//    NSString *sseUrlString = [NSString stringWithFormat:@"%@?%@&rsv_t=%@", domainStrig, paramString, encodeEncryption];
+//    
+//    @lv_weakify(self)
+//    self.eventSource = [EventSource eventSourceWithURL:[NSURL URLWithString:sseUrlString]];
+//    [self.eventSource onReadyStateChanged:^(Event *event) {
+//        LVLog(@"onReadyStateChanged = %@ -- %i", event.data, event.readyState);
+//    }];
+//    
+//    // 监听消息事件
+//    [self.eventSource onMessage:^(Event *event) {
+//        LVLog(@"onMessage: %@", event.data);
+//        @lv_strongify(self)
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            if ([event.data containsString:self.worksModel.generatedTag]) {
+//                NSDictionary *info = [event.data mj_JSONObject];
+//                LVLog(@"生成图片 = %@ -- %@", self.worksModel.generatedTag, info[@"image"]);
+//                [self.worksModel.generatedImageWorksList addObject:info[@"image"]];
+//            }
+//            if (self.worksModel.generatedImageWorksList.count == self.worksModel.generatedImageWorksCount) {
+//                [self.eventSource close];
+//                long long currentTimeStamp = (long long)([[NSDate date] timeIntervalSince1970] * 1000);
+//                self.worksModel.generatedTime = currentTimeStamp;
+//                [[MGImageWorksManager shareInstance].imageWorks insertObject:self.worksModel atIndex:0];
+//                [[MGImageWorksManager shareInstance] saveImageWorksCompletion:^(NSMutableArray<MGImageWorksModel *> * _Nonnull imageWorks) {
+//                    dispatch_async(dispatch_get_main_queue(), ^{
+//                        MGGeneratedListController *vc = [[MGGeneratedListController alloc] init];
+//                        vc.worksModel = self.worksModel;
+//                        [self.navigationController pushViewController:vc animated:YES];
+//                    });
+//                }];
+//            }
+//        });
+//    }];
+//
+//    // 错误处理
+//    [self.eventSource onError:^(Event *event) {
+//        @lv_strongify(self)
+//        LVLog(@"onError -- %@ -- %i", event.data, event.readyState);
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self.view makeToast:NSLocalizedString(@"生成图片失败了..", nil)];
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                [self.navigationController popToRootViewControllerAnimated:YES];
+//            });
+//        });
+//    }];
+//    
+//    [self.eventSource onOpen:^(Event *event) {
+//        LVLog(@"onOpen -- %@ -- %i", event.data, event.readyState);
+//    }];
 }
 
 #pragma mark - getter

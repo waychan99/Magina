@@ -41,6 +41,8 @@
     self.view.backgroundColor = [UIColor blackColor];
     
     self.categoryView = [[JXCategoryImageView alloc] initWithFrame:CGRectZero];
+    self.categoryView.contentScrollViewClickTransitionAnimationEnabled = NO;
+    self.categoryView.selectedAnimationDuration = .0f;
     self.categoryView.delegate = self;
     self.categoryView.imageNames = self.imageNames;
     self.categoryView.selectedImageNames = self.selectedImageNames;

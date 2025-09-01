@@ -40,6 +40,7 @@ static NSString *const MG_CURRENT_DATE_KEY = @"MG_CURRENT_DATE_KEY"; //存储当
 //Notification
 static NSString *const MG_USER_LOCAL_INFO_REQUEST_SUCCESSED_NOTI = @"MG_USER_LOCAL_INFO_REQUEST_SUCCESSED_NOTI";//用户本地信息请求成功
 static NSString *const MG_LOGIN_SUCCESSED_NOTI =  @"MG_LOGIN_SUCCESSED_NOTI";   //登录成功通知
+static NSString *const MG_LOGOUT_SUCCESSED_NOTI =  @"MG_LOGOUT_SUCCESSED_NOTI";   //退出登录成功通知
 static NSString *const MG_REQUEST_FAVORITE_TEMPLATE_STATUS_NOTI = @"MG_REQUEST_FAVORITE_TEMPLATE_STATUS_NOTI"; // 请求收藏模板列表状态(1:成功 0:失败)
 static NSString *const MG_FAVORITE_TEMPLATE_LIST_DID_CHANGED = @"MG_FAVORITE_TEMPLATE_LIST_DID_CHANGED";//收藏模板记录发生改变
 static NSString *const MG_IMAGE_WORKS_DID_DOWNLOADED_NOTI = @"MG_IMAGE_WORKS_DID_DOWNLOADED_NOTI";//图片作品集下载完成通知
@@ -50,6 +51,8 @@ static NSString *const MG_IMAGE_WORKS_LIST_DID_CHANGED_NOTI = @"MG_IMAGE_WORKS_L
 static NSString *const MG_FAVORITE_TEMPLATE_RECORD_PATH = @"MG_FAVORITE_TEMPLATE_RECORD_PATH"; // 收藏模板列表本地存储路径
 static NSString *const MG_IMAGE_WORKS_LIST_CACHE_PATH = @"MG_IMAGE_WORKS_LIST_CACHE_PATH"; // 图片作品列表存储路径
 static NSString *const MG_IMAGE_WORKS_FILES_DIRECTORY_PATH = @"MaginaImageWorks"; // 沙盒中存储下载图片作品的文件夹路劲
+static NSString *const MG_FACE_IMAGE_LIST_CACHE_PATH = @"MG_FACE_IMAGE_LIST_CACHE_PATH"; // 人脸图片列表存储路径
+static NSString *const MG_FACE_IMAGE_FILES_DIRECTORY_PATH = @"MaginaFaceImage"; // 沙盒中存储识别出来的人脸图片的文件夹路劲
 
 static NSString *const LP_USER_LOCAL_INFO_PATH = @"lp_user_local_info"; //用户本地信息存储路径
 static NSString *const LP_USER_LOCAL_INFO_REQUEST_PATH_1 = @"http://ip-api.com/json/"; //用户本地信息远程请求路径1

@@ -9,9 +9,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class MGTemplateListModel;
+
 @interface MGReviewImageController : MGBaseController
 
 @property (nonatomic, strong) MGImageWorksModel *worksModel;
+
+@property (nonatomic, strong) MGTemplateListModel *templateModel;
 
 @property (nonatomic, assign) NSInteger currentIndex;
 

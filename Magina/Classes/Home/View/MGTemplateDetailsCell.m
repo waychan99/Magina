@@ -29,10 +29,11 @@
     self.btnBgView.backgroundColor = [UIColor colorWithWhite:.3 alpha:.4];
 }
 
-//- (void)prepareForReuse {
-//    [super prepareForReuse];
-//    
-//}
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    
+    self.mainImageView.image = nil;
+}
 
 - (void)setListModel:(MGTemplateListModel *)listModel {
     _listModel = listModel;
@@ -55,14 +56,16 @@
 }
 
 - (void)loadImageWithUrlString:(NSString *)urlString {
-    [[SDImageCache sharedImageCache] queryCacheOperationForKey:urlString done:^(UIImage * _Nullable image, NSData * _Nullable data, SDImageCacheType cacheType) {
-        if (image) {
-            self.mainImageView.image = image;
-        } else {
-            self.mainImageView.animatedImage = [FLAnimatedImage animatedImageWithGIFData:self.imageLoadingGifData];
-            [self.mainImageView sd_setImageWithURL:[NSURL URLWithString:urlString] placeholderImage:nil options:SDWebImageScaleDownLargeImages context:@{SDWebImageContextImageThumbnailPixelSize : [NSValue valueWithCGSize:CGSizeMake(self.mainImageView.lv_width * 3.0, self.mainImageView.lv_height * 3.0)]}];
-        }
-    }];
+//    [[SDImageCache sharedImageCache] queryCacheOperationForKey:urlString done:^(UIImage * _Nullable image, NSData * _Nullable data, SDImageCacheType cacheType) {
+//        if (image) {
+//            self.mainImageView.image = image;
+//        } else {
+//            self.mainImageView.animatedImage = [FLAnimatedImage animatedImageWithGIFData:self.imageLoadingGifData];
+//            [self.mainImageView sd_setImageWithURL:[NSURL URLWithString:urlString] placeholderImage:nil options:SDWebImageScaleDownLargeImages context:@{SDWebImageContextImageThumbnailPixelSize : [NSValue valueWithCGSize:CGSizeMake(self.mainImageView.lv_width * 3.0, self.mainImageView.lv_height * 3.0)]}];
+//        }
+//    }];
+    self.mainImageView.animatedImage = [FLAnimatedImage animatedImageWithGIFData:self.imageLoadingGifData];
+    [self.mainImageView sd_setImageWithURL:[NSURL URLWithString:urlString] placeholderImage:nil options:SDWebImageScaleDownLargeImages context:@{SDWebImageContextImageThumbnailPixelSize : [NSValue valueWithCGSize:CGSizeMake(self.mainImageView.lv_width * 3.0, self.mainImageView.lv_height * 3.0)]}];
 }
 
 //- (IBAction)clickThinBtn:(UIButton *)sender {
