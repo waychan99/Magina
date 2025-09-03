@@ -1,6 +1,0 @@
-framework module SandBoxPreviewTool {
-  umbrella header "SandBoxPreviewTool-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -117,6 +117,7 @@
 		04F54CA12E6198F100769DAA /* MGReviewImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54CA02E6198F100769DAA /* MGReviewImageController.m */; };
 		04F54CA42E65486500769DAA /* MGDelAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54CA32E65486500769DAA /* MGDelAccountController.m */; };
 		04F54CA62E65488200769DAA /* MGDelAccountController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54CA52E65488200769DAA /* MGDelAccountController.xib */; };
+		04F54CA92E680E2B00769DAA /* MGProductionLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54CA82E680E2B00769DAA /* MGProductionLoading.m */; };
 		8AE9E8B1543D003823C4F1E4 /* Pods_Magina.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C50838DFF8AFFA3B1D401A /* Pods_Magina.framework */; };
 /* End PBXBuildFile section */
 
@@ -319,6 +320,8 @@
 		04F54CA22E65486500769DAA /* MGDelAccountController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGDelAccountController.h; sourceTree = "<group>"; };
 		04F54CA32E65486500769DAA /* MGDelAccountController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGDelAccountController.m; sourceTree = "<group>"; };
 		04F54CA52E65488200769DAA /* MGDelAccountController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGDelAccountController.xib; sourceTree = "<group>"; };
+		04F54CA72E680E2B00769DAA /* MGProductionLoading.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGProductionLoading.h; sourceTree = "<group>"; };
+		04F54CA82E680E2B00769DAA /* MGProductionLoading.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGProductionLoading.m; sourceTree = "<group>"; };
 		64DD56DCE6B674BEB2758DF4 /* Pods-Magina.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Magina.debug.xcconfig"; path = "Target Support Files/Pods-Magina/Pods-Magina.debug.xcconfig"; sourceTree = "<group>"; };
 		75C50838DFF8AFFA3B1D401A /* Pods_Magina.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Magina.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		924A495E2CEAA3C9DFE27B07 /* Pods-Magina.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Magina.release.xcconfig"; path = "Target Support Files/Pods-Magina/Pods-Magina.release.xcconfig"; sourceTree = "<group>"; };
@@ -429,6 +432,8 @@
 				04E8C3FF2E4EE33800EC2E96 /* MGGetPointsFreeAlertView.h */,
 				04E8C4002E4EE33800EC2E96 /* MGGetPointsFreeAlertView.m */,
 				04E8C4022E4EE34300EC2E96 /* MGGetPointsFreeAlertView.xib */,
+				04F54CA72E680E2B00769DAA /* MGProductionLoading.h */,
+				04F54CA82E680E2B00769DAA /* MGProductionLoading.m */,
 				047473482E55C1C1004AFE7D /* MGAlbumPhotoListCell.h */,
 				047473492E55C1C1004AFE7D /* MGAlbumPhotoListCell.m */,
 				0474734A2E55C1C1004AFE7D /* MGAlbumPhotoListCell.xib */,
@@ -1035,6 +1040,7 @@
 				04A9F3532E4AE780005F3FC2 /* MGLoginFactory.m in Sources */,
 				04CDD0F02E56E76F00286F4C /* SLAvCaptureTool.m in Sources */,
 				04F54C8A2E5EB72900769DAA /* MGGeneratedListCell.m in Sources */,
+				04F54CA92E680E2B00769DAA /* MGProductionLoading.m in Sources */,
 				04A9F32C2E4AE6D3005F3FC2 /* UIView+Toast.m in Sources */,
 				04A9F32D2E4AE6D3005F3FC2 /* UIView+LPRadius.m in Sources */,
 				04E8C4062E4F1FEB00EC2E96 /* MGMineController.m in Sources */,
@@ -1083,7 +1089,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Magina/Magina.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 202509011520;
 				DEVELOPMENT_TEAM = 4PGNNN9ZX4;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Magina/Classes/Other/MGPrefixHeader.pch";
@@ -1120,7 +1126,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Magina/Magina.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 202509011520;
 				DEVELOPMENT_TEAM = 4PGNNN9ZX4;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Magina/Classes/Other/MGPrefixHeader.pch";

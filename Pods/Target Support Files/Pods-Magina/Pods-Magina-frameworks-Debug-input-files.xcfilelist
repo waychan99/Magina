@@ -15,5 +15,5 @@ ${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework
 ${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
 ${BUILT_PRODUCTS_DIR}/SPButton/SPButton.framework
 ${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework
-${BUILT_PRODUCTS_DIR}/SandBoxPreviewTool/SandBoxPreviewTool.framework
 ${BUILT_PRODUCTS_DIR}/WRNavigationBar/WRNavigationBar.framework
+${BUILT_PRODUCTS_DIR}/XYUUID/XYUUID.framework

@@ -13,6 +13,7 @@
 #import "MGReviewImageController.h"
 #import "MGFaceResultCell.h"
 #import "MGTemplateDetailsCell.h"
+#import "MGProductionLoading.h"
 #import "MGTemplateListModel.h"
 #import "MGFaceRecognition.h"
 #import "SPButton.h"
@@ -23,6 +24,7 @@
 @interface MGTemplateDetailsController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong) UILabel *pointsLab;
 @property (nonatomic, strong) UIImageView *pointsImageView;
+@property (nonatomic, strong) MGProductionLoading *productionLoading;
 @property (weak, nonatomic) IBOutlet UICollectionView *templateCollectionView;
 @property (weak, nonatomic) IBOutlet UIView *btnBgView;
 @property (weak, nonatomic) IBOutlet UIButton *standardBtn;
@@ -117,12 +119,24 @@
     } else {
         self.collectBtn.selected = NO;
     }
+    
+    @lv_weakify(self)
+    [self.KVOController observe:[MGGlobalManager shareInstance] keyPath:@"currentPoints" options:NSKeyValueObservingOptionNew block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
+        @lv_strongify(self)
+        self.pointsLab.text = [NSString stringWithFormat:@"%.0f", [MGGlobalManager shareInstance].currentPoints];
+        [self.pointsLab sizeToFit];
+        [self setupPointsUIComponentsFrame];
+    }];
 }
 
 #pragma mark - override
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     
+    [self setupPointsUIComponentsFrame];
+}
+
+- (void)setupPointsUIComponentsFrame {
     CGFloat selfW = self.view.lv_width;
     CGFloat pointsLabX = selfW - 20 - self.pointsLab.lv_width;
     self.pointsLab.frame = CGRectMake(pointsLabX, 0, self.pointsLab.lv_width, 17);
@@ -149,7 +163,8 @@
 
 - (IBAction)clickCollectBtn:(UIButton *)sender {
     if (![MGGlobalManager shareInstance].isLoggedIn) {
-        [self.view makeToast:NSLocalizedString(@"请先登录", nil)];
+//        [self.view makeToast:NSLocalizedString(@"请先登录", nil)];
+        [self.view makeToast:NSLocalizedString(@"global_request_error", nil)];
         return;
     }
     if (sender.isSelected) {
@@ -212,9 +227,18 @@
 
 - (void)uploadFaceAndMakingPicture {
     if (![MGGlobalManager shareInstance].isLoggedIn) {
-        [self.view makeToast:NSLocalizedString(@"请先登录", nil)];
+//        [self.view makeToast:NSLocalizedString(@"请先登录", nil)];
+        [self.view makeToast:NSLocalizedString(@"global_request_error", nil)];
         return;
     }
+    
+    if ([MGGlobalManager shareInstance].currentPoints >= 10) {
+        [MGGlobalManager shareInstance].currentPoints -= 10;
+    } else {
+        [self.view makeToast:NSLocalizedString(@"积分不足", nil)];
+        return;
+    }
+    
     UIImage *faceImage = nil;
     if (self.currentFaceIndex <= self.globalManager.faceImageRecords.count && self.globalManager.faceImageRecords.count > 0) {
         NSString *imageName = self.globalManager.faceImageRecords[self.currentFaceIndex];
@@ -225,7 +249,7 @@
         [self.view makeToast:NSLocalizedString(@"请选择人脸", nil)];
         return;
     }
-    [SVProgressHUD show];
+    [self.productionLoading show];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setValue:[MGGlobalManager shareInstance].accountInfo.user_id forKey:@"user_id"];
     params = [LVHttpRequestHelper dict:params byAppendingDict:[LVHttpRequestHelper getPublicParam]];
@@ -236,8 +260,8 @@
     NSString *imageUploadPath = [NSString stringWithFormat:@"%@%@", kLjwMaginaService, @"/api/v1/upload"];
     [LVHttpRequest upload:imageUploadPath param:params header:@{} uploadParam:uploadParam success:^(id  _Nonnull result) {
         if ([result[@"status"] intValue] != 1 || !result[@"data"]) {
-            [SVProgressHUD showWithStatus:result[@"msg"]];
-            [SVProgressHUD dismissWithDelay:1.25];
+            [self.productionLoading dismiss];
+            [self.view makeToast:result[@"msg"]];
             return;
         }
         NSString *resultUrl = result[@"data"][@"url"];
@@ -269,24 +293,21 @@
             }
         }
         [LVHttpRequest post:@"/api/v1/generateImages" param:postParmas header:@{} baseUrlType:CDHttpBaseUrlTypeMagina_ljw isNeedPublickParam:YES isNeedPublickHeader:YES isNeedEncryptHeader:YES isNeedEncryptParam:YES isNeedDecryptResponse:YES encryptType:CDHttpBaseUrlTypeMagina_ljw timeout:2.0 modelClass:nil completion:^(NSInteger status, NSString * _Nonnull message, id  _Nullable result, NSError * _Nullable error, id  _Nullable responseObject) {
-            [SVProgressHUD dismiss];
+            [self.productionLoading dismiss];
             if (status != 1 || error) {
                 [self.view makeToast:message];
                 return;
             }
             NSString *tagString = result[@"tag"];
-//            MGImageWorksModel *worksModel = [[MGImageWorksModel alloc] init];
-//            worksModel.generatedTag = tagString;
-//            worksModel.generatedImageWorksCount = imagesArrM.count;
             MGProductionController *vc = [[MGProductionController alloc] init];
             vc.templateModel = [self.templateModels objectAtIndex:self.currentTemplateIndex];
-//            vc.worksModel = worksModel;
             vc.generatedTag = tagString;
             vc.imageWorksCount = imagesArrM.count;
             [self.navigationController pushViewController:vc animated:YES];
         }];
     } failure:^(NSError * _Nonnull error) {
-        [SVProgressHUD showWithStatus:NSLocalizedString(@"global_request_error", nil)];
+        [self.productionLoading dismiss];
+        [self.view makeToast:NSLocalizedString(@"global_request_error", nil)];
     }];
 }
 
@@ -467,6 +488,13 @@
         _pointsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MG_home_topbar_points_icon"]];
     }
     return _pointsImageView;
+}
+
+- (MGProductionLoading *)productionLoading {
+    if (!_productionLoading) {
+        _productionLoading = [MGProductionLoading createLoading];
+    }
+    return _productionLoading;
 }
 
 - (NSArray<MGTemplateListModel *> *)templateModels {

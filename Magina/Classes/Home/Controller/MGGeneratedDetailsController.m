@@ -187,16 +187,17 @@
     // 绘制原始图片
     [image drawAtPoint:CGPointZero];
     // 计算水印大小和位置（右下角）
-    CGFloat watermarkSize = image.size.width * 0.15; // 水印大小为原图的15%
-    CGFloat margin = image.size.width * 0.02;
+    CGFloat watermarkSizeW = image.size.width * 0.25; // 水印大小为原图的15%
+    CGFloat watermarkSizeH = (watermarkSizeW * watermark.size.height) / watermark.size.width;
+    CGFloat margin = image.size.width * 0.03;
     CGRect watermarkRect = CGRectMake(
-        image.size.width - watermarkSize - margin,
-        image.size.height - watermarkSize - margin,
-        watermarkSize,
-        watermarkSize
-    );
+                                      image.size.width - watermarkSizeW - margin,
+                                      image.size.height - watermarkSizeH - margin,
+                                      watermarkSizeW,
+                                      watermarkSizeH
+                                      );
     // 绘制水印图片
-    [watermark drawInRect:watermarkRect blendMode:kCGBlendModeNormal alpha:0.5]; // 设置透明度
+    [watermark drawInRect:watermarkRect blendMode:kCGBlendModeNormal alpha:0.7]; // 设置透明度
     // 获取处理后的图片
     UIImage *watermarkedImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();

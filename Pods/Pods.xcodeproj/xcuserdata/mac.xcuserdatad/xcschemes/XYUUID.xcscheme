@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0CDA7B4CBF5160BDB63CA2A3D829C46E"
-               BuildableName = "SandBoxPreviewTool.framework"
-               BlueprintName = "SandBoxPreviewTool"
+               BlueprintIdentifier = "029A1D33DDF52838693661EC87FF44D4"
+               BuildableName = "XYUUID.framework"
+               BlueprintName = "XYUUID"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

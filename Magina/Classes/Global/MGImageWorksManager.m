@@ -49,92 +49,83 @@ static MGImageWorksManager *_instance;
     return self;
 }
 
-- (void)testSourceEvent {
-    if (![MGGlobalManager shareInstance].isLoggedIn) return;
-    if (!self.eventSource) {
-        self.eventSource = [EventSource eventSourceWithURL:self.sseUrl];
-        [self.eventSource onReadyStateChanged:^(Event *event) {
-            LVLog(@"onReadyStateChanged = %@ -- %i", event.data, event.readyState);
-        }];
-        
-        // 监听消息事件
-        [self.eventSource onMessage:^(Event *event) {
-            LVLog(@"onMessage: %@", event.data);
-       
-        }];
-
-        // 错误处理
-        [self.eventSource onError:^(Event *event) {
-            LVLog(@"onError -- %@ -- %i", event.data, event.readyState);
-        }];
-        
-        [self.eventSource onOpen:^(Event *event) {
-            LVLog(@"onOpen -- %@ -- %i", event.data, event.readyState);
-        }];
-    }
-}
-
 - (void)productionImageWorksWithName:(NSString *)name generatedTag:(NSString *)generatedTag worksCount:(NSInteger)worksCount completion:(void (^)(MGImageWorksModel * _Nonnull))completion {
     if (![MGGlobalManager shareInstance].isLoggedIn || generatedTag.length <= 0 || worksCount <= 0) return;
-    dispatch_async(_imageWorksQueue, ^{
-        NSMutableIndexSet *indexSet = [NSMutableIndexSet indexSet];
-        [self.inProductionWorksList enumerateObjectsUsingBlock:^(MGImageWorksModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if (obj.generatedImageWorksList.count == obj.generatedImageWorksCount) {
-                [indexSet addIndex:idx];
-            }
-        }];
-        if (indexSet.count > 0) {
-            [self.inProductionWorksList removeObjectsAtIndexes:indexSet];
+    NSMutableIndexSet *productionIndexSet = [NSMutableIndexSet indexSet];
+    [self.inProductionWorksList enumerateObjectsUsingBlock:^(MGImageWorksModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj.generatedImageWorksList.count == obj.generatedImageWorksCount) {
+            [productionIndexSet addIndex:idx];
         }
-        MGImageWorksModel *worksModel = [[MGImageWorksModel alloc] init];
-        worksModel.generatedTag = generatedTag;
-        worksModel.generatedImageWorksCount = worksCount;
-        if (name.length > 0) worksModel.name = name;
-        [self.inProductionWorksList addObject:worksModel];
-        if (!self.eventSource) {
-            self.eventSource = [EventSource eventSourceWithURL:self.sseUrl];
-        }
-        [self.eventSource onMessage:^(Event *event) {
-            LVLog(@"onMessage: %@", event.data);
-            dispatch_async(self->_imageWorksQueue, ^{
-                if ([event.data containsString:@"finish"]) {
-                    [self.inProductionWorksList enumerateObjectsUsingBlock:^(MGImageWorksModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                        if ([event.data containsString:obj.generatedTag]) {
-                            NSDictionary *info = [event.data mj_JSONObject];
-                            [obj.generatedImageWorksList addObject:info[@"image"]];
-                            if (obj.generatedImageWorksList.count == obj.generatedImageWorksCount) {
-                                NSArray *generatedTags = [self.imageWorks valueForKeyPath:@"generatedTag"];
-                                if (![generatedTags containsObject:obj.generatedTag]) {
-                                    long long currentTimeStamp = (long long)([[NSDate date] timeIntervalSince1970] * 1000);
-                                    obj.generatedTime = currentTimeStamp;
-                                    [self.imageWorks insertObject:obj atIndex:0];
-                                    [self saveImageWorksCompletion:^(NSMutableArray<MGImageWorksModel *> * _Nonnull imageWorks) {
-                                        dispatch_async(dispatch_get_main_queue(), ^{
-                                            !completion ?: completion(obj);
-                                        });
-                                        [self downloadImageWorksModel:obj completion:nil];
-                                    }];
-                                }
-                            }
+    }];
+    if (productionIndexSet.count > 0) {
+        [self.inProductionWorksList removeObjectsAtIndexes:productionIndexSet];
+    }
+    if (self.inProductionWorksList.count <= 0) {
+        [self.eventSource close];
+    }
+    self.eventSource = [EventSource eventSourceWithURL:self.sseUrl];
+    MGImageWorksModel *worksModel = [[MGImageWorksModel alloc] init];
+    worksModel.generatedTag = generatedTag;
+    worksModel.generatedImageWorksCount = worksCount;
+    if (name.length > 0) worksModel.name = name;
+    [self.inProductionWorksList addObject:worksModel];
+    
+    NSMutableArray *generatedSuccessedArrM = [NSMutableArray array];
+    [self.eventSource onMessage:^(Event *event) {
+        LVLog(@"onMessage: %@", event.data);
+        dispatch_async(self->_imageWorksQueue, ^{
+            if ([event.data containsString:@"finish"]) {
+                [self.inProductionWorksList enumerateObjectsUsingBlock:^(MGImageWorksModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    if ([event.data containsString:obj.generatedTag]) {
+                        NSDictionary *info = [event.data mj_JSONObject];
+                        NSString *imageUrl = info[@"image"];
+                        if ([obj.generatedImageWorksList containsObject:imageUrl]) {
+                            LVLog(@"重复返回同一张图片");
                             *stop = YES;
+                            return;
                         }
-                    }];
+                        [obj.generatedImageWorksList addObject:imageUrl];
+                        if (obj.generatedImageWorksList.count == obj.generatedImageWorksCount) {
+                            [generatedSuccessedArrM addObject:obj];
+                            NSArray *generatedTags = [self.imageWorks valueForKeyPath:@"generatedTag"];
+                            if (![generatedTags containsObject:obj.generatedTag]) {
+                                long long currentTimeStamp = (long long)([[NSDate date] timeIntervalSince1970] * 1000);
+                                obj.generatedTime = currentTimeStamp;
+                                [self.imageWorks insertObject:obj atIndex:0];
+                                [self saveImageWorksCompletion:^(NSMutableArray<MGImageWorksModel *> * _Nonnull imageWorks) {
+                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                        !completion ?: completion(obj); //此处赋值block回调的话，sse一直不断开，回调也能成功，但无法做UI操作，具体原因不知，用通知则正常
+                                        [[NSNotificationCenter defaultCenter] postNotificationName:MG_IMAGE_WORKS_GENERATED_SUCCESSED_NOTI object:obj];
+                                    });
+                                    [self downloadImageWorksModel:obj completion:nil];
+                                }];
+                            }
+                        }
+                        *stop = YES;
+                    }
+                }];
+                if (generatedSuccessedArrM.count > 0) {
+                    [self.inProductionWorksList removeObjectsInArray:generatedSuccessedArrM];
+                    [generatedSuccessedArrM removeAllObjects];
                 }
-            });
-        }];
-    });
+                if (self.inProductionWorksList.count <= 0) {
+                    [self.eventSource close];
+                }
+            }
+        });
+    }];
 }
 
 - (void)loadImageWorksCompletion:(void (^)(NSMutableArray<MGImageWorksModel *> * _Nonnull))completion { //路劲不对，还需处理登录情况
     dispatch_async(_imageWorksQueue, ^{
-        self.imageWorks = [MGImageWorksModel mj_objectArrayWithKeyValuesArray:[[NSMutableArray alloc] initWithContentsOfFile:[NSString lp_documentFilePathWithFileName:MG_IMAGE_WORKS_LIST_CACHE_PATH]]];
+        self.imageWorks = [MGImageWorksModel mj_objectArrayWithKeyValuesArray:[[NSMutableArray alloc] initWithContentsOfFile:[NSString lp_documentFilePathWithFileName:[NSString stringWithFormat:@"%@_%@", MG_IMAGE_WORKS_LIST_CACHE_PATH, [MGGlobalManager shareInstance].accountInfo.user_id]]]];
         !completion ?: completion(self.imageWorks);
     });
 }
 
 - (void)saveImageWorksCompletion:(void (^)(NSMutableArray<MGImageWorksModel *> * _Nonnull))completion {
     dispatch_async(_imageWorksQueue, ^{
-        [[MGImageWorksModel mj_keyValuesArrayWithObjectArray:self.imageWorks] writeToFile:[NSString lp_documentFilePathWithFileName:MG_IMAGE_WORKS_LIST_CACHE_PATH] atomically:YES];
+        [[MGImageWorksModel mj_keyValuesArrayWithObjectArray:self.imageWorks] writeToFile:[NSString lp_documentFilePathWithFileName:[NSString stringWithFormat:@"%@_%@", MG_IMAGE_WORKS_LIST_CACHE_PATH, [MGGlobalManager shareInstance].accountInfo.user_id]] atomically:YES];
         !completion ?: completion(self.imageWorks);
     });
 }

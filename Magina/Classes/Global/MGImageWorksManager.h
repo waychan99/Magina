@@ -28,8 +28,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)downloadImageWorksModel:(MGImageWorksModel *)worksModel completion:(void (^ __nullable)(MGImageWorksModel *imageWorksModel))completion;
 
-- (void)testSourceEvent;
-
 @end
 
 NS_ASSUME_NONNULL_END

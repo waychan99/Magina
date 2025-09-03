@@ -81,6 +81,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)deleteFavoriteTemplateRecord:(NSDictionary *)record;
 // 删除全部收藏模板记录
 - (void)deleteFavoriteTemplateRecords;
+// 请求收藏列表
+- (void)requestFavoriteList;
 
 
 

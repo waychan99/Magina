@@ -335,7 +335,7 @@ static MGGlobalManager *_instance;
 
 - (void)refreshLocalPoints {
     if (!self.isToday && !self.isLoggedIn) {
-        self.localPoints = 30.0;
+        self.localPoints = 100.0;
     }
 }
 
@@ -380,6 +380,28 @@ static MGGlobalManager *_instance;
     return _favoriteTemplatesPath;
 }
 
+- (void)requestFavoriteList {
+    if (self.isLoggedIn) {
+        NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+        [params setValue:self.accountInfo.user_id forKey:@"user_id"];
+        [params setValue:@(1) forKey:@"page"];
+        [params setValue:@(3000) forKey:@"limit"];
+        [LVHttpRequest get:@"/api/v1/getUserCollections" param:params header:@{} baseUrlType:CDHttpBaseUrlTypeMagina_ljw isNeedPublickParam:YES isNeedPublickHeader:YES isNeedEncryptHeader:YES isNeedEncryptParam:YES isNeedDecryptResponse:YES encryptType:CDHttpBaseUrlTypeMagina_ljw timeout:20.0 modelClass:nil completion:^(NSInteger status, NSString * _Nonnull message, id  _Nullable result, NSError * _Nullable error, id  _Nullable responseObject) {
+            if (status != 1 || error) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:MG_REQUEST_FAVORITE_TEMPLATE_STATUS_NOTI object:@{@"status" : @(0)}];
+                return;
+            }
+            NSArray *resultArr = (NSArray *)result;
+            if (resultArr.count > 0) {
+                NSMutableArray *resultArrM = [resultArr mutableCopy];
+                self.favoriteTemplates = resultArrM;
+                [resultArrM writeToFile:self.favoriteTemplatesPath atomically:YES];
+            }
+            [[NSNotificationCenter defaultCenter] postNotificationName:MG_REQUEST_FAVORITE_TEMPLATE_STATUS_NOTI object:@{@"status" : @(1)}];
+        }];
+    }
+}
+
 - (void)requestSseConfig {
     [LVHttpRequest get:@"/api/v1/sseConfig" param:@{} header:@{} baseUrlType:CDHttpBaseUrlTypeMagina_ljw isNeedPublickParam:YES isNeedPublickHeader:YES isNeedEncryptHeader:YES isNeedEncryptParam:YES isNeedDecryptResponse:YES encryptType:CDHttpBaseUrlTypeMagina_ljw timeout:20.0 modelClass:nil completion:^(NSInteger status, NSString * _Nonnull message, id  _Nullable result, NSError * _Nullable error, id  _Nullable responseObject) {
         if (status != 1 || error) {
@@ -390,7 +412,10 @@ static MGGlobalManager *_instance;
 }
 
 - (void)checkPasteboardSharedLink {
-    if (![MGGlobalManager shareInstance].isLoggedIn) return;
+    if (!self.isLoggedIn) {
+        [UIPasteboard generalPasteboard].string = nil;
+        return;
+    }
     NSString *pastedString = [UIPasteboard generalPasteboard].string;
     NSString *invite_code = @"";
     if (pastedString.length > 0) {
@@ -407,14 +432,14 @@ static MGGlobalManager *_instance;
     }
     if (invite_code.length > 0) {
         [self inviteFriendsRequestWitInviteCode:invite_code];
-        [UIPasteboard generalPasteboard].string = nil;
     }
+    [UIPasteboard generalPasteboard].string = nil;
 }
 
 - (void)inviteFriendsRequestWitInviteCode:(NSString *)inviteCode {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setValue:inviteCode forKey:@"invite_code"];
-    [params setValue:[MGGlobalManager shareInstance].accountInfo.access_token forKey:@"access_token"];
+    [params setValue:self.accountInfo.access_token forKey:@"access_token"];
     [LVHttpRequest get:@"/magina-api/api/v1/update_user_relation/index.php" param:params header:@{} baseUrlType:CDHttpBaseUrlTypeMagina isNeedPublickParam:YES isNeedPublickHeader:YES isNeedEncryptHeader:YES isNeedEncryptParam:YES isNeedDecryptResponse:YES encryptType:CDHttpBaseUrlTypeMagina timeout:20.0 modelClass:nil completion:^(NSInteger status, NSString * _Nonnull message, id  _Nullable result, NSError * _Nullable error, id  _Nullable responseObject) {
         if (status != 1 || error) {
             return;

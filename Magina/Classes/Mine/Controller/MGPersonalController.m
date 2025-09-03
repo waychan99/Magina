@@ -10,9 +10,6 @@
 #import "MGInviteFriendsController.h"
 #import "MGMineHeaderView.h"
 #import "MGPersonalCell.h"
-#import "MGAppleLogin.h"
-
-static NSString *const kAppleLoginKey  = @"apple";
 
 @interface MGPersonalController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UIImageView *topImageView;
@@ -40,7 +37,6 @@ static NSString *const kAppleLoginKey  = @"apple";
     self.topImageView.frame = CGRectMake(0, 0, selfW, (selfW * 448) / 375);
     self.tableView.frame = CGRectMake(0, 0, selfW, selfH);
     self.header.frame = CGRectMake(0, 0, selfW, self.header.headerHeight);
-    self.footer.frame = CGRectMake(0, 0, selfW, 135);
 }
 
 #pragma mark - setupUIComponents
@@ -59,70 +55,8 @@ static NSString *const kAppleLoginKey  = @"apple";
     };
     
     self.header.tapHeaderIconCallback = ^(UIGestureRecognizer * _Nonnull sender) {
-        @lv_strongify(self)
-        [self appleLogin];
+        
     };
-}
-
-#pragma mark - request
-- (void)loginRequestWithCode:(NSString *)code fromType:(NSString *)fromType email:(NSString *)email userName:(NSString *)userName userAvatar:(NSString *)userAvatar {
-    [SVProgressHUD show];
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setValue:code forKey:@"from_code"];
-    [params setValue:fromType forKey:@"from_type"];
-    [params setValue:email forKey:@"third_email"];
-    [params setValue:userName forKey:@"third_user_name"];
-    [params setValue:userAvatar forKey:@"third_user_avatar"];
-    [LVHttpRequest get:@"/magina-api/api/v1/login/index.php" param:params header:@{} baseUrlType:CDHttpBaseUrlTypeMagina isNeedPublickParam:YES isNeedPublickHeader:YES isNeedEncryptHeader:YES isNeedEncryptParam:YES isNeedDecryptResponse:YES encryptType:CDHttpBaseUrlTypeMagina timeout:20.0 modelClass:nil completion:^(NSInteger status, NSString * _Nonnull message, id  _Nullable result, NSError * _Nullable error, id  _Nullable responseObject) {
-        [SVProgressHUD dismiss];
-        if (status != 1 || error) {
-            [self.view makeToast:NSLocalizedString(@"global_request_error", nil)];
-            return;
-        }
-        [MGLoginFactory saveAccountInfo:result];
-        [MGGlobalManager shareInstance].accountInfo = [MGAccountInfo mj_objectWithKeyValues:result];
-        [[NSNotificationCenter defaultCenter] postNotificationName:MG_LOGIN_SUCCESSED_NOTI object:nil];
-        [self requestFavoriteList];
-    }];
-}
-
-- (void)requestFavoriteList {
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setValue:[MGGlobalManager shareInstance].accountInfo.user_id forKey:@"user_id"];
-    [params setValue:@(1) forKey:@"page"];
-    [params setValue:@(3000) forKey:@"limit"];
-    [LVHttpRequest get:@"/api/v1/getUserCollections" param:params header:@{} baseUrlType:CDHttpBaseUrlTypeMagina_ljw isNeedPublickParam:YES isNeedPublickHeader:YES isNeedEncryptHeader:YES isNeedEncryptParam:YES isNeedDecryptResponse:YES encryptType:CDHttpBaseUrlTypeMagina_ljw timeout:20.0 modelClass:nil completion:^(NSInteger status, NSString * _Nonnull message, id  _Nullable result, NSError * _Nullable error, id  _Nullable responseObject) {
-        if (status != 1 || error) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:MG_REQUEST_FAVORITE_TEMPLATE_STATUS_NOTI object:@{@"status" : @(0)}];
-            return;
-        }
-        NSArray *resultArr = (NSArray *)result;
-        if (resultArr.count > 0) {
-            NSMutableArray *resultArrM = [resultArr mutableCopy];
-            [MGGlobalManager shareInstance].favoriteTemplates = resultArrM;
-            [resultArrM writeToFile:[MGGlobalManager shareInstance].favoriteTemplatesPath atomically:YES];
-        }
-        [[NSNotificationCenter defaultCenter] postNotificationName:MG_REQUEST_FAVORITE_TEMPLATE_STATUS_NOTI object:@{@"status" : @(1)}];
-    }];
-}
-
-- (void)logoutRequest {
-    [SVProgressHUD show];
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setValue:[MGGlobalManager shareInstance].accountInfo.access_token forKey:@"access_token"];
-    [LVHttpRequest get:@"/magina-api/api/v1/logout/index.php" param:params header:@{} baseUrlType:CDHttpBaseUrlTypeMagina isNeedPublickParam:YES isNeedPublickHeader:YES isNeedEncryptHeader:YES isNeedEncryptParam:YES isNeedDecryptResponse:YES encryptType:CDHttpBaseUrlTypeMagina timeout:20.0 modelClass:nil completion:^(NSInteger status, NSString * _Nonnull message, id  _Nullable result, NSError * _Nullable error, id  _Nullable responseObject) {
-        [SVProgressHUD dismiss];
-        if (status != 1 || error) {
-            [self.view makeToast:NSLocalizedString(@"global_request_error", nil)];
-            return;
-        }
-        // 缓存账号信息置空
-        [MGGlobalManager shareInstance].accountInfo = nil;
-        // 删除本地账号信息
-        [MGLoginFactory removeAccountInfo];
-        [self.view makeToast:NSLocalizedString(@"logout_successfully", nil) duration:1.0 position:nil];
-        [[NSNotificationCenter defaultCenter] postNotificationName:MG_LOGOUT_SUCCESSED_NOTI object:nil];
-    }];
 }
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource
@@ -170,7 +104,7 @@ static NSString *const kAppleLoginKey  = @"apple";
                 break;
                 
             case MGPersonalCellTypeLogout: {
-                [self logoutRequest];
+                
             }
                 break;
                 
@@ -183,17 +117,6 @@ static NSString *const kAppleLoginKey  = @"apple";
 #pragma mark - JXCategoryListContentViewDelegate
 - (UIView *)listView {
     return self.view;
-}
-
-#pragma mark - assistMethod
-- (void)appleLogin {
-    @lv_weakify(self)
-    [[MGAppleLogin shareInstance] mg_loginWithCompleteHandler:^(BOOL successed, NSString * _Nullable user, NSString * _Nullable familyName, NSString * _Nullable givenName, NSString * _Nullable email, NSString * _Nullable password, NSData * _Nullable identityToken, NSData * _Nullable authorizationCode, NSError * _Nullable error, NSString * _Nonnull msg) {
-        if (!error) {
-            @lv_strongify(self)
-            [self loginRequestWithCode:user fromType:kAppleLoginKey email:email userName:[NSString stringWithFormat:@"%@ %@", givenName, familyName] userAvatar:nil];
-        }
-    }];
 }
 
 #pragma mark - getter
@@ -228,7 +151,7 @@ static NSString *const kAppleLoginKey  = @"apple";
 
 - (UIView *)footer {
     if (!_footer) {
-        _footer = [[UIView alloc] init];
+        _footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, UI_SCREEN_W, 120)];
     }
     return _footer;
 }

@@ -75,6 +75,7 @@
         _categoryView.titleSelectedFont = [UIFont systemFontOfSize:13.0 weight:UIFontWeightMedium];
         _categoryView.titleColor = HEX_COLOR(0x8C919D);
         _categoryView.titleSelectedColor = [UIColor whiteColor];
+        _categoryView.averageCellSpacingEnabled = NO;
     }
     return _categoryView;
 }

@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MGProductionProgress : UIView
 
+@property (nonatomic, assign) CGFloat duration;/**<动画时长*/
+
 //进度
 @property (nonatomic, assign) CGFloat progress;/**<进度 0-1 */
 

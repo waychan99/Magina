@@ -18,12 +18,6 @@
     self.titleLabTextColor = [UIColor colorWithRed:181/255.0 green:181/255.0 blue:181/255.0 alpha:1.0];
     self.titleLabFont = [UIFont systemFontOfSize:16.0 weight:UIFontWeightBold];
     
-//    self.actionBtnBackGroundColor = [UIColor clearColor];
-//    self.actionBtnBorderWidth = 1.0;
-//    self.actionBtnBorderColor = [UIColor colorWithRed:181/255.0 green:181/255.0 blue:181/255.0 alpha:1.0];
-//    self.actionBtnCornerRadius = 5.0;
-//    self.actionBtnTitleColor = [UIColor colorWithRed:181/255.0 green:181/255.0 blue:181/255.0 alpha:1.0];
-    
     self.actionBtnFont = [UIFont systemFontOfSize:13.0 weight:UIFontWeightMedium];
     self.actionBtnHorizontalMargin = 10.0;
     self.actionBtnTitleColor = HEX_COLOR(0x8C919D);

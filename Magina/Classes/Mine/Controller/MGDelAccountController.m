@@ -84,7 +84,6 @@
 
 #pragma mark - request
 - (void)deleteAccountRequest {
-
 //        [self.view makeToast:NSLocalizedString(@"LP_delAcc_successfullyDeletedContent", nil) duration:2.75 position:CSToastPositionCenter];
 //        [[NSNotificationCenter defaultCenter] postNotificationName:EJ_LOGOUT_SUCCESSED_NOTI object:nil];
 //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

@@ -7,16 +7,15 @@
 
 #import "MGHomeController.h"
 #import "MGHomeListController.h"
+#import "MGInviteFriendsController.h"
 #import "MGTemplateCategoryModel.h"
 #import "MGTemplateFilterSheet.h"
 #import "MGGetPointsView.h"
 #import "MGGetPointsFreeAlertView.h"
+#import "LPNetwortReachability.h"
 #import <JXCategoryView/JXCategoryView.h>
 #import "UIView+GradientColors.h"
 #import "SPButton.h"
-
-#import <SandBoxPreviewTool/SandBoxPreviewTool.h>
-#import <SandBoxPreviewTool/SuspensionButton.h>//悬浮球按钮
 
 @interface MGHomeController ()<JXCategoryListContainerViewDelegate, JXCategoryViewDelegate>
 @property (nonatomic, strong) UIView *topBar;
@@ -39,6 +38,8 @@
 @property (nonatomic, strong) NSMutableArray<MGTemplateCategoryModel *> *categoryList;
 @property (nonatomic, assign) NSInteger genderIndex;
 @property (nonatomic, assign) NSInteger categoryIndex;
+
+@property (nonatomic, assign) BOOL requestSucceeded;
 @end
 
 @implementation MGHomeController
@@ -47,17 +48,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkStatusNoti:) name:LP_NETWORK_STATUS_NOTI object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didBecomeActive) name:UIApplicationDidBecomeActiveNotification object:nil];
+    
     [self setupUIComponents];
     [self requestCategoryList];
-
-    SuspensionButton * button = [[SuspensionButton alloc] initWithFrame:CGRectMake(-5, [UIScreen mainScreen].bounds.size.height/2 - 100 , 50, 50) color:[UIColor colorWithRed:135/255.0 green:216/255.0 blue:80/255.0 alpha:1]];
-      button.leanType = SuspensionViewLeanTypeEachSide;
-      [button addTarget:self action:@selector(pushToDebugPage) forControlEvents:UIControlEventTouchUpInside];
-      [self.view addSubview:button];
 }
 
-- (void)pushToDebugPage {
-    [[SandBoxPreviewTool sharedTool] autoOpenCloseApplicationDiskDirectoryPanel];
+- (void)didBecomeActive {
+    if (![MGGlobalManager shareInstance].isLoggedIn) {
+        [MGGetPointsFreeAlertView showWithResultBlock:^(NSInteger actionType) {
+            
+        } completion:nil];
+    }
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - setupUIComponents
@@ -87,7 +94,8 @@
         self.pointsLab.text = [NSString stringWithFormat:@"%.0f", [MGGlobalManager shareInstance].currentPoints];
         [self.pointsLab sizeToFit];
         CGFloat pointsBgViewW = 14 + self.pointsImageView.lv_width + 5 + self.pointsLab.lv_width + 16;
-        self.pointsBgView.frame = CGRectMake(self.headerIcon.lv_x - 12.5 - pointsBgViewW, 0, pointsBgViewW, 31);
+//        self.pointsBgView.frame = CGRectMake(self.headerIcon.lv_x - 12.5 - pointsBgViewW, 0, pointsBgViewW, 31);
+        self.pointsBgView.frame = CGRectMake(self.view.lv_width - pointsBgViewW - 15.5, 0, pointsBgViewW, 31);
         self.pointsBgView.lv_centerY = self.logoImageView.lv_centerY;
     }];
 }
@@ -107,7 +115,8 @@
     self.pointsImageView.frame = CGRectMake(14, (31 - 17) / 2, 18, 17);
     self.pointsLab.frame = CGRectMake(CGRectGetMaxX(self.pointsImageView.frame) + 5, (31 - 17) / 2, self.pointsLab.lv_width, 17);
     CGFloat pointsBgViewW = 14 + self.pointsImageView.lv_width + 5 + self.pointsLab.lv_width + 16;
-    self.pointsBgView.frame = CGRectMake(self.headerIcon.lv_x - 12.5 - pointsBgViewW, 0, pointsBgViewW, 31);
+//    self.pointsBgView.frame = CGRectMake(self.headerIcon.lv_x - 12.5 - pointsBgViewW, 0, pointsBgViewW, 31);
+    self.pointsBgView.frame = CGRectMake(selfW - pointsBgViewW - 15.5, 0, pointsBgViewW, 31);
     self.pointsBgView.lv_centerY = self.logoImageView.lv_centerY;
     
     self.categoryView.frame = CGRectMake(0, 138 - 50, selfW - 80, 50);
@@ -133,19 +142,28 @@
 
 - (void)tapPointsBgViewAction:(UIGestureRecognizer *)sender {
     [MGGetPointsView showWithResultBlock:^(NSInteger actionType) {
-
+        if (actionType == 2) {
+            MGInviteFriendsController *vc = [[MGInviteFriendsController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
     } completion:nil];
-    
-//    [MGGetPointsFreeAlertView showWithResultBlock:^(NSInteger actionType) {
-//            
-//    } completion:nil];
 }
 
 - (void)tapHeaderIconAction:(UIGestureRecognizer *)sender {
+
 }
 
 - (void)clickNoDataBtn:(UIButton *)sender {
     [self requestCategoryList];
+}
+
+#pragma mark - notification
+- (void)networkStatusNoti:(NSNotification *)notification {
+    if ([notification.object intValue] != LPNetworkStatusNoReachable) {
+        if (!self.requestSucceeded) {
+            [self requestCategoryList];
+        }
+    }
 }
 
 #pragma mark - request
@@ -153,6 +171,7 @@
     [self showLoading];
     [LVHttpRequest get:@"/magina-api/api/v1/get_template_categorys/" param:@{} header:@{} baseUrlType:CDHttpBaseUrlTypeMagina isNeedPublickParam:YES isNeedPublickHeader:YES isNeedEncryptHeader:YES isNeedEncryptParam:YES isNeedDecryptResponse:YES encryptType:CDHttpBaseUrlTypeMagina timeout:20.0 modelClass:nil completion:^(NSInteger status, NSString * _Nonnull message, id  _Nullable result, NSError * _Nullable error, id  _Nullable responseObject) {
         [self hideLoading];
+        if (!self.requestSucceeded) self.requestSucceeded = YES;
         if (status != 1 || error) {
             [self.view makeToast:NSLocalizedString(@"global_request_error", nil) duration:2.0 position:self.toastPointValue];
             self.noDataBtn.hidden = NO;
@@ -269,6 +288,7 @@
     if (!_headerIcon) {
         _headerIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MG_home_topbar_user_placeholder_icon"]];
         _headerIcon.userInteractionEnabled = YES;
+        _headerIcon.hidden = YES;
     }
     return _headerIcon;
 }

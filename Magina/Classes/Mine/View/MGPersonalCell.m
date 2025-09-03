@@ -33,14 +33,17 @@
                                @"contentText"     : [MGGlobalManager shareInstance].appVersion,
                                @"jumbController"  : @""}]];
     
-    [originData addObject:@[@{@"cellType"        : @(MGPersonalCellTypeLogout),
-                              @"titleText"       : NSLocalizedString(@"Log out", nil),
-                              @"contentText"     : @"",
-                              @"jumbController"  : @""},
-                            @{@"cellType"        : @(MGPersonalCellTypeCancellation),
-                              @"titleText"       : NSLocalizedString(@"删除账号", nil),
-                              @"contentText"     : @"",
-                              @"jumbController"  : @"MGDelAccountController"}]];
+//    if ([MGGlobalManager shareInstance].isLoggedIn) {
+//        [originData addObject:@[@{@"cellType"        : @(MGPersonalCellTypeLogout),
+//                                  @"titleText"       : NSLocalizedString(@"Log out", nil),
+//                                  @"contentText"     : @"",
+//                                  @"jumbController"  : @""},
+//                                @{@"cellType"        : @(MGPersonalCellTypeCancellation),
+//                                  @"titleText"       : NSLocalizedString(@"删除账号", nil),
+//                                  @"contentText"     : @"",
+//                                  @"jumbController"  : @"MGDelAccountController"}]];
+//    }
+    
     
     NSMutableArray *dataSource = [NSMutableArray array];
     for (NSArray *subArr in originData) {

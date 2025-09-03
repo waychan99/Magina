@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MGAppleLogin.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,6 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)removeAccountInfo;
 
 + (NSDictionary *)getAccountInfo;
+
++ (void)appleLoginCompletion:(void (^ __nullable)(NSDictionary *result))completion;
+
++ (void)uuidLoginCompletion:(void (^ __nullable)(NSDictionary *result))completion;
 
 @end
 

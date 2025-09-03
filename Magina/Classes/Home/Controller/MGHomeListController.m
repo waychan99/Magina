@@ -178,7 +178,7 @@
     if (!_waterFlowLayout) {
         _waterFlowLayout = [LTVWaterFlowLayout new];
         _waterFlowLayout.columnCount = 2;
-        _waterFlowLayout.sectionInset = UIEdgeInsetsMake(0, 5, 5, 5);
+        _waterFlowLayout.sectionInset = UIEdgeInsetsMake(0, 5, 110, 5);
         _waterFlowLayout.rowMargin = 0;
         _waterFlowLayout.columnMargin = 5;
         _waterFlowLayout.delegate = self;

@@ -1,0 +1,6 @@
+framework module XYUUID {
+  umbrella header "XYUUID-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -46,6 +46,11 @@
     [self.view addSubview:self.collectionView];
 }
 
+#pragma mark - eventClick
+- (void)loginFisrtAction {
+    
+}
+
 #pragma mark - request
 - (void)requestData {
     [self.collectionView ly_startLoading];
@@ -81,7 +86,7 @@
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(0, 0, 10, 0);
+    return UIEdgeInsetsMake(0, 0, 110, 0);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -145,7 +150,7 @@
 
 - (LVEmptyView *)loginFirstView {
     if (!_loginFirstView) {
-        _loginFirstView = [LVEmptyView emptyActionViewWithImage:nil titleStr:nil detailStr:nil btnTitleStr:NSLocalizedString(@"请登录", nil) target:self action:@selector(loginFisrtAction)];
+        _loginFirstView = [LVEmptyView emptyActionViewWithImage:nil titleStr:nil detailStr:nil btnTitleStr:NSLocalizedString(@"No content available at the moment", nil) target:self action:@selector(loginFisrtAction)];
     }
     return _loginFirstView;
 }

@@ -41,6 +41,7 @@ target 'Magina' do
   # sse service
   pod 'EventSource'
   # 查看沙盒文件
-  pod 'SandBoxPreviewTool'
-  
+  # pod 'SandBoxPreviewTool'
+  # 持久化UUID
+  pod 'XYUUID'
 end

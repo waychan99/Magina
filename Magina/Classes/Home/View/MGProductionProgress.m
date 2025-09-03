@@ -85,7 +85,7 @@
 - (CAAnimation *)pathAnimation {
     CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
     pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
-    pathAnimation.duration = 1.0;
+    pathAnimation.duration = 0.5;
     pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
     pathAnimation.fromValue = [NSNumber numberWithFloat:self.lastProgress];
     pathAnimation.toValue = [NSNumber numberWithFloat:self.progress];

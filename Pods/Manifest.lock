@@ -26,7 +26,6 @@ PODS:
   - Masonry (1.1.0)
   - MJExtension (3.4.2)
   - MJRefresh (3.7.9)
-  - SandBoxPreviewTool (1.2.2)
   - SDWebImage (5.21.1):
     - SDWebImage/Core (= 5.21.1)
   - SDWebImage/Core (5.21.1)
@@ -35,6 +34,7 @@ PODS:
     - SVProgressHUD/Core (= 2.3.1)
   - SVProgressHUD/Core (2.3.1)
   - WRNavigationBar (1.4.0)
+  - XYUUID (1.0.0)
 
 DEPENDENCIES:
   - AFNetworking
@@ -50,11 +50,11 @@ DEPENDENCIES:
   - Masonry
   - MJExtension
   - MJRefresh
-  - SandBoxPreviewTool
   - SDWebImage
   - SPButton
   - SVProgressHUD
   - WRNavigationBar
+  - XYUUID
 
 SPEC REPOS:
   trunk:
@@ -71,11 +71,11 @@ SPEC REPOS:
     - Masonry
     - MJExtension
     - MJRefresh
-    - SandBoxPreviewTool
     - SDWebImage
     - SPButton
     - SVProgressHUD
     - WRNavigationBar
+    - XYUUID
 
 SPEC CHECKSUMS:
   AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
@@ -91,12 +91,12 @@ SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: e97d164cb411aa9795cf576093a1fa208b4a8dd8
   MJRefresh: ff9e531227924c84ce459338414550a05d2aea78
-  SandBoxPreviewTool: 2a29c89844b985c1f45370ba13f4cdd8c56375c0
   SDWebImage: f29024626962457f3470184232766516dee8dfea
   SPButton: e62bd94377cf90e9599b1a3b996d2ff8dd73007a
   SVProgressHUD: 4837c74bdfe2e51e8821c397825996a8d7de6e22
   WRNavigationBar: 10bfdf96addf14d640d07c2ef08a029c18d8af10
+  XYUUID: 9a2483143d14fc5204b619042ca65073df9fbd88
 
-PODFILE CHECKSUM: 3ace9d26b9c8c5e5755f50460b0ddfc3f206b8fe
+PODFILE CHECKSUM: ab619aab07c7f6f0983522309e00fca236a6aac4
 
 COCOAPODS: 1.15.2
