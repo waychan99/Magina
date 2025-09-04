@@ -41,7 +41,7 @@
     if (self.type == MGGeneratedListControllerTypeNewGenerated) {
         [(MGMainNavigationController *)self.navigationController assignPopToControllerClass:NSStringFromClass(self.navigationController.viewControllers.firstObject.class)];
     }
-    self.customNavBar.title = NSLocalizedString(@"Generated Records", nil);
+    self.customNavBar.title = NSLocalizedString(@"generated_recordss", nil);
     [self.view addSubview:self.collectionView];
 }
 

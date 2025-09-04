@@ -41,7 +41,11 @@
 
 #pragma mark - setupUIComponents
 - (void)setupUIComponents {
-    [self.cop_yBtn setTitle:NSLocalizedString(@"Copy link", nil) forState:UIControlStateNormal];
+    self.titleLab.text = NSLocalizedString(@"each_friend_earns_100_poin", nil);
+    self.subTitleLab.text = NSLocalizedString(@"invite_des", nil);
+    self.pointsTitleLab.text = NSLocalizedString(@"accumulated_points", nil);
+    self.invitationsTitleLab.text = NSLocalizedString(@"number_of_invitations", nil);
+    [self.cop_yBtn setTitle:NSLocalizedString(@"copy_link", nil) forState:UIControlStateNormal];
     [self.cop_yBtn setImage:[UIImage imageNamed:@"MG_mine_copy_link_icon"] forState:UIControlStateNormal];
     [self.cop_yBtn setImage:[UIImage imageNamed:@"MG_mine_copy_link_icon"] forState:UIControlStateHighlighted];
 }
@@ -62,8 +66,7 @@
 #pragma mark - eventClick
 - (IBAction)clickCop_yBtn:(SPButton *)sender {
     [[UIPasteboard generalPasteboard] setString:self.referralLink];
-    [self.view makeToast:NSLocalizedString(@"text_has_copy", nil)];
-    LVLog(@"fdasdf -- %@", self.referralLink);
+    [self.view makeToast:NSLocalizedString(@"invite_link_copied", nil)];
 }
 
 #pragma mark - getter

@@ -150,7 +150,7 @@
 
 - (LVEmptyView *)loginFirstView {
     if (!_loginFirstView) {
-        _loginFirstView = [LVEmptyView emptyActionViewWithImage:nil titleStr:nil detailStr:nil btnTitleStr:NSLocalizedString(@"No content available at the moment", nil) target:self action:@selector(loginFisrtAction)];
+        _loginFirstView = [LVEmptyView emptyActionViewWithImage:nil titleStr:nil detailStr:nil btnTitleStr:NSLocalizedString(@"no_datad", nil) target:self action:@selector(loginFisrtAction)];
     }
     return _loginFirstView;
 }

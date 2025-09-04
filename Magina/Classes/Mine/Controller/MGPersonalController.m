@@ -8,6 +8,7 @@
 #import "MGPersonalController.h"
 #import "MGMemberController.h"
 #import "MGInviteFriendsController.h"
+#import "MGPrivacyPolicyController.h"
 #import "MGMineHeaderView.h"
 #import "MGPersonalCell.h"
 
@@ -105,6 +106,20 @@
                 
             case MGPersonalCellTypeLogout: {
                 
+            }
+                break;
+                
+            case MGPersonalCellTypeContactUs: {
+                MGPrivacyPolicyController *vc = [[MGPrivacyPolicyController alloc] init];
+                vc.customNavBarTitle = NSLocalizedString(@"contact_uss", nil);
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+                
+            case MGPersonalCellTypePrivacyPolicy: {
+                MGPrivacyPolicyController *vc = [[MGPrivacyPolicyController alloc] init];
+                vc.customNavBarTitle = NSLocalizedString(@"privacy_policys", nil);
+                [self.navigationController pushViewController:vc animated:YES];
             }
                 break;
                 

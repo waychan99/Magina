@@ -13,6 +13,8 @@
             <connections>
                 <outlet property="allPhotosLab" destination="u5v-BC-PNh" id="oSV-cw-k2e"/>
                 <outlet property="collectionView" destination="R2p-0y-AL4" id="E2P-V0-shq"/>
+                <outlet property="subTitleLab" destination="DhK-Z8-IXh" id="KlZ-37-o4P"/>
+                <outlet property="titleLab" destination="V12-Mv-uhz" id="GyP-tn-2mD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

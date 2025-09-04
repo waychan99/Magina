@@ -74,7 +74,7 @@
 - (void)setupUIComponents {
     
     self.displayImageView.image = self.originImage;
-    self.titleLab.text = NSLocalizedString(@"Please select a facial image", nil);
+    self.titleLab.text = NSLocalizedString(@"please_s_image", nil);
 }
 
 

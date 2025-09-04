@@ -8,6 +8,7 @@
 #import "MGGeneratedDetailsController.h"
 #import "MGReviewImageController.h"
 #import "MGReviewImageCell.h"
+#import "MGDeleteImageWorkSheet.h"
 #import "NSString+LP.h"
 #import <PhotosUI/PhotosUI.h>
 
@@ -16,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *saveBtn;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UIPageControl *pageControl;
-@property (nonatomic, strong) UIActivityIndicatorView *deleteActionIndicator;
 @property (nonatomic, assign) BOOL isFirstLoad;
 @end
 
@@ -44,7 +44,6 @@
     
     self.collectionView.frame = CGRectMake(0, 0, self.view.lv_width, self.saveBtn.lv_y - 24);
     self.pageControl.frame = CGRectMake((self.view.lv_width - 60) / 2, self.saveBtn.lv_y - 74, 60, 24);
-    self.deleteActionIndicator.frame = self.deleteBtn.bounds;
     
     if (self.isFirstLoad) {
         self.isFirstLoad = NO;
@@ -57,7 +56,7 @@
 #pragma mark - setupUIComponents
 - (void)setupUIComponents {
     self.deleteBtn.backgroundColor = [UIColor colorWithWhite:0.4 alpha:0.3];
-    [self.saveBtn setTitle:NSLocalizedString(@"Save", nil) forState:UIControlStateNormal];
+    [self.saveBtn setTitle:NSLocalizedString(@"save", nil) forState:UIControlStateNormal];
     
     [self.view addSubview:self.collectionView];
     self.pageControl.numberOfPages = self.worksModel.generatedImageWorksCount;
@@ -81,9 +80,8 @@
 }
 
 - (IBAction)clickDeleteBtn:(UIButton *)sender {
-    [self showLoading];
-    [LVAlertView showAlertViewWithTitle:NSLocalizedString(@"确认删除作品", nil) buttonTitle:NSLocalizedString(@"confirm", nil) confirmBlock:^(int index) {
-        if (index == 0) {
+    [MGDeleteImageWorkSheet showWithResultBlock:^(NSInteger actionType) {
+        if (actionType == 1) {
             if (self.currentIndex < self.worksModel.generatedImageWorksList.count) {
                 [self.worksModel.downloadedImagePathInfo removeObjectForKey:self.worksModel.generatedImageWorksList[self.currentIndex]];
                 [self.worksModel.generatedImageWorksList removeObjectAtIndex:self.currentIndex];
@@ -91,13 +89,18 @@
                 if (self.worksModel.generatedImageWorksList.count > 0) {
                     self.currentIndex = 0;
                     [self.collectionView reloadData];
+                    if (self.worksModel.generatedImageWorksList.count <= 1) {
+                        self.pageControl.hidden = YES;
+                    } else {
+                        self.pageControl.numberOfPages = self.worksModel.generatedImageWorksList.count;
+                        self.pageControl.currentPage = self.currentIndex;
+                    }
                     [[NSNotificationCenter defaultCenter] postNotificationName:MG_IMAGE_WORKS_DID_CHANGED_NOTI object:nil];
                 } else {
                     [[MGImageWorksManager shareInstance].imageWorks removeObject:self.worksModel];
                 }
                 [[MGImageWorksManager shareInstance] saveImageWorksCompletion:^(NSMutableArray<MGImageWorksModel *> * _Nonnull imageWorks) {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [self hideLoading];
                         if (self.worksModel.generatedImageWorksList.count <= 0) {
                             [[NSNotificationCenter defaultCenter] postNotificationName:MG_IMAGE_WORKS_LIST_DID_CHANGED_NOTI object:nil];
                             [self.navigationController popToRootViewControllerAnimated:YES];
@@ -105,10 +108,8 @@
                     });
                 }];
             }
-        } else {
-            [self hideLoading];
         }
-    }];
+    } completion:nil];
 }
 
 #pragma mark - UICollectionViewDelegate, UICollectionViewDataSource
@@ -181,7 +182,6 @@
     }];
 }
 
-// 添加图片水印
 - (UIImage *)addWatermarkToImage:(UIImage *)image withImage:(UIImage *)watermark {
     UIGraphicsBeginImageContextWithOptions(image.size, NO, image.scale);
     // 绘制原始图片
@@ -190,12 +190,10 @@
     CGFloat watermarkSizeW = image.size.width * 0.25; // 水印大小为原图的15%
     CGFloat watermarkSizeH = (watermarkSizeW * watermark.size.height) / watermark.size.width;
     CGFloat margin = image.size.width * 0.03;
-    CGRect watermarkRect = CGRectMake(
-                                      image.size.width - watermarkSizeW - margin,
+    CGRect watermarkRect = CGRectMake(image.size.width - watermarkSizeW - margin,
                                       image.size.height - watermarkSizeH - margin,
                                       watermarkSizeW,
-                                      watermarkSizeH
-                                      );
+                                      watermarkSizeH);
     // 绘制水印图片
     [watermark drawInRect:watermarkRect blendMode:kCGBlendModeNormal alpha:0.7]; // 设置透明度
     // 获取处理后的图片
@@ -203,21 +201,6 @@
     UIGraphicsEndImageContext();
     
     return watermarkedImage;
-}
-
-- (void)showLoading {
-    if (self.deleteActionIndicator.superview == nil || self.deleteActionIndicator.superview != self.deleteBtn) {
-        [self.deleteBtn addSubview:self.deleteActionIndicator];
-        [self.deleteBtn bringSubviewToFront:self.deleteActionIndicator];
-        [self.deleteActionIndicator startAnimating];
-    }
-}
-
-- (void)hideLoading {
-    if (self.deleteActionIndicator.superview) {
-        [self.deleteActionIndicator stopAnimating];
-        [self.deleteActionIndicator removeFromSuperview];
-    }
 }
 
 #pragma mark - getter
@@ -246,15 +229,6 @@
         _pageControl.layer.cornerRadius = 12.0f;
     }
     return _pageControl;
-}
-
-- (UIActivityIndicatorView *)deleteActionIndicator {
-    if (!_deleteActionIndicator) {
-        _deleteActionIndicator = [[UIActivityIndicatorView alloc] init];
-        _deleteActionIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleLarge;
-        _deleteActionIndicator.color = HEX_COLOR(0xEA4C89);
-    }
-    return _deleteActionIndicator;
 }
 
 @end

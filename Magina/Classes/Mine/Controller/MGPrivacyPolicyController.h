@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MGPrivacyPolicyController : MGBaseController
 
+@property (nonatomic, copy) NSString *customNavBarTitle;
+
 @end
 
 NS_ASSUME_NONNULL_END

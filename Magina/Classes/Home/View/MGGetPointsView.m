@@ -9,6 +9,8 @@
 
 @interface MGGetPointsView ()<UITextViewDelegate>
 @property (nonatomic, copy) void (^resultBlcok)(NSInteger actionType);
+@property (weak, nonatomic) IBOutlet UILabel *titleLab;
+@property (weak, nonatomic) IBOutlet UIButton *inviteBtn;
 @property (weak, nonatomic) IBOutlet UITextView *agreementTextView;
 @end
 
@@ -27,9 +29,12 @@
     
     self.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.0];
     
+    self.titleLab.text = NSLocalizedString(@"invite_titles", nil);
+    [self.inviteBtn setTitle:NSLocalizedString(@"invite_friend", nil) forState:UIControlStateNormal];
+    
     self.agreementTextView.delegate = self;
     self.agreementTextView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.0];
-    NSMutableAttributedString *hintString = [[NSMutableAttributedString alloc]initWithString:NSLocalizedString(@"Open a membership representative to accept the service agreement", nil)];
+    NSMutableAttributedString *hintString = [[NSMutableAttributedString alloc]initWithString:NSLocalizedString(@"aagreement_text", nil)];
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineSpacing = 0;
     paragraphStyle.alignment = NSTextAlignmentLeft;
@@ -38,8 +43,8 @@
                                            NSParagraphStyleAttributeName : paragraphStyle};
     [hintString addAttributes:hintStringAttributes range:NSMakeRange(0, hintString.length)];
     
-    NSRange range = [[hintString string] rangeOfString:NSLocalizedString(@"service agreement", nil)];
-    NSString *valueString = [[NSString stringWithFormat:@"action://%@", NSLocalizedString(@"service agreement", nil)] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
+    NSRange range = [[hintString string] rangeOfString:NSLocalizedString(@"service_agreemen", nil)];
+    NSString *valueString = [[NSString stringWithFormat:@"action://%@", NSLocalizedString(@"service_agreemen", nil)] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
     [hintString addAttribute:NSLinkAttributeName value:valueString range:range];
     self.agreementTextView.attributedText = hintString;
     NSDictionary *linkAttributes = @{NSForegroundColorAttributeName : [UIColor blackColor],

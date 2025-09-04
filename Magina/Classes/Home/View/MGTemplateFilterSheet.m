@@ -123,15 +123,15 @@
     
     NSMutableArray *genderArrM = [NSMutableArray array];
     MGTemplateCategoryModel *allModel = [[MGTemplateCategoryModel alloc] init];
-    allModel.category_name = NSLocalizedString(@"All", nil);
+    allModel.category_name = NSLocalizedString(@"all", nil);
     [genderArrM addObject:allModel];
     
     MGTemplateCategoryModel *manModel = [[MGTemplateCategoryModel alloc] init];
-    manModel.category_name = NSLocalizedString(@"Man", nil);
+    manModel.category_name = NSLocalizedString(@"male", nil);
     [genderArrM addObject:manModel];
     
     MGTemplateCategoryModel *womanModel = [[MGTemplateCategoryModel alloc] init];
-    womanModel.category_name = NSLocalizedString(@"Woman", nil);
+    womanModel.category_name = NSLocalizedString(@"female", nil);
     [genderArrM addObject:womanModel];
     
     [self.dateSource addObject:genderArrM];
@@ -221,9 +221,9 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     MGTemplateFilterSheetSection *sectionHeader = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"MGTemplateFilterSheetSectionId" forIndexPath:indexPath];
     if (indexPath.section == 0) {
-        sectionHeader.sectionTitleLab.text = NSLocalizedString(@"Gender", nil);
+        sectionHeader.sectionTitleLab.text = NSLocalizedString(@"gender", nil);
     }
-    sectionHeader.sectionTitleLab.text = NSLocalizedString(@"Style category", nil);
+    sectionHeader.sectionTitleLab.text = NSLocalizedString(@"style_categoryy", nil);
     return sectionHeader;
 }
 
@@ -264,7 +264,7 @@
         _comfirnBtn.backgroundColor = HEX_COLOR(0xEA4C89);
         [_comfirnBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _comfirnBtn.titleLabel.font = [UIFont systemFontOfSize:14.0 weight:UIFontWeightMedium];
-        [_comfirnBtn setTitle:NSLocalizedString(@"Comfirn", nil) forState:UIControlStateNormal];
+        [_comfirnBtn setTitle:NSLocalizedString(@"confirm", nil) forState:UIControlStateNormal];
         [_comfirnBtn addTarget:self action:@selector(clickComfirnBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _comfirnBtn;

@@ -227,11 +227,11 @@
     _genderIndex = genderIndex;
     
     if (genderIndex == 0) {
-        [self.filterBtn setTitle:NSLocalizedString(@"All", nil) forState:UIControlStateNormal];
+        [self.filterBtn setTitle:NSLocalizedString(@"all", nil) forState:UIControlStateNormal];
     } else if (genderIndex == 1) {
-        [self.filterBtn setTitle:NSLocalizedString(@"Man", nil) forState:UIControlStateNormal];
+        [self.filterBtn setTitle:NSLocalizedString(@"male", nil) forState:UIControlStateNormal];
     } else if (genderIndex == 2) {
-        [self.filterBtn setTitle:NSLocalizedString(@"Woman", nil) forState:UIControlStateNormal];
+        [self.filterBtn setTitle:NSLocalizedString(@"female", nil) forState:UIControlStateNormal];
     }
 }
 
@@ -359,7 +359,7 @@
         _noDataBtn.titleLabel.font = [UIFont systemFontOfSize:13.0 weight:UIFontWeightMedium];
         _noDataBtn.titleLabel.textColor = HEX_COLOR(0x8C919D);
         [_noDataBtn addTarget:self action:@selector(clickNoDataBtn:) forControlEvents:UIControlEventTouchUpInside];
-        [_noDataBtn setTitle:NSLocalizedString(@"No content available at the moment", nil) forState:UIControlStateNormal];
+        [_noDataBtn setTitle:NSLocalizedString(@"no_datad", nil) forState:UIControlStateNormal];
         _noDataBtn.hidden = YES;
     }
     return _noDataBtn;

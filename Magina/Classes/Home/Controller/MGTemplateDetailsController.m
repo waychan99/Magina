@@ -25,6 +25,7 @@
 @property (nonatomic, strong) UILabel *pointsLab;
 @property (nonatomic, strong) UIImageView *pointsImageView;
 @property (nonatomic, strong) MGProductionLoading *productionLoading;
+@property (nonatomic, strong) UIActivityIndicatorView *collectionIndicator;
 @property (weak, nonatomic) IBOutlet UICollectionView *templateCollectionView;
 @property (weak, nonatomic) IBOutlet UIView *btnBgView;
 @property (weak, nonatomic) IBOutlet UIButton *standardBtn;
@@ -83,11 +84,10 @@
     [self.customNavBar addSubview:self.pointsImageView];
     
     self.btnBgView.backgroundColor = [UIColor colorWithWhite:.3 alpha:.4];
-    
-    [self.photographBtn setTitle:NSLocalizedString(@"10  拍同款", nil) forState:UIControlStateNormal];
+    self.titleLab.text = NSLocalizedString(@"recently_usedd", nil);
+    [self.photographBtn setTitle:[NSString stringWithFormat:@"10 %@", NSLocalizedString(@"photographh", nil)] forState:UIControlStateNormal];
     [self.photographBtn setImage:[UIImage imageNamed:@"MG_home_topbar_points_icon"] forState:UIControlStateNormal];
     [self.photographBtn setImage:[UIImage imageNamed:@"MG_home_topbar_points_icon"] forState:UIControlStateHighlighted];
-    
     [self.addPhotoImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAddPhotoImageView:)]];
     
     self.templateCollectionView.layer.cornerRadius = 17.0f;
@@ -144,6 +144,7 @@
     CGFloat pointsImageViewX = self.pointsLab.lv_x - 5 - 18;
     self.pointsImageView.frame = CGRectMake(pointsImageViewX, 0, 18, 17);
     self.pointsImageView.lv_centerY = self.wrNaviBar_leftButton.lv_centerY;
+    self.collectionIndicator.frame = self.collectBtn.bounds;
 }
 
 - (void)updateViewConstraints {
@@ -163,20 +164,12 @@
 
 - (IBAction)clickCollectBtn:(UIButton *)sender {
     if (![MGGlobalManager shareInstance].isLoggedIn) {
-//        [self.view makeToast:NSLocalizedString(@"请先登录", nil)];
         [self.view makeToast:NSLocalizedString(@"global_request_error", nil)];
         return;
     }
-    if (sender.isSelected) {
-        [LVAlertView showAlertViewWithTitle:NSLocalizedString(@"确认取消收藏", nil) buttonTitle:NSLocalizedString(@"confirm", nil) confirmBlock:^(int index) {
-            if (index == 0) {
-                [self templateCollectionRequestWithIsCollection:!sender.isSelected];
-            }
-        }];
-    } else {
-        [self templateCollectionRequestWithIsCollection:!sender.isSelected];
-    }
+    [self templateCollectionRequestWithIsCollection:!sender.isSelected];
 }
+
 - (IBAction)clickStandardBtn:(UIButton *)sender {
     sender.backgroundColor = HEX_COLOR(0xEA4C89);
     self.fatBtn.backgroundColor = [UIColor colorWithWhite:.0 alpha:.0];
@@ -201,7 +194,7 @@
 
 #pragma mark - request
 - (void)templateCollectionRequestWithIsCollection:(BOOL)isCollection {
-    [SVProgressHUD show];
+    [self showLoading];
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setValue:[MGGlobalManager shareInstance].accountInfo.user_id forKey:@"user_id"];
     [params setValue:isCollection ? @"1" : @"0" forKey:@"collection_type"];
@@ -209,7 +202,7 @@
     [params setValue:currentModel.ID forKey:@"template_id"];
     [params setValue:currentModel.change_face_thumbnai forKey:@"template_img"];
     [LVHttpRequest post:@"/api/v1/collection" param:params header:@{} baseUrlType:CDHttpBaseUrlTypeMagina_ljw isNeedPublickParam:YES isNeedPublickHeader:YES isNeedEncryptHeader:YES isNeedEncryptParam:YES isNeedDecryptResponse:YES encryptType:CDHttpBaseUrlTypeMagina_ljw timeout:20.0 modelClass:nil completion:^(NSInteger status, NSString * _Nonnull message, id  _Nullable result, NSError * _Nullable error, id  _Nullable responseObject) {
-        [SVProgressHUD dismiss];
+        [self hideLoading];
         if (status != 1 || error) {
             [self.view makeToast:NSLocalizedString(@"global_request_error", nil)];
             return;
@@ -227,7 +220,6 @@
 
 - (void)uploadFaceAndMakingPicture {
     if (![MGGlobalManager shareInstance].isLoggedIn) {
-//        [self.view makeToast:NSLocalizedString(@"请先登录", nil)];
         [self.view makeToast:NSLocalizedString(@"global_request_error", nil)];
         return;
     }
@@ -235,7 +227,7 @@
     if ([MGGlobalManager shareInstance].currentPoints >= 10) {
         [MGGlobalManager shareInstance].currentPoints -= 10;
     } else {
-        [self.view makeToast:NSLocalizedString(@"积分不足", nil)];
+        [self.view makeToast:NSLocalizedString(@"insufficient_points", nil)];
         return;
     }
     
@@ -246,7 +238,7 @@
         faceImage = [UIImage imageWithContentsOfFile:imagePath];
     }
     if (!faceImage) {
-        [self.view makeToast:NSLocalizedString(@"请选择人脸", nil)];
+        [self.view makeToast:NSLocalizedString(@"not_facee", nil)];
         return;
     }
     [self.productionLoading show];
@@ -407,12 +399,12 @@
     if (scrollView == self.templateCollectionView) {
         CGPoint pInView = [self.view convertPoint:self.templateCollectionView.center toView:self.templateCollectionView];
         NSIndexPath *indexPathNow = [self.templateCollectionView indexPathForItemAtPoint:pInView];
-        self.currentTemplateIndex = indexPathNow.item;
-        if (self.bodyTye != 0) {
+        if (self.bodyTye != 0 && self.currentTemplateIndex != indexPathNow.item) {
             self.bodyTye = 0;
             self.standardBtn.backgroundColor = HEX_COLOR(0xEA4C89);
             self.fatBtn.backgroundColor = [UIColor colorWithWhite:.0 alpha:.0];
         }
+        self.currentTemplateIndex = indexPathNow.item;
     }
 }
 
@@ -439,6 +431,8 @@
                         };
                         vc.modalPresentationStyle = UIModalPresentationFullScreen;
                         [self.navigationController presentViewController:vc animated:YES completion:nil];
+                    } else {
+                        [self.view makeToast:NSLocalizedString(@"crop_faill", nil)];
                     }
                 });
             }];
@@ -464,11 +458,27 @@
                     };
                     vc.modalPresentationStyle = UIModalPresentationFullScreen;
                     [self.navigationController presentViewController:vc animated:YES completion:nil];
+                } else {
+                    [self.view makeToast:NSLocalizedString(@"crop_faill", nil)];
                 }
             });
         }];
     };
     [self.navigationController presentPanModal:vc completion:nil];
+}
+
+- (void)showLoading {
+    if (self.collectionIndicator.superview == nil || self.collectionIndicator.superview != self.collectBtn) {
+        [self.collectBtn addSubview:self.collectionIndicator];
+        [self.collectionIndicator startAnimating];
+    }
+}
+
+- (void)hideLoading {
+    if (self.collectionIndicator.superview) {
+        [self.collectionIndicator stopAnimating];
+        [self.collectionIndicator removeFromSuperview];
+    }
 }
 
 #pragma mark - getter
@@ -509,6 +519,15 @@
         _globalManager = [MGGlobalManager shareInstance];
     }
     return _globalManager;
+}
+
+- (UIActivityIndicatorView *)collectionIndicator {
+    if (!_collectionIndicator) {
+        _collectionIndicator = [[UIActivityIndicatorView alloc] init];
+        _collectionIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleLarge;
+        _collectionIndicator.color = HEX_COLOR(0xEA4C89);
+    }
+    return _collectionIndicator;
 }
 
 @end

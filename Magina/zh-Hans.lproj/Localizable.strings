@@ -1,0 +1,102 @@
+/* 
+  Localizable.strings
+  Magina
+
+  Created by mac on 2025/9/3.
+  
+*/
+
+"loadingg" = "加载中";
+"load_faill" = "加载失败";
+"no_more_dataa" = "没有更多数据了";
+"load_completee" = "加载完成";
+"load_morea" = "加载更多";
+
+"genderr" = "性别";
+"style_categoryy" = "样式分类";
+"photographh" = "拍同款";
+"recently_usedd" = "最近使用";
+
+
+"workk" = "作品";
+"collectt" = "收藏";
+"generated_recordss" = "生成记录";
+"points_detailss" = "积分详情";
+"invite_friend" = "邀请好友";
+"contact_uss" = "联系我们";
+"privacy_policys" = "隐私政策";
+"invite_titles" = "获取积分";
+"open_mem" = "开通会员";
+"aagreement_text" = "邀请好友代表同意服务协议";
+"service_agreemen" = "服务协议";
+"take_photo_tipp" = "请把脸放在画面里，抬起刘海露出额头";
+"not_facee" = "未识别到人脸";
+"please_selectphoto" = "请选择一张照片";
+"refreshevery_day" = "每天0：00刷新";
+"points_for_free" = "免费获得 100 积分";
+"template_faill" = "模板错误";
+"purchase_pointss" = "购买积分";
+"upload_failed_please_try_againn" = "上传失败，请重试";
+"in_the_queuee" = "排队中";
+
+"permission_no" = "获取部分权限成功，部分权限未正常授予";
+"ask_permission" = "被永久拒绝授权，请手动授予读取照片和相机权限";
+"img_permission_faill" = "获取权限失败";
+"img_load_faill" = "图片加载失败: %1$s";
+"crop_faill" = "未检测到人脸或裁剪失败";
+"face_faill" = "处理人脸发生错误: %1$s";
+"photo_uploadd" = "照片上传";
+"under_productionn" = "制作中";
+"upload_tipp" = "请耐心等待，退出页面不影响生产，可以在【我的作品】查看";
+"photo_tipp" = "请上传一张面部一览无余、光线充足、图像清晰的单人正面照片";
+"all_photoss" = "所有照片";
+"carme_faill" = "无法创建图片";
+"see_laterr" = "稍后再看";
+"personal_centerr" = "个人中心";
+
+"save" = "保存";
+"save_without_wate" = "无水印保存";
+"template_expired" = "此模板已过期";
+"uploadingg" = "上传中";
+"advertising_required" = "无广告";
+"no_watermarkk" = "无水印";
+"faster_generation_speedd" = "更快的生成速度";
+"user_information_errorr" = "用户信息错误";
+"fileexist" = "文件不存在";
+"upload_failedd" = "上传失败";
+"no_datad" = "暂无可用内容";
+"network_errorr" = "网络错误";
+"save_failedd" = "保存失败";
+"saved_success" = "保存成功";
+"cancel" = "取消";
+"delete_photo" = "删除照片";
+"save_to_album" = "保存到相册";
+"press_again_to_exit_the_app" = "再次按下退出应用程序";
+"with_watermark" = "带水印";
+"magina_pro" = "Magina 会员";
+"application_version" = "应用版本";
+"confirm" = "确认";
+"all" = "全部";
+"male" = "男";
+"female" = "女";
+"insufficient_points" = "积分不足";
+"points" = "积分";
+"points_per_day" = "每天100积分";
+"photo_without_wate" = "照片无水印";
+"invite_link" = "邀请链接";
+"invite_link_copied" = "邀请链接已复制";
+"please_log_in_first" = "请先登录";
+"each_friend_earns_100_poin" = "每位朋友可获得 100 积分";
+"invite_des" = "邀请好友在 24 小时内下载并登录即可获得积分";
+"accumulated_points" = "累计积分";
+"number_of_invitations" = "邀请数量";
+"copy_link" = "复制链接";
+"exit" = "退出";
+"update" = "更新";
+"no_works" = "无作品";
+"no_templates_saved_yet" = "暂未收藏模板";
+"invite_friends_now" = "立即邀请好友";
+"invite_frints" = "邀请好友获取 100积分";
+"please_s_image" = "请选择面部图像";
+"global_request_error" = "网络错误";
+

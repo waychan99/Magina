@@ -1,0 +1,103 @@
+/* 
+  Localizable.strings
+  Magina
+
+  Created by mac on 2025/9/3.
+  
+*/
+"number_of_invitations" = "Number of invitations";
+"copy_link" = "Copy link";
+
+"exit" = "Exit";
+"update" = "Update";
+"no_works" = "No works";
+"no_templates_saved_yet" = "No templates saved yet";
+"invite_friends_now" = "Invite friends now";
+"invite_frints" = "Invite friends to get 100 points";
+"please_s_image" = "Please select a facial image";
+
+
+"face_faill" = "An error occurred while processing the face: %1$s";
+"photo_uploadd" = "Photo upload";
+"under_productionn" = "In Production.";
+"upload_tipp" = "Please be patient, exiting does not affect production, you can view it in [My Works]";
+"photo_tipp" = "Please upload a single person frontal photo with unobstructed face, sufficient lighting, and clear image";
+"all_photoss" = "All Photos";
+"carme_faill" = "Failed to create image file";
+"see_laterr" = "See later";
+"personal_centerr" = "Personal Center";
+
+"workk" = "Work";
+"collectt" = "Favorites";
+"generated_recordss" = "Generated Records";
+"points_detailss" = "Points Details";
+"invite_friend" = "Invite friends";
+"contact_uss" = "Contact Us";
+"privacy_policys" = "Privacy Policy";
+"invite_titles" = "Get Points";
+"open_mem" = "Open membership";
+"aagreement_text" = "Invite friends means accepting the Service Agreement";
+"service_agreemen" = "Service Agreement";
+"take_photo_tipp" = "Please put your face in the frame, lift your bangs and show your forehead";
+"not_facee" = "No face detected";
+"please_selectphoto" = "Please select a photo";
+"refreshevery_day" = "Refresh at 0:00 every day";
+"points_for_free" = "Get 100 points for free";
+
+"loadingg" = "Loading";
+"load_faill" = "Failed to load";
+"no_more_dataa" = "no more data";
+"load_completee" = "Load completed";
+"load_morea" = "Load more";
+"genderr" = "Gender";
+"style_categoryy" = "Style Category";
+"photographh" = "Take same style";
+"recently_usedd" = "Recently used";
+"permission_no" = "Some permissions were granted successfully, but some were not.";
+"ask_permission" = "Permission was permanently denied, please manually grant photo and camera access.";
+"img_permission_faill" = "Permission acquisition failed";
+"img_load_faill" = "Image load failed: %1$s";
+"crop_faill" = "No face detected or cropping failed";
+
+"template_faill" = "Template error";
+"purchase_pointss" = "Purchase Points";
+"upload_failed_please_try_againn" = "Upload failed, please try again";
+"in_the_queuee" = "In the Queue";
+"save" = "Save";
+"save_without_wate" = "Save without watermark";
+"template_expired" = "This template has expired";
+"uploadingg" = "Uploading";
+"advertising_required" = "Ad-free";
+"no_watermarkk" = "No watermark";
+"faster_generation_speedd" = "Faster generation speed";
+"user_information_errorr" = "Invalid user information";
+"fileexist" = "File does not exist";
+"upload_failedd" = "Upload failed";
+"no_datad" = "No content available at the moment";
+"network_errorr" = "Network Error";
+
+"application_version" = "Application version";
+"confirm" = "Confirm";
+"all" = "All";
+"male" = "Male";
+"female" = "Female";
+"insufficient_points" = "Insufficient points";
+"points" = "Points";
+"points_per_day" = "100 points per day";
+"photo_without_wate" = "Photo without watermark";
+"invite_link" = "Invite Link";
+"invite_link_copied" = "Invite link copied";
+"please_log_in_first" = "Please log in first";
+"each_friend_earns_100_poin" = "Each friend earns 100 points";
+"invite_des" = "Inviting friends to download and log in within 24 hours will earn you points";
+"accumulated_points" = "Accumulated points";
+
+"save_failedd" = "Save failed";
+"saved_success" = "Saved successfully";
+"cancel" = "Cancel";
+"delete_photo" = "Delete Photos";
+"save_to_album" = "Save to Album";
+"press_again_to_exit_the_app" = "Press again to exit the app";
+"with_watermark" = "With watermark";
+"magina_pro" = "Magina Pro";
+"global_request_error" = "Network Error";

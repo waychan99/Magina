@@ -12,6 +12,7 @@
 #import "JXCategoryListContainerView.h"
 #import "JXCategoryImageView.h"
 #import "UIView+GradientColors.h"
+#import <JXCategoryView/JXCategoryView.h>
 
 @interface MGMainContainerController ()<JXCategoryListContainerViewDelegate, JXCategoryViewDelegate>
 @property (nonatomic, strong) UIView *categoryBgView;
@@ -54,6 +55,11 @@
     self.categoryView.selectedImageNames = self.selectedImageNames;
     self.categoryView.imageSize = CGSizeMake(31, 31);
     self.categoryView.layer.cornerRadius = 35.0f;
+    
+    JXCategoryIndicatorImageView *indicatorImageView = [[JXCategoryIndicatorImageView alloc] init];
+    indicatorImageView.indicatorImageView.image = [UIImage imageNamed:@"MG_mainContainer_indicator_icon"];
+    indicatorImageView.verticalMargin = 8;
+    self.categoryView.indicators = @[indicatorImageView];
     
     [self.view addSubview:self.listContainerView];
     [self.view addSubview:self.categoryView];
@@ -108,8 +114,8 @@
 
 - (CAGradientLayer *)categoryView_gradientLayer {
     if (!_categoryView_gradientLayer) {
-        _categoryView_gradientLayer = [self.categoryView setGradientColors:@[(__bridge id)RGBA(11, 13, 15, 0.5).CGColor,(__bridge id)RGBA(30, 31, 36, 0.5).CGColor] andGradientPosition:PositonVertical frame:CGRectZero];
-        _categoryView_gradientLayer.borderColor = RGBA(54, 54, 54, 0.5).CGColor;
+        _categoryView_gradientLayer = [self.categoryView setGradientColors:@[(__bridge id)RGBA(11, 13, 15, 0.8).CGColor,(__bridge id)RGBA(30, 31, 36, 0.8).CGColor] andGradientPosition:PositonVertical frame:CGRectZero];
+        _categoryView_gradientLayer.borderColor = RGBA(54, 54, 54, 0.8).CGColor;
         _categoryView_gradientLayer.borderWidth = 0.4f;
     }
     return _categoryView_gradientLayer;

@@ -118,6 +118,9 @@
 		04F54CA42E65486500769DAA /* MGDelAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54CA32E65486500769DAA /* MGDelAccountController.m */; };
 		04F54CA62E65488200769DAA /* MGDelAccountController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54CA52E65488200769DAA /* MGDelAccountController.xib */; };
 		04F54CA92E680E2B00769DAA /* MGProductionLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54CA82E680E2B00769DAA /* MGProductionLoading.m */; };
+		04F54CAC2E682A2800769DAA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04F54CAA2E682A2800769DAA /* Localizable.strings */; };
+		04F54CB12E6846B600769DAA /* MGDeleteImageWorkSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54CB02E6846B600769DAA /* MGDeleteImageWorkSheet.m */; };
+		04F54CB32E6846C100769DAA /* MGDeleteImageWorkSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54CB22E6846C100769DAA /* MGDeleteImageWorkSheet.xib */; };
 		8AE9E8B1543D003823C4F1E4 /* Pods_Magina.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C50838DFF8AFFA3B1D401A /* Pods_Magina.framework */; };
 /* End PBXBuildFile section */
 
@@ -322,6 +325,12 @@
 		04F54CA52E65488200769DAA /* MGDelAccountController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGDelAccountController.xib; sourceTree = "<group>"; };
 		04F54CA72E680E2B00769DAA /* MGProductionLoading.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGProductionLoading.h; sourceTree = "<group>"; };
 		04F54CA82E680E2B00769DAA /* MGProductionLoading.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGProductionLoading.m; sourceTree = "<group>"; };
+		04F54CAB2E682A2800769DAA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		04F54CAD2E682B3400769DAA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		04F54CAE2E682B3500769DAA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		04F54CAF2E6846B600769DAA /* MGDeleteImageWorkSheet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGDeleteImageWorkSheet.h; sourceTree = "<group>"; };
+		04F54CB02E6846B600769DAA /* MGDeleteImageWorkSheet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGDeleteImageWorkSheet.m; sourceTree = "<group>"; };
+		04F54CB22E6846C100769DAA /* MGDeleteImageWorkSheet.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MGDeleteImageWorkSheet.xib; sourceTree = "<group>"; };
 		64DD56DCE6B674BEB2758DF4 /* Pods-Magina.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Magina.debug.xcconfig"; path = "Target Support Files/Pods-Magina/Pods-Magina.debug.xcconfig"; sourceTree = "<group>"; };
 		75C50838DFF8AFFA3B1D401A /* Pods_Magina.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Magina.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		924A495E2CEAA3C9DFE27B07 /* Pods-Magina.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Magina.release.xcconfig"; path = "Target Support Files/Pods-Magina/Pods-Magina.release.xcconfig"; sourceTree = "<group>"; };
@@ -374,6 +383,7 @@
 				04A9F3142E4AE436005F3FC2 /* Classes */,
 				04A9F2F62E4AE1EA005F3FC2 /* Assets.xcassets */,
 				04A9F2F72E4AE1EA005F3FC2 /* Info.plist */,
+				04F54CAA2E682A2800769DAA /* Localizable.strings */,
 				04A9F2F92E4AE1EA005F3FC2 /* LaunchScreen.storyboard */,
 				04CDD1422E58145900286F4C /* Magina.entitlements */,
 				04F54C7F2E5DA33A00769DAA /* right_loading.gif */,
@@ -432,6 +442,9 @@
 				04E8C3FF2E4EE33800EC2E96 /* MGGetPointsFreeAlertView.h */,
 				04E8C4002E4EE33800EC2E96 /* MGGetPointsFreeAlertView.m */,
 				04E8C4022E4EE34300EC2E96 /* MGGetPointsFreeAlertView.xib */,
+				04F54CAF2E6846B600769DAA /* MGDeleteImageWorkSheet.h */,
+				04F54CB02E6846B600769DAA /* MGDeleteImageWorkSheet.m */,
+				04F54CB22E6846C100769DAA /* MGDeleteImageWorkSheet.xib */,
 				04F54CA72E680E2B00769DAA /* MGProductionLoading.h */,
 				04F54CA82E680E2B00769DAA /* MGProductionLoading.m */,
 				047473482E55C1C1004AFE7D /* MGAlbumPhotoListCell.h */,
@@ -880,6 +893,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 04A9F2CE2E4ADF56005F3FC2;
 			minimizedProjectReferenceProxies = 1;
@@ -901,6 +915,7 @@
 				04F54C5B2E5BF94200769DAA /* MGFaceResultCell.xib in Resources */,
 				04F54C822E5DA35500769DAA /* left_loading.gif in Resources */,
 				0474734C2E55C1C1004AFE7D /* MGAlbumPhotoListCell.xib in Resources */,
+				04F54CAC2E682A2800769DAA /* Localizable.strings in Resources */,
 				0474731F2E52F84D004AFE7D /* MGPointsListCell.xib in Resources */,
 				04CDD1502E5815C300286F4C /* MGAddPhotosController.xib in Resources */,
 				047473322E54249A004AFE7D /* MGMemberHeader.xib in Resources */,
@@ -917,6 +932,7 @@
 				04A9F3012E4AE1EA005F3FC2 /* Assets.xcassets in Resources */,
 				04F54C982E6000B900769DAA /* MGGeneratedDetailsController.xib in Resources */,
 				04E8C4032E4EE34300EC2E96 /* MGGetPointsFreeAlertView.xib in Resources */,
+				04F54CB32E6846C100769DAA /* MGDeleteImageWorkSheet.xib in Resources */,
 				04CDD1412E580FA700286F4C /* MGPhotoListCell.xib in Resources */,
 				04A9F3032E4AE1EA005F3FC2 /* LaunchScreen.storyboard in Resources */,
 				04F54C7E2E5D5BD200769DAA /* LVAlertView.xib in Resources */,
@@ -1022,6 +1038,7 @@
 				04F54C972E6000B900769DAA /* MGGeneratedDetailsController.m in Sources */,
 				04F54CA42E65486500769DAA /* MGDelAccountController.m in Sources */,
 				04A9F33F2E4AE6F6005F3FC2 /* LVHttpRequestHelper.m in Sources */,
+				04F54CB12E6846B600769DAA /* MGDeleteImageWorkSheet.m in Sources */,
 				0474732D2E542458004AFE7D /* MGMemberController.m in Sources */,
 				0474732A2E5413ED004AFE7D /* MGInviteFriendsController.m in Sources */,
 				04F54C9B2E602C7100769DAA /* MGReviewImageCell.m in Sources */,
@@ -1074,8 +1091,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				04A9F2F82E4AE1EA005F3FC2 /* Base */,
+				04F54CAD2E682B3400769DAA /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		04F54CAA2E682A2800769DAA /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04F54CAB2E682A2800769DAA /* en */,
+				04F54CAE2E682B3500769DAA /* zh-Hans */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1160,6 +1187,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1222,6 +1250,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

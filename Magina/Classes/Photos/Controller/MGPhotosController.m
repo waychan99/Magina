@@ -31,7 +31,7 @@
     [self.view addSubview:self.listContainerView];
     
     self.categoryView.indicators = @[self.lineView];
-    self.categoryView.titles = @[@"Work", @"Collect"];
+    self.categoryView.titles = @[NSLocalizedString(@"workk", nil), NSLocalizedString(@"collectt", nil)];
     self.categoryView.listContainer = self.listContainerView;
 }
 

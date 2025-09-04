@@ -13,11 +13,14 @@
 #import "MGAlbumListView.h"
 #import <HWPanModal/HWPanModal.h>
 
-@interface MGAddPhotosController ()<HWPanModalPresentable, UICollectionViewDelegate, UICollectionViewDataSource>
+@interface MGAddPhotosController ()<HWPanModalPresentable, UICollectionViewDelegate, UICollectionViewDataSource> {
+    NSTimer *_timer;
+}
+@property (weak, nonatomic) IBOutlet UILabel *titleLab;
+@property (weak, nonatomic) IBOutlet UILabel *subTitleLab;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UILabel *allPhotosLab;
 @property (nonatomic, strong) NSMutableArray<MGAlbumModel *> *albumArrM;
-//@property (nonatomic, strong) MGAlbumModel *albumModel;
 @property (nonatomic, strong) MGAlbumModel *currentAlbumModel;
 @end
 
@@ -29,42 +32,23 @@
     
     [self setupUIComponents];
     
-//    [[MGImageManager shareInstance] getCameraRollAlbumWithFetchAssets:YES completion:^(MGAlbumModel * _Nonnull model) {
-//        self->_albumModel = model;
-//        MGAssetModel *takePhotoModel = [[MGAssetModel alloc] init];
-//        takePhotoModel.modelType = MGAssetModelTypeTakePhoto;
-//        [self->_albumModel.models insertObject:takePhotoModel atIndex:0];
-//        self->_albumModel.count += 1;
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [self.collectionView reloadData];
-//        });
-//    }];
-    
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [[MGImageManager shareInstance] getAllAlbumsWithFetchAssets:YES completion:^(NSArray<MGAlbumModel *> * _Nonnull models) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.albumArrM = [NSMutableArray arrayWithArray:models];
-                for (MGAlbumModel *model in self.albumArrM) {
-                    MGAssetModel *takePhotoModel = [[MGAssetModel alloc] init];
-                    takePhotoModel.modelType = MGAssetModelTypeTakePhoto;
-                    [model.models insertObject:takePhotoModel atIndex:0];
-                    model.count += 1;
-                    if (model.isCameraRoll) {
-                        self.currentAlbumModel = model;
-                    }
-                }
-                if (!self.currentAlbumModel && self.albumArrM.count > 0) {
-                    self.currentAlbumModel = self.albumArrM.firstObject;
-                }
-            });
-        }];
-    });
+    if ([PHPhotoLibrary authorizationStatus] != PHAuthorizationStatusAuthorized) {
+        [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {}];
+        if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusNotDetermined) {
+            _timer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(observeAuthrizationStatusChange) userInfo:nil repeats:NO];
+        }
+    } else {
+        [self loadImageData];
+    }
 }
 
 #pragma mark - setupUIComponents
 - (void)setupUIComponents {
     self.customNavBar.hidden = YES;
     self.view.backgroundColor = HEX_COLOR(0x1E1F24);
+    
+    self.titleLab.text = NSLocalizedString(@"photo_uploadd", nil);
+    self.subTitleLab.text = NSLocalizedString(@"photo_tipp", nil);
     
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
@@ -87,6 +71,41 @@
             self.currentAlbumModel = albumModel;
         } completion:nil];
     }
+}
+
+#pragma mark - observerAction
+- (void)observeAuthrizationStatusChange {
+    [_timer invalidate];
+    _timer = nil;
+    if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusNotDetermined) {
+        _timer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(observeAuthrizationStatusChange) userInfo:nil repeats:NO];
+    }
+    if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusAuthorized) {
+        [self loadImageData];
+    }
+}
+
+#pragma mark - request
+- (void)loadImageData {
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [[MGImageManager shareInstance] getAllAlbumsWithFetchAssets:YES completion:^(NSArray<MGAlbumModel *> * _Nonnull models) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.albumArrM = [NSMutableArray arrayWithArray:models];
+                for (MGAlbumModel *model in self.albumArrM) {
+                    MGAssetModel *takePhotoModel = [[MGAssetModel alloc] init];
+                    takePhotoModel.modelType = MGAssetModelTypeTakePhoto;
+                    [model.models insertObject:takePhotoModel atIndex:0];
+                    model.count += 1;
+                    if (model.isCameraRoll) {
+                        self.currentAlbumModel = model;
+                    }
+                }
+                if (!self.currentAlbumModel && self.albumArrM.count > 0) {
+                    self.currentAlbumModel = self.albumArrM.firstObject;
+                }
+            });
+        }];
+    });
 }
 
 #pragma mark - UICollectionViewDelegate, UICollectionViewDataSource
@@ -132,7 +151,6 @@
     MGAssetModel *assetModel = self.currentAlbumModel.models[indexPath.item];
     if (assetModel.modelType == MGAssetModelTypeNormal) {
         [[MGImageManager shareInstance] getPhotoWithAsset:assetModel.asset completion:^(UIImage * _Nonnull photo, NSDictionary * _Nonnull info, BOOL isDegraded) {
-            LVLog(@"fffff --- %@ -- %i", photo, isDegraded);
             if (!isDegraded) {
                 [self dismissViewControllerAnimated:YES completion:^{
                     !self.selectedImageCallback ?: self.selectedImageCallback(photo);

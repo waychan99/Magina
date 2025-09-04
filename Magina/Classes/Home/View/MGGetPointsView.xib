@@ -108,6 +108,8 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="agreementTextView" destination="UO5-tc-35w" id="7IQ-kd-rph"/>
+                <outlet property="inviteBtn" destination="UGG-mc-LgW" id="ZdE-3U-v40"/>
+                <outlet property="titleLab" destination="dAW-3P-saR" id="0oi-9M-Ig6"/>
             </connections>
             <point key="canvasLocation" x="130.53435114503816" y="-11.619718309859156"/>
         </view>

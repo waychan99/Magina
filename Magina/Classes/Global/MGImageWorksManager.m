@@ -116,7 +116,7 @@ static MGImageWorksManager *_instance;
     }];
 }
 
-- (void)loadImageWorksCompletion:(void (^)(NSMutableArray<MGImageWorksModel *> * _Nonnull))completion { //路劲不对，还需处理登录情况
+- (void)loadImageWorksCompletion:(void (^)(NSMutableArray<MGImageWorksModel *> * _Nonnull))completion {
     dispatch_async(_imageWorksQueue, ^{
         self.imageWorks = [MGImageWorksModel mj_objectArrayWithKeyValuesArray:[[NSMutableArray alloc] initWithContentsOfFile:[NSString lp_documentFilePathWithFileName:[NSString stringWithFormat:@"%@_%@", MG_IMAGE_WORKS_LIST_CACHE_PATH, [MGGlobalManager shareInstance].accountInfo.user_id]]]];
         !completion ?: completion(self.imageWorks);

@@ -12,24 +12,24 @@
 + (NSMutableArray<NSMutableArray *> *)loadDataSource {
     NSMutableArray *originData = [NSMutableArray array];
     [originData addObject:@[@{@"cellType"        : @(MGPersonalCellTypePointsDetails),
-                              @"titleText"       : NSLocalizedString(@"Points Details", nil),
+                              @"titleText"       : NSLocalizedString(@"points_detailss", nil),
                               @"contentText"     : @"",
                               @"jumbController"  : @"MGPointsListController"},
                             @{@"cellType"        : @(MGPersonalCellTypeInviteFriends),
-                              @"titleText"       : NSLocalizedString(@"Invite friends", nil),
+                              @"titleText"       : NSLocalizedString(@"invite_friend", nil),
                               @"contentText"     : @"",
                               @"jumbController"  : @"MGInviteFriendsController"}]];
      
      [originData addObject:@[@{@"cellType"        : @(MGPersonalCellTypeContactUs),
-                               @"titleText"       : NSLocalizedString(@"Contact Us", nil),
+                               @"titleText"       : NSLocalizedString(@"contact_uss", nil),
                                @"contentText"     : @"",
-                               @"jumbController"  : @"MGPrivacyPolicyController"},
+                               @"jumbController"  : @""},
                              @{@"cellType"        : @(MGPersonalCellTypePrivacyPolicy),
-                               @"titleText"       : NSLocalizedString(@"Privacy Policy", nil),
+                               @"titleText"       : NSLocalizedString(@"privacy_policys", nil),
                                @"contentText"     : @"",
-                               @"jumbController"  : @"MGPrivacyPolicyController"},
+                               @"jumbController"  : @""},
                              @{@"cellType"        : @(MGPersonalCellTypeApplicationVersion),
-                               @"titleText"       : NSLocalizedString(@"Application version", nil),
+                               @"titleText"       : NSLocalizedString(@"application_version", nil),
                                @"contentText"     : [MGGlobalManager shareInstance].appVersion,
                                @"jumbController"  : @""}]];
     

@@ -198,7 +198,7 @@
         _tipsLabel.textColor = [UIColor whiteColor];
         _tipsLabel.textAlignment = NSTextAlignmentCenter;
         _tipsLabel.font = [UIFont systemFontOfSize:13.0 weight:UIFontWeightMedium];
-        _tipsLabel.text = NSLocalizedString(@"Please place your face within the frame, lift yourbangs, and expose your forehead", nil);
+        _tipsLabel.text = NSLocalizedString(@"take_photo_tipp", nil);
         _tipsLabel.numberOfLines = 0;
     }
     return _tipsLabel;

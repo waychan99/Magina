@@ -218,7 +218,7 @@
 
 - (LVEmptyView *)noNetworkView {
     if (!_noNetworkView) {
-        _noNetworkView = [LVEmptyView emptyActionViewWithImage:nil titleStr:nil detailStr:nil btnTitleStr:NSLocalizedString(@"No content available at the moment", nil) target:self action:@selector(reloadList)];
+        _noNetworkView = [LVEmptyView emptyActionViewWithImage:nil titleStr:nil detailStr:nil btnTitleStr:NSLocalizedString(@"no_datad", nil) target:self action:@selector(reloadList)];
     }
     return _noNetworkView;
 }

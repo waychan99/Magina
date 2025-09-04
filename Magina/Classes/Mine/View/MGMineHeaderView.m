@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *contentLab2;
 @property (weak, nonatomic) IBOutlet UILabel *contentLab3;
 @property (weak, nonatomic) IBOutlet UILabel *contentLab4;
+@property (weak, nonatomic) IBOutlet UILabel *contentLab5;
 @end
 
 @implementation MGMineHeaderView
@@ -35,6 +36,10 @@
     
     self.headerIcon.userInteractionEnabled = YES;
     [self.headerIcon addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHeaderIcon:)]];
+    
+    self.subTitleLab.text = NSLocalizedString(@"invite_titles", nil);
+    self.contentLab5.text = NSLocalizedString(@"invite_frints", nil);
+    self.contentLab4.text = NSLocalizedString(@"invite_friends_now", nil);
     
     @lv_weakify(self)
     [self.KVOController observe:[MGGlobalManager shareInstance] keyPath:@"currentPoints" options:NSKeyValueObservingOptionInitial block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
