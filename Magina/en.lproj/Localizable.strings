@@ -5,6 +5,7 @@
   Created by mac on 2025/9/3.
   
 */
+
 "number_of_invitations" = "Number of invitations";
 "copy_link" = "Copy link";
 
@@ -101,3 +102,8 @@
 "with_watermark" = "With watermark";
 "magina_pro" = "Magina Pro";
 "global_request_error" = "Network Error";
+
+"favorite_empty" = "Favorites list is empty";
+"works_empty" = "Works list is empty";
+"points_details_empty" = "Points details list is empty";
+"template_empty" = "Template list is empty";

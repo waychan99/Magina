@@ -143,7 +143,7 @@
 
 - (LVEmptyView *)noDataView {
     if (!_noDataView) {
-        _noDataView = [LVEmptyView emptyViewWithImage:[UIImage imageNamed:@"noData_placeHolder"] titleStr:nil detailStr:nil];
+        _noDataView = [LVEmptyView emptyViewWithImage:[UIImage imageNamed:@"empty_data"] titleStr:nil detailStr:NSLocalizedString(@"works_empty", nil)];
     }
     return _noDataView;
 }

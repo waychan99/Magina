@@ -5,12 +5,12 @@
       "scale" : "1x"
     },
     {
-      "filename" : "noIncome_placeHolder@2x.png",
+      "filename" : "empty_data@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "noIncome_placeHolder@3x.png",
+      "filename" : "empty_data@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

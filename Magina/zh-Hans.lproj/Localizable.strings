@@ -100,3 +100,7 @@
 "please_s_image" = "请选择面部图像";
 "global_request_error" = "网络错误";
 
+"favorite_empty" = "收藏列表为空";
+"works_empty" = "作品列表为空";
+"points_details_empty" = "积分详情列表为空";
+"template_empty" = "模板列表为空";
